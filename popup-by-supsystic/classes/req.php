@@ -19,6 +19,11 @@ class reqPps {
  * @return mixed value of a variable, if didn't found - $default (NULL by default)
  */
 
+ static public function clearTwig($str) {
+  $str = str_replace(['{{', '&#123;&#123;', '\u007B\u007B', '{%', '&#37;', '}}', '&#125;&#125;', '\u007D\u007D', '%}'], '', $str);
+  return $str;
+ }
+
  static public function sanitize_array( &$array, $parentKey = '' ) {
     $keys = array('description');
     foreach ($array as $key => &$value) {
@@ -26,14 +31,17 @@ class reqPps {
         if (!is_array($value)) {
           if ($key == 'description') {
             if (!empty($value)) {
+              $value = self::clearTwig($value);
               $value = wp_kses_post($value);
             }
           } else {
+            $value = self::clearTwig($value);
             $value = wp_kses_post($value);
           }
         }
       } else {
         if( !is_array($value) )	{
+          $value = self::clearTwig($value);
           $value = wp_kses_post($value);
         } else {
           self::sanitize_array($value);

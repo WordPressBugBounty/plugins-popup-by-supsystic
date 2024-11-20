@@ -2,8 +2,8 @@
 Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popup WordPress plugin, marketing, popover, pop-up, popup builder, social popup, facebook popup, popup builder, popup maker
-Tested up to: 6.4
-Stable tag: 1.10.29
+Tested up to: 6.7
+Stable tag: 1.10.30
 
 Create elegant popup easily with Popup Builder by Supsystic. Popup with Subscription Forms, Facebook popup, Optin and Social locks, Contact Forms etc.
 
@@ -112,10 +112,19 @@ Enable “Redirect after close” option in Appearance setting on the Design tab
 = Something does not work. What should I do?
 [Contact us](http://supsystic.com/contact-us?utm_source=wordpress&utm_medium=supportcontact&utm_campaign=popup "Contact Us")! Depending on your server configuration something may go wrong, please don’t hesitate on contacting us, we are here to help you!
 
+
 = Everything works PERFECT. What should I do?
 Leave us a nice review 🙂
 
+= How can I report security bugs? =
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. 
+The Patchstack team help validate, triage and handle any security vulnerabilities. 
+[Report a security vulnerability.](https://patchstack.com/database/vdp/popup-by-supsystic)
+
 == Changelog ==
+1.10.30 / 20.11.2024 =
+ * Fix security issue
+
 1.10.29 / 20.03.2024 =
  * Add expertise level for AC form
 

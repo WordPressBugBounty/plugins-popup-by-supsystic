@@ -773,6 +773,9 @@ class popupViewPps extends viewPps {
 		if(in_array($popup['type'], array(PPS_VIDEO))) {
 			$popup['params']['tpl']['video_html'] = $this->_generateVideoHtml( $popup );
 		}
+
+		$popup['html'] = reqPps::clearTwig($popup['html']);
+
 		$popup['css'] = $this->_replaceTagsWithTwig( $popup['css'], $popup );
 		$popup['html'] = $this->_replaceTagsWithTwig( $popup['html'], $popup );
 
