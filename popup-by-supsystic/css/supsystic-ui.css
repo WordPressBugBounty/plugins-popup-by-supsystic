@@ -856,3 +856,7 @@ a.search-choice-close {
 .tooltipContent { display: none; }
 .tooltip_templates { display: none; }
 #ppsOptInProWnd { display:none; }
+
+#ppsPopupTblSearchTxt {
+	display:none !important;
+}
