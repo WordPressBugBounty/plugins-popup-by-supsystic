@@ -2,9 +2,9 @@
 Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popup WordPress plugin, marketing, popover, pop-up, popup builder, social popup, facebook popup, popup builder, popup maker
-Tested up to: 6.7
+Tested up to: 6.8
 License: GNU General Public License v2.0 or later
-Stable tag: 1.10.31
+Stable tag: 1.10.32
 
 Create elegant popup easily with Popup Builder by Supsystic. Popup with Subscription Forms, Facebook popup, Optin and Social locks, Contact Forms etc.
 
@@ -123,6 +123,12 @@ The Patchstack team help validate, triage and handle any security vulnerabilitie
 [Report a security vulnerability.](https://patchstack.com/database/vdp/popup-by-supsystic)
 
 == Changelog ==
+1.10.33 / 14.05.2025 =
+ * Minor Fixes
+
+1.10.32 / 06.05.2025 =
+ * Add fix for textdomain
+ * Add support WordPress 6.8.1
 
 1.10.31 / 08.04.2025 =
  * Fix UI/UX

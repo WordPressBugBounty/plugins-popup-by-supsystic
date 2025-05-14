@@ -101,6 +101,10 @@ class framePps {
         }
     }
     public function init() {
+      reqPps::init();
+      add_action('init', array($this, '_delayedInit'), 5);
+    }
+    public function _delayedInit() {
         //$startTime = microtime(true);
         reqPps::init();
         $this->_extractTables();
