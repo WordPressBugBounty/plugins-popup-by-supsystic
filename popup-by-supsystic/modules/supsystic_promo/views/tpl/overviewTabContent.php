@@ -131,6 +131,7 @@
 					</div>
 			</div>
 			<div class="half-page half-page-right">
+				 	<a href="https://wuwizards.com/?utm_source=supsystic_plugin&utm_campaign=banner" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL .'/'. PPS_PLUG_NAME;?>/modules/supsystic_promo/img/overview-wuwizards-banner.png"></a>
 					 <?php if(framePps::_()->getModule('supsystic_promo')->isPro()) {?>
 						<a href="https://supsystic.com/contact-us" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL .'/'. PPS_PLUG_NAME;?>/modules/supsystic_promo/img/overview-upgrade.png"></a>
 					<?php }?>

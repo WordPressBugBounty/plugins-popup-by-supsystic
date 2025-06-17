@@ -4,7 +4,7 @@ Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popup WordPress plugin, marketing, popover, pop-up, popup builder, social popup, facebook popup, popup builder, popup maker
 Tested up to: 6.8
 License: GNU General Public License v2.0 or later
-Stable tag: 1.10.32
+Stable tag: 1.10.34
 
 Create elegant popup easily with Popup Builder by Supsystic. Popup with Subscription Forms, Facebook popup, Optin and Social locks, Contact Forms etc.
 
@@ -20,8 +20,8 @@ According to your needs, [show popup only to first time users](https://supsystic
 = Main Features =
 
 * Choose one of 69 mobile-friendly [Popup Templates](https://supsystic.com/popup-examples?utm_source=wordpress&utm_medium=features&utm_campaign=popup) for your website. It is possible to create and manage an unlimited number of popups, or set [Popup Triggers](https://supsystic.com/docs/popup-triggers?utm_source=wordpress&utm_medium=featurestriggers&utm_campaign=popup). It's easy to choose whom, where, when and how to show your pop up, conditions to close it (we assume that you wouldn’t like annoy your customers with non-closing windows).
-* [Over 18 Popup types](https://supsystic.com/popup-examples?utm_source=wordpress&utm_medium=featurestypes&utm_campaign=popup), so even the pickiest user will find the one which fits their needs perfectly. And if you`d like to make our perfect preset more adorable, you can customize it with usual builder and HTML/СSS editor. 
-* Different [Popup Location](https://supsystic.com/documentation/popup-location?utm_source=wordpress&utm_medium=featureslocation&utm_campaign=popup) on the page in one click. Pop-up can be shown at any place on your page – bottom, top, center, left, right, in the corner of the page etc.  
+* [Over 18 Popup types](https://supsystic.com/popup-examples?utm_source=wordpress&utm_medium=featurestypes&utm_campaign=popup), so even the pickiest user will find the one which fits their needs perfectly. And if you`d like to make our perfect preset more adorable, you can customize it with usual builder and HTML/СSS editor.
+* Different [Popup Location](https://supsystic.com/documentation/popup-location?utm_source=wordpress&utm_medium=featureslocation&utm_campaign=popup) on the page in one click. Pop-up can be shown at any place on your page – bottom, top, center, left, right, in the corner of the page etc.
 * [20+ Opening Animations](https://supsystic.com/documentation/popup-animations?utm_source=wordpress&utm_medium=featuresanimation&utm_campaign=popup). Feel like you are a wizard for a moment - try the full range of animation effects one by one to finish the look on the most suitable popup for your website.
 * Make [A/B Split Tests](https://supsystic.com/what-is-ab-testing?utm_source=wordpress&utm_medium=optionstests&utm_campaign=popup "A / B Split Test") for choosing the best way of showing your Pop-up. See [Real Time Stats and Analytics](https://supsystic.com/feature/statistics-analytics?utm_source=wordpress&utm_medium=optionsstatistic&utm_campaign=popup "Real Time Popup Stats and Analytics") for analytics.
 * There are many different popular popup types, such as [Subscription](https://supsystic.com/documentation/popup-subscription-settings?utm_source=wordpress&utm_medium=subscriptionsettings&utm_campaign=popup "Subscription Settings"), [Social Share](https://supsystic.com/feature/social-popup?utm_source=wordpress&utm_medium=socialpopup&utm_campaign=popup "Social Popup"), [iFrame](https://supsystic.com/plugins/popup-plugin/?utm_source=wordpress&utm_medium=typeiframe&utm_campaign=popup#ppsShowPopUp_161 "iFrame"), [PDF](https://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=typepdf&utm_campaign=popup#ppsShowPopUp_169 "PDF"), [Age Verification](https://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=typeverification&utm_campaign=popup#ppsShowPopUp_158 "Age Verification"), [Full Screen](https://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=typefull&utm_campaign=popup#ppsShowPopUp_157 "Full Screen"), [Google Maps](https://supsystic.com/popup-examples?utm_source=wordpress&utm_medium=typemaps&utm_campaign=popup#ppsShowPopUp_141 "Google Maps"), [Notification Bar](https://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=typenotification&utm_campaign=popup#ppsShowPopUp_159 "Notification Bar"), [Facebook](https://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=typefacebook&utm_campaign=popup#ppsShowPopUp_104 "Facebook") etc.
@@ -29,7 +29,7 @@ According to your needs, [show popup only to first time users](https://supsystic
 Video tutorial to show you how to make a pop-up easily with our plugin.
 [youtube http://www.youtube.com/watch?v=-Q9-tWi-lQE]
 
-== Screenshots == 
+== Screenshots ==
 
 1. Popup Demo
 2. Facebook like popup, Popup with YouTube video, Age verification and more
@@ -46,19 +46,19 @@ Video tutorial to show you how to make a pop-up easily with our plugin.
 
 == Frequently Asked Questions ==
 
-= For fist-time users = 
+= For fist-time users =
 
 Popup gives you total control of the settings, so you can completely match your popup to the design of site. Our plugin is overloaded by different features and abilities, so you can look at [Getting Started tutorial](https://supsystic.com/documentation/popup-getting-started/?utm_source=wordpress&utm_medium=gettingstarteds&utm_campaign=popup "Popup Getting Started") to learn how to create PopUps in a couple of minutes. If something is still unclear, [contact us](http://supsystic.com/contact-us?utm_source=wordpress&utm_medium=supportcontact&utm_campaign=popup "Contact Us") and we will be glad to help you.
 
-= How many popups can I create? = 
+= How many popups can I create? =
 You can create as many popups as you need, there is no limitation either on the Free or the PRO version.Also you can have as many popups as you want on the same page. In order to activate more than one popup, you need to enable in each popup Turn On button. It is on the right top of Popup plugin.
 
-= When and Whom to Show Popup = 
+= When and Whom to Show Popup =
 
 You can choose [When to show](https://supsystic.com/documentation/when-to-show-popup?utm_source=wordpress&utm_medium=whentoshowspopup&utm_campaign=popup "When to show Popup") and [Whom to show Popup](https://supsystic.com/documentation/whom-to-show-popup/?utm_source=wordpress&utm_medium=whomtoshows&utm_campaign=popup "Whom to show Popup") in the Main tab of the plugin’s admin panel. It can be shown when the page loads, when the user clicks on the page or scrolls the window, by click on certain link / button / other element, on the bottom of the page, in  case of user inactivity, on exit from your site, etc.
 You can show Popup for everyone, only for first-time visitors, until user makes an action or you can set the fixed number of times a day (an hour, a week, a month) for showing it. There is also a possibility to hide/show only for mobile devices, for defined countries, user roles, specific post  types etc.
 
-= When Popup can be Closed = 
+= When Popup can be Closed =
 
 [When to close PopUp](https://supsystic.com/documentation/when-to-close-popup?utm_source=wordpress&utm_medium=whentoclose&utm_campaign=popup "When to close PopUp") section provides the ability to set different variations for closing your popup: after user close it, by clicking anywhere outside the pop-up, only after action (Subscribe / Share / Like), when the curtain time passed.
 
@@ -68,13 +68,13 @@ Here you are able to set plugin responsivity:
 * Full resize – PopUp will be fully zoomed for smaller screens.
 * Width only – PopUp will adapt only Width for device screen size.
 
-= Why should I buy the PRO version? = 
-The Free version of Popup Plugin gives you all necessary options for creating unlimited fully functional popups. Our PRO version gives you the ability to create more advanced popups, with [Login & Registration](https://supsystic.com/documentation/popup-login-registration&utm_medium=loginregistration&utm_campaign=popup "Login and registration") options, Popup [Location](https://supsystic.com/documentation/popup-location?utm_source=wordpress&utm_medium=featureslocation&utm_campaign=popup "Location") and Text Font and color settings, [Google Analytics](https://supsystic.com/documentation/popup-statistics/?utm_source=wordpress&utm_medium=optionsstatistic&utm_campaign=popup "Analytics"), [A/B Testing](https://supsystic.com/what-is-ab-testing?utm_source=wordpress&utm_medium=optionstests&utm_campaign=popup "A/B Testing") and more. 
+= Why should I buy the PRO version? =
+The Free version of Popup Plugin gives you all necessary options for creating unlimited fully functional popups. Our PRO version gives you the ability to create more advanced popups, with [Login & Registration](https://supsystic.com/documentation/popup-login-registration&utm_medium=loginregistration&utm_campaign=popup "Login and registration") options, Popup [Location](https://supsystic.com/documentation/popup-location?utm_source=wordpress&utm_medium=featureslocation&utm_campaign=popup "Location") and Text Font and color settings, [Google Analytics](https://supsystic.com/documentation/popup-statistics/?utm_source=wordpress&utm_medium=optionsstatistic&utm_campaign=popup "Analytics"), [A/B Testing](https://supsystic.com/what-is-ab-testing?utm_source=wordpress&utm_medium=optionstests&utm_campaign=popup "A/B Testing") and more.
 With Popup Pro you will get [Templates Pack](https://supsystic.com/popup-examples?utm_source=wordpress&utm_medium=featurestypes&utm_campaign=popup "Examples") with 69 preset templates for your popups to easily create elegant popups in couple minutes.
 Also, you will have more possible ways of [opening and closing popup](https://supsystic.com/docs/popup-triggers?utm_source=wordpress&utm_medium=triggers&utm_campaign=popup "Triggers")   : On Exit from Site, On Bottom of the page, After Inactivity, After User Comment, After Purchasing, On Link Follow, Close Only after action (Subscribe / Share / Like), Close After time passed and many other.
 So if you need these advanced popups and functionalities, get [Popup Plugin by Supsystic PRO here](http://supsystic.com/plugins/popup-plugin?utm_source=wordpress&utm_medium=description&utm_campaign=popup "Popup Pro").
 
-= Can I set a Popup to be closed in several seconds? = 
+= Can I set a Popup to be closed in several seconds? =
 If you want to make the popup closed after some period of time, [follow the next steps](https://supsystic.com/documentation/auto-close-popup-x-seconds?utm_source=wordpress&utm_medium=popupclosed&utm_campaign=popup "Close Popup after x seconds"):
 * Choose Popup by Supsystic on your admin panel of the WordPress admin page
 * Find there an insert “Add new PopUp” and choose Iframe theme. Don’t forget to click Simple iFrame icon.
@@ -102,12 +102,12 @@ With WordPress Popup plugin by Supsystic you can show popup in different ways �
 
 For more information see the article [How to open popup with link](https://supsystic.com/documentation/open-popup-click?utm_source=wordpress&utm_medium=popupwithlink&utm_campaign=popup "Opening popup with link")
 
-= How to redirect users after after users close popup? = 
+= How to redirect users after after users close popup? =
 [Redirection to the required URL](https://supsystic.com/documentation/redirect-url-closing-popup?utm_source=wordpress&utm_medium=redirection&utm_campaign=popup "Redirection to the required URL") is very useful option. If users won’t subscribe through the popup you will still have a chance to show the required information, after they close it.
 
 Enable “Redirect after close” option in Appearance setting on the Design tab of WordPress Popup plugin by Supsystic. Insert there the required URL and save your popup. Also you can set the link to open in a new tab.
 
-= How to use A/B testing = 
+= How to use A/B testing =
 [A/B testing feature](https://supsystic.com/feature/a-b-testing?utm_source=wordpress&utm_medium=abtesting&utm_campaign=popup "A/B testing"), in PopUp by Supsystic allows you to test two versions of popup, compare the stats and decide, which one you’d like to use on your site. Such testing is a simple way to test changes against the current design and determine which ones produce positive results. It is a way to figure out that any new customization or change to your site is growing your conversion rate before you implement the change to life.
 
 = Something does not work. What should I do?
@@ -118,13 +118,16 @@ Enable “Redirect after close” option in Appearance setting on the Design tab
 Leave us a nice review 🙂
 
 = How can I report security bugs? =
-You can report security bugs through the Patchstack Vulnerability Disclosure Program. 
-The Patchstack team help validate, triage and handle any security vulnerabilities. 
+You can report security bugs through the Patchstack Vulnerability Disclosure Program.
+The Patchstack team help validate, triage and handle any security vulnerabilities.
 [Report a security vulnerability.](https://patchstack.com/database/vdp/popup-by-supsystic)
 
 == Changelog ==
-1.10.33 / 14.05.2025 =
- * Minor Fixes
+1.10.34 / 17.06.2025 =
+ * Minor fixes and overview update
+
+1.10.33 / 11.06.2025 =
+ * Minor fixes
 
 1.10.32 / 06.05.2025 =
  * Add fix for textdomain
@@ -193,7 +196,7 @@ The Patchstack team help validate, triage and handle any security vulnerabilitie
  * Fixes to HTML tags
  * Add support WP 6.0
  * Fixes for Media Library
- 
+
 = 1.10.13 / 13.04.2022 =
  * Add fix for wp review
 
