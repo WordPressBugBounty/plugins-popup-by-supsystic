@@ -1,11 +1,11 @@
 <p class="alert alert-danger">
-	<?php printf(__('Edit this ONLY if you know basics of HTML, CSS and have been acquainted with the rules of template editing described <a target="_blank" href="%s">here</a>', PPS_LANG_CODE), 'http://supsystic.com/edit-popup-html-css-code/')?>
+  <?php printf(__('Edit this ONLY if you know basics of HTML, CSS and have been acquainted with the rules of template editing described <a target="_blank" href="%s">here</a>', PPS_LANG_CODE), 'http://supsystic.com/edit-popup-html-css-code/')?>
 </p>
 <fieldset>
-	<legend><?php _e('CSS code')?></legend>
-	<?php echo viewPps::ksesString(htmlPps::textarea('css', array('value' => $this->popup['css'], 'attrs' => 'id="ppsPopupCssEditor"')))?>
+  <legend><?php _e('CSS code')?></legend>
+  <?php echo viewPps::ksesString(htmlPps::textarea('css', ['value' => $this->popup['css'], 'attrs' => 'id="ppsPopupCssEditor"']))?>
 </fieldset>
 <fieldset>
-	<legend><?php _e('HTML code')?></legend>
-	<?php echo viewPps::ksesString(htmlPps::textarea('html', array('value' => $this->popup['html'], 'attrs' => 'id="ppsPopupHtmlEditor"')))?>
+  <legend><?php _e('HTML code')?></legend>
+  <?php echo viewPps::ksesString(htmlPps::textarea('html', ['value' => $this->popup['html'], 'attrs' => 'id="ppsPopupHtmlEditor"']))?>
 </fieldset>

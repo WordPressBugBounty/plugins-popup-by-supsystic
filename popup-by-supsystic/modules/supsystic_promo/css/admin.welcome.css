@@ -4,5 +4,5 @@
 .supsystic-plugin *,
 .supsystic-plugin *:before,
 .supsystic-plugin *:after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }

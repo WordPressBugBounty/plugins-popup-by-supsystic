@@ -1,27 +1,29 @@
 .supsystic-plugin .supsystic-content .supsystic-navigation {
-	left: 0;
+  left: 0;
 }
-.supsystic-plugin .supsystic-content .supsystic-navigation.supsystic-sticky-active {
-	left: 20px;
+.supsystic-plugin
+  .supsystic-content
+  .supsystic-navigation.supsystic-sticky-active {
+  left: 20px;
 }
 #supsystic-breadcrumbs {
-	left: 0;
+  left: 0;
 }
 #ppsPopupMainControllsShell {
-	padding-right: 15px !important;
+  padding-right: 15px !important;
 }
 #supsystic-breadcrumbs.supsystic-sticky-active #ppsPopupMainControllsShell {
-	padding-right: 270px !important;
+  padding-right: 270px !important;
 }
 .supsystic-tour-btns .supsystic-tour-next-btn {
-	float: right;
+  float: right;
 }
 .supsystic-plugin .ppsCopyTextCode,
-#ppsPopupEditors textarea, 
+#ppsPopupEditors textarea,
 #ppsPopupEditors .CodeMirror {
-	direction: ltr;
+  direction: ltr;
 }
 .chosen-container-single.chosen-container-single-nosearch .chosen-search,
 .chosen-container .chosen-drop {
-	left: 9999px;
+  left: 9999px;
 }

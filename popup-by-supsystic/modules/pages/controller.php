@@ -1,5 +1,5 @@
 <?php
-class pagesControllerPps extends controllerPps {
 
+class pagesControllerPps extends controllerPps
+{
 }
-

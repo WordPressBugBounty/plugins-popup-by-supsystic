@@ -1,10 +1,13 @@
 <?php
-class admin_navControllerPps extends controllerPps {
-	public function getPermissions() {
-		return array(
-			PPS_USERLEVELS => array(
-				PPS_ADMIN => array()
-			),
-		);
-	}
+
+class admin_navControllerPps extends controllerPps
+{
+  public function getPermissions()
+  {
+    return [
+        PPS_USERLEVELS => [
+            PPS_ADMIN => []
+        ],
+    ];
+  }
 }

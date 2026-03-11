@@ -1,7 +1,9 @@
 <?php
-#[\AllowDynamicProperties]
-class installerDbUpdaterPps {
-	static public function runUpdate() {
 
-	}
+#[\AllowDynamicProperties]
+class installerDbUpdaterPps
+{
+  public static function runUpdate()
+  {
+  }
 }

@@ -1,12 +1,13 @@
 <?php
+
 global $wpdb;
 if (!defined("WPLANG") || WPLANG == "") {
-    define("PPS_WPLANG", "en_GB");
+  define("PPS_WPLANG", "en_GB");
 } else {
-    define("PPS_WPLANG", WPLANG);
+  define("PPS_WPLANG", WPLANG);
 }
 if (!defined("DS")) {
-    define("DS", DIRECTORY_SEPARATOR);
+  define("DS", DIRECTORY_SEPARATOR);
 }
 
 define("PPS_PLUG_NAME", basename(dirname(__FILE__)));
@@ -30,8 +31,8 @@ define("PPS_CSS_PATH", PPS_PLUGINS_URL . "/" . PPS_PLUG_NAME . "/css/");
 define("PPS_IMG_PATH", PPS_PLUGINS_URL . "/" . PPS_PLUG_NAME . "/img/");
 define("PPS_MODULES_PATH", PPS_PLUGINS_URL . "/" . PPS_PLUG_NAME . "/modules/");
 define(
-    "PPS_TEMPLATES_PATH",
-    PPS_PLUGINS_URL . "/" . PPS_PLUG_NAME . "/templates/"
+  "PPS_TEMPLATES_PATH",
+  PPS_PLUGINS_URL . "/" . PPS_PLUG_NAME . "/templates/"
 );
 define("PPS_JS_DIR", PPS_DIR . "js/");
 
@@ -54,7 +55,7 @@ define("PPS_CURRENT", "current");
 define("PPS_EOL", "\n");
 
 define("PPS_PLUGIN_INSTALLED", true);
-define("PPS_VERSION", "1.10.36");
+define("PPS_VERSION", "1.10.38");
 define("PPS_USER", "user");
 
 define("PPS_CLASS_PREFIX", "ppsc");
