@@ -2,18 +2,18 @@
   <form method="post" id="overview-ac-form" class="supsysticOverviewACForm">
     <div class="supsysticOverviewACTitle">
       <div class="supsysticOverviewACClose"><i class="fa fa-times" aria-hidden="true"></i></div>
-      <a href="https://supsystic.com/" target="_blank"><img src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME;?>/modules/supsystic_promo/img/supsystic-logo-small.png"></a><br>
+      <a href="https://supsystic.com/" target="_blank"><img src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/supsystic-logo-small.png"></a><br>
       <b>PRO plugins</b> and <b>amazing gifts</b>!
     </div>
     <?php
-            global $current_user;
-      $userName = $current_user->user_firstname . ' ' . $current_user->user_lastname;
-      $userEmail = $current_user->user_email;
-      ?>
+    global $current_user;
+    $userName = $current_user->user_firstname . ' ' . $current_user->user_lastname;
+    $userEmail = $current_user->user_email;
+    ?>
     <label>Name *</label>
-    <input type="text" name="username" value="<?php echo $userName;?>">
+    <input type="text" name="username" value="<?php echo $userName; ?>">
     <label>Email *</label>
-    <input type="text" name="email" value="<?php echo $userEmail;?>">
+    <input type="text" name="email" value="<?php echo $userEmail; ?>">
 
     <div class="supsysticOverviewACFormRadioWrapper">
       <input type="radio" id="expertiseWebmaster" name="expertise" value="beginner">

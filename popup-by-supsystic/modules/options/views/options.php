@@ -29,9 +29,9 @@ class optionsViewPps extends viewPps
     $tabs = $this->getModule()->getTabs();
     $activeTab = $this->getModule()->getActiveTab();
     $content = 'No tab content found - ERROR';
-    if (isset($tabs[ $activeTab ]) && isset($tabs[ $activeTab ]['callback'])) {
+    if (isset($tabs[$activeTab]) && isset($tabs[$activeTab]['callback'])) {
       //framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat('tab.'. $activeTab);
-      $content = call_user_func($tabs[ $activeTab ]['callback']);
+      $content = call_user_func($tabs[$activeTab]['callback']);
     }
     $activeParentTabs = [];
     foreach ($tabs as $tabKey => $tab) {
@@ -70,19 +70,19 @@ class optionsViewPps extends viewPps
   {
     global $wpdb;
     $this->assign('systemInfo', [
-        'Operating System' => ['value' => PHP_OS],
-        'PHP Version' => ['value' => PHP_VERSION],
-        'Server Software' => ['value' => reqPps::getVar('SERVER_SOFTWARE', 'server')],
-        'MySQL' => ['value' => $wpdb->db_version()],
-        'PHP Allow URL Fopen' => ['value' => ini_get('allow_url_fopen') ? 'Yes' : 'No'],
-        'PHP Memory Limit' => ['value' => ini_get('memory_limit')],
-        'PHP Max Post Size' => ['value' => ini_get('post_max_size')],
-        'PHP Max Upload Filesize' => ['value' => ini_get('upload_max_filesize')],
-        'PHP Max Script Execute Time' => ['value' => ini_get('max_execution_time')],
-        'PHP EXIF Support' => ['value' => extension_loaded('exif') ? 'Yes' : 'No'],
-        'PHP EXIF Version' => ['value' => phpversion('exif')],
-        'PHP XML Support' => ['value' => extension_loaded('libxml') ? 'Yes' : 'No', 'error' => !extension_loaded('libxml')],
-        'PHP CURL Support' => ['value' => extension_loaded('curl') ? 'Yes' : 'No', 'error' => !extension_loaded('curl')],
+      'Operating System' => ['value' => PHP_OS],
+      'PHP Version' => ['value' => PHP_VERSION],
+      'Server Software' => ['value' => reqPps::getVar('SERVER_SOFTWARE', 'server')],
+      'MySQL' => ['value' => $wpdb->db_version()],
+      'PHP Allow URL Fopen' => ['value' => ini_get('allow_url_fopen') ? 'Yes' : 'No'],
+      'PHP Memory Limit' => ['value' => ini_get('memory_limit')],
+      'PHP Max Post Size' => ['value' => ini_get('post_max_size')],
+      'PHP Max Upload Filesize' => ['value' => ini_get('upload_max_filesize')],
+      'PHP Max Script Execute Time' => ['value' => ini_get('max_execution_time')],
+      'PHP EXIF Support' => ['value' => extension_loaded('exif') ? 'Yes' : 'No'],
+      'PHP EXIF Version' => ['value' => phpversion('exif')],
+      'PHP XML Support' => ['value' => extension_loaded('libxml') ? 'Yes' : 'No', 'error' => !extension_loaded('libxml')],
+      'PHP CURL Support' => ['value' => extension_loaded('curl') ? 'Yes' : 'No', 'error' => !extension_loaded('curl')],
     ]);
     return parent::display('_serverSettings');
   }

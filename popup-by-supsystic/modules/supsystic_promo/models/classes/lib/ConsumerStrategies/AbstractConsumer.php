@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/../Base/MixpanelBase.php");
+require_once dirname(__FILE__) . '/../Base/MixpanelBase.php';
 
 /**
  * Provides some base methods for use by a Consumer implementation
@@ -16,7 +16,7 @@ abstract class ConsumerStrategies_AbstractConsumer extends Base_MixpanelBase
     parent::__construct($options);
 
     if ($this->_debug()) {
-      $this->_log("Instantiated new Consumer");
+      $this->_log('Instantiated new Consumer');
     }
   }
 

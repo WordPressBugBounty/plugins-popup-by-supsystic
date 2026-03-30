@@ -19,7 +19,7 @@ abstract class viewPps extends baseObjectPps
   protected static $_allowedHtml;
   public static function supStrRgbToHex($color)
   {
-    preg_match_all("/\((.+?)\)/", $color, $matches);
+    preg_match_all('/\((.+?)\)/', $color, $matches);
     if (!empty($matches[1][0])) {
       $rgb = explode(',', $matches[1][0]);
       $size = count($rgb);
@@ -50,7 +50,7 @@ abstract class viewPps extends baseObjectPps
         function ($m) {
           return self::supStrRgbToHex($m[0]);
         },
-        $str
+        $str,
       );
       $re = '/rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\d*(?:\.\d+)?\)/';
       $str = preg_replace_callback(
@@ -58,7 +58,7 @@ abstract class viewPps extends baseObjectPps
         function ($m) {
           return self::supStrRgbToHex($m[0]);
         },
-        $str
+        $str,
       );
       $str = wp_kses($str, $allowedHtml);
     }
@@ -70,62 +70,141 @@ abstract class viewPps extends baseObjectPps
       $allowedHtml = wp_kses_allowed_html();
       $allowedDiv = [
         'style' => [],
-        'div' => [ 'data-wp-editor-id' => 1, 'data-switch-block' => 1, 'data-section' => 1, 'data-pos' => 1, 'data-type-id' => 1, 'data-label' => 1, 'data-key' => 1, 'data-show-class' => 1, 'data-hide-class' => 1, 'data-id' => 1, 'data-slider-type' => 1, 'data-unit' => 1, 'data-unit' => 1, 'data-mapid' => 1, 'data-viewid' => 1, 'onclick' => 1, 'data-is-mobile' => 1, 'data-tab-link' => 1, 'data-tab-item' => 1, 'data-today' => 1, 'data-tabs-for' => 1, 'data-type' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'title' => 1, 'id' => 1, 'data-tooltip-content' => 1,],
-        'section' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'title' => 1, 'id' => 1,],
-        'nav' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'title' => 1, 'id' => 1,],
-        'small' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'span' => [ 'data-block-to-switch' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'pre' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'p' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'br' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'hr' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'hgroup' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h1' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h2' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h3' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h4' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h5' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'h6' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'ul' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'ol' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'li' => [ 'data-section' => 1, 'data-key' => 1, 'data-id' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'dl' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'dt' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'dd' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'strong' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'em' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'b' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'i' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'data-tooltip-content' => 1,],
-        'u' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'img' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'a' => [ 'data-id' => 1, 'data-txt-close' => 1, 'data-txt-open' => 1, 'data-nonce' => 1, 'data-url' => 1, 'onclick' => 1, 'data-active-label' => 1, 'data-apply-label' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'link' => 1, 'rel' => 1, 'href' => 1, 'target' => 1, ],
-        'abbr' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'address' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,],
-        'blockquote' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1,] ,
-        'area' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'form' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'action' => 1, 'target' => 1, 'method' => 1, ],
-        'fieldset' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'label' => [ 'for' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'input' => [ 'data-switch-block' => 1, 'data-pos' => 1, 'onclick' => 1, 'data-type' => 1, 'data-hideid' => 1, 'data-parent-selector' => 1, 'placeholder' => 1, 'readonly' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'value' => 1, 'type' => 1, 'id' => 1, 'name' => 1, 'src' => 1, 'border' => 1, 'alt' => 1, 'name' => 1, 'maxlength' => 1, ] ,
-        'textarea' => [ 'rows' => 1, 'cols' => 1, 'name' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'caption' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'table' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'tbody' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'td' => [ 'colspan' => 1, 'rowspan' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'tfoot' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'th' => [ 'colspan' => 1, 'rowspan' => 1, 'scope' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'thead' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'tr' => [ 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'select' => [ 'data-iter' => 1, 'name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'multiple' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, ] ,
-        'option' => [ 'name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'value' => 1, ],
-        'sup' => [] ,
-        'sub' => [] ,
-        'button' => [ 'data-wp-editor-id' => 1, 'style' => 1, 'class' => 1, 'id' => 1, 'data-mapid' => 1, 'data-viewid' => 1, 'onclick' => 1, ] ,
-        'img' => [ 'src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'alt' => 1, 'border' => 1, ] ,
-        'track' => [ 'src' => 1, 'kind' => 1, 'label' => 1, 'srclang' => 1, ] ,
-        'source' => [ 'src' => 1, 'type' => 1, ] ,
-        'audio' => [ 'src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'autoplay' => 1, 'controls' => 1, 'crossorigin' => 1, 'loop' => 1, 'muted' => 1, 'preload' => 1, ] ,
-        'iframe' => [ 'src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'title' => 1, 'allow' => 1, 'allowfullscreen' => 1, 'allowpaymentrequest' => 1, 'csp' => 1, 'height' => 1, 'loading' => 1, 'name' => 1, 'referrerpolicy' => 1, 'sandbox' => 1, 'srcdoc' => 1, ] ,
+        'div' => [
+          'data-wp-editor-id' => 1,
+          'data-switch-block' => 1,
+          'data-section' => 1,
+          'data-pos' => 1,
+          'data-type-id' => 1,
+          'data-label' => 1,
+          'data-key' => 1,
+          'data-show-class' => 1,
+          'data-hide-class' => 1,
+          'data-id' => 1,
+          'data-slider-type' => 1,
+          'data-unit' => 1,
+          'data-unit' => 1,
+          'data-mapid' => 1,
+          'data-viewid' => 1,
+          'onclick' => 1,
+          'data-is-mobile' => 1,
+          'data-tab-link' => 1,
+          'data-tab-item' => 1,
+          'data-today' => 1,
+          'data-tabs-for' => 1,
+          'data-type' => 1,
+          'style' => 1,
+          'title' => 1,
+          'align' => 1,
+          'class' => 1,
+          'width' => 1,
+          'height' => 1,
+          'title' => 1,
+          'id' => 1,
+          'data-tooltip-content' => 1,
+        ],
+        'section' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'title' => 1, 'id' => 1],
+        'nav' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'title' => 1, 'id' => 1],
+        'small' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'span' => ['data-block-to-switch' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'pre' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'p' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'br' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'hr' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'hgroup' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h1' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h2' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h3' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h4' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h5' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'h6' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'ul' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'ol' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'li' => ['data-section' => 1, 'data-key' => 1, 'data-id' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'dl' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'dt' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'dd' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'strong' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'em' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'b' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'i' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'data-tooltip-content' => 1],
+        'u' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'img' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'a' => [
+          'data-id' => 1,
+          'data-txt-close' => 1,
+          'data-txt-open' => 1,
+          'data-nonce' => 1,
+          'data-url' => 1,
+          'onclick' => 1,
+          'data-active-label' => 1,
+          'data-apply-label' => 1,
+          'style' => 1,
+          'title' => 1,
+          'align' => 1,
+          'class' => 1,
+          'width' => 1,
+          'height' => 1,
+          'id' => 1,
+          'link' => 1,
+          'rel' => 1,
+          'href' => 1,
+          'target' => 1,
+        ],
+        'abbr' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'address' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'blockquote' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'area' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'form' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'action' => 1, 'target' => 1, 'method' => 1],
+        'fieldset' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'label' => ['for' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'input' => [
+          'data-switch-block' => 1,
+          'data-pos' => 1,
+          'onclick' => 1,
+          'data-type' => 1,
+          'data-hideid' => 1,
+          'data-parent-selector' => 1,
+          'placeholder' => 1,
+          'readonly' => 1,
+          'checked' => 1,
+          'disabled' => 1,
+          'selected' => 1,
+          'style' => 1,
+          'title' => 1,
+          'align' => 1,
+          'class' => 1,
+          'width' => 1,
+          'height' => 1,
+          'value' => 1,
+          'type' => 1,
+          'id' => 1,
+          'name' => 1,
+          'src' => 1,
+          'border' => 1,
+          'alt' => 1,
+          'name' => 1,
+          'maxlength' => 1,
+        ],
+        'textarea' => ['rows' => 1, 'cols' => 1, 'name' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'caption' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'table' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'tbody' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'td' => ['colspan' => 1, 'rowspan' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'tfoot' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'th' => ['colspan' => 1, 'rowspan' => 1, 'scope' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'thead' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'tr' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'select' => ['data-iter' => 1, 'name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'multiple' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'option' => ['name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'value' => 1],
+        'sup' => [],
+        'sub' => [],
+        'button' => ['data-wp-editor-id' => 1, 'style' => 1, 'class' => 1, 'id' => 1, 'data-mapid' => 1, 'data-viewid' => 1, 'onclick' => 1],
+        'img' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'alt' => 1, 'border' => 1],
+        'track' => ['src' => 1, 'kind' => 1, 'label' => 1, 'srclang' => 1],
+        'source' => ['src' => 1, 'type' => 1],
+        'audio' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'autoplay' => 1, 'controls' => 1, 'crossorigin' => 1, 'loop' => 1, 'muted' => 1, 'preload' => 1],
+        'iframe' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'title' => 1, 'allow' => 1, 'allowfullscreen' => 1, 'allowpaymentrequest' => 1, 'csp' => 1, 'height' => 1, 'loading' => 1, 'name' => 1, 'referrerpolicy' => 1, 'sandbox' => 1, 'srcdoc' => 1],
       ];
       self::$_allowedHtml = array_merge($allowedHtml, $allowedDiv);
     }
@@ -135,7 +214,7 @@ abstract class viewPps extends baseObjectPps
   {
     $pps_nonce = wp_create_nonce('pps_nonce');
     $jsData = [
-       'pps_nonce' => $pps_nonce,
+      'pps_nonce' => $pps_nonce,
     ];
     framePps::_()->addScript('noncePps', PPS_JS_PATH . 'nonce.js');
     $jsData = dispatcherPps::applyFilters('', $jsData);
@@ -145,14 +224,14 @@ abstract class viewPps extends baseObjectPps
       if (is_admin()) {
         $pps_nonce = wp_create_nonce('pps_nonce');
         $jsData = [
-        'pps_nonce' => $pps_nonce,
+          'pps_nonce' => $pps_nonce,
         ];
         framePps::_()->addScript('noncePps', PPS_JS_PATH . 'nonce.js');
         framePps::_()->addJSVar('noncePps', 'PPS_NONCE', $jsData);
       } else {
         $pps_nonce = wp_create_nonce('pps_nonce_frontend');
         $jsData = [
-        'pps_nonce_frontend' => $pps_nonce,
+          'pps_nonce_frontend' => $pps_nonce,
         ];
         framePps::_()->addScript('noncePps', PPS_JS_PATH . 'nonce.js');
         framePps::_()->addJSVar('noncePps', 'PPS_NONCE_FRONTEND', $jsData);
@@ -161,7 +240,7 @@ abstract class viewPps extends baseObjectPps
   }
   public function display($tpl = '')
   {
-    $tpl = (empty($tpl)) ? $this->_tpl : $tpl;
+    $tpl = empty($tpl) ? $this->_tpl : $tpl;
     if (($content = $this->getContent($tpl)) !== false) {
       $this->addPpsNonce();
       echo self::ksesString($content);
@@ -172,7 +251,7 @@ abstract class viewPps extends baseObjectPps
     $path = '';
     $code = $this->_code;
     $parentModule = framePps::_()->getModule($this->_code);
-    $plTemplate = framePps::_()->getModule('options')->get('template');		// Current plugin template
+    $plTemplate = framePps::_()->getModule('options')->get('template'); // Current plugin template
     if (empty($plTemplate) || !framePps::_()->getModule($plTemplate)) {
       $plTemplate = '';
     }
@@ -180,7 +259,8 @@ abstract class viewPps extends baseObjectPps
       $path = utilsPps::getCurrentWPThemeDir() . 'pps' . DS . $code . DS . $tpl . '.php';
     } elseif ($plTemplate && file_exists(framePps::_()->getModule($plTemplate)->getModDir() . 'templates' . DS . $code . DS . $tpl . '.php')) {
       $path = framePps::_()->getModule($plTemplate)->getModDir() . 'templates' . DS . $code . DS . $tpl . '.php';
-    } elseif (file_exists($parentModule->getModDir() . 'views' . DS . 'tpl' . DS . $tpl . '.php')) { //Then try to find it in module directory
+    } elseif (file_exists($parentModule->getModDir() . 'views' . DS . 'tpl' . DS . $tpl . '.php')) {
+      //Then try to find it in module directory
       $path = $parentModule->getModDir() . DS . 'views' . DS . 'tpl' . DS . $tpl . '.php';
     }
     return $path;
@@ -195,12 +275,12 @@ abstract class viewPps extends baseObjectPps
   }
   public function getContent($tpl = '')
   {
-    $tpl = (empty($tpl)) ? $this->_tpl : $tpl;
+    $tpl = empty($tpl) ? $this->_tpl : $tpl;
     $path = $this->getPath($tpl);
     if ($path) {
       $content = '';
       ob_start();
-      require($path);
+      require $path;
       $content = ob_get_contents();
       ob_end_clean();
       return self::ksesString($content);
@@ -223,9 +303,7 @@ abstract class viewPps extends baseObjectPps
   {
     return $this->_tpl;
   }
-  public function init()
-  {
-  }
+  public function init() {}
   public function assign($name, $value)
   {
     $this->$name = $value;

@@ -24,10 +24,12 @@ class modInstallerPps
           $filesMoved = self::moveFiles($module['code'], $path);
         } else {
           $filesMoved = true;
-        }     //Those modules doesn't need to move their files
+        } //Those modules doesn't need to move their files
         if ($filesMoved) {
           if (framePps::_()->getTable('modules')->exists($module['code'], 'code')) {
-            framePps::_()->getTable('modules')->delete(['code' => $module['code']]);
+            framePps::_()
+              ->getTable('modules')
+              ->delete(['code' => $module['code']]);
           }
           if ($module['code'] != 'license') {
             $module['active'] = 0;
@@ -166,7 +168,8 @@ class modInstallerPps
           //If module Exists - just activate it, we can't check this using framePps::moduleExists because this will not work for multy-site WP
           if (framePps::_()->getTable('modules')->exists($m['code'], 'code') /*framePps::_()->moduleExists($m['code'])*/) {
             self::activate($m);
-          } else {                                           //  if not - install it
+          } else {
+            //  if not - install it
             if (!self::install($m, $locations['plugDir'])) {
               errorsPps::push(sprintf(__('Install %s failed'), $m['code']), errorsPps::MOD_INSTALL);
             }
@@ -189,9 +192,7 @@ class modInstallerPps
   /**
    * We will run this each time plugin start to check modules activation messages
    */
-  public static function checkActivationMessages()
-  {
-  }
+  public static function checkActivationMessages() {}
   /**
    * Deactivate module after deactivating external plugin
    */
@@ -200,11 +201,17 @@ class modInstallerPps
     $locations = self::_getPluginLocations();
     if ($modules = self::_getExtendModules($locations)) {
       foreach ($modules as $m) {
-        if (framePps::_()->moduleActive($m['code'])) { //If module is active - then deacivate it
-          if (framePps::_()->getModule('options')->getModel('modules')->put([
-              'id' => framePps::_()->getModule($m['code'])->getID(),
-              'active' => 0,
-          ])->error) {
+        if (framePps::_()->moduleActive($m['code'])) {
+          //If module is active - then deacivate it
+          if (
+            framePps::_()
+              ->getModule('options')
+              ->getModel('modules')
+              ->put([
+                'id' => framePps::_()->getModule($m['code'])->getID(),
+                'active' => 0,
+              ])->error
+          ) {
             errorsPps::push(__('Error Deactivation module', PPS_LANG_CODE), errorsPps::MOD_INSTALL);
           }
         }
@@ -218,14 +225,23 @@ class modInstallerPps
   }
   public static function activate($modDataArr)
   {
-    if (!empty($modDataArr['code']) && !framePps::_()->moduleActive($modDataArr['code'])) { //If module is not active - then acivate it
-      if (framePps::_()->getModule('options')->getModel('modules')->put([
-          'code' => $modDataArr['code'],
-          'active' => 1,
-      ])->error) {
+    if (!empty($modDataArr['code']) && !framePps::_()->moduleActive($modDataArr['code'])) {
+      //If module is not active - then acivate it
+      if (
+        framePps::_()
+          ->getModule('options')
+          ->getModel('modules')
+          ->put([
+            'code' => $modDataArr['code'],
+            'active' => 1,
+          ])->error
+      ) {
         errorsPps::push(__('Error Activating module', PPS_LANG_CODE), errorsPps::MOD_INSTALL);
       } else {
-        $dbModData = framePps::_()->getModule('options')->getModel('modules')->get(['code' => $modDataArr['code']]);
+        $dbModData = framePps::_()
+          ->getModule('options')
+          ->getModel('modules')
+          ->get(['code' => $modDataArr['code']]);
         if (!empty($dbModData) && !empty($dbModData[0])) {
           $modDataArr['ex_plug_dir'] = $dbModData[0]['ex_plug_dir'];
         }
@@ -253,7 +269,10 @@ class modInstallerPps
     if ($modules = self::_getExtendModules($locations)) {
       foreach ($modules as $m) {
         self::_uninstallTables($m);
-        framePps::_()->getModule('options')->getModel('modules')->delete(['code' => $m['code']]);
+        framePps::_()
+          ->getModule('options')
+          ->getModel('modules')
+          ->delete(['code' => $m['code']]);
         utilsPps::deleteDir(PPS_MODULES_DIR . $m['code']);
       }
     }
@@ -274,9 +293,7 @@ class modInstallerPps
   }
   public static function _installTables($module, $action = 'install')
   {
-    $modDir = empty($module['ex_plug_dir']) ?
-        PPS_MODULES_DIR . $module['code'] . DS :
-        utilsPps::getPluginDir($module['ex_plug_dir']) . $module['code'] . DS;
+    $modDir = empty($module['ex_plug_dir']) ? PPS_MODULES_DIR . $module['code'] . DS : utilsPps::getPluginDir($module['ex_plug_dir']) . $module['code'] . DS;
     if (is_dir($modDir . 'tables')) {
       $tableFiles = utilsPps::getFilesList($modDir . 'tables');
       if (!empty($tableFiles)) {

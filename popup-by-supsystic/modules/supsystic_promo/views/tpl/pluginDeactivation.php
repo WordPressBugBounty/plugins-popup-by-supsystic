@@ -30,55 +30,69 @@
     color: #777 !important;
   }
 </style>
-<div id="ppsDeactivateWnd" style="display: none;" title="<?php _e('Your Feedback', PPS_LANG_CODE)?>">
-  <h4><?php printf(__('If you have a moment, please share why you are deactivating %s', PPS_LANG_CODE), PPS_WP_PLUGIN_NAME)?></h4>
+<div id="ppsDeactivateWnd" style="display: none;" title="<?php _e('Your Feedback', PPS_LANG_CODE); ?>">
+  <h4><?php printf(__('If you have a moment, please share why you are deactivating %s', PPS_LANG_CODE), PPS_WP_PLUGIN_NAME); ?></h4>
   <form id="ppsDeactivateForm">
     <label class="ppsDeactivateReasonShell">
-      <?php echo viewPps::ksesString(htmlPps::radiobutton('deactivate_reason', [
-                'value' => 'not_working',
-            ]))?>
-      <?php _e('Couldn\'t get the plugin to work', PPS_LANG_CODE)?>
+      <?php echo viewPps::ksesString(
+        htmlPps::radiobutton('deactivate_reason', [
+          'value' => 'not_working',
+        ]),
+      ); ?>
+      <?php _e('Couldn\'t get the plugin to work', PPS_LANG_CODE); ?>
       <div class="ppsDeactivateDescShell">
-        <?php printf(__('If you have a question, <a href="%s" target="_blank">contact us</a> and will do our best to help you'), 'https://supsystic.com/contact-us/?utm_source=plugin&utm_medium=deactivated_contact&utm_campaign=popup')?>
+        <?php printf(__('If you have a question, <a href="%s" target="_blank">contact us</a> and will do our best to help you'), 'https://supsystic.com/contact-us/?utm_source=plugin&utm_medium=deactivated_contact&utm_campaign=popup'); ?>
       </div>
     </label>
     <label class="ppsDeactivateReasonShell">
-      <?php echo viewPps::ksesString(htmlPps::radiobutton('deactivate_reason', [
-                'value' => 'found_better',
-            ]))?>
-      <?php _e('I found a better plugin', PPS_LANG_CODE)?>
+      <?php echo viewPps::ksesString(
+        htmlPps::radiobutton('deactivate_reason', [
+          'value' => 'found_better',
+        ]),
+      ); ?>
+      <?php _e('I found a better plugin', PPS_LANG_CODE); ?>
       <div class="ppsDeactivateDescShell">
-        <?php echo viewPps::ksesString(htmlPps::text('better_plugin', [
-                    'placeholder' => __('If it\'s possible, specify plugin name', PPS_LANG_CODE),
-                ]))?>
+        <?php echo viewPps::ksesString(
+          htmlPps::text('better_plugin', [
+            'placeholder' => __('If it\'s possible, specify plugin name', PPS_LANG_CODE),
+          ]),
+        ); ?>
       </div>
     </label>
     <label class="ppsDeactivateReasonShell">
-      <?php echo viewPps::ksesString(htmlPps::radiobutton('deactivate_reason', [
-                'value' => 'not_need',
-            ]))?>
-      <?php _e('I no longer need the plugin', PPS_LANG_CODE)?>
+      <?php echo viewPps::ksesString(
+        htmlPps::radiobutton('deactivate_reason', [
+          'value' => 'not_need',
+        ]),
+      ); ?>
+      <?php _e('I no longer need the plugin', PPS_LANG_CODE); ?>
     </label>
     <label class="ppsDeactivateReasonShell">
-      <?php echo viewPps::ksesString(htmlPps::radiobutton('deactivate_reason', [
-                'value' => 'temporary',
-            ]))?>
-      <?php _e('It\'s a temporary deactivation', PPS_LANG_CODE)?>
+      <?php echo viewPps::ksesString(
+        htmlPps::radiobutton('deactivate_reason', [
+          'value' => 'temporary',
+        ]),
+      ); ?>
+      <?php _e('It\'s a temporary deactivation', PPS_LANG_CODE); ?>
     </label>
     <label class="ppsDeactivateReasonShell">
-      <?php echo viewPps::ksesString(htmlPps::radiobutton('deactivate_reason', [
-                'value' => 'other',
-            ]))?>
-      <?php _e('Other', PPS_LANG_CODE)?>
+      <?php echo viewPps::ksesString(
+        htmlPps::radiobutton('deactivate_reason', [
+          'value' => 'other',
+        ]),
+      ); ?>
+      <?php _e('Other', PPS_LANG_CODE); ?>
       <div class="ppsDeactivateDescShell">
-        <?php echo viewPps::ksesString(htmlPps::text('other', [
-                    'placeholder' => __('What is the reason?', PPS_LANG_CODE),
-                ]))?>
+        <?php echo viewPps::ksesString(
+          htmlPps::text('other', [
+            'placeholder' => __('What is the reason?', PPS_LANG_CODE),
+          ]),
+        ); ?>
       </div>
     </label>
-    <?php echo viewPps::ksesString(htmlPps::hidden('mod', ['value' => 'supsystic_promo']))?>
-    <?php echo viewPps::ksesString(htmlPps::hidden('action', ['value' => 'saveDeactivateData']))?>
-    <?php echo viewPps::ksesString(htmlPps::defaultNonceForAdminPanel())?>
+    <?php echo viewPps::ksesString(htmlPps::hidden('mod', ['value' => 'supsystic_promo'])); ?>
+    <?php echo viewPps::ksesString(htmlPps::hidden('action', ['value' => 'saveDeactivateData'])); ?>
+    <?php echo viewPps::ksesString(htmlPps::defaultNonceForAdminPanel()); ?>
   </form>
-  <a href="" class="ppsDeactivateSkipDataBtn"><?php _e('Skip & Deactivate', PPS_LANG_CODE)?></a>
+  <a href="" class="ppsDeactivateSkipDataBtn"><?php _e('Skip & Deactivate', PPS_LANG_CODE); ?></a>
 </div>

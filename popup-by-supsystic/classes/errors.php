@@ -45,7 +45,7 @@ class errorsPps
     $ppsErrors = reqPps::getVar('ppsErrors');
     if (!empty($ppsErrors)) {
       if (!is_array($ppsErrors)) {
-        $ppsErrors = [ $ppsErrors ];
+        $ppsErrors = [$ppsErrors];
       }
       $ppsErrors = array_map('htmlspecialchars', array_map('stripslashes', array_map('trim', $ppsErrors)));
       if (!empty($ppsErrors)) {

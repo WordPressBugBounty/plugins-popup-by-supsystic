@@ -66,15 +66,15 @@ class templatesPps extends modulePps
 
       $ajaxurl = admin_url('admin-ajax.php');
       $jsData = [
-          'siteUrl' => PPS_SITE_URL,
-          'imgPath' => PPS_IMG_PATH,
-          'cssPath' => PPS_CSS_PATH,
-          'loader' => PPS_LOADER_IMG,
-          'close' => PPS_IMG_PATH . 'cross.gif',
-          'ajaxurl' => $ajaxurl,
-          'options' => framePps::_()->getModule('options')->getAllowedPublicOptions(),
-          'PPS_CODE' => PPS_CODE,
-          'jsPath' => PPS_JS_PATH,
+        'siteUrl' => PPS_SITE_URL,
+        'imgPath' => PPS_IMG_PATH,
+        'cssPath' => PPS_CSS_PATH,
+        'loader' => PPS_LOADER_IMG,
+        'close' => PPS_IMG_PATH . 'cross.gif',
+        'ajaxurl' => $ajaxurl,
+        'options' => framePps::_()->getModule('options')->getAllowedPublicOptions(),
+        'PPS_CODE' => PPS_CODE,
+        'jsPath' => PPS_JS_PATH,
       ];
       if (is_admin()) {
         $jsData['isPro'] = framePps::_()->getModule('supsystic_promo')->isPro();
@@ -131,11 +131,11 @@ class templatesPps extends modulePps
   public function loadCoreCss()
   {
     $this->_styles = [
-        'stylePps' => ['path' => PPS_CSS_PATH . 'style.css', 'for' => 'admin'],
-        'supsystic-uiPps' => ['path' => PPS_CSS_PATH . 'supsystic-ui.css', 'for' => 'admin'],
-        'dashicons' => ['for' => 'admin'],
-        'icheck' => ['path' => PPS_CSS_PATH . 'jquery.icheck.css', 'for' => 'admin'],
-        'wp-color-picker' => ['for' => 'admin'],
+      'stylePps' => ['path' => PPS_CSS_PATH . 'style.css', 'for' => 'admin'],
+      'supsystic-uiPps' => ['path' => PPS_CSS_PATH . 'supsystic-ui.css', 'for' => 'admin'],
+      'dashicons' => ['for' => 'admin'],
+      'icheck' => ['path' => PPS_CSS_PATH . 'jquery.icheck.css', 'for' => 'admin'],
+      'wp-color-picker' => ['for' => 'admin'],
     ];
     foreach ($this->_styles as $s => $sInfo) {
       if (!empty($sInfo['path'])) {
@@ -165,7 +165,7 @@ class templatesPps extends modulePps
       framePps::_()->addScript('jq-grid', $this->_assetsUrl . 'lib/jqgrid/jquery.jqGrid.min.js');
       framePps::_()->addStyle('jq-grid', $this->_assetsUrl . 'lib/jqgrid/ui.jqgrid.css');
       $langToLoad = utilsPps::getLangCode2Letter();
-      $availableLocales = ['ar','bg','bg1251','cat','cn','cs','da','de','dk','el','en','es','fa','fi','fr','gl','he','hr','hr1250','hu','id','is','it','ja','kr','lt','mne','nl','no','pl','pt','pt','ro','ru','sk','sr','sr','sv','th','tr','tw','ua','vi'];
+      $availableLocales = ['ar', 'bg', 'bg1251', 'cat', 'cn', 'cs', 'da', 'de', 'dk', 'el', 'en', 'es', 'fa', 'fi', 'fr', 'gl', 'he', 'hr', 'hr1250', 'hu', 'id', 'is', 'it', 'ja', 'kr', 'lt', 'mne', 'nl', 'no', 'pl', 'pt', 'pt', 'ro', 'ru', 'sk', 'sr', 'sr', 'sv', 'th', 'tr', 'tw', 'ua', 'vi'];
       if (!in_array($langToLoad, $availableLocales)) {
         $langToLoad = 'en';
       }
@@ -240,9 +240,9 @@ class templatesPps extends modulePps
   public function loadGoogleFont($font)
   {
     static $loaded = [];
-    if (!isset($loaded[ $font ])) {
+    if (!isset($loaded[$font])) {
       framePps::_()->addStyle('google.font.' . str_replace([' '], '-', $font), 'https://fonts.googleapis.com/css?family=' . urlencode($font));
-      $loaded[ $font ] = 1;
+      $loaded[$font] = 1;
     }
   }
 }

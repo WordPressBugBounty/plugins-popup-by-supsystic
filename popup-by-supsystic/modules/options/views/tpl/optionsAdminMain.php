@@ -6,7 +6,7 @@
 
   .ppsAdminMainRightSide {
     width:
-      <?php echo (empty($this->optsDisplayOnMainPage) ? 100 : 40)?>
+      <?php echo empty($this->optsDisplayOnMainPage) ? 100 : 40; ?>
       %;
     float: left;
     text-align: center;
@@ -19,7 +19,7 @@
 <section>
   <div class="supsystic-item supsystic-panel">
     <div id="containerWrapper">
-      <?php _e('Main page Go here!!!!', PPS_LANG_CODE)?>
+      <?php _e('Main page Go here!!!!', PPS_LANG_CODE); ?>
     </div>
     <div style="clear: both;"></div>
   </div>

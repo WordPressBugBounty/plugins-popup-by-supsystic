@@ -14,9 +14,9 @@ abstract class controllerPps
     $this->setCode($code);
     $this->_defaultView = $this->getCode();
     $this->_permissions = [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['getListForTbl', 'removeGroup', 'clear']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['getListForTbl', 'removeGroup', 'clear'],
+      ],
     ];
   }
   public function getBasePermissions()
@@ -27,12 +27,8 @@ abstract class controllerPps
   {
     /*load model and other preload data goes here*/
   }
-  protected function _onBeforeInit()
-  {
-  }
-  protected function _onAfterInit()
-  {
-  }
+  protected function _onBeforeInit() {}
+  protected function _onAfterInit() {}
   public function setCode($code)
   {
     $this->_code = $code;
@@ -44,7 +40,7 @@ abstract class controllerPps
   public function exec($task = '')
   {
     if (method_exists($this, $task)) {
-      $this->_task = $task;   //For multicontrollers module version - who know, maybe that's will be?))
+      $this->_task = $task; //For multicontrollers module version - who know, maybe that's will be?))
       return $this->$task();
     }
     return null;
@@ -110,7 +106,7 @@ abstract class controllerPps
   {
     $view = null;
     if (($view = $this->getView($viewName)) === null) {
-      $view = $this->getView();   //Get default view
+      $view = $this->getView(); //Get default view
     }
     if ($view) {
       $view->display();
@@ -161,7 +157,7 @@ abstract class controllerPps
   }
   protected function _prepareTextLikeSearch($val)
   {
-    return '';	 // Should be re-defined for each type
+    return ''; // Should be re-defined for each type
   }
   protected function _prepareModelBeforeListSelect($model)
   {
@@ -202,12 +198,12 @@ abstract class controllerPps
     // jqGrid search
     $isSearch = reqPps::getVar('_search');
     if ($isSearch) {
-      $searchField = trim((string)reqPps::getVar('searchField'));
-      $searchString = trim((string)reqPps::getVar('searchString'));
+      $searchField = trim((string) reqPps::getVar('searchField'));
+      $searchString = trim((string) reqPps::getVar('searchString'));
       if (!empty($searchField) && !empty($searchString)) {
         // For some cases - we will need to modify search keys and/or values before put it to the model
         $model->addWhere([
-            $this->_prepareSearchField($searchField) => $this->_prepareSearchString($searchString)
+          $this->_prepareSearchField($searchField) => $this->_prepareSearchString($searchString),
         ]);
       }
     }
@@ -228,11 +224,11 @@ abstract class controllerPps
     }
 
     $data = $model
-        ->setLimit($limitStart . ', ' . $rowsLimit)
-        ->setOrderBy($this->_prepareSortOrder($orderBy))
-        ->setSortOrder($sortOrder)
-        ->setSimpleGetFields()
-        ->getFromTbl();
+      ->setLimit($limitStart . ', ' . $rowsLimit)
+      ->setOrderBy($this->_prepareSortOrder($orderBy))
+      ->setSortOrder($sortOrder)
+      ->setSimpleGetFields()
+      ->getFromTbl();
 
     $data = $this->_prepareListForTbl($data);
     $res->addData('page', $page);

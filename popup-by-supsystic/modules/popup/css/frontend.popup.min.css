@@ -81,9 +81,9 @@
 .ppsSnow {
   background: none;
   background-image:
-    url(//supsystic-42d7.kxcdn.com/_assets/popup/img/assets/2016_ht_1_snow1.png),
-    url(//supsystic-42d7.kxcdn.com/_assets/popup/img/assets/2016_ht_1_snow2.png),
-    url(//supsystic-42d7.kxcdn.com/_assets/popup/img/assets/2016_ht_1_snow3.png);
+    url(/wp-content/plugins/popup-by-supsystic/assets/popup/img/assets/2016_ht_1_snow1.png),
+    url(/wp-content/plugins/popup-by-supsystic/assets/popup/img/assets/2016_ht_1_snow2.png),
+    url(/wp-content/plugins/popup-by-supsystic/assets/popup/img/assets/2016_ht_1_snow3.png);
   position: absolute;
   top: 0;
   left: 0;

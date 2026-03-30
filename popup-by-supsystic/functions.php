@@ -37,7 +37,7 @@ if (!function_exists('getRandName')) {
     $len = mt_rand($lenFrom, $lenTo);
     if ($len) {
       for ($i = 0; $i < $len; $i++) {
-        $res .= chr(mt_rand(97, 122));	/*rand symbol from a to z*/
+        $res .= chr(mt_rand(97, 122)); /*rand symbol from a to z*/
       }
     }
     return $res;
@@ -47,7 +47,7 @@ if (!function_exists('importPps')) {
   function importPps($path)
   {
     if (file_exists($path)) {
-      require($path);
+      require $path;
       return true;
     }
     return false;
@@ -74,7 +74,8 @@ if (!function_exists('importClassPps')) {
         $path = PPS_CLASSES_DIR . $classFile . '.php';
       }
       return importPps($path);
-    } else {    //If such class already exist - let's check does this is our plugin class or someone else
+    } else {
+      //If such class already exist - let's check does this is our plugin class or someone else
       /*if(class_exists('ReflectionClass')) {   //ReflectionClass supported begining from php5
           $reflection = new ReflectionClass($class);
           $classFile = $reflection->getFileName();
@@ -131,7 +132,8 @@ if (!function_exists('toeCreateObjPps')) {
       $reflection = new ReflectionClass($className);
       try {
         $obj = $reflection->newInstanceArgs($params);
-      } catch (ReflectionException $e) {	// If class have no constructor
+      } catch (ReflectionException $e) {
+        // If class have no constructor
         $obj = $reflection->newInstanceArgs();
       }
     } else {
@@ -176,22 +178,18 @@ if (!function_exists('json_encode_utf_normal')) {
   function json_encode_utf_normal($value)
   {
     if (is_int($value)) {
-      return (string)$value;
+      return (string) $value;
     } elseif (is_string($value)) {
-      $value = str_replace(
-        ['\\', '/', '"', "\r", "\n", "\b", "\f", "\t"],
-        ['\\\\', '\/', '\"', '\r', '\n', '\b', '\f', '\t'],
-        $value
-      );
-      $convmap = [0x80, 0xFFFF, 0, 0xFFFF];
-      $result = "";
+      $value = str_replace(['\\', '/', '"', "\r", "\n", '\b', "\f", "\t"], ['\\\\', '\/', '\"', '\r', '\n', '\b', '\f', '\t'], $value);
+      $convmap = [0x80, 0xffff, 0, 0xffff];
+      $result = '';
       for ($i = strlen($value) - 1; $i >= 0; $i--) {
         $mb_char = substr($value, $i, 1);
         $result = $mb_char . $result;
       }
       return '"' . $result . '"';
     } elseif (is_float($value)) {
-      return str_replace(",", ".", $value);
+      return str_replace(',', '.', $value);
     } elseif (is_null($value)) {
       return 'null';
     } elseif (is_bool($value)) {
@@ -213,7 +211,7 @@ if (!function_exists('json_encode_utf_normal')) {
     $result = [];
     if ($with_keys) {
       foreach ($value as $key => $v) {
-        $result[] = json_encode_utf_normal((string)$key) . ':' . json_encode_utf_normal($v);
+        $result[] = json_encode_utf_normal((string) $key) . ':' . json_encode_utf_normal($v);
       }
       return '{' . implode(',', $result) . '}';
     } else {
@@ -264,8 +262,8 @@ if (!function_exists('prepareParamsPps')) {
 if (!function_exists('prepareFieldCodePps')) {
   function prepareFieldCodePps($string)
   {
-    $string = preg_replace("/[^a-zA-Z0-9\s]/", " ", $string);
-    $string = preg_replace("/\s+/", " ", $string);
+    $string = preg_replace('/[^a-zA-Z0-9\s]/', ' ', $string);
+    $string = preg_replace('/\s+/', ' ', $string);
     $string = preg_replace('/ /', '', $string);
 
     $code = substr($string, 0, 8);
@@ -296,7 +294,7 @@ if (!function_exists('recImplode')) {
         $str = $el;
       }
       $res .= $str;
-      if ($i < ($count - 1)) {
+      if ($i < $count - 1) {
         $res .= $glue;
       }
       $i++;
@@ -307,7 +305,7 @@ if (!function_exists('recImplode')) {
 if (!function_exists('toeObjectToArray')) {
   function toeObjectToArray($data)
   {
-    if ((!is_array($data)) and (!is_object($data))) {
+    if (!is_array($data) and !is_object($data)) {
       return $data;
     } //$data;
     $result = [];
@@ -336,9 +334,9 @@ if (!function_exists('toeMultArrayMap')) {
     if (is_array($array)) {
       foreach ($array as $k => $v) {
         if (is_array($v)) {
-          $array[ $k ] = toeMultArrayMap($callback, $v);
+          $array[$k] = toeMultArrayMap($callback, $v);
         } else {
-          $array[ $k ] = call_user_func($callback, $v);
+          $array[$k] = call_user_func($callback, $v);
         }
       }
     } else {
@@ -368,40 +366,40 @@ if (!function_exists('custom_wpkses_post_tags_pps')) {
   {
     if ('post' === $context) {
       $tags['iframe'] = [
-          'src' => true,
-          'height' => true,
-          'width' => true,
-          'frameborder' => true,
-          'allowfullscreen' => true,
+        'src' => true,
+        'height' => true,
+        'width' => true,
+        'frameborder' => true,
+        'allowfullscreen' => true,
       ];
       $tags['form'] = [
-          'action' => true,
-          'accept' => true,
-          'autocomplete' => true,
-          'enctype' => true,
-          'novalidate' => true,
-          'rel' => true,
-          'target' => true,
-          'name' => true,
-          'method' => true,
-          'id' => true,
-          'class' => true,
-          'style' => true,
+        'action' => true,
+        'accept' => true,
+        'autocomplete' => true,
+        'enctype' => true,
+        'novalidate' => true,
+        'rel' => true,
+        'target' => true,
+        'name' => true,
+        'method' => true,
+        'id' => true,
+        'class' => true,
+        'style' => true,
       ];
       $tags['input'] = [
-          'name' => true,
-          'id' => true,
-          'class' => true,
-          'value' => true,
-          'style' => true,
-          'placeholder' => true,
-          'type' => true,
-          'pattern' => true,
-          'readonly' => true,
-          'src' => true,
-          'step' => true,
-          'multiple' => true,
-          'list' => true,
+        'name' => true,
+        'id' => true,
+        'class' => true,
+        'value' => true,
+        'style' => true,
+        'placeholder' => true,
+        'type' => true,
+        'pattern' => true,
+        'readonly' => true,
+        'src' => true,
+        'step' => true,
+        'multiple' => true,
+        'list' => true,
       ];
     }
     return $tags;

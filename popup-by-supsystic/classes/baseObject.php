@@ -12,7 +12,7 @@ abstract class baseObjectPps
     } elseif (empty($key)) {
       $this->_internalErrors[] = $error;
     } else {
-      $this->_internalErrors[ $key ] = $error;
+      $this->_internalErrors[$key] = $error;
     }
     $this->_haveErrors = true;
   }

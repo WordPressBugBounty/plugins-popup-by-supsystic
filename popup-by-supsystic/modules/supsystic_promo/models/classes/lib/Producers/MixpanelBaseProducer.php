@@ -1,9 +1,9 @@
 <?php
 
-require_once(dirname(__FILE__) . "/../Base/MixpanelBase.php");
-require_once(dirname(__FILE__) . "/../ConsumerStrategies/FileConsumer.php");
-require_once(dirname(__FILE__) . "/../ConsumerStrategies/CurlConsumer.php");
-require_once(dirname(__FILE__) . "/../ConsumerStrategies/SocketConsumer.php");
+require_once dirname(__FILE__) . '/../Base/MixpanelBase.php';
+require_once dirname(__FILE__) . '/../ConsumerStrategies/FileConsumer.php';
+require_once dirname(__FILE__) . '/../ConsumerStrategies/CurlConsumer.php';
+require_once dirname(__FILE__) . '/../ConsumerStrategies/SocketConsumer.php';
 
 if (!function_exists('json_encode')) {
   throw new Exception('The JSON PHP extension is required.');
@@ -33,9 +33,9 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
    * @var array The list of available consumers
    */
   private $_consumers = [
-      "file" => "ConsumerStrategies_FileConsumer",
-      "curl" => "ConsumerStrategies_CurlConsumer",
-      "socket" => "ConsumerStrategies_SocketConsumer"
+    'file' => 'ConsumerStrategies_FileConsumer',
+    'curl' => 'ConsumerStrategies_CurlConsumer',
+    'socket' => 'ConsumerStrategies_SocketConsumer',
   ];
 
   /**
@@ -55,12 +55,12 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     parent::__construct($options);
 
     // register any customer consumers
-    if (array_key_exists("consumers", $options)) {
+    if (array_key_exists('consumers', $options)) {
       $this->_consumers = array_merge($this->_consumers, $options['consumers']);
     }
 
     // set max queue size
-    if (array_key_exists("max_queue_size", $options)) {
+    if (array_key_exists('max_queue_size', $options)) {
       $this->_max_queue_size = $options['max_queue_size'];
     }
 
@@ -68,7 +68,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     $this->_token = $token;
 
     if ($this->_debug()) {
-      $this->_log("Using token: " . $this->_token);
+      $this->_log('Using token: ' . $this->_token);
     }
 
     // instantiate the chosen consumer
@@ -85,7 +85,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     $success = false;
     while (!$success && $attempts < $max_attempts) {
       if ($this->_debug()) {
-        $this->_log("destruct flush attempt #" . ($attempts + 1));
+        $this->_log('destruct flush attempt #' . ($attempts + 1));
       }
       $success = $this->flush();
       $attempts++;
@@ -102,7 +102,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     $queue_size = count($this->_queue);
     $succeeded = true;
     if ($this->_debug()) {
-      $this->_log("Flush called - queue size: " . $queue_size);
+      $this->_log('Flush called - queue size: ' . $queue_size);
     }
 
     while ($queue_size > 0 && $succeeded) {
@@ -112,7 +112,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
 
       if (!$succeeded) {
         if ($this->_debug()) {
-          $this->_log("Batch consumption failed!");
+          $this->_log('Batch consumption failed!');
         }
         $this->_queue = array_merge($batch, $this->_queue);
 
@@ -165,7 +165,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     $key = $this->_options['consumer'];
     $Strategy = $this->_consumers[$key];
     if ($this->_debug()) {
-      $this->_log("Using consumer: " . $key . " -> " . $Strategy);
+      $this->_log('Using consumer: ' . $key . ' -> ' . $Strategy);
     }
     $this->_options['endpoint'] = $this->_getEndpoint();
 
@@ -186,7 +186,7 @@ abstract class Producers_MixpanelBaseProducer extends Base_MixpanelBase
     }
 
     if ($this->_debug()) {
-      $this->_log("Queued message: " . json_encode($message));
+      $this->_log('Queued message: ' . json_encode($message));
     }
   }
 

@@ -19,5 +19,5 @@
  */
 interface Twig_FilterCallableInterface
 {
-    public function getCallable();
+  public function getCallable();
 }

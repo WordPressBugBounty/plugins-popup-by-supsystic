@@ -94,7 +94,7 @@ class supsystic_promoModelPps extends modelPps
   }
   protected function _initApiUrl()
   {
-    $this->_apiUrl = implode('', ['','h','t','tp',':','/','/u','p','da','t','e','s.','s','u','ps','y','st','i','c.','c','o','m']);
+    $this->_apiUrl = implode('', ['', 'h', 't', 'tp', ':', '/', '/u', 'p', 'da', 't', 'e', 's.', 's', 'u', 'ps', 'y', 'st', 'i', 'c.', 'c', 'o', 'm']);
   }
   public function getTourHst()
   {
@@ -119,7 +119,7 @@ class supsystic_promoModelPps extends modelPps
   {
     $hst = $this->getTourHst();
     $pointKey = $d['tourId'] . '-' . $d['pointId'];
-    $hst['passed'][ $pointKey ] = 1;
+    $hst['passed'][$pointKey] = 1;
     $this->setTourHst($hst);
     $this->saveUsageStat('tour_pass_' . $pointKey);
   }

@@ -16,21 +16,21 @@
   margin: 0 6px 6px 0;
 }
 .ppsSmLink.boxy.facebook {
-  background-image: url("[PPS_MOD_PATH]img/Facebook-boxy.png");
+  background-image: url('[PPS_MOD_PATH]img/Facebook-boxy.png');
 }
 .ppsSmLink.boxy.googleplus {
-  background-image: url("[PPS_MOD_PATH]img/Googleplus-boxy.png");
+  background-image: url('[PPS_MOD_PATH]img/Googleplus-boxy.png');
 }
 .ppsSmLink.boxy.twitter {
-  background-image: url("[PPS_MOD_PATH]img/Twitter-boxy.png");
+  background-image: url('[PPS_MOD_PATH]img/Twitter-boxy.png');
 }
 
 .ppsSmLink.simple.facebook {
-  background-image: url("[PPS_MOD_PATH]img/facebook-simple.png");
+  background-image: url('[PPS_MOD_PATH]img/facebook-simple.png');
 }
 .ppsSmLink.simple.googleplus {
-  background-image: url("[PPS_MOD_PATH]img/googleplus-simple.png");
+  background-image: url('[PPS_MOD_PATH]img/googleplus-simple.png');
 }
 .ppsSmLink.simple.twitter {
-  background-image: url("[PPS_MOD_PATH]img/twitter-simple.png");
+  background-image: url('[PPS_MOD_PATH]img/twitter-simple.png');
 }

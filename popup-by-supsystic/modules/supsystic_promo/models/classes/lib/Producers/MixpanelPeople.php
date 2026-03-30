@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/MixpanelBaseProducer.php");
+require_once dirname(__FILE__) . '/MixpanelBaseProducer.php';
 
 /**
  * Provides an API to create/update profiles on Mixpanel
@@ -18,9 +18,9 @@ class Producers_MixpanelPeople extends Producers_MixpanelBaseProducer
   private function _constructPayload($distinct_id, $operation, $value, $ip = null, $ignore_time = false)
   {
     $payload = [
-        '$token' => $this->_token,
-        '$distinct_id' => $distinct_id,
-        $operation => $value
+      '$token' => $this->_token,
+      '$distinct_id' => $distinct_id,
+      $operation => $value,
     ];
     if ($ip !== null) {
       $payload['$ip'] = $ip;
@@ -100,7 +100,7 @@ class Producers_MixpanelPeople extends Producers_MixpanelBaseProducer
    */
   public function append($distinct_id, $prop, $val, $ip = null, $ignore_time = false)
   {
-    $operation = gettype($val) == "array" ? '$union' : '$append';
+    $operation = gettype($val) == 'array' ? '$union' : '$append';
     $payload = $this->_constructPayload($distinct_id, $operation, ["$prop" => $val], $ip, $ignore_time);
     $this->enqueue($payload);
   }
@@ -116,10 +116,10 @@ class Producers_MixpanelPeople extends Producers_MixpanelBaseProducer
   public function trackCharge($distinct_id, $amount, $timestamp = null, $ip = null, $ignore_time = false)
   {
     $timestamp = $timestamp == null ? time() : $timestamp;
-    $date_iso = date("c", $timestamp);
+    $date_iso = date('c', $timestamp);
     $transaction = [
-        '$time' => $date_iso,
-        '$amount' => $amount
+      '$time' => $date_iso,
+      '$amount' => $amount,
     ];
     $val = ['$transactions' => $transaction];
     $payload = $this->_constructPayload($distinct_id, '$append', $val, $ip, $ignore_time);
@@ -146,7 +146,7 @@ class Producers_MixpanelPeople extends Producers_MixpanelBaseProducer
    */
   public function deleteUser($distinct_id, $ip = null, $ignore_time = false)
   {
-    $payload = $this->_constructPayload($distinct_id, '$delete', "", $ip, $ignore_time);
+    $payload = $this->_constructPayload($distinct_id, '$delete', '', $ip, $ignore_time);
     $this->enqueue($payload);
   }
 

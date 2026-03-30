@@ -4,50 +4,45 @@ jQuery(document).ready(function () {
     var tooltipsterSettings = {
       contentAsHTML: true,
       interactive: true,
-      theme: "tooltipster-shadow",
+      theme: 'tooltipster-shadow',
       contentCloning: true,
-      animation: "fade",
+      animation: 'fade',
       delay: 200,
       speed: 250,
-      animation: "swing",
+      animation: 'swing',
       maxWidth: 450,
     };
-    jQuery("body").append('<div class="tooltip_templates"></div>');
-    jQuery(".tooltipContent").each(function () {
-      var html = jQuery(this).prop("outerHTML");
-      jQuery(".tooltip_templates").append(html);
+    jQuery('body').append('<div class="tooltip_templates"></div>');
+    jQuery('.tooltipContent').each(function () {
+      var html = jQuery(this).prop('outerHTML');
+      jQuery('.tooltip_templates').append(html);
       jQuery(this).remove();
     });
     var counter = 101;
-    jQuery("body")
-      .find(".supsystic-tooltip")
+    jQuery('body')
+      .find('.supsystic-tooltip')
       .each(function () {
         counter = counter + 1;
-        var title = jQuery(this).attr("title");
+        var title = jQuery(this).attr('title');
         if (title) {
-          jQuery(this).attr("title", "");
-          jQuery(this).attr("data-tooltip-content", "#tooltip_" + counter + "");
-          var html =
-            '<span class="tooltipContent" id="tooltip_' +
-            counter +
-            '">' +
-            title +
-            "</span>";
-          jQuery(".tooltip_templates").append(html);
+          jQuery(this).attr('title', '');
+          jQuery(this).attr('data-tooltip-content', '#tooltip_' + counter + '');
+          var html = '<span class="tooltipContent" id="tooltip_' + counter + '">' + title + '</span>';
+          jQuery('.tooltip_templates').append(html);
         }
       });
-    jQuery("body").find(".tooltipContent").show();
-    jQuery("[data-tooltip-content]").tooltipster(tooltipsterSettings);
+    jQuery('body').find('.tooltipContent').show();
+    jQuery('[data-tooltip-content]').tooltipster(tooltipsterSettings);
   }
 });
 
 (function (factory) {
-  if (typeof define === "function" && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD (Register as an anonymous module)
-    define(["jquery"], factory);
-  } else if (typeof exports === "object") {
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
     // Node/CommonJS
-    module.exports = factory(require("jquery"));
+    module.exports = factory(require('jquery'));
   } else {
     // Browser globals
     factory(jQuery);
@@ -70,14 +65,14 @@ jQuery(document).ready(function () {
   function parseCookieValue(s) {
     if (s.indexOf('"') === 0) {
       // This is a quoted cookie as according to RFC2068, unescape...
-      s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+      s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
     }
 
     try {
       // Replace server-side written pluses with spaces.
       // If we can't decode the cookie, ignore it, it's unusable.
       // If we can't parse the cookie, ignore it, it's unusable.
-      s = decodeURIComponent(s.replace(pluses, " "));
+      s = decodeURIComponent(s.replace(pluses, ' '));
       return config.json ? JSON.parse(s) : s;
     } catch (e) {}
   }
@@ -93,7 +88,7 @@ jQuery(document).ready(function () {
     if (arguments.length > 1 && !$.isFunction(value)) {
       options = $.extend({}, config.defaults, options);
 
-      if (typeof options.expires === "number") {
+      if (typeof options.expires === 'number') {
         var days = options.expires,
           t = (options.expires = new Date());
         t.setMilliseconds(t.getMilliseconds() + days * 864e5);
@@ -101,13 +96,13 @@ jQuery(document).ready(function () {
 
       return (document.cookie = [
         encode(key),
-        "=",
+        '=',
         stringifyCookieValue(value),
-        options.expires ? "; expires=" + options.expires.toUTCString() : "", // use expires attribute, max-age is not supported by IE
-        options.path ? "; path=" + options.path : "",
-        options.domain ? "; domain=" + options.domain : "",
-        options.secure ? "; secure" : "",
-      ].join(""));
+        options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+        options.path ? '; path=' + options.path : '',
+        options.domain ? '; domain=' + options.domain : '',
+        options.secure ? '; secure' : '',
+      ].join(''));
     }
 
     // Read
@@ -116,14 +111,14 @@ jQuery(document).ready(function () {
       // To prevent the for loop in the first place assign an empty array
       // in case there are no cookies at all. Also prevents odd result when
       // calling $.cookie().
-      cookies = document.cookie ? document.cookie.split("; ") : [],
+      cookies = document.cookie ? document.cookie.split('; ') : [],
       i = 0,
       l = cookies.length;
 
     for (; i < l; i++) {
-      var parts = cookies[i].split("="),
+      var parts = cookies[i].split('='),
         name = decode(parts.shift()),
-        cookie = parts.join("=");
+        cookie = parts.join('=');
 
       if (key === name) {
         // If second argument (value) is a function it's a converter...
@@ -144,84 +139,53 @@ jQuery(document).ready(function () {
 
   $.removeCookie = function (key, options) {
     // Must not alter options, thus extending a fresh object...
-    $.cookie(key, "", $.extend({}, options, { expires: -1 }));
+    $.cookie(key, '', $.extend({}, options, { expires: -1 }));
     return !$.cookie(key);
   };
 });
 
-if (
-  jQuery("body").find('.supsystic-admin-notice[data-code="enb_promo_link_msg"]')
-    .length > 0
-) {
-  var dontShowPromo = jQuery.cookie("enbPromogLinkMsg3Day");
+if (jQuery('body').find('.supsystic-admin-notice[data-code="enb_promo_link_msg"]').length > 0) {
+  var dontShowPromo = jQuery.cookie('enbPromogLinkMsg3Day');
   if (dontShowPromo) {
     jQuery('.supsystic-admin-notice[data-code="enb_promo_link_msg"]').hide();
   }
 }
-jQuery("body").on(
-  "click",
-  '.supsystic-admin-notice[data-code="enb_promo_link_msg"] .notice-dismiss',
-  function () {
-    jQuery.cookie("enbPromogLinkMsg3Day", true, { expires: 3 });
-  }
-);
+jQuery('body').on('click', '.supsystic-admin-notice[data-code="enb_promo_link_msg"] .notice-dismiss', function () {
+  jQuery.cookie('enbPromogLinkMsg3Day', true, { expires: 3 });
+});
 
-if (
-  jQuery("body").find(
-    '.supsystic-admin-notice[data-code="check_other_plugs_msg"]'
-  ).length > 0
-) {
-  var dontShowPromo = jQuery.cookie("checkOtherPlugsMsg3Day");
+if (jQuery('body').find('.supsystic-admin-notice[data-code="check_other_plugs_msg"]').length > 0) {
+  var dontShowPromo = jQuery.cookie('checkOtherPlugsMsg3Day');
   if (dontShowPromo) {
     jQuery('.supsystic-admin-notice[data-code="check_other_plugs_msg"]').hide();
   }
 }
-jQuery("body").on(
-  "click",
-  '.supsystic-admin-notice[data-code="check_other_plugs_msg"] .notice-dismiss',
-  function () {
-    jQuery.cookie("checkOtherPlugsMsg3Day", true, { expires: 3 });
-  }
-);
+jQuery('body').on('click', '.supsystic-admin-notice[data-code="check_other_plugs_msg"] .notice-dismiss', function () {
+  jQuery.cookie('checkOtherPlugsMsg3Day', true, { expires: 3 });
+});
 
-if (
-  jQuery("body").find('.supsystic-admin-notice[data-code="enb_stats_msg"]')
-    .length > 0
-) {
-  var dontShowPromo = jQuery.cookie("checkStatsMsg3Day");
+if (jQuery('body').find('.supsystic-admin-notice[data-code="enb_stats_msg"]').length > 0) {
+  var dontShowPromo = jQuery.cookie('checkStatsMsg3Day');
   if (dontShowPromo) {
     jQuery('.supsystic-admin-notice[data-code="enb_stats_msg"]').hide();
   }
 }
-jQuery("body").on(
-  "click",
-  '.supsystic-admin-notice[data-code="enb_stats_msg"] .notice-dismiss',
-  function () {
-    jQuery.cookie("checkStatsMsg3Day", true, { expires: 3 });
-  }
-);
+jQuery('body').on('click', '.supsystic-admin-notice[data-code="enb_stats_msg"] .notice-dismiss', function () {
+  jQuery.cookie('checkStatsMsg3Day', true, { expires: 3 });
+});
 
 var ppsAdminFormChanged = [];
 window.onbeforeunload = function () {
   // If there are at lease one unsaved form - show message for confirnation for page leave
-  if (ppsAdminFormChanged.length)
-    return "Some changes were not-saved. Are you sure you want to leave?";
+  if (ppsAdminFormChanged.length) return 'Some changes were not-saved. Are you sure you want to leave?';
 };
 jQuery(document).ready(function () {
   ppsInitMainPromoPopup();
-  if (
-    typeof ppsActiveTab != "undefined" &&
-    ppsActiveTab != "main_page" &&
-    jQuery("#toplevel_page_popup-wp-supsystic").hasClass(
-      "wp-has-current-submenu"
-    )
-  ) {
-    var subMenus = jQuery("#toplevel_page_popup-wp-supsystic").find(
-      ".wp-submenu li"
-    );
-    subMenus.removeClass("current").each(function () {
+  if (typeof ppsActiveTab != 'undefined' && ppsActiveTab != 'main_page' && jQuery('#toplevel_page_popup-wp-supsystic').hasClass('wp-has-current-submenu')) {
+    var subMenus = jQuery('#toplevel_page_popup-wp-supsystic').find('.wp-submenu li');
+    subMenus.removeClass('current').each(function () {
       if (jQuery(this).find('a[href$="&tab=' + ppsActiveTab + '"]').length) {
-        jQuery(this).addClass("current");
+        jQuery(this).addClass('current');
       }
     });
   }
@@ -231,63 +195,61 @@ jQuery(document).ready(function () {
     // If some changes was made in those forms and they were not saved - show message for confirnation before page reload
     var formsPreventLeave = [];
     if (formsPreventLeave && formsPreventLeave.length) {
-      jQuery("#" + formsPreventLeave.join(", #"))
-        .find("input,select")
+      jQuery('#' + formsPreventLeave.join(', #'))
+        .find('input,select')
         .change(function () {
-          var formId = jQuery(this).parents("form:first").attr("id");
+          var formId = jQuery(this).parents('form:first').attr('id');
           changeAdminFormPps(formId);
         });
-      jQuery("#" + formsPreventLeave.join(", #"))
-        .find("input[type=text],textarea")
+      jQuery('#' + formsPreventLeave.join(', #'))
+        .find('input[type=text],textarea')
         .keyup(function () {
-          var formId = jQuery(this).parents("form:first").attr("id");
+          var formId = jQuery(this).parents('form:first').attr('id');
           changeAdminFormPps(formId);
         });
-      jQuery("#" + formsPreventLeave.join(", #")).submit(function () {
-        adminFormSavedPps(jQuery(this).attr("id"));
+      jQuery('#' + formsPreventLeave.join(', #')).submit(function () {
+        adminFormSavedPps(jQuery(this).attr('id'));
       });
     }
   }, 1000);
 
-  if (jQuery(".ppsInputsWithDescrForm").length) {
-    jQuery(".ppsInputsWithDescrForm")
-      .find("input[type=checkbox][data-optkey]")
+  if (jQuery('.ppsInputsWithDescrForm').length) {
+    jQuery('.ppsInputsWithDescrForm')
+      .find('input[type=checkbox][data-optkey]')
       .change(function () {
-        var optKey = jQuery(this).data("optkey"),
-          descShell = jQuery("#ppsFormOptDetails_" + optKey);
+        var optKey = jQuery(this).data('optkey'),
+          descShell = jQuery('#ppsFormOptDetails_' + optKey);
         if (descShell.length) {
-          if (jQuery(this).prop("checked")) {
+          if (jQuery(this).prop('checked')) {
             descShell.slideDown(300);
           } else {
             descShell.slideUp(300);
           }
         }
       })
-      .trigger("change");
+      .trigger('change');
   }
   ppsInitStickyItem();
   ppsInitCustomCheckRadio();
   //ppsInitCustomSelect();
 
-  jQuery(".ppsFieldsetToggled").each(function () {
+  jQuery('.ppsFieldsetToggled').each(function () {
     var self = this;
-    jQuery(self).find(".ppsFieldsetContent").hide();
+    jQuery(self).find('.ppsFieldsetContent').hide();
     jQuery(self)
-      .find(".ppsFieldsetToggleBtn")
+      .find('.ppsFieldsetToggleBtn')
       .click(function () {
-        var icon = jQuery(this).find("i"),
-          show = icon.hasClass("fa-plus");
-        show
-          ? icon.removeClass("fa-plus").addClass("fa-minus")
-          : icon.removeClass("fa-minus").addClass("fa-plus");
+        var icon = jQuery(this).find('i'),
+          show = icon.hasClass('fa-plus');
+        show ? icon.removeClass('fa-plus').addClass('fa-minus') : icon.removeClass('fa-minus').addClass('fa-plus');
         jQuery(self)
-          .find(".ppsFieldsetContent")
+          .find('.ppsFieldsetContent')
           .slideToggle(300, function () {
             if (show) {
               jQuery(this)
-                .find("textarea")
+                .find('textarea')
                 .each(function (i, el) {
-                  if (typeof this.CodeMirrorEditor !== "undefined") {
+                  if (typeof this.CodeMirrorEditor !== 'undefined') {
                     this.CodeMirrorEditor.refresh();
                   }
                 });
@@ -297,15 +259,15 @@ jQuery(document).ready(function () {
       });
   });
   // Go to Top button init
-  if (jQuery("#ppsPopupGoToTopBtn").length) {
-    jQuery("#ppsPopupGoToTopBtn").click(function () {
-      jQuery("html, body").animate(
+  if (jQuery('#ppsPopupGoToTopBtn').length) {
+    jQuery('#ppsPopupGoToTopBtn').click(function () {
+      jQuery('html, body').animate(
         {
           scrollTop: 0,
         },
         1000
       );
-      jQuery(this).parents("#ppsPopupGoToTop:first").hide();
+      jQuery(this).parents('#ppsPopupGoToTop:first').hide();
       return false;
     });
   }
@@ -335,28 +297,22 @@ jQuery(document).ready(function () {
 		jQuery('.supsystic-tooltip-right').tooltipster( tooltipsterSettings );
 	}*/
   ppsInitTooltips();
-  if (jQuery(".ppsCopyTextCode").length) {
+  if (jQuery('.ppsCopyTextCode').length) {
     setTimeout(function () {
       // Give it some time - wait until all other elements will be initialized
-      var cloneWidthElement = jQuery('<span class="sup-shortcode" />').appendTo(
-        ".supsystic-plugin"
-      );
-      jQuery(".ppsCopyTextCode")
-        .attr("readonly", "readonly")
+      var cloneWidthElement = jQuery('<span class="sup-shortcode" />').appendTo('.supsystic-plugin');
+      jQuery('.ppsCopyTextCode')
+        .attr('readonly', 'readonly')
         .click(function () {
           this.setSelectionRange(0, this.value.length);
         })
         .focus(function () {
           this.setSelectionRange(0, this.value.length);
         });
-      jQuery("input.ppsCopyTextCode").each(function () {
-        cloneWidthElement.html(str_replace(jQuery(this).val(), "<", "P"));
-        var parentSelector = jQuery(this).data("parent-selector"),
-          parentWidth = (
-            parentSelector && parentSelector != ""
-              ? jQuery(this).parents(parentSelector + ":first")
-              : jQuery(this).parent()
-          ).width(),
+      jQuery('input.ppsCopyTextCode').each(function () {
+        cloneWidthElement.html(str_replace(jQuery(this).val(), '<', 'P'));
+        var parentSelector = jQuery(this).data('parent-selector'),
+          parentWidth = (parentSelector && parentSelector != '' ? jQuery(this).parents(parentSelector + ':first') : jQuery(this).parent()).width(),
           txtWidth = cloneWidthElement.width();
         if (parentWidth <= 0 || parentWidth > txtWidth) {
           jQuery(this).width(cloneWidthElement.width());
@@ -378,15 +334,15 @@ function ppsInitTooltips(selector) {
       maxWidth: 450,
     },
     findPos = {
-      ".supsystic-tooltip": "top-left",
-      ".supsystic-tooltip-bottom": "bottom-left",
-      ".supsystic-tooltip-left": "left",
-      ".supsystic-tooltip-right": "right",
+      '.supsystic-tooltip': 'top-left',
+      '.supsystic-tooltip-bottom': 'bottom-left',
+      '.supsystic-tooltip-left': 'left',
+      '.supsystic-tooltip-right': 'right',
     },
     $findIn = selector ? jQuery(selector) : false;
   for (var k in findPos) {
-    if (typeof k === "string") {
-      var $tips = $findIn ? $findIn.find(k) : jQuery(k).not(".sup-no-init");
+    if (typeof k === 'string') {
+      var $tips = $findIn ? $findIn.find(k) : jQuery(k).not('.sup-no-init');
       if ($tips && $tips.length) {
         tooltipsterSettings.position = findPos[k];
         // Fallback for case if library was not loaded
@@ -397,8 +353,7 @@ function ppsInitTooltips(selector) {
   }
 }
 function changeAdminFormPps(formId) {
-  if (jQuery.inArray(formId, ppsAdminFormChanged) == -1)
-    ppsAdminFormChanged.push(formId);
+  if (jQuery.inArray(formId, ppsAdminFormChanged) == -1) ppsAdminFormChanged.push(formId);
 }
 function adminFormSavedPps(formId) {
   if (ppsAdminFormChanged.length) {
@@ -411,13 +366,7 @@ function adminFormSavedPps(formId) {
 }
 function checkAdminFormSaved() {
   if (ppsAdminFormChanged.length) {
-    if (
-      !confirm(
-        toeLangPps(
-          "Some changes were not-saved. Are you sure you want to leave?"
-        )
-      )
-    ) {
+    if (!confirm(toeLangPps('Some changes were not-saved. Are you sure you want to leave?'))) {
       return false;
     }
     ppsAdminFormChanged = []; // Clear unsaved forms array - if user wanted to do this
@@ -437,11 +386,11 @@ function isAdminFormChanged(formId) {
 /*Some items should be always on users screen*/
 function ppsInitStickyItem() {
   jQuery(window).scroll(function () {
-    var stickiItemsSelectors = [/*'.ui-jqgrid-hdiv', */ ".supsystic-sticky"],
-      elementsUsePaddingNext = [/*'.ui-jqgrid-hdiv', */ ".supsystic-bar"], // For example - if we stick row - then all other should not offest to top after we will place element as fixed
+    var stickiItemsSelectors = [/*'.ui-jqgrid-hdiv', */ '.supsystic-sticky'],
+      elementsUsePaddingNext = [/*'.ui-jqgrid-hdiv', */ '.supsystic-bar'], // For example - if we stick row - then all other should not offest to top after we will place element as fixed
       wpTollbarHeight = 32,
       wndScrollTop = jQuery(window).scrollTop() + wpTollbarHeight,
-      footer = jQuery(".ppsAdminFooterShell"),
+      footer = jQuery('.ppsAdminFooterShell'),
       footerHeight = footer && footer.length ? footer.height() : 0,
       docHeight = jQuery(document).height(),
       wasSticking = false,
@@ -452,73 +401,49 @@ function ppsInitStickyItem() {
     for (var i = 0; i < stickiItemsSelectors.length; i++) {
       jQuery(stickiItemsSelectors[i]).each(function () {
         var element = jQuery(this);
-        if (element && element.length && !element.hasClass("sticky-ignore")) {
+        if (element && element.length && !element.hasClass('sticky-ignore')) {
           var scrollMinPos = element.offset().top,
-            prevScrollMinPos = parseInt(element.data("scrollMinPos")),
-            useNextElementPadding =
-              toeInArray(stickiItemsSelectors[i], elementsUsePaddingNext) !==
-                -1 || element.hasClass("sticky-padd-next"),
+            prevScrollMinPos = parseInt(element.data('scrollMinPos')),
+            useNextElementPadding = toeInArray(stickiItemsSelectors[i], elementsUsePaddingNext) !== -1 || element.hasClass('sticky-padd-next'),
             currentScrollTop = wndScrollTop,
-            calcPrevHeight = element.data("prev-height"),
+            calcPrevHeight = element.data('prev-height'),
             currentBorderHeight = wpTollbarHeight,
             usePrevHeight = 0;
           if (calcPrevHeight) {
             usePrevHeight = jQuery(calcPrevHeight).outerHeight();
             currentBorderHeight += usePrevHeight;
           }
-          if (
-            currentScrollTop > scrollMinPos &&
-            !element.hasClass("supsystic-sticky-active")
-          ) {
+          if (currentScrollTop > scrollMinPos && !element.hasClass('supsystic-sticky-active')) {
             // Start sticking
-            if (element.hasClass("sticky-save-width")) {
+            if (element.hasClass('sticky-save-width')) {
               element.width(element.width());
               //element.addClass('sticky-full-width');
             }
-            element
-              .addClass("supsystic-sticky-active")
-              .data("scrollMinPos", scrollMinPos)
-              .css({
-                top: currentBorderHeight,
-              });
+            element.addClass('supsystic-sticky-active').data('scrollMinPos', scrollMinPos).css({
+              top: currentBorderHeight,
+            });
             if (useNextElementPadding) {
               //element.addClass('supsystic-sticky-active-bordered');
               var nextElement = element.next();
               if (nextElement && nextElement.length) {
-                nextElement.data(
-                  "prevPaddingTop",
-                  nextElement.css("padding-top")
-                );
-                var addToNextPadding = parseInt(
-                  element.data("next-padding-add")
-                );
+                nextElement.data('prevPaddingTop', nextElement.css('padding-top'));
+                var addToNextPadding = parseInt(element.data('next-padding-add'));
                 addToNextPadding = addToNextPadding ? addToNextPadding : 0;
                 nextElement.css({
-                  "padding-top":
-                    (element.hasClass("sticky-outer-height")
-                      ? element.outerHeight()
-                      : element.height()) +
-                    usePrevHeight +
-                    addToNextPadding,
+                  'padding-top': (element.hasClass('sticky-outer-height') ? element.outerHeight() : element.height()) + usePrevHeight + addToNextPadding,
                 });
               }
             }
             wasSticking = true;
-            element.trigger("startSticky");
-          } else if (
-            !isNaN(prevScrollMinPos) &&
-            currentScrollTop <= prevScrollMinPos
-          ) {
+            element.trigger('startSticky');
+          } else if (!isNaN(prevScrollMinPos) && currentScrollTop <= prevScrollMinPos) {
             // Stop sticking
-            element
-              .removeClass("supsystic-sticky-active")
-              .data("scrollMinPos", 0)
-              .css({
-                //'top': 0
-              });
-            if (element.hasClass("sticky-save-width")) {
-              if (element.hasClass("sticky-base-width-auto")) {
-                element.css("width", "auto");
+            element.removeClass('supsystic-sticky-active').data('scrollMinPos', 0).css({
+              //'top': 0
+            });
+            if (element.hasClass('sticky-save-width')) {
+              if (element.hasClass('sticky-base-width-auto')) {
+                element.css('width', 'auto');
               }
               //element.removeClass('sticky-full-width');
             }
@@ -526,27 +451,22 @@ function ppsInitStickyItem() {
               //element.removeClass('supsystic-sticky-active-bordered');
               var nextElement = element.next();
               if (nextElement && nextElement.length) {
-                var nextPrevPaddingTop = parseInt(
-                  nextElement.data("prevPaddingTop")
-                );
+                var nextPrevPaddingTop = parseInt(nextElement.data('prevPaddingTop'));
                 if (isNaN(nextPrevPaddingTop)) nextPrevPaddingTop = 0;
                 nextElement.css({
-                  "padding-top": nextPrevPaddingTop,
+                  'padding-top': nextPrevPaddingTop,
                 });
               }
             }
-            element.trigger("stopSticky");
+            element.trigger('stopSticky');
             wasUnSticking = true;
           } else {
             // Check new stick position
-            if (element.hasClass("supsystic-sticky-active")) {
+            if (element.hasClass('supsystic-sticky-active')) {
               if (footerHeight) {
                 var elementHeight = element.height(),
                   heightCorrection = 32,
-                  topDiff =
-                    docHeight -
-                    footerHeight -
-                    (currentScrollTop + elementHeight + heightCorrection);
+                  topDiff = docHeight - footerHeight - (currentScrollTop + elementHeight + heightCorrection);
                 if (topDiff < 0) {
                   element.css({
                     top: currentBorderHeight + topDiff,
@@ -565,9 +485,9 @@ function ppsInitStickyItem() {
       });
     }
     if (wasSticking) {
-      if (jQuery("#ppsPopupGoToTop").length) jQuery("#ppsPopupGoToTop").show();
+      if (jQuery('#ppsPopupGoToTop').length) jQuery('#ppsPopupGoToTop').show();
     } else if (wasUnSticking) {
-      if (jQuery("#ppsPopupGoToTop").length) jQuery("#ppsPopupGoToTop").hide();
+      if (jQuery('#ppsPopupGoToTop').length) jQuery('#ppsPopupGoToTop').hide();
     }
   });
 }
@@ -576,80 +496,59 @@ function ppsInitCustomCheckRadio(selector) {
   if (!jQuery.fn.iCheck) return;
   if (!selector) selector = document;
   jQuery(selector)
-    .find("input")
-    .iCheck("destroy")
+    .find('input')
+    .iCheck('destroy')
     .iCheck({
-      checkboxClass: "icheckbox_minimal",
-      radioClass: "iradio_minimal",
+      checkboxClass: 'icheckbox_minimal',
+      radioClass: 'iradio_minimal',
     })
-    .on("ifChanged", function (e) {
+    .on('ifChanged', function (e) {
       // for checkboxHiddenVal type, see class htmlPps
-      jQuery(this).trigger("change");
-      if (jQuery(this).hasClass("cbox")) {
-        var parentRow = jQuery(this).parents(".jqgrow:first");
+      jQuery(this).trigger('change');
+      if (jQuery(this).hasClass('cbox')) {
+        var parentRow = jQuery(this).parents('.jqgrow:first');
         if (parentRow && parentRow.length) {
-          jQuery(this).parents("td:first").trigger("click");
+          jQuery(this).parents('td:first').trigger('click');
         } else {
-          var checkId = jQuery(this).attr("id");
-          if (checkId && checkId != "" && strpos(checkId, "cb_") === 0) {
-            var parentTblId = str_replace(checkId, "cb_", "");
-            if (
-              parentTblId &&
-              parentTblId != "" &&
-              jQuery("#" + parentTblId).length
-            ) {
-              jQuery("#" + parentTblId)
-                .find("input[type=checkbox]")
-                .iCheck("update");
+          var checkId = jQuery(this).attr('id');
+          if (checkId && checkId != '' && strpos(checkId, 'cb_') === 0) {
+            var parentTblId = str_replace(checkId, 'cb_', '');
+            if (parentTblId && parentTblId != '' && jQuery('#' + parentTblId).length) {
+              jQuery('#' + parentTblId)
+                .find('input[type=checkbox]')
+                .iCheck('update');
             }
           }
         }
       }
     })
-    .on("ifClicked", function (e) {
-      jQuery(this).trigger("click");
+    .on('ifClicked', function (e) {
+      jQuery(this).trigger('click');
     });
 }
 function ppsCheckDestroy(checkbox) {
   if (!jQuery.fn.iCheck) return;
-  jQuery(checkbox).iCheck("destroy");
+  jQuery(checkbox).iCheck('destroy');
 }
 function ppsCheckDestroyArea(selector) {
   if (!jQuery.fn.iCheck) return;
-  jQuery(selector).find("input[type=checkbox]").iCheck("destroy");
+  jQuery(selector).find('input[type=checkbox]').iCheck('destroy');
 }
 function ppsCheckUpdate(checkbox) {
   if (!jQuery.fn.iCheck) return;
-  jQuery(checkbox).iCheck("update");
+  jQuery(checkbox).iCheck('update');
 }
 function ppsCheckUpdateArea(selector) {
   if (!jQuery.fn.iCheck) return;
-  jQuery(selector).find("input[type=checkbox]").iCheck("update");
+  jQuery(selector).find('input[type=checkbox]').iCheck('update');
 }
 function ppsGetTxtEditorVal(id) {
-  if (
-    typeof tinyMCE !== "undefined" &&
-    tinyMCE.get(id) &&
-    !jQuery("#" + id).is(":visible") &&
-    tinyMCE.get(id).getDoc &&
-    typeof tinyMCE.get(id).getDoc == "function" &&
-    tinyMCE.get(id).getDoc()
-  )
-    return tinyMCE.get(id).getContent();
-  else return jQuery("#" + id).val();
+  if (typeof tinyMCE !== 'undefined' && tinyMCE.get(id) && !jQuery('#' + id).is(':visible') && tinyMCE.get(id).getDoc && typeof tinyMCE.get(id).getDoc == 'function' && tinyMCE.get(id).getDoc()) return tinyMCE.get(id).getContent();
+  else return jQuery('#' + id).val();
 }
 function ppsSetTxtEditorVal(id, content) {
-  if (
-    typeof tinyMCE !== "undefined" &&
-    tinyMCE &&
-    tinyMCE.get(id) &&
-    !jQuery("#" + id).is(":visible") &&
-    tinyMCE.get(id).getDoc &&
-    typeof tinyMCE.get(id).getDoc == "function" &&
-    tinyMCE.get(id).getDoc()
-  )
-    tinyMCE.get(id).setContent(content);
-  else jQuery("#" + id).val(content);
+  if (typeof tinyMCE !== 'undefined' && tinyMCE && tinyMCE.get(id) && !jQuery('#' + id).is(':visible') && tinyMCE.get(id).getDoc && typeof tinyMCE.get(id).getDoc == 'function' && tinyMCE.get(id).getDoc()) tinyMCE.get(id).setContent(content);
+  else jQuery('#' + id).val(content);
 }
 /**
  * Add data to jqGrid object post params search
@@ -657,7 +556,7 @@ function ppsSetTxtEditorVal(id, content) {
  * @param {string} gridSelectorId ID of grid table html element
  */
 function ppsGridSetListSearch(param, gridSelectorId) {
-  jQuery("#" + gridSelectorId).setGridParam({
+  jQuery('#' + gridSelectorId).setGridParam({
     postData: {
       search: param,
     },
@@ -670,7 +569,7 @@ function ppsGridSetListSearch(param, gridSelectorId) {
  */
 function ppsGridDoListSearch(param, gridSelectorId) {
   ppsGridSetListSearch(param, gridSelectorId);
-  jQuery("#" + gridSelectorId).trigger("reloadGrid");
+  jQuery('#' + gridSelectorId).trigger('reloadGrid');
 }
 /**
  * Get row data from jqGrid
@@ -681,7 +580,7 @@ function ppsGridDoListSearch(param, gridSelectorId) {
 function ppsGetGridDataById(id, gridSelectorId) {
   var rowId = getGridRowId(id, gridSelectorId);
   if (rowId) {
-    return jQuery("#" + gridSelectorId).jqGrid("getRowData", rowId);
+    return jQuery('#' + gridSelectorId).jqGrid('getRowData', rowId);
   }
   return false;
 }
@@ -695,7 +594,7 @@ function ppsGetGridDataById(id, gridSelectorId) {
 function ppsGetGridColDataById(id, column, gridSelectorId) {
   var rowId = getGridRowId(id, gridSelectorId);
   if (rowId) {
-    return jQuery("#" + gridSelectorId).jqGrid("getCell", rowId, column);
+    return jQuery('#' + gridSelectorId).jqGrid('getCell', rowId, column);
   }
   return false;
 }
@@ -707,75 +606,72 @@ function ppsGetGridColDataById(id, column, gridSelectorId) {
  */
 function getGridRowId(id, gridSelectorId) {
   var rowId = parseInt(
-    jQuery("#" + gridSelectorId)
-      .find("[aria-describedby=" + gridSelectorId + "_id][title=" + id + "]")
-      .parent("tr:first")
+    jQuery('#' + gridSelectorId)
+      .find('[aria-describedby=' + gridSelectorId + '_id][title=' + id + ']')
+      .parent('tr:first')
       .index()
   );
   if (!rowId) {
-    console.log("CAN NOT FIND ITEM WITH ID  " + id);
+    console.log('CAN NOT FIND ITEM WITH ID  ' + id);
     return false;
   }
   return rowId;
 }
 function prepareToPlotDate(data) {
-  if (typeof data === "string") {
+  if (typeof data === 'string') {
     if (data) {
-      data = str_replace(data, "/", "-");
+      data = str_replace(data, '/', '-');
       return new Date(data).getTime();
     }
   }
   return data;
 }
 function ppsInitPlugNotices() {
-  var $notices = jQuery(".supsystic-admin-notice");
+  var $notices = jQuery('.supsystic-admin-notice');
   if ($notices && $notices.length) {
     $notices.each(function () {
       jQuery(this)
-        .find(".notice-dismiss")
+        .find('.notice-dismiss')
         .click(function () {
-          var $notice = jQuery(this).parents(".supsystic-admin-notice");
-          if (!$notice.data("stats-sent")) {
+          var $notice = jQuery(this).parents('.supsystic-admin-notice');
+          if (!$notice.data('stats-sent')) {
             // User closed this message - that is his choise, let's respect this and save it's saved status
             jQuery.sendFormPps({
               data: {
-                mod: "supsystic_promo",
-                _wpnonce: PPS_NONCE["pps_nonce"],
-                action: "addNoticeAction",
-                code: $notice.data("code"),
-                choice: "hide",
+                mod: 'supsystic_promo',
+                _wpnonce: PPS_NONCE['pps_nonce'],
+                action: 'addNoticeAction',
+                code: $notice.data('code'),
+                choice: 'hide',
               },
             });
           }
         });
       jQuery(this)
-        .find("[data-statistic-code]")
+        .find('[data-statistic-code]')
         .click(function () {
-          var href = jQuery(this).attr("href"),
-            $notice = jQuery(this).parents(".supsystic-admin-notice");
+          var href = jQuery(this).attr('href'),
+            $notice = jQuery(this).parents('.supsystic-admin-notice');
           jQuery.sendFormPps({
             data: {
-              mod: "supsystic_promo",
-              _wpnonce: PPS_NONCE["pps_nonce"],
-              action: "addNoticeAction",
-              code: $notice.data("code"),
-              choice: jQuery(this).data("statistic-code"),
+              mod: 'supsystic_promo',
+              _wpnonce: PPS_NONCE['pps_nonce'],
+              action: 'addNoticeAction',
+              code: $notice.data('code'),
+              choice: jQuery(this).data('statistic-code'),
             },
           });
-          $notice
-            .data("stats-sent", 1)
-            .find(".notice-dismiss")
-            .trigger("click");
-          if (!href || href === "" || href === "#") return false;
+          $notice.data('stats-sent', 1).find('.notice-dismiss').trigger('click');
+          if (!href || href === '' || href === '#') return false;
         });
-      var $enbStatsBtn = jQuery(this).find(".ppsEnbStatsAdBtn");
+      var $enbStatsBtn = jQuery(this).find('.ppsEnbStatsAdBtn');
       if ($enbStatsBtn && $enbStatsBtn.length) {
         $enbStatsBtn.click(function () {
           jQuery.sendFormPps({
             data: {
-              mod: "supsystic_promo",
-              _wpnonce: PPS_NONCE["pps_nonce"],
-              action: "enbStatsOpt",
+              mod: 'supsystic_promo',
+              _wpnonce: PPS_NONCE['pps_nonce'],
+              action: 'enbStatsOpt',
             },
           });
           return false;
@@ -788,61 +684,59 @@ function ppsInitPlugNotices() {
  * Main promo popup will show each time user will try to modify PRO option with free version only
  */
 function ppsGetMainPromoPopup() {
-  if (jQuery("#ppsOptInProWnd").hasClass("ui-dialog-content")) {
-    return jQuery("#ppsOptInProWnd");
+  if (jQuery('#ppsOptInProWnd').hasClass('ui-dialog-content')) {
+    return jQuery('#ppsOptInProWnd');
   }
-  return jQuery("#ppsOptInProWnd").dialog({
+  return jQuery('#ppsOptInProWnd').dialog({
     modal: true,
     autoOpen: false,
     width: 540,
     height: 200,
     open: function () {
-      jQuery("#ppsOptWndTemplateTxt").hide();
-      jQuery("#ppsOptWndOptionTxt").show();
+      jQuery('#ppsOptWndTemplateTxt').hide();
+      jQuery('#ppsOptWndOptionTxt').show();
     },
   });
 }
 function ppsInitMainPromoPopup() {
   if (!PPS_DATA.isPro) {
     var $proOptWnd = ppsGetMainPromoPopup();
-    jQuery(".ppsProOpt").change(function (e) {
+    jQuery('.ppsProOpt').change(function (e) {
       e.stopPropagation();
       var needShow = true,
-        isRadio = jQuery(this).attr("type") == "radio",
-        isCheck = jQuery(this).attr("type") == "checkbox";
-      if (isRadio && !jQuery(this).prop("checked")) {
+        isRadio = jQuery(this).attr('type') == 'radio',
+        isCheck = jQuery(this).attr('type') == 'checkbox';
+      if (isRadio && !jQuery(this).prop('checked')) {
         needShow = false;
       }
       if (!needShow) {
         return;
       }
       if (isRadio) {
-        jQuery('input[name="' + jQuery(this).attr("name") + '"]:first')
-          .parents("label:first")
+        jQuery('input[name="' + jQuery(this).attr('name') + '"]:first')
+          .parents('label:first')
           .click();
-        if (jQuery(this).parents(".iradio_minimal:first").length) {
+        if (jQuery(this).parents('.iradio_minimal:first').length) {
           var self = this;
           setTimeout(function () {
-            jQuery(self)
-              .parents(".iradio_minimal:first")
-              .removeClass("checked");
+            jQuery(self).parents('.iradio_minimal:first').removeClass('checked');
           }, 10);
         }
       }
       var parent = null;
-      if (jQuery(this).parents("#ppsPopupMainOpts").length) {
-        parent = jQuery(this).parents("label:first");
-      } else if (jQuery(this).parents(".ppsPopupOptRow:first").length) {
-        parent = jQuery(this).parents(".ppsPopupOptRow:first");
+      if (jQuery(this).parents('#ppsPopupMainOpts').length) {
+        parent = jQuery(this).parents('label:first');
+      } else if (jQuery(this).parents('.ppsPopupOptRow:first').length) {
+        parent = jQuery(this).parents('.ppsPopupOptRow:first');
       } else {
-        parent = jQuery(this).parents("tr:first");
+        parent = jQuery(this).parents('tr:first');
       }
       if (!parent.length) return;
-      var promoLink = parent.find(".ppsProOptMiniLabel a").attr("href");
-      if (promoLink && promoLink != "") {
-        jQuery("#ppsOptInProWnd a").attr("href", promoLink);
+      var promoLink = parent.find('.ppsProOptMiniLabel a').attr('href');
+      if (promoLink && promoLink != '') {
+        jQuery('#ppsOptInProWnd a').attr('href', promoLink);
       }
-      $proOptWnd.dialog("open");
+      $proOptWnd.dialog('open');
       return false;
     });
   }

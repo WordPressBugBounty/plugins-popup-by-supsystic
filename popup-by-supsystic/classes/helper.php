@@ -21,9 +21,7 @@ abstract class helperPps
   /**
    * Init function
    */
-  public function init()
-  {
-  }
+  public function init() {}
   /**
    * Set the helper name
    * @param string $code

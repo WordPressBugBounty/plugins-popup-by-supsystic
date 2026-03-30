@@ -27,16 +27,16 @@ class supsystic_promoControllerPps extends controllerPps
     $mail = $data['data'];
     $isPro = !empty($this->getModule('suspsystic_promo')->isPro()) ? true : false;
     $data = [
-        'body' => [
-            'key' => 'kJ#f3(FjkF9fasd124t5t589u9d4389r3r3R#2asdas3(#R03r#(r#t-4t5t589u9d4389r3r3R#$%lfdj',
-            'user_name' => $mail['username'],
-            'user_email' => $mail['email'],
-            'customertype' => $mail['expertise'],
-            'site_url' => get_bloginfo('wpurl'),
-            'site_name' => get_bloginfo('name'),
-            'plugin_code' => 'pps',
-            'is_pro' => $isPro,
-        ],
+      'body' => [
+        'key' => 'kJ#f3(FjkF9fasd124t5t589u9d4389r3r3R#2asdas3(#R03r#(r#t-4t5t589u9d4389r3r3R#$%lfdj',
+        'user_name' => $mail['username'],
+        'user_email' => $mail['email'],
+        'customertype' => $mail['expertise'],
+        'site_url' => get_bloginfo('wpurl'),
+        'site_name' => get_bloginfo('name'),
+        'plugin_code' => 'pps',
+        'is_pro' => $isPro,
+      ],
     ];
     $response = wp_remote_post($reqUrl, $data);
     if (is_wp_error($response)) {
@@ -49,7 +49,7 @@ class supsystic_promoControllerPps extends controllerPps
   public function sendSubscribeRemind()
   {
     $res = new responsePps();
-    update_option('pps_ac_remind', date("Y-m-d h:i:s", time() + 86400));
+    update_option('pps_ac_remind', date('Y-m-d h:i:s', time() + 86400));
     $res->ajaxExec();
   }
   public function sendSubscribeDisable()
@@ -63,7 +63,8 @@ class supsystic_promoControllerPps extends controllerPps
     $res = new responsePps();
     $time = time();
     $prevSendTime = (int) get_option(PPS_CODE . '_last__time_contact_send');
-    if ($prevSendTime && ($time - $prevSendTime) < 5 * 60) {	// Only one message per five minutes
+    if ($prevSendTime && $time - $prevSendTime < 5 * 60) {
+      // Only one message per five minutes
       $res->pushError(__('Please don\'t send contact requests so often - wait for response for your previous requests.'));
       $res->ajaxExec();
     }
@@ -71,7 +72,7 @@ class supsystic_promoControllerPps extends controllerPps
     $fields = $this->getModule()->getContactFormFields();
     foreach ($fields as $fName => $fData) {
       $validate = isset($fData['validate']) ? $fData['validate'] : false;
-      $data[ $fName ] = isset($data[ $fName ]) ? trim($data[ $fName ]) : '';
+      $data[$fName] = isset($data[$fName]) ? trim($data[$fName]) : '';
       if ($validate) {
         $error = '';
         foreach ($validate as $v) {
@@ -80,13 +81,13 @@ class supsystic_promoControllerPps extends controllerPps
           }
           switch ($v) {
             case 'notEmpty':
-              if (empty($data[ $fName ])) {
+              if (empty($data[$fName])) {
                 $error = $fData['html'] == 'selectbox' ? __('Please select %s', PPS_LANG_CODE) : __('Please enter %s', PPS_LANG_CODE);
                 $error = sprintf($error, $fData['label']);
               }
               break;
             case 'email':
-              if (!is_email($data[ $fName ])) {
+              if (!is_email($data[$fName])) {
                 $error = __('Please enter valid email address', PPS_LANG_CODE);
               }
               break;
@@ -105,9 +106,9 @@ class supsystic_promoControllerPps extends controllerPps
           continue;
         }
         if ($fName == 'category') {
-          $data[ $fName ] = $fData['options'][ $data[ $fName ] ];
+          $data[$fName] = $fData['options'][$data[$fName]];
         }
-        $msg .= '<b>' . $fData['label'] . '</b>: ' . nl2br($data[ $fName ]) . '<br />';
+        $msg .= '<b>' . $fData['label'] . '</b>: ' . nl2br($data[$fName]) . '<br />';
       }
       if (framePps::_()->getModule('mail')->send('support@supsystic.zendesk.com', $data['subject'], $msg, $data['name'], $data['email'])) {
         update_option(PPS_CODE . '_last__time_contact_send', $time);
@@ -195,15 +196,13 @@ class supsystic_promoControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['welcomePageSaveInfo', 'sendContact', 'addNoticeAction',
-                'addStep', 'closeTour', 'addTourFinish', 'saveDeactivateData', 'enbStatsOpt', 'sendSubscribeMail', 'sendSubscribeRemind', 'sendSubscribeDisable']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['welcomePageSaveInfo', 'sendContact', 'addNoticeAction', 'addStep', 'closeTour', 'addTourFinish', 'saveDeactivateData', 'enbStatsOpt', 'sendSubscribeMail', 'sendSubscribeRemind', 'sendSubscribeDisable'],
+      ],
     ];
   }
   public function getNoncedMethods()
   {
-    return ['welcomePageSaveInfo', 'sendContact', 'addNoticeAction',
-    'addStep', 'closeTour', 'addTourFinish', 'saveDeactivateData', 'enbStatsOpt', 'sendSubscribeMail', 'sendSubscribeRemind', 'sendSubscribeDisable'];
+    return ['welcomePageSaveInfo', 'sendContact', 'addNoticeAction', 'addStep', 'closeTour', 'addTourFinish', 'saveDeactivateData', 'enbStatsOpt', 'sendSubscribeMail', 'sendSubscribeRemind', 'sendSubscribeDisable'];
   }
 }

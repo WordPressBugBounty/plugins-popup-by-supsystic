@@ -38,7 +38,7 @@ class Webhook
       if (self::$receivedWebhook !== null) {
         $input = self::$receivedWebhook;
       } else {
-        $input = file_get_contents("php://input");
+        $input = file_get_contents('php://input');
       }
     }
 

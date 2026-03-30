@@ -20,9 +20,10 @@ class modulesModelPps extends modelPps
       $data = framePps::_()->getTable('modules')->get('*', $d);
       return $data;
     } else {
-      return framePps::_()->getTable('modules')
-          ->innerJoin(framePps::_()->getTable('modules_type'), 'type_id')
-          ->getAll(framePps::_()->getTable('modules')->alias() . '.*, ' . framePps::_()->getTable('modules_type')->alias() . '.label as type');
+      return framePps::_()
+        ->getTable('modules')
+        ->innerJoin(framePps::_()->getTable('modules_type'), 'type_id')
+        ->getAll(framePps::_()->getTable('modules')->alias() . '.*, ' . framePps::_()->getTable('modules_type')->alias() . '.label as type');
     }
   }
   public function put($d = [])
@@ -32,22 +33,26 @@ class modulesModelPps extends modelPps
     $d = prepareParamsPps($d);
     if (is_numeric($id) && $id) {
       if (isset($d['active'])) {
-        $d['active'] = ((is_string($d['active']) && $d['active'] == 'true') || $d['active'] == 1) ? 1 : 0;
-      }           //mmm.... govnokod?....)))
+        $d['active'] = (is_string($d['active']) && $d['active'] == 'true') || $d['active'] == 1 ? 1 : 0;
+      } //mmm.... govnokod?....)))
       /* else
-            $d['active'] = 0;*/
+       $d['active'] = 0;*/
 
-      if (framePps::_()->getTable('modules')->update($d, ['id' => $id])) {
+      if (
+        framePps::_()
+          ->getTable('modules')
+          ->update($d, ['id' => $id])
+      ) {
         $res->messages[] = __('Module Updated', PPS_LANG_CODE);
         $mod = framePps::_()->getTable('modules')->getById($id);
         $newType = framePps::_()->getTable('modules_type')->getById($mod['type_id'], 'label');
         $newType = $newType['label'];
         $res->data = [
-            'id' => $id,
-            'label' => $mod['label'],
-            'code' => $mod['code'],
-            'type' => $newType,
-            'active' => $mod['active'],
+          'id' => $id,
+          'label' => $mod['label'],
+          'code' => $mod['code'],
+          'type' => $newType,
+          'active' => $mod['active'],
         ];
       } else {
         if ($tableErrors = framePps::_()->getTable('modules')->getErrors()) {

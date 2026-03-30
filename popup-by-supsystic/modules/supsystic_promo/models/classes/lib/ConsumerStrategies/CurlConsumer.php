@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/AbstractConsumer.php");
+require_once dirname(__FILE__) . '/AbstractConsumer.php';
 
 /**
  * Consumes messages and sends them to a host/endpoint using cURL
@@ -50,8 +50,8 @@ class ConsumerStrategies_CurlConsumer extends ConsumerStrategies_AbstractConsume
     $this->_endpoint = $options['endpoint'];
     $this->_connect_timeout = array_key_exists('connect_timeout', $options) ? $options['connect_timeout'] : 5;
     $this->_timeout = array_key_exists('timeout', $options) ? $options['timeout'] : 30;
-    $this->_protocol = array_key_exists('use_ssl', $options) && $options['use_ssl'] == true ? "https" : "http";
-    $this->_fork = array_key_exists('fork', $options) ? ($options['fork'] == true) : false;
+    $this->_protocol = array_key_exists('use_ssl', $options) && $options['use_ssl'] == true ? 'https' : 'http';
+    $this->_fork = array_key_exists('fork', $options) ? $options['fork'] == true : false;
 
     // ensure the environment is workable for the given settings
     if ($this->_fork == true) {
@@ -79,8 +79,8 @@ class ConsumerStrategies_CurlConsumer extends ConsumerStrategies_AbstractConsume
   public function persist($batch)
   {
     if (count($batch) > 0) {
-      $data = "data=" . $this->_encode($batch);
-      $url = $this->_protocol . "://" . $this->_host . $this->_endpoint;
+      $data = 'data=' . $this->_encode($batch);
+      $url = $this->_protocol . '://' . $this->_host . $this->_endpoint;
       if ($this->_fork) {
         return $this->_execute_forked($url, $data);
       } else {
@@ -120,7 +120,7 @@ class ConsumerStrategies_CurlConsumer extends ConsumerStrategies_AbstractConsume
       return false;
     } else {
       curl_close($ch);
-      if (trim($response) == "1") {
+      if (trim($response) == '1') {
         return true;
       } else {
         $this->_handleError(0, $response);
@@ -144,7 +144,7 @@ class ConsumerStrategies_CurlConsumer extends ConsumerStrategies_AbstractConsume
     $exec = 'curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d ' . $data . ' "' . $url . '"';
 
     if (!$this->_debug()) {
-      $exec .= " >/dev/null 2>&1 &";
+      $exec .= ' >/dev/null 2>&1 &';
     }
 
     exec($exec, $output, $return_var);

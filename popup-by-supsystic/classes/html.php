@@ -10,7 +10,7 @@ class htmlPps
 
   public static function wpKsesHtml($inputHtml)
   {
-    return  viewPps::ksesString($inputHtml);
+    return viewPps::ksesString($inputHtml);
   }
 
   public static function block($name, $params = ['attrs' => '', 'value' => ''])
@@ -40,19 +40,17 @@ class htmlPps
     if (isset($params['required'])) {
       $params['attrs'] .= ' required ';
     }
-    return '<textarea name="' . $name . '" ' . $params['attrs'] . ' rows="' . $params['rows'] . '" cols="' . $params['cols'] . '">' .
-            (isset($params['value']) ? $params['value'] : '') .
-            '</textarea>';
+    return '<textarea name="' . $name . '" ' . $params['attrs'] . ' rows="' . $params['rows'] . '" cols="' . $params['cols'] . '">' . (isset($params['value']) ? $params['value'] : '') . '</textarea>';
   }
   public static function input($name, $params = ['attrs' => '', 'type' => 'text', 'value' => ''])
   {
     $params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
     $params['attrs'] .= self::_dataToAttrs($params);
     if (isset($params['required']) && $params['required']) {
-      $params['attrs'] .= ' required ';	// HTML5 "required" validation attr
+      $params['attrs'] .= ' required '; // HTML5 "required" validation attr
     }
     if (isset($params['placeholder']) && $params['placeholder']) {
-      $params['attrs'] .= ' placeholder="' . $params['placeholder'] . '"';	// HTML5 "required" validation attr
+      $params['attrs'] .= ' placeholder="' . $params['placeholder'] . '"'; // HTML5 "required" validation attr
     }
     $params['value'] = isset($params['value']) ? $params['value'] : '';
     return '<input type="' . $params['type'] . '" name="' . $name . '" value="' . $params['value'] . '" ' . (isset($params['attrs']) ? $params['attrs'] : '') . ' />';
@@ -129,9 +127,9 @@ class htmlPps
           $out .= '<td>';
         }
         $out .= self::checkbox($name, [
-            'attrs' => $params['attrs'],
-            'value' => $v['id'],
-            'checked' => $v['checked']
+          'attrs' => $params['attrs'],
+          'value' => $v['id'],
+          'checked' => $v['checked'],
         ]);
         $out .= '&nbsp;' . $v['text'] . $params['delim'];
         if ($params['usetable']) {
@@ -153,13 +151,18 @@ class htmlPps
       $id = self::nameToClassId($name);
     }
     return self::input($name, [
-            'attrs' => 'id="' . $id . '" ' . (isset($params['attrs']) ? $params['attrs'] : ''),
-            'type' => 'text',
-            'value' => $params['value']
-    ]) . '<script type="text/javascript">
+      'attrs' => 'id="' . $id . '" ' . (isset($params['attrs']) ? $params['attrs'] : ''),
+      'type' => 'text',
+      'value' => $params['value'],
+    ]) .
+      '<script type="text/javascript">
             // <!--
                 jQuery(document).ready(function(){
-                    jQuery("#' . $id . '").timepicker(' . json_encode($params) . ');
+                    jQuery("#' .
+      $id .
+      '").timepicker(' .
+      json_encode($params) .
+      ');
                 });
             // -->
         </script>';
@@ -171,19 +174,27 @@ class htmlPps
     } else {
       $id = self::nameToClassId($name);
     }
-    $params = array_merge([
+    $params = array_merge(
+      [
         'dateFormat' => PPS_DATE_FORMAT_JS,
         'changeYear' => true,
         'yearRange' => '1905:' . (date('Y') + 5),
-    ], $params);
+      ],
+      $params,
+    );
     return self::input($name, [
-            'attrs' => 'id="' . $id . '" ' . (isset($params['attrs']) ? $params['attrs'] : ''),
-            'type' => 'text',
-            'value' => $params['value']
-    ]) . '<script type="text/javascript">
+      'attrs' => 'id="' . $id . '" ' . (isset($params['attrs']) ? $params['attrs'] : ''),
+      'type' => 'text',
+      'value' => $params['value'],
+    ]) .
+      '<script type="text/javascript">
             // <!--
                 jQuery(document).ready(function(){
-                    jQuery("#' . $id . '").datepicker(' . json_encode($params) . ');
+                    jQuery("#' .
+      $id .
+      '").datepicker(' .
+      json_encode($params) .
+      ');
                 });
             // -->
         </script>';
@@ -198,12 +209,7 @@ class htmlPps
     if ($usePlugPath) {
       $src = PPS_IMG_PATH . $src;
     }
-    return '<img src="' . $src . '" '
-            . (isset($params['width']) ? 'width="' . $params['width'] . '"' : '')
-            . ' '
-            . (isset($params['height']) ? 'height="' . $params['height'] . '"' : '')
-            . ' '
-            . (isset($params['attrs']) ? $params['attrs'] : '') . ' />';
+    return '<img src="' . $src . '" ' . (isset($params['width']) ? 'width="' . $params['width'] . '"' : '') . ' ' . (isset($params['height']) ? 'height="' . $params['height'] . '"' : '') . ' ' . (isset($params['attrs']) ? $params['attrs'] : '') . ' />';
   }
   public static function selectbox($name, $params = ['attrs' => '', 'options' => [], 'value' => ''])
   {
@@ -213,7 +219,7 @@ class htmlPps
     $out .= '<select name="' . $name . '" ' . (isset($params['attrs']) ? $params['attrs'] : '') . '>';
     if (!empty($params['options'])) {
       foreach ($params['options'] as $k => $v) {
-        $selected = (isset($params['value']) && $k == $params['value'] ? 'selected="true"' : '');
+        $selected = isset($params['value']) && $k == $params['value'] ? 'selected="true"' : '';
         $out .= '<option value="' . $k . '" ' . $selected . '>' . $v . '</option>';
       }
     }
@@ -234,7 +240,7 @@ class htmlPps
     $out .= '<select multiple="multiple" size="' . $params['size'] . '" name="' . $name . '" ' . $params['attrs'] . '>';
     if (!empty($params['options'])) {
       foreach ($params['options'] as $k => $v) {
-        $selected = (isset($params['value']) && in_array($k, (array)$params['value']) ? 'selected="true"' : '');
+        $selected = isset($params['value']) && in_array($k, (array) $params['value']) ? 'selected="true"' : '';
         $out .= '<option value="' . $k . '" ' . $selected . '>' . $v . '</option>';
       }
     }
@@ -253,24 +259,31 @@ class htmlPps
     if (strpos($params['url'], 'pl=' . PPS_CODE) === false) {
       $params['url'] = uriGmp::_(['baseUrl' => $params['url'], 'pl' => PPS_CODE]);
     }
-    $out .= self::button(['value' => empty($params['buttonName']) ? __('Upload') :  $params['buttonName'], 'attrs' => 'id="toeUploadbut_' . $name . '" class="button"']);
-    $display = (empty($params['value']) ? 'style="display: none;"' : '');
+    $out .= self::button(['value' => empty($params['buttonName']) ? __('Upload') : $params['buttonName'], 'attrs' => 'id="toeUploadbut_' . $name . '" class="button"']);
+    $display = empty($params['value']) ? 'style="display: none;"' : '';
     if (isset($params['preview']) && $params['preview']) {
       $out .= self::img($params['value'], 0, ['attrs' => 'id="prev_' . $name . '" ' . $display . ' class="previewpicture"']);
     }
     $out .= '<span class="delete_option" id="delete_' . $name . '" ' . $display . '></span>';
 
-    $script = 'jQuery(document).ready(function(){
-                    new AjaxUpload("#toeUploadbut_' . $name . '", {
-                        action: "' . $params['url'] . '",
-                        name: "' . $name . '" ' .
-                    (empty($params['data']) ? '' : ',  data: ' . $params['data'] . '') .
-                    (empty($params['autoSubmit']) ? '' : ',  autoSubmit: "' . $params['autoSubmit'] . '"') .
-                    (empty($params['responseType']) ? '' : ',  responseType: "' . $params['responseType'] . '"') .
-                    (empty($params['onChange']) ? '' : ',  onChange: ' . $params['onChange'] . '') .
-                    (empty($params['onSubmit']) ? '' : ',  onSubmit: ' . $params['onSubmit'] . '') .
-                    (empty($params['onComplete']) ? '' : ',  onComplete: ' . $params['onComplete'] . '') .
-                '});
+    $script =
+      'jQuery(document).ready(function(){
+                    new AjaxUpload("#toeUploadbut_' .
+      $name .
+      '", {
+                        action: "' .
+      $params['url'] .
+      '",
+                        name: "' .
+      $name .
+      '" ' .
+      (empty($params['data']) ? '' : ',  data: ' . $params['data'] . '') .
+      (empty($params['autoSubmit']) ? '' : ',  autoSubmit: "' . $params['autoSubmit'] . '"') .
+      (empty($params['responseType']) ? '' : ',  responseType: "' . $params['responseType'] . '"') .
+      (empty($params['onChange']) ? '' : ',  onChange: ' . $params['onChange'] . '') .
+      (empty($params['onSubmit']) ? '' : ',  onSubmit: ' . $params['onSubmit'] . '') .
+      (empty($params['onComplete']) ? '' : ',  onComplete: ' . $params['onComplete'] . '') .
+      '});
                 });';
     if (is_admin()) {
       wp_add_inline_script('common', $script, 'after');
@@ -303,7 +316,7 @@ class htmlPps
         /*$id = self::nameToClassId($key). '_'. mt_rand(1, 999999);
         $attrs = $params['attrs'];
         $attrs .= ' id="'. $id. '"';*/
-        $checked = ($key == $params['value']) ? 'checked' : '';
+        $checked = $key == $params['value'] ? 'checked' : '';
         if ($params['labeled']) {
           $out .= '<label>' . $val . '&nbsp;';
         }
@@ -345,18 +358,37 @@ class htmlPps
       }
     }
     $out .= '</div>';
-    $out .= '<script type="text/javascript">
-                var ac_values_' . $name . ' = ' . json_encode(array_values($jsArray)) . ';
-                var ac_keys_' . $name . ' = ' . json_encode(array_keys($jsArray)) . ';
+    $out .=
+      '<script type="text/javascript">
+                var ac_values_' .
+      $name .
+      ' = ' .
+      json_encode(array_values($jsArray)) .
+      ';
+                var ac_keys_' .
+      $name .
+      ' = ' .
+      json_encode(array_keys($jsArray)) .
+      ';
                 jQuery(document).ready(function(){
-                    jQuery("#' . $tID . '").autocomplete(ac_values_' . $name . ', {
+                    jQuery("#' .
+      $tID .
+      '").autocomplete(ac_values_' .
+      $name .
+      ', {
                         autoFill: false,
                         mustMatch: false,
                         matchContains: false
                     }).result(function(a, b, c){
-                        var keyID = jQuery.inArray(c, ac_values_' . $name . ');
+                        var keyID = jQuery.inArray(c, ac_values_' .
+      $name .
+      ');
                         if(keyID != -1) {
-                            addAcOpt(ac_keys_' . $name . '[keyID], c, "' . $name . '");
+                            addAcOpt(ac_keys_' .
+      $name .
+      '[keyID], c, "' .
+      $name .
+      '");
                         }
                     });
                 });
@@ -369,8 +401,7 @@ class htmlPps
     $params['action'] = isset($params['action']) ? $params['action'] : '';
     $params['method'] = isset($params['method']) ? $params['method'] : 'GET';
     if (isset($params['hideMethodInside']) && $params['hideMethodInside']) {
-      return '<form name="' . $name . '" action="' . $params['action'] . '" method="' . $params['method'] . '" ' . $params['attrs'] . '>' .
-          self::hidden('method', ['value' => $params['method']]);
+      return '<form name="' . $name . '" action="' . $params['action'] . '" method="' . $params['method'] . '" ' . $params['attrs'] . '>' . self::hidden('method', ['value' => $params['method']]);
     } else {
       return '<form name="' . $name . '" action="' . $params['action'] . '" method="' . $params['method'] . '" ' . $params['attrs'] . '>';
     }
@@ -406,11 +437,18 @@ class htmlPps
     $res .= self::$params['selectHtml']($name, $paramsSelect);
     $res .= self::text($name, $paramsText);
     if (empty($params['doNotAddJs'])) {
-      $res .= '<script type="text/javascript">
+      $res .=
+        '<script type="text/javascript">
                 // <!--
                 if(!toeStates.length)
-                    toeStates = ' . utilsPps::jsonEncode($states) . ';
-                toeStatesObjects["' . $id . '"] = new toeStatesSelect("' . $id . '");
+                    toeStates = ' .
+        utilsPps::jsonEncode($states) .
+        ';
+                toeStatesObjects["' .
+        $id .
+        '"] = new toeStatesSelect("' .
+        $id .
+        '");
                 // -->
             </script>';
     }
@@ -498,7 +536,7 @@ class htmlPps
               break;
           }
           $paramsForText = [
-              'value' => $value,
+            'value' => $value,
           ];
           $res .= __($p['label']) . htmlPps::text($name . '[' . $i . '][' . $key . ']', $paramsForText);
         }
@@ -560,7 +598,10 @@ class htmlPps
   protected static function _loadProductsOptions()
   {
     if (empty(self::$productsOptions)) {
-      $products = framePps::_()->getModule('products')->getModel()->get(['getFields' => 'post.ID, post.post_title']);
+      $products = framePps::_()
+        ->getModule('products')
+        ->getModel()
+        ->get(['getFields' => 'post.ID, post.post_title']);
       if (!empty($products)) {
         foreach ($products as $p) {
           self::$productsOptions[$p['ID']] = $p['post_title'];
@@ -572,7 +613,8 @@ class htmlPps
   {
     $id = self::nameToClassId($name, $params);
     $paramsStr = '';
-    if (!isset($params['slide']) || (empty($params['slide']) && $params['slide'] !== false)) { //Can be set to false to ignore function onSlide event binding
+    if (!isset($params['slide']) || (empty($params['slide']) && $params['slide'] !== false)) {
+      //Can be set to false to ignore function onSlide event binding
       $params['slide'] = 'toeSliderMove';
     }
     if (!empty($params)) {
@@ -584,7 +626,7 @@ class htmlPps
         if (in_array($k, ['attrs']) || strpos($k, '-')) {
           continue;
         }
-        $value = (is_numeric($v) || in_array($k, ['slide'])) ? $v : '"' . $v . '"';
+        $value = is_numeric($v) || in_array($k, ['slide']) ? $v : '"' . $v . '"';
         $paramsArr[] = $k . ': ' . $value;
       }
       $paramsStr = implode(', ', $paramsArr);
@@ -593,13 +635,20 @@ class htmlPps
     $res .= '<div id="' . $id . '"></div>';
     $params['attrs'] = 'id="toeSliderInput_' . $id . '"';
     $res .= self::hidden($name, $params);
-    $script = '
+    $script =
+      '
         jQuery(function(){
           jQuery(document).ready(function($){
             var iter = 0;
             function toeAddSlider() {
-              if(typeof(jQuery("#' . $id . '").slider) == "function" && typeof(toeSliderMove) == "function") {
-                jQuery("#' . $id . '").slider({' . $paramsStr . '});
+              if(typeof(jQuery("#' .
+      $id .
+      '").slider) == "function" && typeof(toeSliderMove) == "function") {
+                jQuery("#' .
+      $id .
+      '").slider({' .
+      $paramsStr .
+      '});
                 iter = 0;
               } else {
                 iter++;
@@ -628,7 +677,7 @@ class htmlPps
     if (!isset($params['attrs'])) {
       $params['attrs'] = '';
     }
-    $textId = (isset($params['id']) && !empty($params['id'])) ? $params['id'] : 'toeTextIncDec_' . mt_rand(9, 9999);
+    $textId = isset($params['id']) && !empty($params['id']) ? $params['id'] : 'toeTextIncDec_' . mt_rand(9, 9999);
     $params['attrs'] .= ' id="' . $textId . '"';
     $textField = self::text($name, $params);
     $onClickInc = 'toeTextIncDec(\'' . $textId . '\', 1); return false;';
@@ -637,8 +686,7 @@ class htmlPps
       $onClickInc = $params['onclick'] . ' ' . $onClickInc;
       $onClickDec = $params['onclick'] . ' ' . $onClickDec;
     }
-    $textField .= '<div class="toeUpdateQtyButtonsWrapper"><div class="toeIncDecButton toeIncButton ' . $textId . '" onclick="' . $onClickInc . '">+</div>'
-            . '<div class="toeIncDecButton toeDecButton ' . $textId . '" onclick="' . $onClickDec . '">-</div></div>';
+    $textField .= '<div class="toeUpdateQtyButtonsWrapper"><div class="toeIncDecButton toeIncButton ' . $textId . '" onclick="' . $onClickInc . '">+</div>' . '<div class="toeIncDecButton toeDecButton ' . $textId . '" onclick="' . $onClickDec . '">-</div></div>';
     return $textField;
   }
   public static function colorpicker($name, $params = ['value' => ''])
@@ -656,14 +704,21 @@ class htmlPps
     $out = self::text($name, $params);
     //$out .= '<div style="position: absolute; z-index: 1;" id="'. $pickerId. '"></div>';
 
-    $script = '
+    $script =
+      '
     jQuery(function(){
       jQuery(document).ready(function($){
-      jQuery("#' . $textId . '").wpColorPicker({
+      jQuery("#' .
+      $textId .
+      '").wpColorPicker({
         change: function(event, ui) {
           // Find change functiona for this element, if such exist - triger it
-          if(window["wpColorPicker_' . $nameToClass . '_change"]) {
-            window["wpColorPicker_' . $nameToClass . '_change"](event, ui);
+          if(window["wpColorPicker_' .
+      $nameToClass .
+      '_change"]) {
+            window["wpColorPicker_' .
+      $nameToClass .
+      '_change"](event, ui);
           }
         }
       });
@@ -681,9 +736,10 @@ class htmlPps
   {
     static $options = [];
 
-    if (empty($options)) {	// Fill them only one time per loading
+    if (empty($options)) {
+      // Fill them only one time per loading
       foreach (fieldAdapterPps::getFontsList() as $font) {
-        $options[ $font ] = $font;
+        $options[$font] = $font;
       }
     }
     $params['options'] = $options;
@@ -707,9 +763,14 @@ class htmlPps
     $paramsCheck['checked'] = $paramsCheck['value'] ? '1' : '0';
     $out = self::checkbox(self::nameToClassId($name), $paramsCheck);
     $out .= self::hidden($name, $paramsHidden);
-    $script = 'jQuery(function(){
-				jQuery("#' . $checkId . '").change(function(){
-					jQuery("#' . $hideId . '").val( (jQuery(this).prop("checked") ? 1 : 0) ).trigger("change");
+    $script =
+      'jQuery(function(){
+				jQuery("#' .
+      $checkId .
+      '").change(function(){
+					jQuery("#' .
+      $hideId .
+      '").val( (jQuery(this).prop("checked") ? 1 : 0) ).trigger("change");
 				});
 		});';
     wp_add_inline_script('common', $script, 'after');
@@ -728,16 +789,28 @@ class htmlPps
     $params['attrs'] = isset($params['attrs']) && !empty($params['attrs']) ? $params['attrs'] : '';
     $params['attrs'] .= ' id="' . $params['id'] . '"';
 
-    return '<a class="toeSlideShellGmp" href="#"' . $params['attrs'] . '>
+    return '<a class="toeSlideShellGmp" href="#"' .
+      $params['attrs'] .
+      '>
 			<span class="toeSlideButtGmp"></span>
-			<span class="toeSlideOnGmp">' . __('ON') . '</span>
-			<span class="toeSlideOffGmp">' . __('OFF') . '</span>
-			<input type="hidden" name="' . $name . '" />
+			<span class="toeSlideOnGmp">' .
+      __('ON') .
+      '</span>
+			<span class="toeSlideOffGmp">' .
+      __('OFF') .
+      '</span>
+			<input type="hidden" name="' .
+      $name .
+      '" />
 		</a>
 		<script type="text/javascript">
 		// <!--
 			jQuery(function(){
-				jQuery("#' . $params['id'] . '").slideInput(' . $params['checked'] . ');
+				jQuery("#' .
+      $params['id'] .
+      '").slideInput(' .
+      $params['checked'] .
+      ');
 			});
 		// -->
 		</script>';
@@ -758,23 +831,34 @@ class htmlPps
     $buttonParams = $params;
     $buttonParams['value'] = isset($params['btnVal']) ? $params['btnVal'] : sprintf(__('Select %s', PPS_LANG_CODE), strFirstUp($galleryType));
     $out .= self::button($buttonParams);
-    $script = 'jQuery(function(){
+    $script =
+      'jQuery(function(){
       jQuery(function(){
         // Run onChange to make pre-set of required data
-        ' . ($onChange ? $onChange . '("' . $params['value'] . '", null, "' . $buttonId . '");' : '') . '
-        jQuery("#' . $buttonId . '").click(function(){
+        ' .
+      ($onChange ? $onChange . '("' . $params['value'] . '", null, "' . $buttonId . '");' : '') .
+      '
+        jQuery("#' .
+      $buttonId .
+      '").click(function(){
           var button = jQuery(this);
           _custom_media = true;
           wp.media.editor.send.attachment = function(props, attachment){
             if ( _custom_media ) {
-              jQuery("#' . $inputId . '").val( attachment.url ).trigger("change");
-              ' . ($onChange ? $onChange . '(attachment.url, attachment, "' . $buttonId . '");' : '') . '
+              jQuery("#' .
+      $inputId .
+      '").val( attachment.url ).trigger("change");
+              ' .
+      ($onChange ? $onChange . '(attachment.url, attachment, "' . $buttonId . '");' : '') .
+      '
             } else {
               return _orig_send_attachment.apply( this, [props, attachment] );
             };
           };
           wp.media.editor.open(button);
-          jQuery(".attachment-filters").val("' . $galleryType . '").trigger("change");
+          jQuery(".attachment-filters").val("' .
+      $galleryType .
+      '").trigger("change");
           return false;
         });
       });
@@ -794,10 +878,10 @@ class htmlPps
   }
   public static function checkedOpt($arr, $key, $value = true)
   {
-    if (!isset($arr[ $key ])) {
+    if (!isset($arr[$key])) {
       return false;
     }
-    return $value === true ? $arr[ $key ] : $arr[ $key ] == $value;
+    return $value === true ? $arr[$key] : $arr[$key] == $value;
   }
   public static function nonceForAction($action)
   {

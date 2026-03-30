@@ -16,7 +16,8 @@ class mailPps extends modulePps
     $res = false;
     $type = 'wp_mail';
     switch ($type) {
-      case 'wp_mail': default:
+      case 'wp_mail':
+      default:
         $res = $this->sendWpMail($to, $subject, $message, $fromName, $fromEmail, $replyToName, $replyToEmail, $additionalHeaders, $additionalParameters);
         if (!$res) {
           // Sometimes it return false, but email was sent, and in such cases
@@ -68,7 +69,8 @@ class mailPps extends modulePps
     global $ts_mail_errors;
     $type = framePps::_()->getModule('options')->get('mail_send_engine');
     switch ($type) {
-      case 'wp_mail': default:
+      case 'wp_mail':
+      default:
         // Clear prev. send errors at first
         $ts_mail_errors = [];
 
@@ -94,12 +96,12 @@ class mailPps extends modulePps
   }
   public function addOptions($opts)
   {
-    $opts[ $this->getCode() ] = [
-        'label' => __('Mail', PPS_LANG_CODE),
-        'opts' => [
-            'mail_function_work' => ['label' => __('Mail function tested and work', PPS_LANG_CODE), 'desc' => ''],
-            'notify_email' => ['label' => __('Notify Email', PPS_LANG_CODE), 'desc' => __('Email address used for all email notifications from plugin', PPS_LANG_CODE), 'html' => 'text', 'def' => get_option('admin_email')],
-        ],
+    $opts[$this->getCode()] = [
+      'label' => __('Mail', PPS_LANG_CODE),
+      'opts' => [
+        'mail_function_work' => ['label' => __('Mail function tested and work', PPS_LANG_CODE), 'desc' => ''],
+        'notify_email' => ['label' => __('Notify Email', PPS_LANG_CODE), 'desc' => __('Email address used for all email notifications from plugin', PPS_LANG_CODE), 'html' => 'text', 'def' => get_option('admin_email')],
+      ],
     ];
     return $opts;
   }

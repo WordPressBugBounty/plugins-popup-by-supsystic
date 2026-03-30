@@ -48,9 +48,7 @@
 }
 
 /* HiDPI support */
-@media (-o-min-device-pixel-ratio: 5/4),
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 120dpi) {
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
   .icheckbox_minimal,
   .iradio_minimal {
     background-image: url(images/minimal@2x.png);

@@ -78,9 +78,9 @@ class framePps
   protected function _extractModules()
   {
     $activeModules = $this->getTable('modules')
-            ->innerJoin($this->getTable('modules_type'), 'type_id')
-            ->orderBy('id ASC')
-            ->get($this->getTable('modules')->alias() . '.*, ' . $this->getTable('modules_type')->alias() . '.label as type_name');
+      ->innerJoin($this->getTable('modules_type'), 'type_id')
+      ->orderBy('id ASC')
+      ->get($this->getTable('modules')->alias() . '.*, ' . $this->getTable('modules_type')->alias() . '.label as type_name');
     if ($activeModules) {
       foreach ($activeModules as $m) {
         $code = $m['code'];
@@ -90,7 +90,7 @@ class framePps
         }
         if (is_dir($moduleLocationDir . $code)) {
           $this->_allModules[$m['code']] = 1;
-          if ((bool)$m['active']) {
+          if ((bool) $m['active']) {
             importClassPps($code . strFirstUp(PPS_CODE), $moduleLocationDir . $code . DS . 'mod.php');
             $moduleClass = toeGetClassNamePps($code);
             if (class_exists($moduleClass)) {
@@ -140,7 +140,7 @@ class framePps
 
     register_activation_hook(PPS_DIR . DS . PPS_MAIN_FILE, ['utilsPps', 'activatePlugin']); //See classes/install.php file
     register_uninstall_hook(PPS_DIR . DS . PPS_MAIN_FILE, ['utilsPps', 'deletePlugin']);
-    register_deactivation_hook(PPS_DIR . DS . PPS_MAIN_FILE, [ 'utilsPps', 'deactivatePlugin' ]);
+    register_deactivation_hook(PPS_DIR . DS . PPS_MAIN_FILE, ['utilsPps', 'deactivatePlugin']);
 
     add_action('init', [$this, 'connectLang']);
     //$operationTime = microtime(true) - $startTime;
@@ -178,25 +178,22 @@ class framePps
       $permissions = $mod->getController()->getPermissions();
       $permissionsBase = $mod->getController()->getBasePermissions();
       $permissions = array_merge($permissions, $permissionsBase);
-      if (!empty($permissions)) {  // Special permissions
-        if (isset($permissions[PPS_METHODS])
-            && !empty($permissions[PPS_METHODS])
-        ) {
-          foreach ($permissions[PPS_METHODS] as $method => $permissions) {   // Make case-insensitive
+      if (!empty($permissions)) {
+        // Special permissions
+        if (isset($permissions[PPS_METHODS]) && !empty($permissions[PPS_METHODS])) {
+          foreach ($permissions[PPS_METHODS] as $method => $permissions) {
+            // Make case-insensitive
             $permissions[PPS_METHODS][strtolower($method)] = $permissions;
           }
-          if (array_key_exists($action, $permissions[PPS_METHODS])) {        // Permission for this method exists
+          if (array_key_exists($action, $permissions[PPS_METHODS])) {
+            // Permission for this method exists
             $currentUserPosition = framePps::_()->getModule('user')->getCurrentUserPosition();
-            if ((is_array($permissions[ PPS_METHODS ][ $action ]) && !in_array($currentUserPosition, $permissions[ PPS_METHODS ][ $action ]))
-                || (!is_array($permissions[ PPS_METHODS ][ $action ]) && $permissions[PPS_METHODS][$action] != $currentUserPosition)
-            ) {
+            if ((is_array($permissions[PPS_METHODS][$action]) && !in_array($currentUserPosition, $permissions[PPS_METHODS][$action])) || (!is_array($permissions[PPS_METHODS][$action]) && $permissions[PPS_METHODS][$action] != $currentUserPosition)) {
               $res = false;
             }
           }
         }
-        if (isset($permissions[PPS_USERLEVELS])
-            && !empty($permissions[PPS_USERLEVELS])
-        ) {
+        if (isset($permissions[PPS_USERLEVELS]) && !empty($permissions[PPS_USERLEVELS])) {
           $currentUserPosition = framePps::_()->getModule('user')->getCurrentUserPosition();
           // For multi-sites network admin role is undefined, let's do this here
           if (is_multisite() && is_admin() && is_super_admin()) {
@@ -204,16 +201,18 @@ class framePps
           }
           foreach ($permissions[PPS_USERLEVELS] as $userlevel => $methods) {
             if (is_array($methods)) {
-              $lowerMethods = array_map('strtolower', $methods);          // Make case-insensitive
-              if (in_array($action, $lowerMethods)) {                      // Permission for this method exists
+              $lowerMethods = array_map('strtolower', $methods); // Make case-insensitive
+              if (in_array($action, $lowerMethods)) {
+                // Permission for this method exists
                 if ($currentUserPosition != $userlevel) {
                   $res = false;
                 }
                 break;
               }
             } else {
-              $lowerMethod = strtolower($methods);            // Make case-insensitive
-              if ($lowerMethod == $action) {                   // Permission for this method exists
+              $lowerMethod = strtolower($methods); // Make case-insensitive
+              if ($lowerMethod == $action) {
+                // Permission for this method exists
                 if ($currentUserPosition != $userlevel) {
                   $res = false;
                 }
@@ -223,7 +222,8 @@ class framePps
           }
         }
       }
-      if ($res) {	// Additional check for nonces
+      if ($res) {
+        // Additional check for nonces
         $noncedMethods = $mod->getController()->getNoncedMethods();
         if (!empty($noncedMethods)) {
           $noncedMethods = array_map('strtolower', $noncedMethods);
@@ -265,20 +265,19 @@ class framePps
     $action = strtolower($this->_action);
     if ($mod) {
       $permissions = $mod->getController()->getPermissions();
-      if (!empty($permissions)) {  // Special permissions
-        if (isset($permissions[PPS_METHODS])
-            && !empty($permissions[PPS_METHODS])
-        ) {
-          foreach ($permissions[PPS_METHODS] as $method => $permissions) {   // Make case-insensitive
+      if (!empty($permissions)) {
+        // Special permissions
+        if (isset($permissions[PPS_METHODS]) && !empty($permissions[PPS_METHODS])) {
+          foreach ($permissions[PPS_METHODS] as $method => $permissions) {
+            // Make case-insensitive
             $permissions[PPS_METHODS][strtolower($method)] = $permissions;
           }
-          if (array_key_exists($action, $permissions[PPS_METHODS])) {        // Permission for this method exists
+          if (array_key_exists($action, $permissions[PPS_METHODS])) {
+            // Permission for this method exists
             $res = true;
           }
         }
-        if (isset($permissions[PPS_USERLEVELS])
-            && !empty($permissions[PPS_USERLEVELS])
-        ) {
+        if (isset($permissions[PPS_USERLEVELS]) && !empty($permissions[PPS_USERLEVELS])) {
           $res = true;
         }
       }
@@ -387,7 +386,7 @@ class framePps
 
   public function getModule($code)
   {
-    return (isset($this->_modules[$code]) ? $this->_modules[$code] : null);
+    return isset($this->_modules[$code]) ? $this->_modules[$code] : null;
   }
   public function inPlugin()
   {
@@ -414,12 +413,12 @@ class framePps
       wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
     } else {
       $this->_scripts[] = [
-          'handle' => $handle,
-          'src' => $src,
-          'deps' => $deps,
-          'ver' => $ver,
-          'in_footer' => $in_footer,
-          'vars' => $vars
+        'handle' => $handle,
+        'src' => $src,
+        'deps' => $deps,
+        'ver' => $ver,
+        'in_footer' => $in_footer,
+        'vars' => $vars,
       ];
     }
   }
@@ -477,11 +476,11 @@ class framePps
       wp_enqueue_style($handle, $src, $deps, $ver, $media);
     } else {
       $this->_styles[] = [
-          'handle' => $handle,
-          'src' => $src,
-          'deps' => $deps,
-          'ver' => $ver,
-          'media' => $media
+        'handle' => $handle,
+        'src' => $src,
+        'deps' => $deps,
+        'ver' => $ver,
+        'media' => $media,
       ];
     }
   }
@@ -497,15 +496,15 @@ class framePps
   //Very interesting thing going here.............
   public function loadPlugins()
   {
-    require_once(ABSPATH . 'wp-includes/pluggable.php');
+    require_once ABSPATH . 'wp-includes/pluggable.php';
   }
   public function loadWPSettings()
   {
-    require_once(ABSPATH . 'wp-settings.php');
+    require_once ABSPATH . 'wp-settings.php';
   }
   public function loadLocale()
   {
-    require_once(ABSPATH . 'wp-includes/locale.php');
+    require_once ABSPATH . 'wp-includes/locale.php';
   }
   public function moduleActive($code)
   {
@@ -529,7 +528,7 @@ class framePps
   public function isAdminPlugOptsPage()
   {
     $page = reqPps::getVar('page');
-    if (is_admin() && strpos((string)$page, framePps::_()->getModule('adminmenu')->getMainSlug()) !== false) {
+    if (is_admin() && strpos((string) $page, framePps::_()->getModule('adminmenu')->getMainSlug()) !== false) {
       return true;
     }
     return false;
@@ -543,7 +542,7 @@ class framePps
   }
   public function licenseDeactivated()
   {
-    return (!$this->getModule('license') && $this->moduleExists('license'));
+    return !$this->getModule('license') && $this->moduleExists('license');
   }
   public function savePluginActivationErrors()
   {

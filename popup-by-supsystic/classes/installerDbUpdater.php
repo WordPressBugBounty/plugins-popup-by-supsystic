@@ -3,7 +3,5 @@
 #[\AllowDynamicProperties]
 class installerDbUpdaterPps
 {
-  public static function runUpdate()
-  {
-  }
+  public static function runUpdate() {}
 }

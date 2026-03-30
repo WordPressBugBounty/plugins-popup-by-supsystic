@@ -15,7 +15,7 @@
 .toeIncDecButton {
   width: 8px;
   height: 7px;
-  background: url("../img/toeIncDec.png") top right no-repeat;
+  background: url('../img/toeIncDec.png') top right no-repeat;
   text-decoration: none;
   cursor: pointer;
   text-indent: -9999px;

@@ -15,16 +15,16 @@ jQuery.fn.clearForm = function () {
   return this.each(function () {
     var b = this.type,
       a = this.tagName.toLowerCase();
-    if (a == "form") {
-      return jQuery(":input", this).clearForm();
+    if (a == 'form') {
+      return jQuery(':input', this).clearForm();
     }
-    if (b == "text" || b == "password" || a == "textarea") {
-      this.value = "";
+    if (b == 'text' || b == 'password' || a == 'textarea') {
+      this.value = '';
     } else {
-      if (b == "checkbox" || b == "radio") {
+      if (b == 'checkbox' || b == 'radio') {
         this.checked = false;
       } else {
-        if (a == "select") {
+        if (a == 'select') {
           this.selectedIndex = -1;
         }
       }
@@ -43,41 +43,35 @@ function isNumber(a) {
 }
 
 function pushDataToParam(e, a) {
-  a = a ? a : "";
+  a = a ? a : '';
   var d = [];
   for (var c in e) {
-    var b = a && a != "" ? a + "[" + c + "]" : c;
-    if (typeof e[c] === "array" || typeof e[c] === "object") {
+    var b = a && a != '' ? a + '[' + c + ']' : c;
+    if (typeof e[c] === 'array' || typeof e[c] === 'object') {
       d = jQuery.merge(d, pushDataToParam(e[c], b));
     } else {
-      d.push(b + "=" + e[c]);
+      d.push(b + '=' + e[c]);
     }
   }
   return d;
 }
 jQuery.fn.serializeAnythingPps = function (d, b) {
   var c = b ? {} : [],
-    a = jQuery(this).find(":input").get();
+    a = jQuery(this).find(':input').get();
   jQuery.each(a, function () {
-    if (
-      this.name &&
-      !this.disabled &&
-      (this.checked ||
-        /select|textarea/i.test(this.nodeName) ||
-        /text|hidden|password/i.test(this.type))
-    ) {
+    if (this.name && !this.disabled && (this.checked || /select|textarea/i.test(this.nodeName) || /text|hidden|password/i.test(this.type))) {
       var e = jQuery(this).val();
       if (b) {
         c[this.name] = e;
       } else {
-        c.push(encodeURIComponent(this.name) + "=" + encodeURIComponent(e));
+        c.push(encodeURIComponent(this.name) + '=' + encodeURIComponent(e));
       }
     }
   });
-  if (typeof d != "undefined" && d) {
+  if (typeof d != 'undefined' && d) {
     c = jQuery.merge(c, pushDataToParam(d));
   }
-  return b ? c : c.join("&").replace(/%20/g, "+");
+  return b ? c : c.join('&').replace(/%20/g, '+');
 };
 jQuery.fn.serializeAssoc = function () {
   var a = [];
@@ -126,7 +120,7 @@ function pps_str_replace(c, d, b) {
 }
 
 function nameToClassId(a) {
-  return str_replace(str_replace(a, "]", ""), "[", "");
+  return str_replace(str_replace(a, ']', ''), '[', '');
 }
 
 function strpos(b, c, d) {
@@ -144,7 +138,7 @@ function extend(b, a) {
 
 function toeRedirect(b, a) {
   if (a) {
-    var c = window.open(b, "_blank");
+    var c = window.open(b, '_blank');
     if (c) {
       c.focus();
     } else {
@@ -162,81 +156,73 @@ function toeReload(a) {
   document.location.reload();
 }
 jQuery.fn.toeRebuildSelect = function (b, c, d) {
-  if (jQuery(this).tagName() == "SELECT" && typeof b == "object") {
+  if (jQuery(this).tagName() == 'SELECT' && typeof b == 'object') {
     if (jQuery(b).length > 0) {
-      if (typeof d == "undefined") {
+      if (typeof d == 'undefined') {
         d = false;
       }
-      if (jQuery(this).children("option").length) {
-        jQuery(this).children("option").remove();
+      if (jQuery(this).children('option').length) {
+        jQuery(this).children('option').remove();
       }
-      if (typeof c == "undefined") {
+      if (typeof c == 'undefined') {
         c = false;
       }
-      var a = "";
+      var a = '';
       for (var e in b) {
-        a = "";
+        a = '';
         if (d && ((c && e == d) || b[e] == d)) {
-          a = "selected";
+          a = 'selected';
         }
-        jQuery(this).append(
-          '<option value="' +
-            (c ? e : b[e]) +
-            '" ' +
-            a +
-            ">" +
-            b[e] +
-            "</option>"
-        );
+        jQuery(this).append('<option value="' + (c ? e : b[e]) + '" ' + a + '>' + b[e] + '</option>');
       }
     }
   }
 };
 
 function toeInArray(c, b) {
-  if (typeof b == "object") {
+  if (typeof b == 'object') {
     for (var a in b) {
       if (b[a] == c) {
         return a;
       }
     }
   } else {
-    if (typeof b == "array") {
+    if (typeof b == 'array') {
       return jQuery.inArray(c, b);
     }
   }
   return -1;
 }
 jQuery.fn.setReadonly = function () {
-  jQuery(this).addClass("toeReadonly").attr("readonly", "readonly");
+  jQuery(this).addClass('toeReadonly').attr('readonly', 'readonly');
 };
 jQuery.fn.unsetReadonly = function () {
-  jQuery(this).removeClass("toeReadonly").removeAttr("readonly", "readonly");
+  jQuery(this).removeClass('toeReadonly').removeAttr('readonly', 'readonly');
 };
 jQuery.fn.getClassId = function (a, c) {
-  var b = jQuery(this).attr("class");
-  b = b.substr(strpos(b, a + "_"));
-  if (strpos(b, " ")) {
-    b = b.substr(0, strpos(b, " "));
+  var b = jQuery(this).attr('class');
+  b = b.substr(strpos(b, a + '_'));
+  if (strpos(b, ' ')) {
+    b = b.substr(0, strpos(b, ' '));
   }
-  b = b.split("_");
+  b = b.split('_');
   b = b[1];
   return b;
 };
 
 function toeTextIncDec(a, c) {
-  var b = parseInt(jQuery("#" + a).val());
+  var b = parseInt(jQuery('#' + a).val());
   if (isNaN(b)) {
     b = 0;
   }
   if (!(c < 0 && b < 1)) {
     b += c;
   }
-  jQuery("#" + a).val(b);
+  jQuery('#' + a).val(b);
 }
 
 function toeStrFirstUp(b) {
-  b += "";
+  b += '';
   var a = b.charAt(0).toUpperCase();
   return a + b.substr(1);
 }
@@ -252,19 +238,19 @@ function toeListablePps(b) {
   this.pagingCallback = this.params.pagingCallback;
   var a = this;
   this.draw = function (k, j) {
-    this.table.find("tr").not(".ppsExample, .ppsTblHeader").remove();
-    var n = this.table.find(".ppsExample");
+    this.table.find('tr').not('.ppsExample, .ppsTblHeader').remove();
+    var n = this.table.find('.ppsExample');
     for (var e in k) {
       var o = n.clone();
       for (var l in k[e]) {
-        var f = o.find("." + l);
+        var f = o.find('.' + l);
         if (f.length) {
-          var m = f.attr("valueTo");
+          var m = f.attr('valueTo');
           if (m) {
             var c = k[e][l];
             var h = f.attr(m);
             if (h) {
-              c = h + " " + c;
+              c = h + ' ' + c;
             }
             f.attr(m, c);
           } else {
@@ -272,29 +258,27 @@ function toeListablePps(b) {
           }
         }
       }
-      o.removeClass("ppsExample").show();
+      o.removeClass('ppsExample').show();
       this.table.append(o);
     }
     if (this.paging) {
-      this.paging.html("");
+      this.paging.html('');
       if (j && j > k.length && this.perPage) {
         for (var e = 1; e <= Math.ceil(j / this.perPage); e++) {
           var d = e - 1,
-            g = d == this.page ? jQuery("<b/>") : jQuery("<a/>");
+            g = d == this.page ? jQuery('<b/>') : jQuery('<a/>');
           if (d != this.page) {
-            g.attr("href", "#" + d).click(function () {
-              if (a.pagingCallback && typeof a.pagingCallback == "function") {
-                a.pagingCallback(
-                  parseInt(jQuery(this).attr("href").replace("#", ""))
-                );
+            g.attr('href', '#' + d).click(function () {
+              if (a.pagingCallback && typeof a.pagingCallback == 'function') {
+                a.pagingCallback(parseInt(jQuery(this).attr('href').replace('#', '')));
                 return false;
               }
             });
           }
-          g.addClass("toePagingElement").html(e);
+          g.addClass('toePagingElement').html(e);
           this.paging.append(g);
           if (e % 20 == 0 && e) {
-            this.paging.append("<br />");
+            this.paging.append('<br />');
           }
         }
       }
@@ -308,23 +292,22 @@ function toeListablePps(b) {
 function setCookiePps(a, e, b) {
   var f = new Date();
   f.setDate(f.getDate() + b);
-  var c = "";
-  if (typeof e == "array" || typeof e == "object") {
-    c = "_JSON:" + JSON.stringify(e);
+  var c = '';
+  if (typeof e == 'array' || typeof e == 'object') {
+    c = '_JSON:' + JSON.stringify(e);
   } else {
     c = e;
   }
-  var d =
-    escape(c) + (b == null ? "" : "; expires=" + f.toUTCString()) + "; path=/";
-  document.cookie = a + "=" + d;
+  var d = escape(c) + (b == null ? '' : '; expires=' + f.toUTCString()) + '; path=/';
+  document.cookie = a + '=' + d;
 }
 
 function getCookiePps(a) {
-  var c = document.cookie.split(a + "=");
+  var c = document.cookie.split(a + '=');
   if (c.length == 2) {
-    var b = unescape(c.pop().split(";").shift());
-    if (b.indexOf("_JSON:") === 0) {
-      b = JSON.parse(b.split("_JSON:").pop());
+    var b = unescape(c.pop().split(';').shift());
+    if (b.indexOf('_JSON:') === 0) {
+      b = JSON.parse(b.split('_JSON:').pop());
     }
     return b;
   }
@@ -332,81 +315,71 @@ function getCookiePps(a) {
 }
 
 function delCookiePps(a) {
-  document.cookie = a + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  document.cookie = a + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 function callUserFuncArray(cb, parameters) {
   var func;
-  if (typeof cb === "string") {
-    func =
-      typeof this[cb] === "function"
-        ? this[cb]
-        : (func = new Function(null, "return " + cb)());
+  if (typeof cb === 'string') {
+    func = typeof this[cb] === 'function' ? this[cb] : (func = new Function(null, 'return ' + cb)());
   } else {
-    if (Object.prototype.toString.call(cb) === "[object Array]") {
-      func =
-        typeof cb[0] == "string"
-          ? eval(cb[0] + "['" + cb[1] + "']")
-          : (func = cb[0][cb[1]]);
+    if (Object.prototype.toString.call(cb) === '[object Array]') {
+      func = typeof cb[0] == 'string' ? eval(cb[0] + "['" + cb[1] + "']") : (func = cb[0][cb[1]]);
     } else {
-      if (typeof cb === "function") {
+      if (typeof cb === 'function') {
         func = cb;
       }
     }
   }
-  if (typeof func !== "function") {
-    throw new Error(func + " is not a valid function");
+  if (typeof func !== 'function') {
+    throw new Error(func + ' is not a valid function');
   }
-  return typeof cb[0] === "string"
-    ? func.apply(eval(cb[0]), parameters)
-    : typeof cb[0] !== "object"
-      ? func.apply(null, parameters)
-      : func.apply(cb[0], parameters);
+  return typeof cb[0] === 'string' ? func.apply(eval(cb[0]), parameters) : typeof cb[0] !== 'object' ? func.apply(null, parameters) : func.apply(cb[0], parameters);
 }
 jQuery.fn.zoom = function (b, a) {
-  a = a ? a : "center center";
-  jQuery(this).data("zoom", b);
+  a = a ? a : 'center center';
+  jQuery(this).data('zoom', b);
   return jQuery(this).css({
     // "-moz-transform": "scale(" + b + ")",
-    "-moz-transform-origin": a,
+    '-moz-transform-origin': a,
     // "-o-transform": "scale(" + b + ")",
-    "-o-transform-origin": a,
+    '-o-transform-origin': a,
     // "-webkit-transform": "scale(" + b + ")",
-    "-webkit-transform-origin": a,
+    '-webkit-transform-origin': a,
     // transform: "scale(" + b + ")",
-    "transform-origin": a,
+    'transform-origin': a,
   });
 };
 jQuery.fn.ppsZoom = function (b, a) {
-  a = a ? a : "center center";
-  jQuery(this).data("zoom", b);
+  a = a ? a : 'center center';
+  jQuery(this).data('zoom', b);
   return jQuery(this).css({
     // "-moz-transform": "scale(" + b + ")",
-    "-moz-transform-origin": a,
+    '-moz-transform-origin': a,
     // "-o-transform": "scale(" + b + ")",
-    "-o-transform-origin": a,
+    '-o-transform-origin': a,
     // "-webkit-transform": "scale(" + b + ")",
-    "-webkit-transform-origin": a,
+    '-webkit-transform-origin': a,
     // transform: "scale(" + b + ")",
-    "transform-origin": a,
+    'transform-origin': a,
   });
 };
 jQuery.fn.scrollWidth = function () {
-  var c = document.createElement("p");
-  c.style.width = "100%";
-  c.style.height = "200px";
-  var d = document.createElement("div");
-  d.style.position = "absolute";
-  d.style.top = "0px";
-  d.style.left = "0px";
-  d.style.visibility = "hidden";
-  d.style.width = "200px";
-  d.style.height = "150px";
-  d.style.overflow = "hidden";
+  var c = document.createElement('p');
+  c.style.width = '100%';
+  c.style.height = '200px';
+  var d = document.createElement('div');
+  d.style.position = 'absolute';
+  d.style.top = '0px';
+  d.style.left = '0px';
+  d.style.visibility = 'hidden';
+  d.style.width = '200px';
+  d.style.height = '150px';
+  d.style.overflow = 'hidden';
   d.appendChild(c);
   document.body.appendChild(d);
   var b = c.offsetWidth;
-  d.style.overflow = "scroll";
+  d.style.overflow = 'scroll';
   var a = c.offsetWidth;
   if (b == a) {
     a = d.clientWidth;
@@ -416,9 +389,9 @@ jQuery.fn.scrollWidth = function () {
 };
 
 function toeGetImgAttachId(a) {
-  var d = jQuery(a).attr("class"),
+  var d = jQuery(a).attr('class'),
     c = 0;
-  if (d && d != "") {
+  if (d && d != '') {
     var b = d.match(/wp-image-(\d+)/);
     if (b && b[1]) {
       c = parseInt(b[1]);
@@ -428,10 +401,10 @@ function toeGetImgAttachId(a) {
 }
 
 function toeGetHashParams() {
-  var a = window.location.hash.split("#"),
+  var a = window.location.hash.split('#'),
     c = [];
   for (var b in a) {
-    if (a[b] && a[b] != "") {
+    if (a[b] && a[b] != '') {
       c.push(a[b]);
     }
   }
@@ -459,10 +432,10 @@ function textReplacerFunc(b, a, c) {
 }
 
 function replaceWords(c, d) {
-  var a = document.createElement("div");
+  var a = document.createElement('div');
   a.innerHTML = c;
   for (var b in d) {
-    traverseElement(a, new RegExp(b, "g"), textReplacerFunc, d[b]);
+    traverseElement(a, new RegExp(b, 'g'), textReplacerFunc, d[b]);
   }
   return a.innerHTML;
 }
@@ -490,28 +463,28 @@ jQuery.fn.animationDuration = function (c, a) {
   if (a) {
     c = parseFloat(c) / 1000;
   }
-  var b = c + "s";
+  var b = c + 's';
   return jQuery(this).css({
-    "webkit-animation-duration": b,
-    "-moz-animation-duration": b,
-    "-o-animation-duration": b,
-    "animation-duration": b,
+    'webkit-animation-duration': b,
+    '-moz-animation-duration': b,
+    '-o-animation-duration': b,
+    'animation-duration': b,
   });
 };
 
 function ppsStrToMs(e) {
-  var f = e.split(" ");
+  var f = e.split(' ');
   if (f.length == 2) {
-    e = f[0] + " ";
-    var d = f[1].split(":");
+    e = f[0] + ' ';
+    var d = f[1].split(':');
     for (var c = 0; c < 3; c++) {
-      e += d[c] ? d[c] : "00";
+      e += d[c] ? d[c] : '00';
       if (c < 2) {
-        e += ":";
+        e += ':';
       }
     }
   }
-  var a = new Date(str_replace(e, "-", "/")),
+  var a = new Date(str_replace(e, '-', '/')),
     b = 0;
   if (a) {
     b = a.getTime();
@@ -519,17 +492,17 @@ function ppsStrToMs(e) {
   return b;
 }
 Date.prototype.format = function (d) {
-  var b = "";
+  var b = '';
   var f = Date.replaceChars;
   for (var c = 0; c < d.length; c++) {
     var a = d.charAt(c);
-    if (c - 1 >= 0 && d.charAt(c - 1) == "\\") {
+    if (c - 1 >= 0 && d.charAt(c - 1) == '\\') {
       b += a;
     } else {
       if (f[a]) {
         b += f[a].call(this);
       } else {
-        if (a != "\\") {
+        if (a != '\\') {
           b += a;
         }
       }
@@ -538,46 +511,12 @@ Date.prototype.format = function (d) {
   return b;
 };
 Date.replaceChars = {
-  shortMonths: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-  longMonths: [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ],
-  shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  longDays: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  longMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  longDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   d: function () {
-    return (this.getDate() < 10 ? "0" : "") + this.getDate();
+    return (this.getDate() < 10 ? '0' : '') + this.getDate();
   },
   D: function () {
     return Date.replaceChars.shortDays[this.getDay()];
@@ -592,13 +531,7 @@ Date.replaceChars = {
     return this.getDay() + 1;
   },
   S: function () {
-    return this.getDate() % 10 == 1 && this.getDate() != 11
-      ? "st"
-      : this.getDate() % 10 == 2 && this.getDate() != 12
-        ? "nd"
-        : this.getDate() % 10 == 3 && this.getDate() != 13
-          ? "rd"
-          : "th";
+    return this.getDate() % 10 == 1 && this.getDate() != 11 ? 'st' : this.getDate() % 10 == 2 && this.getDate() != 12 ? 'nd' : this.getDate() % 10 == 3 && this.getDate() != 13 ? 'rd' : 'th';
   },
   w: function () {
     return this.getDay();
@@ -615,7 +548,7 @@ Date.replaceChars = {
     return Date.replaceChars.longMonths[this.getMonth()];
   },
   m: function () {
-    return (this.getMonth() < 9 ? "0" : "") + (this.getMonth() + 1);
+    return (this.getMonth() < 9 ? '0' : '') + (this.getMonth() + 1);
   },
   M: function () {
     return Date.replaceChars.shortMonths[this.getMonth()];
@@ -640,22 +573,16 @@ Date.replaceChars = {
     return this.getFullYear();
   },
   y: function () {
-    return ("" + this.getFullYear()).substr(2);
+    return ('' + this.getFullYear()).substr(2);
   },
   a: function () {
-    return this.getHours() < 12 ? "am" : "pm";
+    return this.getHours() < 12 ? 'am' : 'pm';
   },
   A: function () {
-    return this.getHours() < 12 ? "AM" : "PM";
+    return this.getHours() < 12 ? 'AM' : 'PM';
   },
   B: function () {
-    return Math.floor(
-      ((((this.getUTCHours() + 1) % 24) +
-        this.getUTCMinutes() / 60 +
-        this.getUTCSeconds() / 3600) *
-        1000) /
-        24
-    );
+    return Math.floor(((((this.getUTCHours() + 1) % 24) + this.getUTCMinutes() / 60 + this.getUTCSeconds() / 3600) * 1000) / 24);
   },
   g: function () {
     return this.getHours() % 12 || 12;
@@ -664,26 +591,23 @@ Date.replaceChars = {
     return this.getHours();
   },
   h: function () {
-    return (
-      ((this.getHours() % 12 || 12) < 10 ? "0" : "") +
-      (this.getHours() % 12 || 12)
-    );
+    return ((this.getHours() % 12 || 12) < 10 ? '0' : '') + (this.getHours() % 12 || 12);
   },
   H: function () {
-    return (this.getHours() < 10 ? "0" : "") + this.getHours();
+    return (this.getHours() < 10 ? '0' : '') + this.getHours();
   },
   i: function () {
-    return (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
+    return (this.getMinutes() < 10 ? '0' : '') + this.getMinutes();
   },
   s: function () {
-    return (this.getSeconds() < 10 ? "0" : "") + this.getSeconds();
+    return (this.getSeconds() < 10 ? '0' : '') + this.getSeconds();
   },
   u: function () {
     var a = this.getMilliseconds();
-    return (a < 10 ? "00" : a < 100 ? "0" : "") + a;
+    return (a < 10 ? '00' : a < 100 ? '0' : '') + a;
   },
   e: function () {
-    return "Not Yet Supported";
+    return 'Not Yet Supported';
   },
   I: function () {
     var c = null;
@@ -706,25 +630,15 @@ Date.replaceChars = {
     return (this.getTimezoneOffset() == c) | 0;
   },
   O: function () {
-    return (
-      (-this.getTimezoneOffset() < 0 ? "-" : "+") +
-      (Math.abs(this.getTimezoneOffset() / 60) < 10 ? "0" : "") +
-      Math.abs(this.getTimezoneOffset() / 60) +
-      "00"
-    );
+    return (-this.getTimezoneOffset() < 0 ? '-' : '+') + (Math.abs(this.getTimezoneOffset() / 60) < 10 ? '0' : '') + Math.abs(this.getTimezoneOffset() / 60) + '00';
   },
   P: function () {
-    return (
-      (-this.getTimezoneOffset() < 0 ? "-" : "+") +
-      (Math.abs(this.getTimezoneOffset() / 60) < 10 ? "0" : "") +
-      Math.abs(this.getTimezoneOffset() / 60) +
-      ":00"
-    );
+    return (-this.getTimezoneOffset() < 0 ? '-' : '+') + (Math.abs(this.getTimezoneOffset() / 60) < 10 ? '0' : '') + Math.abs(this.getTimezoneOffset() / 60) + ':00';
   },
   T: function () {
     var b = this.getMonth();
     this.setMonth(0);
-    var a = this.toTimeString().replace(/^.+ \(?([^\)]+)\)?$/, "$1");
+    var a = this.toTimeString().replace(/^.+ \(?([^\)]+)\)?$/, '$1');
     this.setMonth(b);
     return a;
   },
@@ -732,7 +646,7 @@ Date.replaceChars = {
     return -this.getTimezoneOffset() * 60;
   },
   c: function () {
-    return this.format("Y-m-d\\TH:i:sP");
+    return this.format('Y-m-d\\TH:i:sP');
   },
   r: function () {
     return this.toString();
@@ -766,16 +680,16 @@ function isNumericPps(a) {
 
 function disableScrollPps(b) {
   var a = jQuery(b);
-  a.data("prev-overflow", a.css("overflow")).css("overflow", "hidden");
+  a.data('prev-overflow', a.css('overflow')).css('overflow', 'hidden');
 }
 
 function enableScrollPps(b) {
   var a = jQuery(b);
-  var c = a.data("prev-overflow");
-  if (!c || c == "") {
-    c = "visible";
+  var c = a.data('prev-overflow');
+  if (!c || c == '') {
+    c = 'visible';
   }
-  a.css("overflow", c);
+  a.css('overflow', c);
 }
 
 function randPps(b, a, d) {

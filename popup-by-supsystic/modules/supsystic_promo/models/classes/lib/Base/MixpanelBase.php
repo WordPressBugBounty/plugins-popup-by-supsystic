@@ -12,15 +12,15 @@ class Base_MixpanelBase
    * @var array
    */
   private $_defaults = [
-      "max_batch_size" => 50, // the max batch size Mixpanel will accept is 50,
-      "max_queue_size" => 1000, // the max num of items to hold in memory before flushing
-      "debug" => true, // enable/disable debug mode
-      "consumer" => "curl", // which consumer to use
-      "host" => "api.mixpanel.com", // the host name for api calls
-      "events_endpoint" => "/track", // host relative endpoint for events
-      "people_endpoint" => "/engage", // host relative endpoint for people updates
-      "use_ssl" => true, // use ssl when available
-      "error_callback" => null // callback to use on consumption failures
+    'max_batch_size' => 50, // the max batch size Mixpanel will accept is 50,
+    'max_queue_size' => 1000, // the max num of items to hold in memory before flushing
+    'debug' => true, // enable/disable debug mode
+    'consumer' => 'curl', // which consumer to use
+    'host' => 'api.mixpanel.com', // the host name for api calls
+    'events_endpoint' => '/track', // host relative endpoint for events
+    'people_endpoint' => '/engage', // host relative endpoint for people updates
+    'use_ssl' => true, // use ssl when available
+    'error_callback' => null, // callback to use on consumption failures
   ];
 
   /**
@@ -57,6 +57,6 @@ class Base_MixpanelBase
    */
   protected function _debug()
   {
-    return array_key_exists("debug", $this->_options) && $this->_options["debug"] == true;
+    return array_key_exists('debug', $this->_options) && $this->_options['debug'] == true;
   }
 }

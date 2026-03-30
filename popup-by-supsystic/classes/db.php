@@ -1,9 +1,9 @@
 <?php
 
-#[\AllowDynamicProperties]
 /**
  * Shell - class to work with $wpdb global object
  */
+#[\AllowDynamicProperties]
 class dbPps
 {
   /**
@@ -45,7 +45,7 @@ class dbPps
   public static function query($query)
   {
     global $wpdb;
-    return ($wpdb->query(self::prepareQuery($query)) === false ? false : true);
+    return $wpdb->query(self::prepareQuery($query)) === false ? false : true;
   }
   /**
    * Get last insert ID
@@ -75,11 +75,7 @@ class dbPps
   public static function prepareQuery($query)
   {
     global $wpdb;
-    return str_replace(
-      ['#__', '^__', '@__'],
-      [$wpdb->prefix, PPS_DB_PREF, $wpdb->prefix . PPS_DB_PREF],
-      $query
-    );
+    return str_replace(['#__', '^__', '@__'], [$wpdb->prefix, PPS_DB_PREF, $wpdb->prefix . PPS_DB_PREF], $query);
   }
   public static function getError()
   {
@@ -115,11 +111,14 @@ class dbPps
   }
   public static function exist($table, $column = '', $value = '')
   {
-    if (empty($column) && empty($value)) {       //Check if table exist
+    if (empty($column) && empty($value)) {
+      //Check if table exist
       $res = self::get('SHOW TABLES LIKE "' . $table . '"', 'one');
-    } elseif (empty($value)) {                   //Check if column exist
+    } elseif (empty($value)) {
+      //Check if column exist
       $res = self::get('SHOW COLUMNS FROM ' . $table . ' LIKE "' . $column . '"', 'one');
-    } else {                                    //Check if value in column table exist
+    } else {
+      //Check if value in column table exist
       $res = self::get('SELECT COUNT(*) AS total FROM ' . $table . ' WHERE ' . $column . ' = "' . $value . '"', 'one');
     }
     return !empty($res);
@@ -128,7 +127,7 @@ class dbPps
   {
     if (is_array($d)) {
       foreach ($d as $i => $el) {
-        $d[ $i ] = self::prepareHtml($el);
+        $d[$i] = self::prepareHtml($el);
       }
     } else {
       $d = esc_html($d);
@@ -139,7 +138,7 @@ class dbPps
   {
     if (is_array($d)) {
       foreach ($d as $i => $el) {
-        $d[ $i ] = self::prepareHtml($el);
+        $d[$i] = self::prepareHtml($el);
       }
     } else {
       $d = wp_filter_nohtml_kses($d);
@@ -153,13 +152,18 @@ class dbPps
   }
   public static function getAutoIncrement($table)
   {
-    return (int) self::get('SELECT AUTO_INCREMENT
+    return (int) self::get(
+      'SELECT AUTO_INCREMENT
 			FROM information_schema.tables
-			WHERE table_name = "' . $table . '"
-			AND table_schema = DATABASE( );', 'one');
+			WHERE table_name = "' .
+        $table .
+        '"
+			AND table_schema = DATABASE( );',
+      'one',
+    );
   }
   public static function setAutoIncrement($table, $autoIncrement)
   {
-    return self::query("ALTER TABLE `" . $table . "` AUTO_INCREMENT = " . $autoIncrement . ";");
+    return self::query('ALTER TABLE `' . $table . '` AUTO_INCREMENT = ' . $autoIncrement . ';');
   }
 }

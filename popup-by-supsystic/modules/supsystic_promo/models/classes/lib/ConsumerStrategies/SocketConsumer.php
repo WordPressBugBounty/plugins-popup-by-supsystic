@@ -32,7 +32,7 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-require_once(dirname(__FILE__) . "/AbstractConsumer.php");
+require_once dirname(__FILE__) . '/AbstractConsumer.php';
 
 /**
  * Consumes messages and writes them to host/endpoint using a persistent socket
@@ -83,10 +83,10 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
     $this->_async = array_key_exists('async', $options) && $options['async'] === false ? false : true;
 
     if (array_key_exists('use_ssl', $options) && $options['use_ssl'] == true) {
-      $this->_protocol = "ssl";
+      $this->_protocol = 'ssl';
       $this->_port = 443;
     } else {
-      $this->_protocol = "tcp";
+      $this->_protocol = 'tcp';
       $this->_port = 80;
     }
   }
@@ -103,14 +103,14 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
       return false;
     }
 
-    $data = "data=" . $this->_encode($batch);
+    $data = 'data=' . $this->_encode($batch);
 
-    $body = "";
-    $body .= "POST " . $this->_endpoint . " HTTP/1.1\r\n";
-    $body .= "Host: " . $this->_host . "\r\n";
+    $body = '';
+    $body .= 'POST ' . $this->_endpoint . " HTTP/1.1\r\n";
+    $body .= 'Host: ' . $this->_host . "\r\n";
     $body .= "Content-Type: application/x-www-form-urlencoded\r\n";
     $body .= "Accept: application/json\r\n";
-    $body .= "Content-length: " . strlen($data) . "\r\n";
+    $body .= 'Content-length: ' . strlen($data) . "\r\n";
     $body .= "\r\n";
     $body .= $data;
 
@@ -125,13 +125,13 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
   {
     if (is_resource($this->_socket)) {
       if ($this->_debug()) {
-        $this->_log("Using existing socket");
+        $this->_log('Using existing socket');
       }
 
       return $this->_socket;
     } else {
       if ($this->_debug()) {
-        $this->_log("Creating new socket at " . time());
+        $this->_log('Creating new socket at ' . time());
       }
 
       return $this->_createSocket();
@@ -146,10 +146,10 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
   private function _createSocket($retry = true)
   {
     try {
-      $socket = pfsockopen($this->_protocol . "://" . $this->_host, $this->_port, $err_no, $err_msg, $this->_connect_timeout);
+      $socket = pfsockopen($this->_protocol . '://' . $this->_host, $this->_port, $err_no, $err_msg, $this->_connect_timeout);
 
       if ($this->_debug()) {
-        $this->_log("Opening socket connection to " . $this->_protocol . "://" . $this->_host . ":" . $this->_port);
+        $this->_log('Opening socket connection to ' . $this->_protocol . '://' . $this->_host . ':' . $this->_port);
       }
 
       if ($err_no != 0) {
@@ -202,7 +202,7 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
         $bytes = fwrite($socket, $data, $max_bytes_per_write);
 
         if ($this->_debug()) {
-          $this->_log("Socket wrote " . $bytes . " bytes");
+          $this->_log('Socket wrote ' . $bytes . ' bytes');
         }
 
         // if we actually wrote data, then remove the written portion from $data left to write
@@ -227,7 +227,7 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
 
       if ($retry) {
         if ($this->_debug()) {
-          $this->_log("Retrying socket write...");
+          $this->_log('Retrying socket write...');
         }
         $socket = $this->_getSocket();
         if ($socket) {
@@ -241,8 +241,8 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
     // only wait for the response in debug mode or if we explicitly want to be synchronous
     if ($this->_debug() || !$this->_async) {
       $res = $this->handleResponse(fread($socket, 2048));
-      if ($res["status"] != "200") {
-        $this->_handleError($res["status"], $res["body"]);
+      if ($res['status'] != '200') {
+        $this->_handleError($res['status'], $res['body']);
         $success = false;
       }
     }
@@ -262,7 +262,7 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
     // extract headers
     $headers = [];
     foreach ($lines as $line) {
-      $kvsplit = explode(":", $line);
+      $kvsplit = explode(':', $line);
       if (count($kvsplit) == 2) {
         $header = $kvsplit[0];
         $value = $kvsplit[1];
@@ -271,14 +271,14 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
     }
 
     // extract status
-    $line_one_exploded = explode(" ", $lines[0]);
+    $line_one_exploded = explode(' ', $lines[0]);
     $status = $line_one_exploded[1];
 
     // extract body
     $body = $lines[count($lines) - 1];
 
     // if the connection has been closed lets kill the socket
-    if ($headers['Connection'] == "close") {
+    if ($headers['Connection'] == 'close') {
       $this->_destroySocket();
       if ($this->_debug()) {
         $this->_log("Server told us connection closed so lets destroy the socket so it'll reconnect on next call");
@@ -286,8 +286,8 @@ class ConsumerStrategies_SocketConsumer extends ConsumerStrategies_AbstractConsu
     }
 
     $ret = [
-        "status" => $status,
-        "body" => $body,
+      'status' => $status,
+      'body' => $body,
     ];
 
     return $ret;

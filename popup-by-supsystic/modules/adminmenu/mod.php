@@ -15,11 +15,12 @@ class adminmenuPps extends modulePps
     $mainCap = $this->getMainCap();
     $mainSlug = dispatcherPps::applyFilters('adminMenuMainSlug', $this->_mainSlug);
     $mainMenuPageOptions = [
-        'page_title' => PPS_WP_PLUGIN_NAME,
-        'menu_title' => PPS_WP_PLUGIN_NAME,
-        'capability' => $mainCap,
-        'menu_slug' => $mainSlug,
-        'function' => [framePps::_()->getModule('options'), 'getAdminPage']];
+      'page_title' => PPS_WP_PLUGIN_NAME,
+      'menu_title' => PPS_WP_PLUGIN_NAME,
+      'capability' => $mainCap,
+      'menu_slug' => $mainSlug,
+      'function' => [framePps::_()->getModule('options'), 'getAdminPage'],
+    ];
     $mainMenuPageOptions = dispatcherPps::applyFilters('adminMenuMainOption', $mainMenuPageOptions);
     add_menu_page($mainMenuPageOptions['page_title'], $mainMenuPageOptions['menu_title'], $mainMenuPageOptions['capability'], $mainMenuPageOptions['menu_slug'], $mainMenuPageOptions['function'], 'dashicons-align-center');
     //remove duplicated WP menu item
@@ -29,14 +30,19 @@ class adminmenuPps extends modulePps
     foreach ($tabs as $tKey => $tab) {
       if ($tKey == 'main_page') {
         continue;
-      }	// Top level menu item - is main page, avoid place it 2 times
-      if ((isset($tab['hidden']) && $tab['hidden'])
-          || (isset($tab['hidden_for_main']) && $tab['hidden_for_main'])	// Hidden for WP main
-          || (isset($tab['is_main']) && $tab['is_main'])) {
+      } // Top level menu item - is main page, avoid place it 2 times
+      if (
+        (isset($tab['hidden']) && $tab['hidden']) ||
+        (isset($tab['hidden_for_main']) && $tab['hidden_for_main']) || // Hidden for WP main
+        (isset($tab['is_main']) && $tab['is_main'])
+      ) {
         continue;
       }
       $subMenus[] = [
-          'title' => $tab['label'], 'capability' => $mainCap, 'menu_slug' => 'admin.php?page=' . $mainSlug . '&tab=' . $tKey, 'function' => '',
+        'title' => $tab['label'],
+        'capability' => $mainCap,
+        'menu_slug' => 'admin.php?page=' . $mainSlug . '&tab=' . $tKey,
+        'function' => '',
       ];
     }
     $subMenus = dispatcherPps::applyFilters('adminMenuOptions', $subMenus);

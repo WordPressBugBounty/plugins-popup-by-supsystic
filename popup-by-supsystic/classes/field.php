@@ -36,7 +36,7 @@ class fieldPps
     $this->html = $html;
     $this->type = $type;
     $this->default = $default;
-    $this->value = $default;    //Init field value same as default
+    $this->value = $default; //Init field value same as default
     $this->label = $label;
     $this->maxlen = $maxlen;
     $this->description = $description;
@@ -165,7 +165,8 @@ class fieldPps
       if (!empty($this->errorEl)) {
         if (is_bool($this->errorEl)) {
           $errorEl = '<div class="toeErrorForField toe_' . htmlPps::nameToClassId($this->name) . '"></div>';
-        } else { //if it is string
+        } else {
+          //if it is string
           $errorEl = $this->errorEl;
         }
         $htmlContent .= $errorEl;
@@ -200,10 +201,11 @@ class fieldPps
           $value = implode('<br />', $value);
         }
         break;
-      case 'selectbox': case 'radiobuttons':
+      case 'selectbox':
+      case 'radiobuttons':
         $options = $this->getHtmlParam('optionsPps');
-        if (!empty($options) && !empty($options[ $this->value ])) {
-          $value = $options[ $this->value ];
+        if (!empty($options) && !empty($options[$this->value])) {
+          $value = $options[$this->value];
         } else {
           $value = __('N/A', PPS_LANG_CODE);
         }
@@ -306,7 +308,7 @@ class fieldPps
   public function processParams($tag, $id)
   {
     return '';
-    if ($this->name == "params") {
+    if ($this->name == 'params') {
       if (is_array($this->value) || is_object($this->value)) {
         $params = $this->value;
       } else {
@@ -350,8 +352,8 @@ class fieldPps
         $output .= '</div>';
 
         $output .= '<div class="options image_tag"' . $image_tag . '>' . __('Dimensions', PPS_LANG_CODE) . ':<br />';
-        $params->width?$width = $params->width:'';
-        $params->height?$height = $params->height:'';
+        $params->width ? ($width = $params->width) : '';
+        $params->height ? ($height = $params->height) : '';
         $output .= __('width', PPS_LANG_CODE) . ':<br />';
         $output .= htmlPps::text('params[width]', ['value' => $width]) . '<br />';
         $output .= __('height', PPS_LANG_CODE) . ':<br />';
@@ -410,14 +412,7 @@ class fieldPps
         continue;
       }
       // fill in the variables to configuration array
-      $config_params[$name] = ['type' => $type,
-                                    'label' => $label,
-                                    'helperPps' => $helper,
-                                    'modulePps' => $module,
-                                    'values' => $values,
-                                    'default' => $default,
-                                    'description' => $description,
-                                    ];
+      $config_params[$name] = ['type' => $type, 'label' => $label, 'helperPps' => $helper, 'modulePps' => $module, 'values' => $values, 'default' => $default, 'description' => $description];
     }
     return $config_params;
   }
@@ -430,11 +425,11 @@ class fieldPps
     return $this->description;
   }
   /**
-  * Displays the config options for given module
-  *
-  * @param string $module
-  * @param array $addDefaultOptions - if you want to add some additionsl options - specify it here
-  */
+   * Displays the config options for given module
+   *
+   * @param string $module
+   * @param array $addDefaultOptions - if you want to add some additionsl options - specify it here
+   */
   public function drawConfig($module, $additionalOptions = [])
   {
     if (!framePps::_()->getModule($module)) {
@@ -485,7 +480,7 @@ class fieldPps
               foreach ($extract_options as $item => $string) {
                 if (strpos($string, '=>')) {
                   $keyVal = array_map('trim', explode('=>', $string));
-                  $options[ $keyVal[0] ] = $keyVal[1];
+                  $options[$keyVal[0]] = $keyVal[1];
                 } else {
                   $options[$string] = $string;
                 }
@@ -519,10 +514,10 @@ class fieldPps
             }
           }
           // filling the parameters to build html element
-          $htmlParams = ['value' => $fieldValue,'optionsPps' => $options];
+          $htmlParams = ['value' => $fieldValue, 'optionsPps' => $options];
           if ($method == 'checkbox') {
             $htmlParams['value'] = 1;
-            $htmlParams['checked'] = (bool)$fieldValue;
+            $htmlParams['checked'] = (bool) $fieldValue;
           }
           if (!empty($configOptions[$key]['htmlParams']) && is_array($configOptions[$key]['htmlParams'])) {
             $htmlParams = array_merge($htmlParams, $configOptions[$key]['htmlParams']);
@@ -565,7 +560,7 @@ class fieldPps
         break;
       case 'double':
       case 'decimal':
-        $this->value = (double) $this->value;
+        $this->value = (float) $this->value;
         break;
     }
     return $this->type;

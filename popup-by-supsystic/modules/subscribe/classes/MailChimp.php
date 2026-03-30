@@ -40,7 +40,7 @@ class MailChimpPps
       if (strpos($this->api_key, '-') === false) {
         throw new Exception("Invalid MailChimp API key `{$api_key}` supplied.");
       }
-      list(, $data_center) = explode('-', $this->api_key);
+      [, $data_center] = explode('-', $this->api_key);
       $this->api_endpoint = str_replace('<dc>', $data_center, $this->api_endpoint);
     } else {
       $this->api_endpoint = $api_endpoint;
@@ -195,11 +195,7 @@ class MailChimpPps
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Accept: application/vnd.api+json',
-        'Content-Type: application/vnd.api+json',
-        'Authorization: apikey ' . $this->api_key
-    ]);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/vnd.api+json', 'Content-Type: application/vnd.api+json', 'Authorization: apikey ' . $this->api_key]);
     curl_setopt($ch, CURLOPT_USERAGENT, 'DrewM/MailChimp-API/3.0 (github.com/drewm/mailchimp-api)');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -245,11 +241,11 @@ class MailChimpPps
   }
 
   /**
-  * @param string $http_verb
-  * @param string $method
-  * @param string $url
-  * @param integer $timeout
-  */
+   * @param string $http_verb
+   * @param string $method
+   * @param string $url
+   * @param integer $timeout
+   */
   private function prepareStateForRequest($http_verb, $method, $url, $timeout)
   {
     $this->last_error = '';
@@ -257,17 +253,17 @@ class MailChimpPps
     $this->request_successful = false;
 
     $this->last_response = [
-        'headers' => null, // array of details from curl_getinfo()
-        'httpHeaders' => null, // array of HTTP headers
-        'body' => null // content of the response
+      'headers' => null, // array of details from curl_getinfo()
+      'httpHeaders' => null, // array of HTTP headers
+      'body' => null, // content of the response
     ];
 
     $this->last_request = [
-        'method' => $http_verb,
-        'path' => $method,
-        'url' => $url,
-        'body' => '',
-        'timeout' => $timeout,
+      'method' => $http_verb,
+      'path' => $method,
+      'url' => $url,
+      'body' => '',
+      'timeout' => $timeout,
     ];
 
     return $this->last_response;
@@ -288,7 +284,8 @@ class MailChimpPps
     $headers = [];
 
     foreach (explode("\r\n", $headersAsString) as $i => $line) {
-      if ($i === 0) { // HTTP code
+      if ($i === 0) {
+        // HTTP code
         continue;
       }
 
@@ -297,13 +294,10 @@ class MailChimpPps
         continue;
       }
 
-      list($key, $value) = explode(': ', $line);
+      [$key, $value] = explode(': ', $line);
 
       if ($key == 'Link') {
-        $value = array_merge(
-          ['_raw' => $value],
-          $this->getLinkHeaderAsArray($value)
-        );
+        $value = array_merge(['_raw' => $value], $this->getLinkHeaderAsArray($value));
       }
 
       $headers[$key] = $value;

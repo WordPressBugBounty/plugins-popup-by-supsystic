@@ -7,9 +7,7 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
   <title>
-    <?php echo viewPps::ksesString(($this->forReg
-            ? __('Registration Confirmation', PPS_LANG_CODE)
-            : __('Subscribe Confirmation', PPS_LANG_CODE)))?>
+    <?php echo viewPps::ksesString($this->forReg ? __('Registration Confirmation', PPS_LANG_CODE) : __('Subscribe Confirmation', PPS_LANG_CODE)); ?>
   </title>
   <style type="text/css">
     html,
@@ -55,28 +53,20 @@
 <body>
   <div class="ppsConfirmMainShell">
     <?php if ($this->res->error()) {
-      $errors = $this->res->getErrors();
-      ?>
+      $errors = $this->res->getErrors(); ?>
     <h1 class="ppsConfirmTitle">
-      <?php echo viewPps::ksesString(($this->forReg
-              ? __('Some errors occured while trying to registrate', PPS_LANG_CODE)
-              : __('Some errors occured while trying to subscribe', PPS_LANG_CODE)))?>
+      <?php echo viewPps::ksesString($this->forReg ? __('Some errors occured while trying to registrate', PPS_LANG_CODE) : __('Some errors occured while trying to subscribe', PPS_LANG_CODE)); ?>
     </h1>
     <div class="ppsConfirmContent">
-      <div class="ppsErrorMsg"><?php echo viewPps::ksesString(implode('<br />', $errors))?></div>
+      <div class="ppsErrorMsg"><?php echo viewPps::ksesString(implode('<br />', $errors)); ?></div>
     </div>
     <?php
     } else {
+
       $pref = $this->forReg ? 'reg' : 'sub';
-      $defaultSuccessMsg = $this->forReg
-          ? __('Thank you for registration!', PPS_LANG_CODE)
-          : __('Thank you for subscribing!', PPS_LANG_CODE);
-      $successMessage = $this->popup && isset($this->popup['params']['tpl'][$pref . '_txt_success'])
-          ? $this->popup['params']['tpl'][$pref . '_txt_success']
-          : $defaultSuccessMsg;
-      if (isset($this->popup['params']['tpl'][$pref . '_redirect_url'])
-          && !empty($this->popup['params']['tpl'][$pref . '_redirect_url'])
-      ) {
+      $defaultSuccessMsg = $this->forReg ? __('Thank you for registration!', PPS_LANG_CODE) : __('Thank you for subscribing!', PPS_LANG_CODE);
+      $successMessage = $this->popup && isset($this->popup['params']['tpl'][$pref . '_txt_success']) ? $this->popup['params']['tpl'][$pref . '_txt_success'] : $defaultSuccessMsg;
+      if (isset($this->popup['params']['tpl'][$pref . '_redirect_url']) && !empty($this->popup['params']['tpl'][$pref . '_redirect_url'])) {
         $redirectUrl = $this->popup['params']['tpl'][$pref . '_redirect_url'];
       } elseif (!empty($this->redirectUrl)) {
         $redirectUrl = $this->redirectUrl;
@@ -85,23 +75,19 @@
       }
       $redirectUrl = uriPps::normal($redirectUrl);
       $autoRedirectTime = 10;
-      if (isset($this->popup['params']['tpl']['sub_confirm_reload_time'])
-              && !empty($this->popup['params']['tpl']['sub_confirm_reload_time'])
-      ) {
+      if (isset($this->popup['params']['tpl']['sub_confirm_reload_time']) && !empty($this->popup['params']['tpl']['sub_confirm_reload_time'])) {
         $autoRedirectTime = (int) $this->popup['params']['tpl']['sub_confirm_reload_time'];
       }
       ?>
-    <h1 class="ppsConfirmTitle"><?php echo viewPps::ksesString(($this->forReg
-              ? __('Registration confirmed', PPS_LANG_CODE)
-              : __('Subscription confirmed', PPS_LANG_CODE)))?></h1>
+    <h1 class="ppsConfirmTitle"><?php echo viewPps::ksesString($this->forReg ? __('Registration confirmed', PPS_LANG_CODE) : __('Subscription confirmed', PPS_LANG_CODE)); ?></h1>
     <div class="ppsConfirmContent">
-      <?php echo viewPps::ksesString($successMessage);?>
+      <?php echo viewPps::ksesString($successMessage); ?>
     </div>
     <div class="ppsConfirmRedirectShell">
-      <?php printf(__('<a href="%s">Back to site</a> in <i id="ppsConfirmBackCounter">%d</i> seconds'), $redirectUrl, $autoRedirectTime)?>
+      <?php printf(__('<a href="%s">Back to site</a> in <i id="ppsConfirmBackCounter">%d</i> seconds'), $redirectUrl, $autoRedirectTime); ?>
     </div>
     <script type="text/javascript">
-      var ppsAutoRedirectTime = <?php echo viewPps::ksesString($autoRedirectTime);?> ,
+      var ppsAutoRedirectTime = <?php echo viewPps::ksesString($autoRedirectTime); ?> ,
         ppsAutoRedirectTimeLeft = ppsAutoRedirectTime;
 
       function ppsAutoRedirectWaitClb() {
@@ -110,13 +96,13 @@
           document.getElementById('ppsConfirmBackCounter').innerHTML = ppsAutoRedirectTime;
           setTimeout(ppsAutoRedirectWaitClb, 1000);
         } else {
-          window.location.href = '<?php echo viewPps::ksesString($redirectUrl)?>';
+          window.location.href = '<?php echo viewPps::ksesString($redirectUrl); ?>';
         }
       }
       setTimeout(ppsAutoRedirectWaitClb, 1000);
     </script>
     <?php
-    }?>
+    } ?>
   </div>
 </body>
 

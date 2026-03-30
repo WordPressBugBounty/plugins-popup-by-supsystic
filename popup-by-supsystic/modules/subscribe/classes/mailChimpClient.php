@@ -23,7 +23,7 @@ class mailChimpClientPps
     $this->api_key = $api_key;
     $datacentre = '';
     if (strpos($this->api_key, '-') !== false) {
-      list(, $datacentre) = explode('-', $this->api_key);
+      [, $datacentre] = explode('-', $this->api_key);
     }
     $this->api_endpoint = str_replace('<dc>', $datacentre, $this->api_endpoint);
   }

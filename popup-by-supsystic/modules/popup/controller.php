@@ -18,13 +18,13 @@ class popupControllerPps extends controllerPps
   {
     if (!empty($data)) {
       foreach ($data as $i => $v) {
-        $data[ $i ]['label'] = '<a class="" href="' . $this->getModule()->getEditLink($data[ $i ]['id']) . '">' . $data[ $i ]['label'] . '&nbsp;<i class="fa fa-fw fa-pencil" style="margin-top: 2px;"></i></a>';
+        $data[$i]['label'] = '<a class="" href="' . $this->getModule()->getEditLink($data[$i]['id']) . '">' . $data[$i]['label'] . '&nbsp;<i class="fa fa-fw fa-pencil" style="margin-top: 2px;"></i></a>';
         $conversion = 0;
-        if (!empty($data[ $i ]['unique_views']) && !empty($data[ $i ]['actions'])) {
-          $conversion = number_format(((int) $data[ $i ]['actions'] / (int) $data[ $i ]['unique_views']), 3);
+        if (!empty($data[$i]['unique_views']) && !empty($data[$i]['actions'])) {
+          $conversion = number_format((int) $data[$i]['actions'] / (int) $data[$i]['unique_views'], 3);
         }
-        $data[ $i ]['conversion'] = $conversion;
-        $data[ $i ]['active'] = $data[ $i ]['active'] ? '<span class="alert alert-success">' . __('Yes', PPS_LANG_CODE) . '</span>' : '<span class="alert alert-danger">' . __('No', PPS_LANG_CODE) . '</span>';
+        $data[$i]['conversion'] = $conversion;
+        $data[$i]['active'] = $data[$i]['active'] ? '<span class="alert alert-success">' . __('Yes', PPS_LANG_CODE) . '</span>' : '<span class="alert alert-danger">' . __('No', PPS_LANG_CODE) . '</span>';
 
         //$data[ $i ]['action'] = '<a class="button" style="margin-right: 10px;" href="'. $this->getModule()->getEditLink($data[ $i ]['id']). '"><i class="fa fa-fw fa-2x fa-pencil" style="margin-top: 2px;"></i></a>';
         //$data[ $i ]['action'] .= '<button href="#" onclick="ppsPopupRemoveRow('. $data[ $i ]['id']. ', this); return false;" title="'. __('Remove', PPS_LANG_CODE). '" class="button"><i class="fa fa-fw fa-2x fa-trash-o" style="margin-top: 5px;"></i></button>';
@@ -43,7 +43,7 @@ class popupControllerPps extends controllerPps
   }
   protected function _prepareModelBeforeListSelect($model)
   {
-    $this->getModel()->recalculateStatsForPopups();	// This was done for old users - from version 1.0.9, can be removed in future
+    $this->getModel()->recalculateStatsForPopups(); // This was done for old users - from version 1.0.9, can be removed in future
     $where = 'original_id != 0';
     if ($this->getModel()->abDeactivated()) {
       $where .= ' AND ab_id = 0';
@@ -55,7 +55,7 @@ class popupControllerPps extends controllerPps
   protected function _prepareSortOrder($sortOrder)
   {
     if ($sortOrder == 'conversion') {
-      $sortOrder = '(actions / unique_views)';	// Conversion in real-time calculation
+      $sortOrder = '(actions / unique_views)'; // Conversion in real-time calculation
     }
     return $sortOrder;
   }
@@ -91,22 +91,29 @@ class popupControllerPps extends controllerPps
       $this->_prepareGoogleMapAssetsForPreview($this->_prevPopupId);
       $popup = $this->getModel()->getById($this->_prevPopupId);
       $assetsStr = '<link rel="stylesheet" href="' . $this->getModule()->getModPath() . 'css/frontend.popup.css" type="text/css" media="all" />';
-      if ((isset($popup['params']['tpl']['enb_contact_form'])
-          && !empty($popup['params']['tpl']['enb_contact_form']))
-          && $this->getModule()->contactFormsSupported()
-      ) {
-        $form = frameCfs::_()->getModule('forms')->getModel()->getById($popup['params']['tpl']['contact_form']);
+      if (isset($popup['params']['tpl']['enb_contact_form']) && !empty($popup['params']['tpl']['enb_contact_form']) && $this->getModule()->contactFormsSupported()) {
+        global $wpdb;
+        $form = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}cfs_forms WHERE id= %d ", $popup['params']['tpl']['contact_form']), ARRAY_A);
         $assetsStr .= frameCfs::_()->getModule('forms')->getAssetsforPrevStr($form);
       }
       $popupContent = $this->getView()->generateHtml($popup);
-      $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-			<html dir="' . (function_exists('is_rtl') && is_rtl() ? 'rtl' : 'ltr') . '"><head>'
-      . '<meta content="' . get_option('html_type') . '; charset=' . get_option('blog_charset') . '" http-equiv="Content-Type">'
-      . '<script type="text/javascript" src="' . includes_url('js/jquery/jquery.js') . '"></script>'
-      . $this->_generateSocSharingAssetsForPreview($this->_prevPopupId)
-      . $this->_generateGoogleMapAssetsForPreview($this->_prevPopupId)
-      . $assetsStr
-      . '<style type="text/css">
+      $content =
+        '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+			<html dir="' .
+        (function_exists('is_rtl') && is_rtl() ? 'rtl' : 'ltr') .
+        '"><head>' .
+        '<meta content="' .
+        get_option('html_type') .
+        '; charset=' .
+        get_option('blog_charset') .
+        '" http-equiv="Content-Type">' .
+        '<script type="text/javascript" src="' .
+        includes_url('js/jquery/jquery.js') .
+        '"></script>' .
+        $this->_generateSocSharingAssetsForPreview($this->_prevPopupId) .
+        $this->_generateGoogleMapAssetsForPreview($this->_prevPopupId) .
+        $assetsStr .
+        '<style type="text/css">
 				html { overflow: visible !important; }
 				.ppsPopupPreloadImg {
 					width: 1px !important;
@@ -121,8 +128,8 @@ class popupControllerPps extends controllerPps
 					visibility: visible;
 					position: static;
 				}
-				</style>'
-      . '</head>';
+				</style>' .
+        '</head>';
       //wp_head();
       $content .= '<body>';
       $content .= $popupContent;
@@ -136,11 +143,7 @@ class popupControllerPps extends controllerPps
     $res = '';
     if (class_exists('SupsysticSocialSharing')) {
       global $supsysticSocialSharing;
-      if (isset($supsysticSocialSharing)
-          && !empty($supsysticSocialSharing)
-          && method_exists($supsysticSocialSharing, 'getEnvironment')
-          && ($uiMod = $supsysticSocialSharing->getEnvironment()->getModule('Ui'))
-      ) {
+      if (isset($supsysticSocialSharing) && !empty($supsysticSocialSharing) && method_exists($supsysticSocialSharing, 'getEnvironment') && ($uiMod = $supsysticSocialSharing->getEnvironment()->getModule('Ui'))) {
         $assetsForSocSharePlug = $uiMod->getAssets();
         if (!empty($assetsForSocSharePlug)) {
           $frontedHookNames = ['wp_enqueue_scripts', $supsysticSocialSharing->getEnvironment()->getConfig()->get('hooks_prefix') . 'before_html_build'];
@@ -161,9 +164,10 @@ class popupControllerPps extends controllerPps
             }
           }
           if (!empty($res)) {
-            $res = $this->_connectMainJsLibsForPrev()
-                // . '<script type="text/javascript"> var sssIgnoreSaveStatistics = true; </script>'
-                . $res;
+            $res =
+              $this->_connectMainJsLibsForPrev() .
+              // . '<script type="text/javascript"> var sssIgnoreSaveStatistics = true; </script>'
+              $res;
           }
         }
       }
@@ -182,18 +186,18 @@ class popupControllerPps extends controllerPps
         $scVars = frameGmp::_()->getJSVars();
         foreach ($scripts as $s) {
           if (isset($s['src']) && !empty($s['src']) && !in_array($s['handle'], $setAssets)) {
-            if ($scVars && isset($scVars[ $s['handle'] ]) && !empty($scVars[ $s['handle'] ])) {
+            if ($scVars && isset($scVars[$s['handle']]) && !empty($scVars[$s['handle']])) {
               $res .= "<script type='text/javascript'>"; // CDATA and type='text/javascript' is not needed for HTML 5
-              $res .= "/* <![CDATA[ */";
-              foreach ($scVars[ $s['handle'] ] as $name => $value) {
+              $res .= '/* <![CDATA[ */';
+              foreach ($scVars[$s['handle']] as $name => $value) {
                 if ($name == 'dataNoJson' && !is_array($value)) {
                   $res .= $value;
                 } else {
-                  $res .= "var $name = " . utilsGmp::jsonEncode($value) . ";";
+                  $res .= "var $name = " . utilsGmp::jsonEncode($value) . ';';
                 }
               }
-              $res .= "/* ]]> */";
-              $res .= "</script>";
+              $res .= '/* ]]> */';
+              $res .= '</script>';
             }
             $res .= '<script type="text/javascript" src="' . $s['src'] . '"></script>';
             $setAssets[] = $s['handle'];
@@ -249,7 +253,7 @@ class popupControllerPps extends controllerPps
     $forPro = (int) reqPps::getVar('for_pro');
     $forPromo = (int) reqPps::getVar('for_promo');
     $forWix = (int) reqPps::getVar('for_wix');
-    $selectColumns = ['id','label','active','original_id','params','html','css','img_preview','show_on','show_to','show_pages','type_id','date_created','sort_order'];
+    $selectColumns = ['id', 'label', 'active', 'original_id', 'params', 'html', 'css', 'img_preview', 'show_on', 'show_to', 'show_pages', 'type_id', 'date_created', 'sort_order'];
     $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if ($forWix) {
       $contentKeys = ['popup_id', 'html', 'css'];
@@ -266,15 +270,16 @@ class popupControllerPps extends controllerPps
       foreach ($popupList as $popup) {
         $addArr = [];
         foreach ($keys as $k) {
-          if (in_array($k, ['sort_order', 'type_id'])) {	// Numeric values
-            $addArr[] = "'$k' => " . $popup[ $k ] . "";
+          if (in_array($k, ['sort_order', 'type_id'])) {
+            // Numeric values
+            $addArr[] = "'$k' => " . $popup[$k] . '';
           } else {
-            $addArr[] = "'$k' => '" . $popup[ $k ] . "'";
+            $addArr[] = "'$k' => '" . $popup[$k] . "'";
           }
         }
-        $str .= $eol . "array(" . implode(', ', $addArr) . "),";
+        $str .= $eol . 'array(' . implode(', ', $addArr) . '),';
       }
-      $str .= $eol . ");";
+      $str .= $eol . ');';
       echo viewPps::ksesString($str);
       exit();
     }
@@ -303,7 +308,7 @@ class popupControllerPps extends controllerPps
         $arr = [];
         $addToKeys = empty($allKeys);
         foreach ($contentKeys as $k) {
-          $v = $k == 'popup_id' ? $popup['id'] : $popup[ $k ];
+          $v = $k == 'popup_id' ? $popup['id'] : $popup[$k];
           $arr[] = '"' . $wpdb->_real_escape($v) . '"';
         }
         /*foreach($popup as $k => $v) {
@@ -360,13 +365,13 @@ class popupControllerPps extends controllerPps
     $updateFor = [];
     if (!empty($getFor) && !empty($id)) {
       $generateKeys = [
-          'ppsSubscribeForm' => 'subscribe-' . $id,
-          'ppsLoginForm' => 'login-' . $id,
-          'ppsRegForm' => 'register-' . $id,
+        'ppsSubscribeForm' => 'subscribe-' . $id,
+        'ppsLoginForm' => 'login-' . $id,
+        'ppsRegForm' => 'register-' . $id,
       ];
       foreach ($getFor as $gf) {
-        if (isset($generateKeys[ $gf ])) {
-          $updateFor[ $gf ] = wp_create_nonce($generateKeys[ $gf ]);
+        if (isset($generateKeys[$gf])) {
+          $updateFor[$gf] = wp_create_nonce($generateKeys[$gf]);
         }
       }
     }
@@ -378,17 +383,13 @@ class popupControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear',
-                'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive',
-                'outPreviewHtml', 'updateLabel']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear', 'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive', 'outPreviewHtml', 'updateLabel'],
+      ],
     ];
   }
   public function getNoncedMethods()
   {
-    return ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear',
-    'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive',
-    'outPreviewHtml', 'updateLabel'];
+    return ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear', 'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive', 'outPreviewHtml', 'updateLabel'];
   }
 }

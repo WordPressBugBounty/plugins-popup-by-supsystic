@@ -35,9 +35,9 @@ class mailControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['testEmail', 'saveMailTestRes', 'saveOptions']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['testEmail', 'saveMailTestRes', 'saveOptions'],
+      ],
     ];
   }
   public function getNoncedMethods()

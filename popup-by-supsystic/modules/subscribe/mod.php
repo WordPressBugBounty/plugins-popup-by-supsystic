@@ -9,7 +9,8 @@ class subscribePps extends modulePps
   }
   public function modifyPopupCss($css, $popup)
   {
-    if ($popup['original_id'] == 54) {	// Bump! template
+    if ($popup['original_id'] == 54) {
+      // Bump! template
       $css .= '#ppsPopupShell_' . $popup['view_id'] . ' .g-recaptcha { background-color: transparent; height: auto; }';
     }
     return $css;
@@ -18,13 +19,13 @@ class subscribePps extends modulePps
   {
     if (empty($this->_destList)) {
       $this->_destList = dispatcherPps::applyFilters('subDestList', [
-          'wordpress' => ['label' => __('WordPress', PPS_LANG_CODE), 'require_confirm' => true],
-          // 'supsystic' => array('label' => __('Newsletter by Supsystic', PPS_LANG_CODE), 'require_confirm' => false),
-          'aweber' => ['label' => __('Aweber', PPS_LANG_CODE)],
-          'mailchimp' => ['label' => __('MailChimp', PPS_LANG_CODE), 'require_confirm' => true],
-          'mailpoet' => ['label' => __('MailPoet', PPS_LANG_CODE), 'require_confirm' => true],
-          //'newsletter' => array('label' => __('Newsletter', PPS_LANG_CODE), 'require_confirm' => true),
-          'jetpack' => ['label' => __('Jetpack', PPS_LANG_CODE), 'require_confirm' => true],
+        'wordpress' => ['label' => __('WordPress', PPS_LANG_CODE), 'require_confirm' => true],
+        // 'supsystic' => array('label' => __('Newsletter by Supsystic', PPS_LANG_CODE), 'require_confirm' => false),
+        'aweber' => ['label' => __('Aweber', PPS_LANG_CODE)],
+        'mailchimp' => ['label' => __('MailChimp', PPS_LANG_CODE), 'require_confirm' => true],
+        'mailpoet' => ['label' => __('MailPoet', PPS_LANG_CODE), 'require_confirm' => true],
+        //'newsletter' => array('label' => __('Newsletter', PPS_LANG_CODE), 'require_confirm' => true),
+        'jetpack' => ['label' => __('Jetpack', PPS_LANG_CODE), 'require_confirm' => true],
       ]);
     }
     return $this->_destList;
@@ -32,17 +33,15 @@ class subscribePps extends modulePps
   public function getDestByKey($key)
   {
     $this->getDestList();
-    return isset($this->_destList[ $key ]) ? $this->_destList[ $key ] : false;
+    return isset($this->_destList[$key]) ? $this->_destList[$key] : false;
   }
   public function generateFormStart($popup, $onlyForceSub = false)
   {
     $res = '';
-    $enbLogin = (isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']));
-    $enbReg = (isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']));
-    $enbSub = (isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']));
-    if (($enbLogin || $enbReg)
-        && framePps::_()->getModule('login') && !$onlyForceSub
-    ) {
+    $enbLogin = isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']);
+    $enbReg = isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']);
+    $enbSub = isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']);
+    if (($enbLogin || $enbReg) && framePps::_()->getModule('login') && !$onlyForceSub) {
       if ($enbLogin) {
         $res .= framePps::_()->getModule('login')->generateLoginFormStart($popup);
       }
@@ -50,9 +49,7 @@ class subscribePps extends modulePps
         $res .= framePps::_()->getModule('login')->generateRegFormStart($popup);
       }
     }
-    if ($enbSub && isset($popup['params']['tpl']['sub_dest']) && !empty($popup['params']['tpl']['sub_dest'])
-        && ($onlyForceSub || (!$enbLogin && !$enbReg))
-    ) {
+    if ($enbSub && isset($popup['params']['tpl']['sub_dest']) && !empty($popup['params']['tpl']['sub_dest']) && ($onlyForceSub || (!$enbLogin && !$enbReg))) {
       $subDest = $popup['params']['tpl']['sub_dest'];
       $view = $this->getView();
       $generateMethod = 'generateFormStart_' . $subDest;
@@ -82,36 +79,39 @@ class subscribePps extends modulePps
     } elseif (isset($popup['params']['tpl'][$pref . '_btn_label']) && !empty($popup['params']['tpl'][$pref . '_btn_label'])) {
       $btnLabel = $popup['params']['tpl'][$pref . '_btn_label'];
     }
-    return '<script type="text/javascript">'
-    . 'jQuery(function(){ '
-        . 'var $originalBtns;'
-        . 'var needClone;'
-        . ($isAlreadyLoggedIn
-        ? ('$originalBtns = jQuery("#' . $popup['view_html_id'] . '").find(".ppsSubscribeShell input[type=submit]:not(.ppsPopupClose)");'
-        . 'needClone = false;')
-        : ('$originalBtns = jQuery("#' . $popup['view_html_id'] . '").find(".ppsLoginForm input[type=submit]:not(.ppsPopupClose)");'
-        . 'if(!$originalBtns || !$originalBtns.length) {'
-        . '$originalBtns = jQuery("#' . $popup['view_html_id'] . '").find(".ppsRegForm input[type=submit]:not(.ppsPopupClose)");'
-        . '}'
-        . 'needClone = true;'))
-        . 'var $btns = needClone ? $originalBtns.clone() : $originalBtns;'
-        . (!empty($btnLabel)
-            ? '$btns.attr("value", "' . $btnLabel . '");'
-            : '')
-        . 'jQuery("#' . $popup['view_html_id'] . '").find(".' . $formClass . '").append( $btns );'
-        . ' });'
-    . '</script>';
+    return '<script type="text/javascript">' .
+      'jQuery(function(){ ' .
+      'var $originalBtns;' .
+      'var needClone;' .
+      ($isAlreadyLoggedIn
+        ? '$originalBtns = jQuery("#' . $popup['view_html_id'] . '").find(".ppsSubscribeShell input[type=submit]:not(.ppsPopupClose)");' . 'needClone = false;'
+        : '$originalBtns = jQuery("#' .
+          $popup['view_html_id'] .
+          '").find(".ppsLoginForm input[type=submit]:not(.ppsPopupClose)");' .
+          'if(!$originalBtns || !$originalBtns.length) {' .
+          '$originalBtns = jQuery("#' .
+          $popup['view_html_id'] .
+          '").find(".ppsRegForm input[type=submit]:not(.ppsPopupClose)");' .
+          '}' .
+          'needClone = true;') .
+      'var $btns = needClone ? $originalBtns.clone() : $originalBtns;' .
+      (!empty($btnLabel) ? '$btns.attr("value", "' . $btnLabel . '");' : '') .
+      'jQuery("#' .
+      $popup['view_html_id'] .
+      '").find(".' .
+      $formClass .
+      '").append( $btns );' .
+      ' });' .
+      '</script>';
   }
   public function generateFormEnd($popup)
   {
     $res = '';
-    $enbLogin = (isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']));
-    $enbReg = (isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']));
-    $enbSub = (isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']));
+    $enbLogin = isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']);
+    $enbReg = isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']);
+    $enbSub = isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']);
     $logRegFormShown = false;
-    if (($enbLogin || $enbReg)
-        && framePps::_()->getModule('login')
-    ) {
+    if (($enbLogin || $enbReg) && framePps::_()->getModule('login')) {
       if ($enbLogin) {
         $res .= framePps::_()->getModule('login')->generateLoginFormEnd($popup);
       }
@@ -161,10 +161,11 @@ class subscribePps extends modulePps
         if (in_array($role, ['administrator', 'editor'])) {
           continue;
         }
-        if ($role == 'subscriber') {	// Subscriber - at the begining of array
+        if ($role == 'subscriber') {
+          // Subscriber - at the begining of array
           $res = [$role => $data['name']] + $res;
         } else {
-          $res[ $role ] = $data['name'];
+          $res[$role] = $data['name'];
         }
       }
     }
@@ -173,13 +174,11 @@ class subscribePps extends modulePps
   public function generateFields($popup, $onlyForceSub = false)
   {
     $resHtml = '';
-    $enbLogin = (isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']));
-    $enbReg = (isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']));
-    $enbSub = (isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']));
-    $enbRecaptcha = (isset($popup['params']['tpl']['enb_captcha']) && !empty($popup['params']['tpl']['enb_captcha']));
-    if (($enbLogin || $enbReg)
-        && framePps::_()->getModule('login') && !$onlyForceSub
-    ) {
+    $enbLogin = isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login']);
+    $enbReg = isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']);
+    $enbSub = isset($popup['params']['tpl']['enb_subscribe']) && !empty($popup['params']['tpl']['enb_subscribe']);
+    $enbRecaptcha = isset($popup['params']['tpl']['enb_captcha']) && !empty($popup['params']['tpl']['enb_captcha']);
+    if (($enbLogin || $enbReg) && framePps::_()->getModule('login') && !$onlyForceSub) {
       if ($enbLogin) {
         $resHtml .= framePps::_()->getModule('login')->generateLoginFields($popup);
       }
@@ -196,28 +195,19 @@ class subscribePps extends modulePps
             if ($k == 'email') {
               $htmlType = 'email';
             }
-            if ($popup && isset($popup['params'])
-                && isset($popup['params']['tpl']['sub_dest'])
-                && $popup['params']['tpl']['sub_dest'] == 'aweber'
-                && !in_array($name, ['name', 'email'])
-                && strpos($name, 'custom ') !== 0
-            ) {
-              $name = 'custom ' . $name;	// This need for aweber to identify custom fields
+            if ($popup && isset($popup['params']) && isset($popup['params']['tpl']['sub_dest']) && $popup['params']['tpl']['sub_dest'] == 'aweber' && !in_array($name, ['name', 'email']) && strpos($name, 'custom ') !== 0) {
+              $name = 'custom ' . $name; // This need for aweber to identify custom fields
             }
-            if ($popup && isset($popup['params'])
-                && isset($popup['params']['tpl']['sub_dest'])
-                && $popup['params']['tpl']['sub_dest'] == 'arpreach'
-                && in_array($name, ['email'])
-            ) {
-              $name .= '_address';	// name for field email for arpreach should be email_address
+            if ($popup && isset($popup['params']) && isset($popup['params']['tpl']['sub_dest']) && $popup['params']['tpl']['sub_dest'] == 'arpreach' && in_array($name, ['email'])) {
+              $name .= '_address'; // name for field email for arpreach should be email_address
             }
             $htmlParams = [
-                'placeholder' => $f['label'],
+              'placeholder' => $f['label'],
             ];
             if ($htmlType == 'selectbox' && isset($f['options']) && !empty($f['options'])) {
               $htmlParams['options'] = [];
               foreach ($f['options'] as $opt) {
-                $htmlParams['options'][ $opt['name'] ] = isset($opt['label']) ? $opt['label'] : $opt['name'];
+                $htmlParams['options'][$opt['name']] = isset($opt['label']) ? $opt['label'] : $opt['name'];
               }
             }
             if ($htmlType == 'mailchimp_lists') {
@@ -227,14 +217,11 @@ class subscribePps extends modulePps
             if ($htmlType == 'mailchimp_groups_list') {
               $htmlType = 'selectbox';
               $htmlParams['options'] = [];
-              if ($popup && isset($popup['params'])
-                  && isset($popup['params']['tpl']['sub_mailchimp_groups_full'])
-                  && !empty($popup['params']['tpl']['sub_mailchimp_groups_full'])
-              ) {
+              if ($popup && isset($popup['params']) && isset($popup['params']['tpl']['sub_mailchimp_groups_full']) && !empty($popup['params']['tpl']['sub_mailchimp_groups_full'])) {
                 $mcGoups = explode(';', $popup['params']['tpl']['sub_mailchimp_groups_full']);
                 foreach ($mcGoups as $g) {
                   $gIdLabel = explode(':', $g);
-                  $htmlParams['options'][ $gIdLabel[0] ] = $gIdLabel[1];
+                  $htmlParams['options'][$gIdLabel[0]] = $gIdLabel[1];
                 }
               }
             }
@@ -245,7 +232,7 @@ class subscribePps extends modulePps
                 $htmlParams['value'] = do_shortcode($f['value']);
               }
             }
-            if (isset($f['mandatory']) && !empty($f['mandatory']) && (int)$f['mandatory']) {
+            if (isset($f['mandatory']) && !empty($f['mandatory']) && (int) $f['mandatory']) {
               $htmlParams['required'] = true;
             }
             if (in_array($htmlType, ['checkbox'])) {
@@ -264,7 +251,7 @@ class subscribePps extends modulePps
     }
     if (!empty($resHtml) && $enbRecaptcha && framePps::_()->getModule('sub_fields')) {
       $resHtml .= htmlPps::recaptcha('recap', [
-          'sitekey' => $popup['params']['tpl']['capt_site_key'],
+        'sitekey' => $popup['params']['tpl']['capt_site_key'],
       ]);
     }
     return $resHtml;

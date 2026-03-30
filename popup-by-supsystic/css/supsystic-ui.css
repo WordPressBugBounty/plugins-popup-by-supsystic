@@ -126,7 +126,7 @@ ul.supsystic-bar-controls > li.separator {
 .supsystic-inline-loader {
   min-width: 128px;
   min-height: 15px;
-  background: url("../img/ajax-loader.gif") no-repeat center center;
+  background: url('../img/ajax-loader.gif') no-repeat center center;
   /*display: inline-block;*/
 }
 
@@ -238,7 +238,7 @@ ul.supsystic-bar-controls > li.separator {
   outline: none;
 }
 
-input[type="color"] {
+input[type='color'] {
   width: 300px;
   height: 30px;
   border: 1px solid #ddd;
@@ -253,7 +253,7 @@ input[type="color"] {
   margin-left: 4px;
 }
 
-.column-title.title .photo-editor input[type="text"] {
+.column-title.title .photo-editor input[type='text'] {
   width: 100%;
 }
 /*Admin footer links*/
@@ -294,7 +294,7 @@ input[type="color"] {
   color: #7f8c8d;
 }
 .supsystic-breadcrumbs .breadcrumbs-separator {
-  background-image: url("images/arrows-sprite.png");
+  background-image: url('images/arrows-sprite.png');
   background-repeat: no-repeat;
   padding: 0 3px;
   background-position: -17px 7px;
@@ -506,7 +506,7 @@ input[type="color"] {
   width: calc(99% - 75px - 200px);
 }
 /*textboxes*/
-.supsystic-plugin input[type="text"] {
+.supsystic-plugin input[type='text'] {
   background-color: #f6f7f7;
   color: #252728;
   border-left: none;
@@ -515,13 +515,13 @@ input[type="color"] {
   border-top: 1px solid #dfe4e4;
   padding: 7px 5px;
 }
-.supsystic-plugin input[type="text"]:focus,
+.supsystic-plugin input[type='text']:focus,
 .supsystic-plugin textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-color: #4ae8ea;
 }
-.supsystic-plugin input[type="text"].ppsInputError,
+.supsystic-plugin input[type='text'].ppsInputError,
 .supsystic-plugin textarea.ppsInputError {
   border-color: #fa4e7f;
   border-bottom: none !important;
@@ -549,7 +549,7 @@ input[type="color"] {
   margin: 0px 7px;
 }
 .supsystic-plugin .ui-pg-table .ui-icon {
-  background-image: url("images/arrows-sprite.png") !important;
+  background-image: url('images/arrows-sprite.png') !important;
   background-repeat: no-repeat !important;
   width: 8px;
   height: 10px;
@@ -573,7 +573,7 @@ input[type="color"] {
   background-position: -24px 0px !important;
 }
 .supsystic-plugin .s-ico .ui-grid-ico-sort {
-  background-image: url("images/arrows-sprite.png") !important;
+  background-image: url('images/arrows-sprite.png') !important;
   background-repeat: no-repeat !important;
   width: 8px;
   height: 4px;
@@ -630,8 +630,7 @@ input[type="color"] {
 .supsystic-plugin .chosen-container-active .chosen-choices {
   border-color: #4ae8ea;
 }
-.supsystic-plugin
-  .chosen-container.chosen-container-multi:not(.chosen-responsive) {
+.supsystic-plugin .chosen-container.chosen-container-multi:not(.chosen-responsive) {
   min-width: 300px; /*As if select is hidden on chosen init action - it will be with width: 0 - and this is really bad*/
 }
 .supsystic-plugin .chosen-responsive {
@@ -724,10 +723,10 @@ input[type="color"] {
   top: 2px;
 }
 .ui-icon-circle-triangle-w:before {
-  content: "\f060";
+  content: '\f060';
 }
 .ui-icon-circle-triangle-e:before {
-  content: "\f061";
+  content: '\f061';
 }
 .ui-datepicker td span,
 .ui-datepicker td a {

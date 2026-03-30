@@ -226,9 +226,10 @@ class reqPps
   public static function getMode()
   {
     $mod = '';
-    if (!($mod = self::getVar('mod'))) {  //Frontend usage
+    if (!($mod = self::getVar('mod'))) {
+      //Frontend usage
       $mod = self::getVar('page');
-    }     //Admin usage
+    } //Admin usage
     return $mod;
   }
 }

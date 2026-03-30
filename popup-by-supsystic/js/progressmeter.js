@@ -20,9 +20,9 @@
 
       var options = $.extend(
         {
-          type: "background-horizontal",
-          loading: "Loading..",
-          finished: "Done!",
+          type: 'background-horizontal',
+          loading: 'Loading..',
+          finished: 'Done!',
         },
         button.data()
       );
@@ -30,25 +30,23 @@
       // Add the data attributes if they are missing from the element.
       // They are used by our CSS code to show the messages
       button.attr({
-        "data-loading": options.loading,
-        "data-finished": options.finished,
+        'data-loading': options.loading,
+        'data-finished': options.finished,
       });
 
       // Add the needed markup for the progress bar to the button
-      var bar = $('<span class="tz-bar ' + options.type + '">').appendTo(
-        button
-      );
+      var bar = $('<span class="tz-bar ' + options.type + '">').appendTo(button);
 
       // The progress event tells the button to update the progress bar
-      button.on("progress", function (e, val, absolute, finish) {
-        if (!button.hasClass("in-progress")) {
+      button.on('progress', function (e, val, absolute, finish) {
+        if (!button.hasClass('in-progress')) {
           // This is the first progress event for the button (or the
           // first after it has finished in a previous run). Re-initialize
           // the progress and remove some classes that may be left.
 
           bar.show();
           progress = 0;
-          button.removeClass("finished").addClass("in-progress");
+          button.removeClass('finished').addClass('in-progress');
         }
 
         // val, absolute and finish are event data passed by the progressIncrement
@@ -65,11 +63,11 @@
         }
 
         if (finish) {
-          button.removeClass("in-progress").addClass("finished");
+          button.removeClass('in-progress').addClass('finished');
 
           bar.delay(500).fadeOut(function () {
             // Trigger the custom progress-finish event
-            button.trigger("progress-finish");
+            button.trigger('progress-finish');
             setProgress(0);
           });
         }
@@ -78,10 +76,8 @@
       });
 
       function setProgress(percentage) {
-        bar
-          .filter(".background-horizontal,.background-bar")
-          .width(percentage + "%");
-        bar.filter(".background-vertical").height(percentage + "%");
+        bar.filter('.background-horizontal,.background-bar').width(percentage + '%');
+        bar.filter('.background-vertical').height(percentage + '%');
       }
     });
   };
@@ -93,12 +89,12 @@
     var button = this.first(),
       last_progress = new Date().getTime();
 
-    if (button.hasClass("in-progress")) {
+    if (button.hasClass('in-progress')) {
       // Don't start it a second time!
       return this;
     }
 
-    button.on("progress", function () {
+    button.on('progress', function () {
       last_progress = new Date().getTime();
     });
 
@@ -114,7 +110,7 @@
       }
     }, 500);
 
-    button.on("progress-finish", function () {
+    button.on('progress-finish', function () {
       window.clearInterval(interval);
     });
 
@@ -130,7 +126,7 @@
 
     var button = this.first();
 
-    button.trigger("progress", [val]);
+    button.trigger('progress', [val]);
 
     return this;
   };
@@ -143,7 +139,7 @@
       finish = true;
     }
 
-    return this.first().trigger("progress", [val, true, finish]);
+    return this.first().trigger('progress', [val, true, finish]);
   };
 
   // This function creates a progress meter that
@@ -151,20 +147,20 @@
 
   $.fn.progressTimed = function (seconds, cb) {
     var button = this.first(),
-      bar = button.find(".tz-bar");
+      bar = button.find('.tz-bar');
 
-    if (button.is(".in-progress")) {
+    if (button.is('.in-progress')) {
       return this;
     }
 
     // Set a transition declaration for the duration of the meter.
     // CSS will do the job of animating the progress bar for us.
 
-    bar.css("transition", seconds + "s linear");
+    bar.css('transition', seconds + 's linear');
     button.progressSet(99);
 
     window.setTimeout(function () {
-      bar.css("transition", "");
+      bar.css('transition', '');
       button.progressFinish();
 
       if ($.isFunction(cb)) {

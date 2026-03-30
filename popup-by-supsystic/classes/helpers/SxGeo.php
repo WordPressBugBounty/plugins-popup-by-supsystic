@@ -35,22 +35,261 @@ class SxGeo
   protected $b_idx_len;
 
   public $id2iso = [
-      '', 'AP', 'EU', 'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'CW', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU',
-      'AW', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BM', 'BN', 'BO', 'BR', 'BS',
-      'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN',
-      'CO', 'CR', 'CU', 'CV', 'CX', 'CY', 'CZ', 'DE', 'DJ', 'DK', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG',
-      'EH', 'ER', 'ES', 'ET', 'FI', 'FJ', 'FK', 'FM', 'FO', 'FR', 'SX', 'GA', 'GB', 'GD', 'GE', 'GF',
-      'GH', 'GI', 'GL', 'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN',
-      'HR', 'HT', 'HU', 'ID', 'IE', 'IL', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JM', 'JO', 'JP', 'KE',
-      'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB', 'LC', 'LI', 'LK', 'LR',
-      'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP',
-      'MQ', 'MR', 'MS', 'MT', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI',
-      'NL', 'NO', 'NP', 'NR', 'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN',
-      'PR', 'PS', 'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE', 'SG',
-      'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'ST', 'SV', 'SY', 'SZ', 'TC', 'TD', 'TF',
-      'TG', 'TH', 'TJ', 'TK', 'TM', 'TN', 'TO', 'TL', 'TR', 'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM',
-      'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG', 'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'RS', 'ZA',
-      'ZM', 'ME', 'ZW', 'A1', 'XK', 'O1', 'AX', 'GG', 'IM', 'JE', 'BL', 'MF', 'BQ', 'SS'
+    '',
+    'AP',
+    'EU',
+    'AD',
+    'AE',
+    'AF',
+    'AG',
+    'AI',
+    'AL',
+    'AM',
+    'CW',
+    'AO',
+    'AQ',
+    'AR',
+    'AS',
+    'AT',
+    'AU',
+    'AW',
+    'AZ',
+    'BA',
+    'BB',
+    'BD',
+    'BE',
+    'BF',
+    'BG',
+    'BH',
+    'BI',
+    'BJ',
+    'BM',
+    'BN',
+    'BO',
+    'BR',
+    'BS',
+    'BT',
+    'BV',
+    'BW',
+    'BY',
+    'BZ',
+    'CA',
+    'CC',
+    'CD',
+    'CF',
+    'CG',
+    'CH',
+    'CI',
+    'CK',
+    'CL',
+    'CM',
+    'CN',
+    'CO',
+    'CR',
+    'CU',
+    'CV',
+    'CX',
+    'CY',
+    'CZ',
+    'DE',
+    'DJ',
+    'DK',
+    'DM',
+    'DO',
+    'DZ',
+    'EC',
+    'EE',
+    'EG',
+    'EH',
+    'ER',
+    'ES',
+    'ET',
+    'FI',
+    'FJ',
+    'FK',
+    'FM',
+    'FO',
+    'FR',
+    'SX',
+    'GA',
+    'GB',
+    'GD',
+    'GE',
+    'GF',
+    'GH',
+    'GI',
+    'GL',
+    'GM',
+    'GN',
+    'GP',
+    'GQ',
+    'GR',
+    'GS',
+    'GT',
+    'GU',
+    'GW',
+    'GY',
+    'HK',
+    'HM',
+    'HN',
+    'HR',
+    'HT',
+    'HU',
+    'ID',
+    'IE',
+    'IL',
+    'IN',
+    'IO',
+    'IQ',
+    'IR',
+    'IS',
+    'IT',
+    'JM',
+    'JO',
+    'JP',
+    'KE',
+    'KG',
+    'KH',
+    'KI',
+    'KM',
+    'KN',
+    'KP',
+    'KR',
+    'KW',
+    'KY',
+    'KZ',
+    'LA',
+    'LB',
+    'LC',
+    'LI',
+    'LK',
+    'LR',
+    'LS',
+    'LT',
+    'LU',
+    'LV',
+    'LY',
+    'MA',
+    'MC',
+    'MD',
+    'MG',
+    'MH',
+    'MK',
+    'ML',
+    'MM',
+    'MN',
+    'MO',
+    'MP',
+    'MQ',
+    'MR',
+    'MS',
+    'MT',
+    'MU',
+    'MV',
+    'MW',
+    'MX',
+    'MY',
+    'MZ',
+    'NA',
+    'NC',
+    'NE',
+    'NF',
+    'NG',
+    'NI',
+    'NL',
+    'NO',
+    'NP',
+    'NR',
+    'NU',
+    'NZ',
+    'OM',
+    'PA',
+    'PE',
+    'PF',
+    'PG',
+    'PH',
+    'PK',
+    'PL',
+    'PM',
+    'PN',
+    'PR',
+    'PS',
+    'PT',
+    'PW',
+    'PY',
+    'QA',
+    'RE',
+    'RO',
+    'RU',
+    'RW',
+    'SA',
+    'SB',
+    'SC',
+    'SD',
+    'SE',
+    'SG',
+    'SH',
+    'SI',
+    'SJ',
+    'SK',
+    'SL',
+    'SM',
+    'SN',
+    'SO',
+    'SR',
+    'ST',
+    'SV',
+    'SY',
+    'SZ',
+    'TC',
+    'TD',
+    'TF',
+    'TG',
+    'TH',
+    'TJ',
+    'TK',
+    'TM',
+    'TN',
+    'TO',
+    'TL',
+    'TR',
+    'TT',
+    'TV',
+    'TW',
+    'TZ',
+    'UA',
+    'UG',
+    'UM',
+    'US',
+    'UY',
+    'UZ',
+    'VA',
+    'VC',
+    'VE',
+    'VG',
+    'VI',
+    'VN',
+    'VU',
+    'WF',
+    'WS',
+    'YE',
+    'YT',
+    'RS',
+    'ZA',
+    'ZM',
+    'ME',
+    'ZW',
+    'A1',
+    'XK',
+    'O1',
+    'AX',
+    'GG',
+    'IM',
+    'JE',
+    'BL',
+    'MF',
+    'BQ',
+    'SS',
   ];
 
   public $batch_mode = false;
@@ -86,7 +325,7 @@ class SxGeo
 
     $this->db_begin = ftell($this->fh);
     if ($this->batch_mode) {
-      $this->b_idx_arr = array_values(unpack("N*", $this->b_idx_str)); // Быстрее в 5 раз, чем с циклом
+      $this->b_idx_arr = array_values(unpack('N*', $this->b_idx_str)); // Быстрее в 5 раз, чем с циклом
       unset($this->b_idx_str);
       $this->m_idx_arr = str_split($this->m_idx_str, 4); // Быстрее в 5 раз чем с циклом
       unset($this->m_idx_str);
@@ -105,7 +344,7 @@ class SxGeo
   {
     if ($this->batch_mode) {
       while ($max - $min > 8) {
-        $offset = ($min + $max) >> 1;
+        $offset = $min + $max >> 1;
         if ($ipn > $this->m_idx_arr[$offset]) {
           $min = $offset;
         } else {
@@ -116,7 +355,7 @@ class SxGeo
       }
     } else {
       while ($max - $min > 8) {
-        $offset = ($min + $max) >> 1;
+        $offset = $min + $max >> 1;
         if ($ipn > substr($this->m_idx_str, $offset * 4, 4)) {
           $min = $offset;
         } else {
@@ -126,7 +365,7 @@ class SxGeo
       while ($ipn > substr($this->m_idx_str, $min * 4, 4) && $min++ < $max) {
       }
     }
-    return  $min;
+    return $min;
   }
 
   protected function search_db($str, $ipn, $min, $max)
@@ -134,7 +373,7 @@ class SxGeo
     if ($max - $min > 1) {
       $ipn = substr($ipn, 1);
       while ($max - $min > 8) {
-        $offset = ($min + $max) >> 1;
+        $offset = $min + $max >> 1;
         if ($ipn > substr($str, $offset * $this->block_len, 3)) {
           $min = $offset;
         } else {
@@ -151,7 +390,7 @@ class SxGeo
 
   public function get_num($ip)
   {
-    $ip1n = (int)$ip; // Первый байт
+    $ip1n = (int) $ip; // Первый байт
     if ($ip1n == 0 || $ip1n == 10 || $ip1n == 127 || $ip1n >= $this->b_idx_len || false === ($ipn = ip2long($ip))) {
       return false;
     }
@@ -161,7 +400,7 @@ class SxGeo
     if ($this->batch_mode) {
       $blocks = ['min' => $this->b_idx_arr[$ip1n - 1], 'max' => $this->b_idx_arr[$ip1n]];
     } else {
-      $blocks = unpack("Nmin/Nmax", substr($this->b_idx_str, ($ip1n - 1) * 4, 8));
+      $blocks = unpack('Nmin/Nmax', substr($this->b_idx_str, ($ip1n - 1) * 4, 8));
     }
     if ($blocks['max'] - $blocks['min'] > $this->range) {
       // Ищем блок в основном индексе
@@ -242,7 +481,7 @@ class SxGeo
     $pack = explode('/', $pack);
     $pos = 0;
     foreach ($pack as $p) {
-      list($type, $name) = explode(':', $p);
+      [$type, $name] = explode(':', $p);
       $type0 = $type[0];
       if ($empty) {
         $unpacked[$name] = $type0 == 'b' || $type0 == 'c' ? '' : 0;
@@ -250,52 +489,73 @@ class SxGeo
       }
       switch ($type0) {
         case 't':
-        case 'T': $l = 1;
+        case 'T':
+          $l = 1;
           break;
         case 's':
         case 'n':
-        case 'S': $l = 2;
+        case 'S':
+          $l = 2;
           break;
         case 'm':
-        case 'M': $l = 3;
+        case 'M':
+          $l = 3;
           break;
-        case 'd': $l = 8;
+        case 'd':
+          $l = 8;
           break;
-        case 'c': $l = (int)substr($type, 1);
+        case 'c':
+          $l = (int) substr($type, 1);
           break;
-        case 'b': $l = strpos($item, "\0", $pos) - $pos;
+        case 'b':
+          $l = strpos($item, "\0", $pos) - $pos;
           break;
-        default: $l = 4;
+        default:
+          $l = 4;
       }
       $val = substr($item, $pos, $l);
       switch ($type0) {
-        case 't': $v = unpack('c', $val);
+        case 't':
+          $v = unpack('c', $val);
           break;
-        case 'T': $v = unpack('C', $val);
+        case 'T':
+          $v = unpack('C', $val);
           break;
-        case 's': $v = unpack('s', $val);
+        case 's':
+          $v = unpack('s', $val);
           break;
-        case 'S': $v = unpack('S', $val);
+        case 'S':
+          $v = unpack('S', $val);
           break;
-        case 'm': $v = unpack('l', $val . (ord($val[2]) >> 7 ? "\xff" : "\0"));
+        case 'm':
+          $v = unpack('l', $val . (ord($val[2]) >> 7 ? "\xff" : "\0"));
           break;
-        case 'M': $v = unpack('L', $val . "\0");
+        case 'M':
+          $v = unpack('L', $val . "\0");
           break;
-        case 'i': $v = unpack('l', $val);
+        case 'i':
+          $v = unpack('l', $val);
           break;
-        case 'I': $v = unpack('L', $val);
+        case 'I':
+          $v = unpack('L', $val);
           break;
-        case 'f': $v = unpack('f', $val);
+        case 'f':
+          $v = unpack('f', $val);
           break;
-        case 'd': $v = unpack('d', $val);
+        case 'd':
+          $v = unpack('d', $val);
           break;
-        case 'n': $v = current(unpack('s', $val)) / pow(10, $type[1]);
+        case 'n':
+          $v = current(unpack('s', $val)) / pow(10, $type[1]);
           break;
-        case 'N': $v = current(unpack('l', $val)) / pow(10, $type[1]);
+        case 'N':
+          $v = current(unpack('l', $val)) / pow(10, $type[1]);
           break;
-        case 'c': $v = rtrim($val, ' ');
+        case 'c':
+          $v = rtrim($val, ' ');
           break;
-        case 'b': $v = $val;
+        case 'b':
+          $v = $val;
           $l++;
           break;
       }
@@ -342,27 +602,27 @@ class SxGeo
     $charset = ['utf-8', 'latin1', 'cp1251'];
     $types = ['n/a', 'SxGeo Country', 'SxGeo City RU', 'SxGeo City EN', 'SxGeo City', 'SxGeo City Max RU', 'SxGeo City Max EN', 'SxGeo City Max'];
     return [
-        'Created' => date('Y.m.d', $this->info['time']),
-        'Timestamp' => $this->info['time'],
-        'Charset' => $charset[$this->info['charset']],
-        'Type' => $types[$this->info['type']],
-        'Byte Index' => $this->b_idx_len,
-        'Main Index' => $this->m_idx_len,
-        'Blocks In Index Item' => $this->range,
-        'IP Blocks' => $this->db_items,
-        'Block Size' => $this->block_len,
-        'City' => [
-            'Max Length' => $this->max_city,
-            'Total Size' => $this->info['city_size'],
-        ],
-        'Region' => [
-            'Max Length' => $this->max_region,
-            'Total Size' => $this->info['region_size'],
-        ],
-        'Country' => [
-            'Max Length' => $this->max_country,
-            'Total Size' => $this->info['country_size'],
-        ],
+      'Created' => date('Y.m.d', $this->info['time']),
+      'Timestamp' => $this->info['time'],
+      'Charset' => $charset[$this->info['charset']],
+      'Type' => $types[$this->info['type']],
+      'Byte Index' => $this->b_idx_len,
+      'Main Index' => $this->m_idx_len,
+      'Blocks In Index Item' => $this->range,
+      'IP Blocks' => $this->db_items,
+      'Block Size' => $this->block_len,
+      'City' => [
+        'Max Length' => $this->max_city,
+        'Total Size' => $this->info['city_size'],
+      ],
+      'Region' => [
+        'Max Length' => $this->max_region,
+        'Total Size' => $this->info['region_size'],
+      ],
+      'Country' => [
+        'Max Length' => $this->max_country,
+        'Total Size' => $this->info['country_size'],
+      ],
     ];
   }
 }

@@ -19,9 +19,9 @@ class optionsControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['saveGroup']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['saveGroup'],
+      ],
     ];
   }
 }

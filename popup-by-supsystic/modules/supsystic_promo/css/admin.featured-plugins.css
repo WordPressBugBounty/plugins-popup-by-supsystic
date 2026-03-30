@@ -235,7 +235,7 @@
   transition-duration: 0.3s;
 }
 .hvr-shutter-out-horizontal:before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -1;
   top: 0;

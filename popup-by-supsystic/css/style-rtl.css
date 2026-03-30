@@ -1,9 +1,7 @@
 .supsystic-plugin .supsystic-content .supsystic-navigation {
   left: 0;
 }
-.supsystic-plugin
-  .supsystic-content
-  .supsystic-navigation.supsystic-sticky-active {
+.supsystic-plugin .supsystic-content .supsystic-navigation.supsystic-sticky-active {
   left: 20px;
 }
 #supsystic-breadcrumbs {

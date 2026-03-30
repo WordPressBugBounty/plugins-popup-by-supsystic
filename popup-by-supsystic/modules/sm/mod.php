@@ -1,7 +1,8 @@
 <?php
 
-class smPps extends modulePps	//sm == socialmedia
-{private $_availableLinks = [];
+class smPps extends modulePps //sm == socialmedia
+{
+  private $_availableLinks = [];
   private $_availableDesigns = [];
   public function generateHtml($popup)
   {
@@ -13,9 +14,7 @@ class smPps extends modulePps	//sm == socialmedia
     $this->getAvailableLinks();
     $this->getAvailableDesigns();
     $currFullUrl = uriPps::getFullUrl();
-    $designKey = isset($popup['params']['tpl']['sm_design']) && isset($this->_availableDesigns[ $popup['params']['tpl']['sm_design'] ])
-            ? $popup['params']['tpl']['sm_design']
-            : 'boxy';
+    $designKey = isset($popup['params']['tpl']['sm_design']) && isset($this->_availableDesigns[$popup['params']['tpl']['sm_design']]) ? $popup['params']['tpl']['sm_design'] : 'boxy';
     $res .= '<div class="ppsSmLinksShell ppsSmLinksShell_' . $designKey . '">';
     foreach ($this->_availableLinks as $lKey => $lData) {
       if (isset($popup['params']['tpl']['enb_sm_' . $lKey]) && !empty($popup['params']['tpl']['enb_sm_' . $lKey])) {
@@ -31,9 +30,9 @@ class smPps extends modulePps	//sm == socialmedia
   {
     if (empty($this->_availableLinks)) {
       $this->_availableLinks = [
-          'facebook' => ['label' => __('Facebook', PPS_LANG_CODE), 'share_link' => 'https://www.facebook.com/sharer/sharer.php?u=', 'id' => 1],
-          'googleplus' => ['label' => __('Google+', PPS_LANG_CODE), 'share_link' => 'https://plus.google.com/share?url=', 'id' => 2],
-          'twitter' => ['label' => __('Twitter', PPS_LANG_CODE), 'share_link' => 'https://twitter.com/home?status=', 'id' => 3],
+        'facebook' => ['label' => __('Facebook', PPS_LANG_CODE), 'share_link' => 'https://www.facebook.com/sharer/sharer.php?u=', 'id' => 1],
+        'googleplus' => ['label' => __('Google+', PPS_LANG_CODE), 'share_link' => 'https://plus.google.com/share?url=', 'id' => 2],
+        'twitter' => ['label' => __('Twitter', PPS_LANG_CODE), 'share_link' => 'https://twitter.com/home?status=', 'id' => 3],
       ];
     }
     return $this->_availableLinks;
@@ -41,7 +40,7 @@ class smPps extends modulePps	//sm == socialmedia
   public function getTypeIdByCode($code)
   {
     $this->getAvailableLinks();
-    return isset($this->_availableLinks[ $code ]) ? $this->_availableLinks[ $code ]['id'] : 0;
+    return isset($this->_availableLinks[$code]) ? $this->_availableLinks[$code]['id'] : 0;
   }
   public function getTypeById($id)
   {
@@ -60,8 +59,8 @@ class smPps extends modulePps	//sm == socialmedia
   {
     if (empty($this->_availableDesigns)) {
       $this->_availableDesigns = [
-          'simple' => ['label' => __('Simple', PPS_LANG_CODE)],
-          'boxy' => ['label' => __('Boxy', PPS_LANG_CODE)],
+        'simple' => ['label' => __('Simple', PPS_LANG_CODE)],
+        'boxy' => ['label' => __('Boxy', PPS_LANG_CODE)],
       ];
     }
     return $this->_availableDesigns;

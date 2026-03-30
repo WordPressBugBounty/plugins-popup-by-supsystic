@@ -7,9 +7,6 @@ class tableCountriesPps extends tablePps
     $this->_table = '@__countries';
     $this->_id = 'id';
     $this->_alias = 'pps_countries';
-    $this->_addField('id', 'text', 'int')
-            ->_addField('name', 'text', 'varchar')
-            ->_addField('iso_code_2', 'text', 'varchar')
-            ->_addField('iso_code_3', 'text', 'varchar');
+    $this->_addField('id', 'text', 'int')->_addField('name', 'text', 'varchar')->_addField('iso_code_2', 'text', 'varchar')->_addField('iso_code_3', 'text', 'varchar');
   }
 }

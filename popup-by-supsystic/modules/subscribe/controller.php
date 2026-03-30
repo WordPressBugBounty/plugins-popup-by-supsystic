@@ -7,7 +7,7 @@ class subscribeControllerPps extends controllerPps
     $res = new responsePps();
     $data = reqPps::get('post');
     $id = isset($data['id']) ? (int) $data['id'] : 0;
-    if ((int)framePps::_()->getModule('options')->get('enable_spam_filter')) {
+    if ((int) framePps::_()->getModule('options')->get('enable_spam_filter')) {
       $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : reqPps::getVar('_wpnonce');
       if (!wp_verify_nonce($nonce, 'subscribe-' . $id)) {
         die('Some error with your request.........');
@@ -17,12 +17,8 @@ class subscribeControllerPps extends controllerPps
       $dest = $this->getModel()->getDest();
       $destData = $this->getModule()->getDestByKey($dest);
       $lastPopup = $this->getModel()->getLastPopup();
-      $withoutConfirm = (isset($lastPopup['params']['tpl']['sub_ignore_confirm']) && $lastPopup['params']['tpl']['sub_ignore_confirm'])
-          || (isset($lastPopup['params']['tpl']['sub_dsbl_dbl_opt_id']) && $lastPopup['params']['tpl']['sub_dsbl_dbl_opt_id'] && $dest == 'mailchimp');
-      if (isset($lastPopup['params']['tpl']['sub_dest'])
-          && $lastPopup['params']['tpl']['sub_dest'] == 'mailpoet'
-          && $this->getModel()->getMailPoetVer()
-      ) {
+      $withoutConfirm = (isset($lastPopup['params']['tpl']['sub_ignore_confirm']) && $lastPopup['params']['tpl']['sub_ignore_confirm']) || (isset($lastPopup['params']['tpl']['sub_dsbl_dbl_opt_id']) && $lastPopup['params']['tpl']['sub_dsbl_dbl_opt_id'] && $dest == 'mailchimp');
+      if (isset($lastPopup['params']['tpl']['sub_dest']) && $lastPopup['params']['tpl']['sub_dest'] == 'mailpoet' && $this->getModel()->getMailPoetVer()) {
         $withoutConfirm = !$this->getModel()->mailPoetRequireConfirm();
       }
       // User was subscribed with success before - so just ignore this here
@@ -31,31 +27,22 @@ class subscribeControllerPps extends controllerPps
       }
       $isSubInternal = $this->getModel()->isSubscribedInternal();
       $forceRequireConfirm = false;
-      if (!$isSubInternal && framePps::_()->getModule($dest)) {	// Confirm can be required by other subscribe engines
+      if (!$isSubInternal && framePps::_()->getModule($dest)) {
+        // Confirm can be required by other subscribe engines
         $forceRequireConfirm = framePps::_()->getModule($dest)->getModel()->requireConfirm();
       }
       if (($destData && isset($destData['require_confirm']) && $destData['require_confirm'] && !$withoutConfirm) || $forceRequireConfirm) {
-        $res->addMessage(isset($lastPopup['params']['tpl']['sub_txt_confirm_sent'])
-                ? $lastPopup['params']['tpl']['sub_txt_confirm_sent'] :
-                __('Confirmation link was sent to your email address. Check your email!', PPS_LANG_CODE));
+        $res->addMessage(isset($lastPopup['params']['tpl']['sub_txt_confirm_sent']) ? $lastPopup['params']['tpl']['sub_txt_confirm_sent'] : __('Confirmation link was sent to your email address. Check your email!', PPS_LANG_CODE));
       } else {
-        $res->addMessage(isset($lastPopup['params']['tpl']['sub_txt_success'])
-                    ? $lastPopup['params']['tpl']['sub_txt_success']
-                    : __('Thank you for subscribing!', PPS_LANG_CODE));
+        $res->addMessage(isset($lastPopup['params']['tpl']['sub_txt_success']) ? $lastPopup['params']['tpl']['sub_txt_success'] : __('Thank you for subscribing!', PPS_LANG_CODE));
       }
-      $redirectUrl = isset($lastPopup['params']['tpl']['sub_redirect_url']) && !empty($lastPopup['params']['tpl']['sub_redirect_url'])
-              ? $lastPopup['params']['tpl']['sub_redirect_url']
-              : false;
+      $redirectUrl = isset($lastPopup['params']['tpl']['sub_redirect_url']) && !empty($lastPopup['params']['tpl']['sub_redirect_url']) ? $lastPopup['params']['tpl']['sub_redirect_url'] : false;
       if (!empty($redirectUrl)) {
         $res->addData('redirect', uriPps::normal($redirectUrl));
       }
     } else {
       $lastPopup = $this->getModel()->getLastPopup();
-      if ($lastPopup
-          && isset($lastPopup['params']['tpl']['sub_redirect_email_exists'])
-          && !empty($lastPopup['params']['tpl']['sub_redirect_email_exists'])
-          && $this->getModel()->getEmailExists()
-      ) {
+      if ($lastPopup && isset($lastPopup['params']['tpl']['sub_redirect_email_exists']) && !empty($lastPopup['params']['tpl']['sub_redirect_email_exists']) && $this->getModel()->getEmailExists()) {
         $this->_setConfirmedCookie($lastPopup['id']);
         $res->addData('emailExistsRedirect', $lastPopup['params']['tpl']['sub_redirect_email_exists']);
       }
@@ -69,10 +56,13 @@ class subscribeControllerPps extends controllerPps
         }
         $popupActions['subscribe'] = date('m-d-Y H:i:s');
         reqPps::setVar('pps_actions_' . $id, $popupActions, 'cookie', ['expire' => 7 * 24 * 3600]);
-        framePps::_()->getModule('statistics')->getModel()->add([
+        framePps::_()
+          ->getModule('statistics')
+          ->getModel()
+          ->add([
             'id' => $id,
             'type' => 'subscribe',
-        ]);
+          ]);
       }
       $res->mainRedirect(isset($redirectUrl) && $redirectUrl ? $redirectUrl : '');
     }
@@ -138,14 +128,12 @@ class subscribeControllerPps extends controllerPps
     importClassPps('filegeneratorPps');
     importClassPps('csvgeneratorPps');
 
-    $fileTitle = $forReg
-        ? sprintf(__('Registered from %s', PPS_LANG_CODE), htmlspecialchars($label))
-        : sprintf(__('Subscribed to %s', PPS_LANG_CODE), htmlspecialchars($label));
+    $fileTitle = $forReg ? sprintf(__('Registered from %s', PPS_LANG_CODE), htmlspecialchars($label)) : sprintf(__('Subscribed to %s', PPS_LANG_CODE), htmlspecialchars($label));
 
     $csvGenerator = new csvgeneratorPps($fileTitle);
     $labels = [
-        'username' => __('Username', PPS_LANG_CODE),
-        'email' => __('Email', PPS_LANG_CODE),
+      'username' => __('Username', PPS_LANG_CODE),
+      'email' => __('Email', PPS_LANG_CODE),
     ];
     if ($popup) {
       // Add additional subscribe fields
@@ -153,15 +141,15 @@ class subscribeControllerPps extends controllerPps
         foreach ($popup['params']['tpl']['sub_fields'] as $k => $f) {
           if (in_array($k, ['name', 'email'])) {
             continue;
-          }	// Ignore standard fields
-          $labels[ 'sub_field_' . $k ] = $f['label'];
+          } // Ignore standard fields
+          $labels['sub_field_' . $k] = $f['label'];
         }
       }
     }
     $labels = array_merge($labels, [
-        'activated' => __('Activated', PPS_LANG_CODE),
-        'popup_id' => __('PopUp ID', PPS_LANG_CODE),
-        'date_created' => __('Date Created', PPS_LANG_CODE),
+      'activated' => __('Activated', PPS_LANG_CODE),
+      'popup_id' => __('PopUp ID', PPS_LANG_CODE),
+      'date_created' => __('Date Created', PPS_LANG_CODE),
     ]);
     $selectFields = ['all_data'];
     foreach ($labels as $lKey => $lName) {
@@ -189,17 +177,21 @@ class subscribeControllerPps extends controllerPps
       // Check all fields in all PopUps
       $popupIds = [];
       foreach ($list as $s) {
-        $popupIds[ $s['popup_id'] ] = 1;
+        $popupIds[$s['popup_id']] = 1;
       }
-      $popups = framePps::_()->getModule('popup')->getModel()->setWhere('id IN (' . implode(',', array_keys($popupIds)) . ')')->getFromTbl();
+      $popups = framePps::_()
+        ->getModule('popup')
+        ->getModel()
+        ->setWhere('id IN (' . implode(',', array_keys($popupIds)) . ')')
+        ->getFromTbl();
       if (!empty($popups)) {
         foreach ($popups as $p) {
           if (isset($p['params']['tpl']['sub_fields']) && !empty($p['params']['tpl']['sub_fields'])) {
             foreach ($p['params']['tpl']['sub_fields'] as $k => $f) {
               if (in_array($k, ['name', 'email'])) {
                 continue;
-              }	// Ignore standard fields
-              $labels[ 'sub_field_' . $k ] = $f['label'];
+              } // Ignore standard fields
+              $labels['sub_field_' . $k] = $f['label'];
             }
           }
         }
@@ -219,9 +211,9 @@ class subscribeControllerPps extends controllerPps
           if (strpos($getKey, 'sub_field_') === 0) {
             $getKey = str_replace('sub_field_', '', $getKey);
             $allData = empty($s['all_data']) ? [] : utilsPps::unserialize($s['all_data']);
-            $value = isset($allData[ $getKey ]) ? $allData[ $getKey ] : '';
+            $value = isset($allData[$getKey]) ? $allData[$getKey] : '';
           } else {
-            $value = $s[ $getKey ];
+            $value = $s[$getKey];
           }
           $csvGenerator->addCell($row, $cell, $value);
           $cell++;
@@ -230,9 +222,7 @@ class subscribeControllerPps extends controllerPps
       }
     } else {
       $cell = 0;
-      $noUsersMsg = $forReg
-          ? __('There are no members for now', PPS_LANG_CODE)
-          : __('There are no subscribers for now', PPS_LANG_CODE);
+      $noUsersMsg = $forReg ? __('There are no members for now', PPS_LANG_CODE) : __('There are no subscribers for now', PPS_LANG_CODE);
       $csvGenerator->addCell($row, $cell, $noUsersMsg);
     }
     $csvGenerator->generate();
@@ -240,9 +230,9 @@ class subscribeControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['getMailchimpLists', 'getWpCsvList']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['getMailchimpLists', 'getWpCsvList'],
+      ],
     ];
   }
   public function getNoncedMethods()

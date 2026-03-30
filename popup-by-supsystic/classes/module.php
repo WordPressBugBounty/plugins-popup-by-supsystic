@@ -22,7 +22,7 @@ abstract class modulePps extends baseObjectPps
   protected $_externalPath = '';
   protected $_isExternal = false;
 
-  public function __construct($d/*, $params = array()*/)
+  public function __construct($d /*, $params = array()*/)
   {
     $this->setTypeID($d['type_id']);
     //$this->setType($d['type_name']);
@@ -120,9 +120,7 @@ abstract class modulePps extends baseObjectPps
   {
     $this->_label = $label;
   }
-  public function init()
-  {
-  }
+  public function init() {}
   public function exec($task = '')
   {
     if ($task) {
@@ -142,7 +140,7 @@ abstract class modulePps extends baseObjectPps
   protected function _createController()
   {
     if (!file_exists($this->getModDir() . 'controller.php')) {
-      return false;	// EXCEPTION!!!
+      return false; // EXCEPTION!!!
     }
     if ($this->_controller) {
       return true;
@@ -239,15 +237,9 @@ abstract class modulePps extends baseObjectPps
   /*public function getParam($key) {
       return $this->getParams($key);
   }*/
-  public function install()
-  {
-  }
-  public function uninstall()
-  {
-  }
-  public function activate()
-  {
-  }
+  public function install() {}
+  public function uninstall() {}
+  public function activate() {}
   /**
    * Returns the available tabs
    * @return array of tab
@@ -261,10 +253,6 @@ abstract class modulePps extends baseObjectPps
     $thisClassRefl = new ReflectionObject($this);
     return $thisClassRefl->getConstant($name);
   }
-  public function loadAssets()
-  {
-  }
-  public function loadAdminAssets()
-  {
-  }
+  public function loadAssets() {}
+  public function loadAdminAssets() {}
 }

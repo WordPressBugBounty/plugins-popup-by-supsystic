@@ -131,9 +131,9 @@ class Batch
   private function queueOperation($http_verb, $id, $method, $args = null)
   {
     $operation = [
-        'operation_id' => $id,
-        'method' => $http_verb,
-        'path' => $method,
+      'operation_id' => $id,
+      'method' => $http_verb,
+      'path' => $method,
     ];
 
     if ($args) {

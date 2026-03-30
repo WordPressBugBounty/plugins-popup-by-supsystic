@@ -70,7 +70,8 @@ class validatorPps
   {
     if (is_array($value)) {
       foreach ($value as $v) {
-        if (self::_notEmpty($v)) {       //If at least 1 element of array are not empty - all array will be not empty
+        if (self::_notEmpty($v)) {
+          //If at least 1 element of array are not empty - all array will be not empty
           $res = true;
           break;
         }

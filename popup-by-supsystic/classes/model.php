@@ -110,7 +110,7 @@ abstract class modelPps extends baseObjectPps
           break;
         default:
           foreach ($data as $i => $row) {
-            $data[ $i ] = $this->_afterGetFromTbl($row);
+            $data[$i] = $this->_afterGetFromTbl($row);
           }
           $this->_lastGetCount = count($data);
           break;
@@ -154,8 +154,10 @@ abstract class modelPps extends baseObjectPps
     $this->_clearQuery($params);
     return $data;
   }
-  protected function _afterGetFromTbl($row)	// You can re-define this method in your own model
-  {return $row;
+  protected function _afterGetFromTbl($row)
+  {
+    // You can re-define this method in your own model
+    return $row;
   }
   protected function _buildQuery($table = null)
   {
@@ -184,7 +186,11 @@ abstract class modelPps extends baseObjectPps
     // Remove all empty values
     $ids = array_filter(array_map('intval', $ids));
     if (!empty($ids)) {
-      if (framePps::_()->getTable($this->_tbl)->delete(['additionalCondition' => 'id IN (' . implode(',', $ids) . ')'])) {
+      if (
+        framePps::_()
+          ->getTable($this->_tbl)
+          ->delete(['additionalCondition' => 'id IN (' . implode(',', $ids) . ')'])
+      ) {
         return true;
       } else {
         $this->pushError(__('Database error detected', PPS_LANG_CODE));
@@ -196,7 +202,7 @@ abstract class modelPps extends baseObjectPps
   }
   public function clear()
   {
-    return $this->delete();	// Just delete all
+    return $this->delete(); // Just delete all
   }
   public function delete($params = [])
   {
@@ -225,7 +231,7 @@ abstract class modelPps extends baseObjectPps
   public function updateById($data, $id = 0)
   {
     if (!$id) {
-      $id = isset($data[ $this->_idField ]) ? (int) $data[ $this->_idField ] : 0;
+      $id = isset($data[$this->_idField]) ? (int) $data[$this->_idField] : 0;
     }
     if ($id) {
       return $this->update($data, [$this->_idField => $id]);

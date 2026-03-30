@@ -8,7 +8,7 @@ class optionsModelPps extends modelPps
   public function get($optKey)
   {
     $this->_loadOptValues();
-    return isset($this->_values[ $optKey ]) ? $this->_values[ $optKey ]['value'] : false;
+    return isset($this->_values[$optKey]) ? $this->_values[$optKey]['value'] : false;
   }
   public function isEmpty($optKey)
   {
@@ -18,12 +18,12 @@ class optionsModelPps extends modelPps
   public function save($optKey, $val, $ignoreDbUpdate = false)
   {
     $this->_loadOptValues();
-    if (!isset($this->_values[ $optKey ]) || $this->_values[ $optKey ]['value'] !== $val) {
-      if (isset($this->_values[ $optKey ]) || !isset($this->_values[ $optKey ]['value'])) {
-        $this->_values[ $optKey ] = [];
+    if (!isset($this->_values[$optKey]) || $this->_values[$optKey]['value'] !== $val) {
+      if (isset($this->_values[$optKey]) || !isset($this->_values[$optKey]['value'])) {
+        $this->_values[$optKey] = [];
       }
-      $this->_values[ $optKey ]['value'] = $val;
-      $this->_values[ $optKey ]['changed_on'] = time();
+      $this->_values[$optKey]['value'] = $val;
+      $this->_values[$optKey]['changed_on'] = time();
       if (!$ignoreDbUpdate) {
         $this->_updateOptsInDb();
       }
@@ -46,16 +46,17 @@ class optionsModelPps extends modelPps
         $value = '';
         $changedOn = 0;
         // Retrive value from saved options
-        if (isset($this->_values[ $optKey ])) {
-          $value = $this->_values[ $optKey ]['value'];
-          $changedOn = isset($this->_values[ $optKey ]['changed_on']) ? $this->_values[ $optKey ]['changed_on'] : '';
-        } elseif (isset($optData['def'])) {	// If there were no saved data - set it as default
+        if (isset($this->_values[$optKey])) {
+          $value = $this->_values[$optKey]['value'];
+          $changedOn = isset($this->_values[$optKey]['changed_on']) ? $this->_values[$optKey]['changed_on'] : '';
+        } elseif (isset($optData['def'])) {
+          // If there were no saved data - set it as default
           $value = $optData['def'];
         }
-        $options[ $cKey ]['opts'][ $optKey ]['value'] = $value;
-        $options[ $cKey ]['opts'][ $optKey ]['changed_on'] = $changedOn;
-        if (!isset($this->_values[ $optKey ]['value'])) {
-          $this->_values[ $optKey ]['value'] = $value;
+        $options[$cKey]['opts'][$optKey]['value'] = $value;
+        $options[$cKey]['opts'][$optKey]['changed_on'] = $changedOn;
+        if (!isset($this->_values[$optKey]['value'])) {
+          $this->_values[$optKey]['value'] = $value;
         }
       }
     }

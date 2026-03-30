@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__) . "/MixpanelBaseProducer.php");
-require_once(dirname(__FILE__) . "/MixpanelPeople.php");
-require_once(dirname(__FILE__) . "/../ConsumerStrategies/CurlConsumer.php");
+require_once dirname(__FILE__) . '/MixpanelBaseProducer.php';
+require_once dirname(__FILE__) . '/MixpanelPeople.php';
+require_once dirname(__FILE__) . '/../ConsumerStrategies/CurlConsumer.php';
 
 /**
  * Provides an API to track events on Mixpanel
@@ -13,7 +13,7 @@ class Producers_MixpanelEvents extends Producers_MixpanelBaseProducer
    * An array of properties to attach to every tracked event
    * @var array
    */
-  private $_super_properties = ["mp_lib" => "php"];
+  private $_super_properties = ['mp_lib' => 'php'];
 
   /**
    * Track an event defined by $event associated with metadata defined by $properties
@@ -23,7 +23,7 @@ class Producers_MixpanelEvents extends Producers_MixpanelBaseProducer
   public function track($event, $properties = [])
   {
     // if no token is passed in, use current token
-    if (!array_key_exists("token", $properties)) {
+    if (!array_key_exists('token', $properties)) {
       $properties['token'] = $this->_token;
     }
 
@@ -124,7 +124,7 @@ class Producers_MixpanelEvents extends Producers_MixpanelBaseProducer
    */
   public function identify($user_id)
   {
-    $this->register("distinct_id", $user_id);
+    $this->register('distinct_id', $user_id);
   }
 
   /**
@@ -142,16 +142,16 @@ class Producers_MixpanelEvents extends Producers_MixpanelBaseProducer
   public function createAlias($original_id, $new_id)
   {
     $msg = [
-        "event" => '$create_alias',
-        "properties" => ["distinct_id" => $original_id, "alias" => $new_id, "token" => $this->_token]
+      'event' => '$create_alias',
+      'properties' => ['distinct_id' => $original_id, 'alias' => $new_id, 'token' => $this->_token],
     ];
 
-    $options = array_merge($this->_options, ["endpoint" => $this->_getEndpoint(), "fork" => false]);
+    $options = array_merge($this->_options, ['endpoint' => $this->_getEndpoint(), 'fork' => false]);
     $curlConsumer = new ConsumerStrategies_CurlConsumer($options);
     $success = $curlConsumer->persist([$msg]);
     if (!$success) {
       error_log("Creating Mixpanel Alias (original id: $original_id, new id: $new_id) failed");
-      throw new Exception("Tried to create an alias but the call was not successful");
+      throw new Exception('Tried to create an alias but the call was not successful');
     } else {
       return $msg;
     }

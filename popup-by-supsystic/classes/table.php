@@ -59,7 +59,7 @@ abstract class tablePps
         $instances[$table] = new $class();
       } else {
         $instances[$table] = null;
-      }  /*throw error must be here*/
+      } /*throw error must be here*/
     }
     return $instances[$table];
   }
@@ -74,9 +74,11 @@ abstract class tablePps
   }
   public function leftJoin($table, $on)
   {
-    if ($this->haveField($on)) { //If this table have such field - join on it
+    if ($this->haveField($on)) {
+      //If this table have such field - join on it
       $this->_join[] = 'LEFT JOIN ' . $table->getTable() . ' ' . $table->alias() . ' ON ' . $table->alias() . '.' . $table->getID() . ' = ' . $this->_alias . '.' . $on;
-    } else { // else - let's join on field $on from other table
+    } else {
+      // else - let's join on field $on from other table
       $this->_join[] = 'LEFT JOIN ' . $table->getTable() . ' ' . $table->alias() . ' ON ' . $table->alias() . '.' . $on . ' = ' . $this->_alias . '.' . $this->getID();
     }
     return $this;
@@ -92,7 +94,7 @@ abstract class tablePps
   public function addJoin($params = ['tbl' => '', 'a' => '', 'on' => '', 'joinOnID' => true, 'joinOn' => ''])
   {
     $params['joinOnID'] = isset($params['joinOnID']) ? $params['joinOnID'] : true;
-    $params['joinOn'] = ($params['joinOnID'] && !isset($params['joinOn'])) ? $this->_id : $params['joinOn'];
+    $params['joinOn'] = $params['joinOnID'] && !isset($params['joinOn']) ? $this->_id : $params['joinOn'];
     $this->_join[] = 'INNER JOIN ' . $params['tbl'] . ' ' . $params['a'] . ' ON ' . $params['a'] . '.' . $params['on'] . ' = ' . $this->_alias . '.' . $params['joinOn'];
     return $this;
   }
@@ -120,15 +122,7 @@ abstract class tablePps
           $row = [];
           foreach ($field as $k => $v) {
             if (isset($this->_fields[$k])) {
-              $row[$k] = toeCreateObjPps('fieldPps', [
-                      $this->_fields[$k]->name,
-                      $this->_fields[$k]->html,
-                      $this->_fields[$k]->type,
-                      $this->_fields[$k]->default,
-                      $this->_fields[$k]->label,
-                      $this->_fields[$k]->maxlen,
-                      $this->_fields[$k]->description
-                      ]);
+              $row[$k] = toeCreateObjPps('fieldPps', [$this->_fields[$k]->name, $this->_fields[$k]->html, $this->_fields[$k]->type, $this->_fields[$k]->default, $this->_fields[$k]->label, $this->_fields[$k]->maxlen, $this->_fields[$k]->description]);
               $row[$k]->setValue($v, true);
             }
           }
@@ -175,7 +169,7 @@ abstract class tablePps
   }
   public function getById($id, $fields = '*', $return = 'row')
   {
-    $condition = 'WHERE ' . $this->_alias . '.' . $this->_id . ' = "' . (int)$id . '"';
+    $condition = 'WHERE ' . $this->_alias . '.' . $this->_id . ' = "' . (int) $id . '"';
     return $this->get($fields, $condition, null, $return);
   }
   protected function _addJoin()
@@ -207,14 +201,14 @@ abstract class tablePps
   public function limitFrom($limit = '')
   {
     if (is_numeric($limit)) {
-      $this->_limitFrom = (int)$limit;
+      $this->_limitFrom = (int) $limit;
     }
     return $this;
   }
   public function limitTo($limit = '')
   {
     if (is_numeric($limit)) {
-      $this->_limitTo = (int)$limit;
+      $this->_limitTo = (int) $limit;
     }
     return $this;
   }
@@ -348,7 +342,7 @@ abstract class tablePps
                  unset($data[$key]);
              }
          }
-     } else*/if (is_numeric($where)) {
+     } else*/ if (is_numeric($where)) {
       $where = [$this->_id => $where];
     }
     return $this->store($data, 'UPDATE', $where);
@@ -407,15 +401,15 @@ abstract class tablePps
             switch ($this->_fields[$k]->type) {
               case 'int':
               case 'tinyint':
-                $res .= $k . ' = ' . (int)$val . ' ' . $delim . ' ';
+                $res .= $k . ' = ' . (int) $val . ' ' . $delim . ' ';
                 break;
               case 'float':
-                $res .= $k . ' = ' . (float)$val . ' ' . $delim . ' ';
+                $res .= $k . ' = ' . (float) $val . ' ' . $delim . ' ';
                 break;
               case 'decimal':
-                $res .= $k . ' = ' . (double)$val . ' ' . $delim . ' ';
+                $res .= $k . ' = ' . (float) $val . ' ' . $delim . ' ';
                 break;
-              case 'free':    //Just set it as it is
+              case 'free': //Just set it as it is
                 $res .= $k . ' = ' . $val . ' ' . $delim . ' ';
                 break;
               default:
@@ -425,7 +419,8 @@ abstract class tablePps
           } else {
             $res .= $k . ' = \'' . $val . '\' ' . $delim . ' ';
           }
-        } elseif ($k == 'additionalCondition') {    //just add some string to query
+        } elseif ($k == 'additionalCondition') {
+          //just add some string to query
           $res .= $v . ' ' . $delim . ' ';
         }
       }
@@ -544,15 +539,9 @@ abstract class tablePps
     $d[$this->_id] = isset($d[$this->_id]) ? intval($d[$this->_id]) : 0;
     return $d;
   }
-  public function install($d = [])
-  {
-  }
-  public function uninstall($d = [])
-  {
-  }
-  public function activate()
-  {
-  }
+  public function install($d = []) {}
+  public function uninstall($d = []) {}
+  public function activate() {}
   public function getLastInsertID()
   {
     return dbPps::get('SELECT MAX(' . $this->_id . ') FROM ' . $this->_table, 'one');

@@ -16,9 +16,9 @@ class uriPps
   {
     global $wp_rewrite;
     $link = '';
-    if (is_string($params)
-        && (strpos($params, 'http') === 0
-        || strpos($params, PPS_PLUG_NAME) !== false)	// If relative links in WP is used (by other plugin for example)
+    if (
+      is_string($params) &&
+      (strpos($params, 'http') === 0 || strpos($params, PPS_PLUG_NAME) !== false) // If relative links in WP is used (by other plugin for example)
     ) {
       if (self::isHttps()) {
         $params = self::makeHttps($params);

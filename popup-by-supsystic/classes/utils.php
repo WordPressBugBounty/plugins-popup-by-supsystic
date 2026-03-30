@@ -5,7 +5,7 @@ class utilsPps
 {
   public static function jsonEncode($arr)
   {
-    return (is_array($arr) || is_object($arr)) ? json_encode_utf_normal($arr) : json_encode_utf_normal([]);
+    return is_array($arr) || is_object($arr) ? json_encode_utf_normal($arr) : json_encode_utf_normal([]);
   }
   public static function jsonDecode($str)
   {
@@ -13,7 +13,7 @@ class utilsPps
       return $str;
     }
     if (is_object($str)) {
-      return (array)$str;
+      return (array) $str;
     }
     return empty($str) ? [] : json_decode($str, true);
   }
@@ -22,8 +22,10 @@ class utilsPps
     if (@!unserialize($data)) {
       $fixed = preg_replace_callback(
         '/s:([0-9]+):\"(.*?)\";/',
-        function ($matches) { return "s:" . strlen($matches[2]) . ':"' . $matches[2] . '";';     },
-        $data
+        function ($matches) {
+          return 's:' . strlen($matches[2]) . ':"' . $matches[2] . '";';
+        },
+        $data,
       );
       return unserialize($fixed);
     } else {
@@ -128,7 +130,7 @@ class utilsPps
   {
     if (isset($param[$element])) {
       // convert object element to string
-      return (string)$param[$element];
+      return (string) $param[$element];
     } else {
       return '';
     }
@@ -228,7 +230,7 @@ class utilsPps
     $days = [];
     for ($i = 0; $i < 7; $i++) {
       $day = date('%A', $timestamp);
-      $days[ strtolower($day) ] = $day;
+      $days[strtolower($day)] = $day;
       $timestamp = strtotime('+1 day', $timestamp);
     }
     return $days;
@@ -301,7 +303,8 @@ class utilsPps
     }
     return true;*/
     foreach (framePps::_()->getModules() as $m) {
-      if (is_object($m) && $m->isExternal()) { // Should be at least one external module
+      if (is_object($m) && $m->isExternal()) {
+        // Should be at least one external module
         return true;
       }
     }
@@ -474,7 +477,7 @@ class utilsPps
   }
   public static function isPluginsPage()
   {
-    return (basename(reqPps::getVar('SCRIPT_NAME', 'server')) === 'plugins.php');
+    return basename(reqPps::getVar('SCRIPT_NAME', 'server')) === 'plugins.php';
   }
   public static function isSessionStarted()
   {
@@ -576,30 +579,29 @@ class utilsPps
         $platform = 'windows';
       }
       // Next get the name of the useragent yes seperately and for good reason
-      if ((preg_match('/MSIE/i', $u_agent) && !preg_match('/Opera/i', $u_agent)) || (strpos($u_agent, 'Trident/7.0; rv:11.0') !== false)) {
+      if ((preg_match('/MSIE/i', $u_agent) && !preg_match('/Opera/i', $u_agent)) || strpos($u_agent, 'Trident/7.0; rv:11.0') !== false) {
         $bname = 'Internet Explorer';
-        $ub = "MSIE";
+        $ub = 'MSIE';
       } elseif (preg_match('/Firefox/i', $u_agent)) {
         $bname = 'Mozilla Firefox';
-        $ub = "Firefox";
+        $ub = 'Firefox';
       } elseif (preg_match('/Chrome/i', $u_agent)) {
         $bname = 'Google Chrome';
-        $ub = "Chrome";
+        $ub = 'Chrome';
       } elseif (preg_match('/Safari/i', $u_agent)) {
         $bname = 'Apple Safari';
-        $ub = "Safari";
+        $ub = 'Safari';
       } elseif (preg_match('/Opera/i', $u_agent)) {
         $bname = 'Opera';
-        $ub = "Opera";
+        $ub = 'Opera';
       } elseif (preg_match('/Netscape/i', $u_agent)) {
         $bname = 'Netscape';
-        $ub = "Netscape";
+        $ub = 'Netscape';
       }
 
       // finally get the correct version number
       $known = ['Version', $ub, 'other'];
-      $pattern = '#(?<browser>' . join('|', $known) .
-      ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+      $pattern = '#(?<browser>' . join('|', $known) . ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
       if (!preg_match_all($pattern, $u_agent, $matches)) {
         // we have no matching number just continue
       }
@@ -609,7 +611,7 @@ class utilsPps
       if ($i != 1) {
         //we will have two since we are not using 'other' argument yet
         //see if version is before or after the name
-        if (strripos($u_agent, "Version") < strripos($u_agent, $ub)) {
+        if (strripos($u_agent, 'Version') < strripos($u_agent, $ub)) {
           $version = $matches['version'][0];
         } else {
           $version = $matches['version'][1];
@@ -620,24 +622,21 @@ class utilsPps
     }
 
     // check if we have a number
-    if ($version == null || $version == "") {
-      $version = "?";
+    if ($version == null || $version == '') {
+      $version = '?';
     }
 
     return [
-        'userAgent' => $u_agent,
-        'name' => $bname,
-        'version' => $version,
-        'platform' => $platform,
-        'pattern' => $pattern
+      'userAgent' => $u_agent,
+      'name' => $bname,
+      'version' => $version,
+      'platform' => $platform,
+      'pattern' => $pattern,
     ];
   }
   public static function getBrowsersList()
   {
-    return [
-        'Unknown', 'Internet Explorer', 'Mozilla Firefox', 'Google Chrome', 'Apple Safari',
-        'Opera', 'Netscape',
-    ];
+    return ['Unknown', 'Internet Explorer', 'Mozilla Firefox', 'Google Chrome', 'Apple Safari', 'Opera', 'Netscape'];
   }
   public static function getLangCode2Letter()
   {
@@ -650,9 +649,7 @@ class utilsPps
   }
   public static function getBrowserLangCode()
   {
-    return isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])
-        ? strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2))
-        : self::getLangCode2Letter();
+    return isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2)) : self::getLangCode2Letter();
   }
   public static function getTimeRange()
   {
@@ -662,9 +659,9 @@ class utilsPps
     $k = 0;
     $count = count($hours);
     for ($i = 0; $i < 4 * $count; $i++) {
-      $newItem = $hours[ $k ];
-      $newItem .= ':' . (($i % 2) ? '30' : '00');
-      $newItem .= ($i < $count * 2) ? 'am' : 'pm';
+      $newItem = $hours[$k];
+      $newItem .= ':' . ($i % 2 ? '30' : '00');
+      $newItem .= $i < $count * 2 ? 'am' : 'pm';
       if ($i % 2) {
         $k++;
       }
@@ -678,28 +675,28 @@ class utilsPps
   public static function getSearchEnginesList()
   {
     return [
-        'google.com' => ['label' => 'Google'],
-        'yahoo.com' => ['label' => 'Yahoo!'],
-        'youdao.com' => ['label' => 'Youdao'],
-        'yandex' => ['label' => 'Yandex'],
-        'sogou.com' => ['label' => 'Sogou'],
-        'qwant.com' => ['label' => 'Qwant'],
-        'bing.com' => ['label' => 'Bing'],
-        'munax.com' => ['label' => 'Munax'],
+      'google.com' => ['label' => 'Google'],
+      'yahoo.com' => ['label' => 'Yahoo!'],
+      'youdao.com' => ['label' => 'Youdao'],
+      'yandex' => ['label' => 'Yandex'],
+      'sogou.com' => ['label' => 'Sogou'],
+      'qwant.com' => ['label' => 'Qwant'],
+      'bing.com' => ['label' => 'Bing'],
+      'munax.com' => ['label' => 'Munax'],
     ];
   }
   public static function getSocialList()
   {
     return [
-        'facebook.com' => ['label' => 'Facebook'],
-        'pinterest.com' => ['label' => 'Pinterest'],
-        'instagram.com' => ['label' => 'Instagram'],
-        'yelp.com' => ['label' => 'Yelp'],
-        'vk.com' => ['label' => 'VKontakte'],
-        'myspace.com' => ['label' => 'Myspace'],
-        'linkedin.com' => ['label' => 'LinkedIn'],
-        'plus.google.com' => ['label' => 'Google+'],
-        'google.com' => ['label' => 'Google'],
+      'facebook.com' => ['label' => 'Facebook'],
+      'pinterest.com' => ['label' => 'Pinterest'],
+      'instagram.com' => ['label' => 'Instagram'],
+      'yelp.com' => ['label' => 'Yelp'],
+      'vk.com' => ['label' => 'VKontakte'],
+      'myspace.com' => ['label' => 'Myspace'],
+      'linkedin.com' => ['label' => 'LinkedIn'],
+      'plus.google.com' => ['label' => 'Google+'],
+      'google.com' => ['label' => 'Google'],
     ];
   }
   public static function getReferalUrl()
@@ -749,7 +746,7 @@ class utilsPps
     $roles = self::getAllUserRoles();
     if (!empty($roles)) {
       foreach ($roles as $k => $data) {
-        $res[ $k ] = $data['name'];
+        $res[$k] = $data['name'];
       }
     }
     return $res;
@@ -766,7 +763,8 @@ class utilsPps
   {
     static $activeThemeName;
     if (empty($activeThemeName)) {
-      if (!function_exists('wp_get_theme')) { // older WPs
+      if (!function_exists('wp_get_theme')) {
+        // older WPs
         //$url = get_bloginfo('template_url');
         //$temp = explode('wp-content/themes/', $url);
         //$activeThemeName = $temp[1];    // The second value will be the theme name
@@ -779,21 +777,16 @@ class utilsPps
   }
   public static function rgbToArray($rgb)
   {
-    $rgb = array_map(
-      'trim',
-      explode(
-        ',',
-        trim(str_replace(['rgb', 'a', '(', ')'], '', $rgb))
-      )
-    );
+    $rgb = array_map('trim', explode(',', trim(str_replace(['rgb', 'a', '(', ')'], '', $rgb))));
     return $rgb;
   }
   public static function hexToRgb($hex)
   {
-    if (strpos($hex, 'rgb') !== false) {	// Maybe it's already in rgb format - just return it as array
+    if (strpos($hex, 'rgb') !== false) {
+      // Maybe it's already in rgb format - just return it as array
       return self::rgbToArray($hex);
     }
-    $hex = str_replace("#", "", $hex);
+    $hex = str_replace('#', '', $hex);
 
     if (strlen($hex) == 3) {
       $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
@@ -811,11 +804,12 @@ class utilsPps
   public static function hexToRgbaStr($hex, $alpha = 1)
   {
     $rgbArr = self::hexToRgb($hex);
-    return "rgba(" . implode(',', $rgbArr) . ',' . $alpha . ")";
+    return 'rgba(' . implode(',', $rgbArr) . ',' . $alpha . ')';
   }
   public static function toAdminEmail($email)
   {
-    if ($email == 'admin@mail.com') {	// This was email from our test server
+    if ($email == 'admin@mail.com') {
+      // This was email from our test server
       static $adminEmail;
       if (empty($adminEmail)) {
         $adminEmail = get_bloginfo('admin_email');

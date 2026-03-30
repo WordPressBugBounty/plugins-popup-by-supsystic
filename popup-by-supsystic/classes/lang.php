@@ -37,7 +37,7 @@ class langPps
             if (is_array($langArr) && !empty($langArr)) {
               $normalLangArr = [];
               foreach ($langArr as $k => $v) {
-                $normalLangArr[ self::unEscKey($k) ] = $v;
+                $normalLangArr[self::unEscKey($k)] = $v;
               }
               $data = array_merge($data, $normalLangArr);
             }
@@ -46,7 +46,8 @@ class langPps
       }
       closedir($dh);
     }
-    if (!is_array($data)) {	// For some cases
+    if (!is_array($data)) {
+      // For some cases
       $data = [];
     }
     return $data;
@@ -84,20 +85,12 @@ class langPps
   public static function unEscKey($key)
   {
     $illegals = self::getIllegalIniChars();
-    return str_replace(
-      $illegals,
-      array_keys($illegals),
-      $key
-    );
+    return str_replace($illegals, array_keys($illegals), $key);
   }
   public static function escKey($key)
   {
     $illegals = self::getIllegalIniChars();
-    return str_replace(
-      array_keys($illegals),
-      $illegals,
-      $key
-    );
+    return str_replace(array_keys($illegals), $illegals, $key);
   }
   /**
    * Illegal characters for keys in .ini files and it's representation for us
@@ -105,23 +98,23 @@ class langPps
   public static function getIllegalIniChars()
   {
     return [
-        '?' => '%quest%',
-        '{' => '%opening_brace%',
-        '}' => '%closing_brace%',
-        '|' => '%vertical_bar%',
-        '&' => '%ampersand%',
-        '~' => '%tilde%',
-        '!' => '%exclamation_point%',
-        '[' => '%opening_bracket%',
-        ']' => '%closing_bracket%',
-        '(' => '%opening_parenthesis%',
-        ')' => '%closing_parenthesis%',
-        '^' => '%caret%',
-        'Yes' => '%Yes%',
-        'yes' => '%yes%',
-        'No' => '%No%',
-        'no' => '%no%',
-        'none' => '%none%',
+      '?' => '%quest%',
+      '{' => '%opening_brace%',
+      '}' => '%closing_brace%',
+      '|' => '%vertical_bar%',
+      '&' => '%ampersand%',
+      '~' => '%tilde%',
+      '!' => '%exclamation_point%',
+      '[' => '%opening_bracket%',
+      ']' => '%closing_bracket%',
+      '(' => '%opening_parenthesis%',
+      ')' => '%closing_parenthesis%',
+      '^' => '%caret%',
+      'Yes' => '%Yes%',
+      'yes' => '%yes%',
+      'No' => '%No%',
+      'no' => '%no%',
+      'none' => '%none%',
     ];
   }
 }

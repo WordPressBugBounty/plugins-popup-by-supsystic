@@ -2,9 +2,9 @@
 Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
-Requires at least: 5.0
+Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 1.10.38
+Stable tag: 1.11.0
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,12 @@ Email marketing integrations are available in the Pro version.
 
 
 == Changelog ==
+1.11.0 / 30.03.2026 =
+ * Add fix for designs
+ * Add fox for snow effect
+ * Remove console looking
+ * Add fix for popup + contact form
+
 1.10.38 / 11.03.2026 =
  * Add fix for close button popup
  * Add new promo overview banner

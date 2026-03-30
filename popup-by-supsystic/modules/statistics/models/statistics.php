@@ -23,7 +23,7 @@ class statisticsModelPps extends modelPps
 
       $isUnique = 0;
       if (isset($d['is_unique']) && !empty($d['is_unique'])) {
-        $isUnique = (int) 1;	// This is realy cool :)
+        $isUnique = (int) 1; // This is realy cool :)
       }
       $popupModel = framePps::_()->getModule('popup')->getModel();
       if (in_array($d['type'], ['show'])) {
@@ -31,14 +31,15 @@ class statisticsModelPps extends modelPps
         if ($isUnique) {
           $popupModel->addUniqueViewed($d['id']);
         }
-      } elseif (!in_array($d['type'], ['close', 'subscribe_error'])) {	// Any action count here
+      } elseif (!in_array($d['type'], ['close', 'subscribe_error'])) {
+        // Any action count here
         $popupModel->addActionDone($d['id']);
       }
       return $this->insert([
-          'popup_id' => $d['id'],
-          'type' => $typeId,
-          'sm_id' => $smId,
-          'is_unique' => $isUnique,
+        'popup_id' => $d['id'],
+        'type' => $typeId,
+        'sm_id' => $smId,
+        'is_unique' => $isUnique,
       ]);
     } else {
       $this->pushError(__('Send me some info, pls', PPS_LANG_CODE));
@@ -82,23 +83,20 @@ class statisticsModelPps extends modelPps
         break;
     }
     return $this->setSelectFields('COUNT(*) AS total_requests, SUM(is_unique) AS unique_requests, ' . $sqlDateFormat . ' AS date')
-            ->groupBy('date')
-            ->setOrderBy('date')
-            ->setSortOrder('DESC')
-            ->setWhere($where)
-            ->getFromTbl();
+      ->groupBy('date')
+      ->setOrderBy('date')
+      ->setSortOrder('DESC')
+      ->setWhere($where)
+      ->getFromTbl();
   }
   public function getSmActionForPopup($popupId)
   {
     // type != 7 - for age verify types - that used same column in this table
     $where = ['popup_id' => $popupId, 'additionalCondition' => ' sm_id != 0 AND type != 7 '];
-    $data = $this->setSelectFields('COUNT(*) AS total_requests, sm_id')
-            ->groupBy('sm_id')
-            ->setWhere($where)
-            ->getFromTbl();
+    $data = $this->setSelectFields('COUNT(*) AS total_requests, sm_id')->groupBy('sm_id')->setWhere($where)->getFromTbl();
     if (!empty($data)) {
       foreach ($data as $i => $row) {
-        $data[ $i ]['sm_type'] = framePps::_()->getModule('sm')->getTypeById($row['sm_id']);
+        $data[$i]['sm_type'] = framePps::_()->getModule('sm')->getTypeById($row['sm_id']);
       }
     }
     return $data;
@@ -123,30 +121,27 @@ class statisticsModelPps extends modelPps
     $popup = null;
     foreach ($allTypes as $typeCode => $type) {
       $params['type'] = $type['id'];
-      $allStats[ $i ] = $type;
-      $allStats[ $i ]['code'] = $typeCode;
-      $allStats[ $i ]['points'] = $this->getForPopup($id, $params);
-      if ($typeCode == 'age_verify' && !empty($allStats[ $i ]['points'])) {
+      $allStats[$i] = $type;
+      $allStats[$i]['code'] = $typeCode;
+      $allStats[$i]['points'] = $this->getForPopup($id, $params);
+      if ($typeCode == 'age_verify' && !empty($allStats[$i]['points'])) {
         if (empty($popup)) {
           $popup = isset($params['popup']) ? $params['popup'] : framePps::_()->getModule('popup')->getModel()->getById($id);
         }
-        if (!empty($popup)
-            && isset($popup['params']['opts_attrs']['btns_number'])
-            && !empty($popup['params']['opts_attrs']['btns_number'])
-        ) {
+        if (!empty($popup) && isset($popup['params']['opts_attrs']['btns_number']) && !empty($popup['params']['opts_attrs']['btns_number'])) {
           for ($j = 0; $j < (int) $popup['params']['opts_attrs']['btns_number']; $j++) {
             if (isset($popup['params']['tpl']['btn_txt_' . $j])) {
               $i++;
 
-              $allStats[ $i ] = $type;
-              $allStats[ $i ]['code'] = $typeCode . '_' . $j;
-              $allStats[ $i ]['label'] .= ' ' . $popup['params']['tpl']['btn_txt_' . $j];
-              $allStats[ $i ]['points'] = $this->getForPopup($id, array_merge($params, ['sm_id' => $j]));
+              $allStats[$i] = $type;
+              $allStats[$i]['code'] = $typeCode . '_' . $j;
+              $allStats[$i]['label'] .= ' ' . $popup['params']['tpl']['btn_txt_' . $j];
+              $allStats[$i]['points'] = $this->getForPopup($id, array_merge($params, ['sm_id' => $j]));
             }
           }
         }
       }
-      if (!empty($allStats[ $i ]['points'])) {
+      if (!empty($allStats[$i]['points'])) {
         $haveData = true;
       }
       $i++;
@@ -180,27 +175,27 @@ class statisticsModelPps extends modelPps
           foreach ($stat['points'] as $j => $point) {
             $date = $point['date'];
             $currentData = [
-                'date' => $date,
-                'views' => 0,
-                'unique_requests' => 0,
-                'actions' => 0,
-                'conversion' => 0,
+              'date' => $date,
+              'views' => 0,
+              'unique_requests' => 0,
+              'actions' => 0,
+              'conversion' => 0,
             ];
             if (in_array($stat['code'], ['show'])) {
-              $currentData['views'] = (int)($point['total_requests']);
+              $currentData['views'] = (int) $point['total_requests'];
             } else {
-              $currentData['actions'] = (int)($point['total_requests']);
+              $currentData['actions'] = (int) $point['total_requests'];
             }
-            $uniqueRequests = (int)($point['unique_requests']);
+            $uniqueRequests = (int) $point['unique_requests'];
             if ($uniqueRequests) {
               $currentData['unique_requests'] = $uniqueRequests;
             }
-            if (isset($dataToDate[ $date ])) {
-              $currentData['views'] += $dataToDate[ $date ]['views'];
-              $currentData['actions'] += $dataToDate[ $date ]['actions'];
-              $currentData['unique_requests'] += $dataToDate[ $date ]['unique_requests'];
+            if (isset($dataToDate[$date])) {
+              $currentData['views'] += $dataToDate[$date]['views'];
+              $currentData['actions'] += $dataToDate[$date]['actions'];
+              $currentData['unique_requests'] += $dataToDate[$date]['unique_requests'];
             }
-            $dataToDate[ $date ] = $currentData;
+            $dataToDate[$date] = $currentData;
           }
         }
       }

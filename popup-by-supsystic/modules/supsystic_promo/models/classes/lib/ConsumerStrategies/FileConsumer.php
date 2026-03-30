@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/AbstractConsumer.php");
+require_once dirname(__FILE__) . '/AbstractConsumer.php';
 /**
  * Consumes messages and writes them to a file
  */
@@ -20,7 +20,7 @@ class ConsumerStrategies_FileConsumer extends ConsumerStrategies_AbstractConsume
     parent::__construct($options);
 
     // what file to write to?
-    $this->_file = array_key_exists("file", $options) ? $options['file'] :  dirname(__FILE__) . "/../../messages.txt";
+    $this->_file = array_key_exists('file', $options) ? $options['file'] : dirname(__FILE__) . '/../../messages.txt';
   }
 
   /**

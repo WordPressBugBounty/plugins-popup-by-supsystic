@@ -32,7 +32,7 @@ class responsePps
       exit(json_encode_utf_normal($this));
     }
     /*if($redirect)
-        redirectPps($redirect);*/
+     redirectPps($redirect);*/
     return $this;
   }
   public function mainRedirect($redirectUrl = '')

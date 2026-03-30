@@ -48,11 +48,11 @@ class statisticsControllerPps extends controllerPps
       importClassPps('csvgeneratorPps');
       $csvGenerator = new csvgeneratorPps(sprintf(__('Statistics for %s', PPS_LANG_CODE), htmlspecialchars($popup['label'])));
       $labels = [
-          'date' => __('Date', PPS_LANG_CODE),
-          'views' => __('Views', PPS_LANG_CODE),
-          'unique_requests' => __('Unique Views', PPS_LANG_CODE),
-          'actions' => __('Actions', PPS_LANG_CODE),
-          'conversion' => __('Conversion', PPS_LANG_CODE),
+        'date' => __('Date', PPS_LANG_CODE),
+        'views' => __('Views', PPS_LANG_CODE),
+        'unique_requests' => __('Unique Views', PPS_LANG_CODE),
+        'actions' => __('Actions', PPS_LANG_CODE),
+        'conversion' => __('Conversion', PPS_LANG_CODE),
       ];
       $row = $cell = 0;
       foreach ($labels as $l) {
@@ -63,7 +63,7 @@ class statisticsControllerPps extends controllerPps
       foreach ($stats as $s) {
         $cell = 0;
         foreach ($labels as $k => $l) {
-          $csvGenerator->addCell($row, $cell, $s[ $k ]);
+          $csvGenerator->addCell($row, $cell, $s[$k]);
           $cell++;
         }
         $row++;
@@ -81,9 +81,9 @@ class statisticsControllerPps extends controllerPps
   public function getPermissions()
   {
     return [
-        PPS_USERLEVELS => [
-            PPS_ADMIN => ['clearForPopUp', 'getUpdatedStats', 'getCsv']
-        ],
+      PPS_USERLEVELS => [
+        PPS_ADMIN => ['clearForPopUp', 'getUpdatedStats', 'getCsv'],
+      ],
     ];
   }
 }
