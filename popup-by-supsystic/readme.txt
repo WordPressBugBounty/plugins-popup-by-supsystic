@@ -3,8 +3,8 @@ Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
 Requires at least: 6.0
-Tested up to: 6.9
-Stable tag: 1.11.0
+Tested up to: 7.0
+Stable tag: 1.11.1
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,8 +138,10 @@ Email marketing integrations are available in the Pro version.
 8. Built-In Performance Insights — Track Impressions & Engagement
 
 
-
 == Changelog ==
+1.11.1 / 30.05.2026 =
+ * Tested up WP 7.0
+ 
 1.11.0 / 30.03.2026 =
  * Add fix for designs
  * Add fox for snow effect
