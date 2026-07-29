@@ -21,7 +21,6 @@ class supsystic_promoViewPps extends viewPps
     $this->assign('mainLink', $this->getModule()->getMainLink());
     $this->assign('faqList', $this->getFaqList());
     $this->assign('serverSettings', $this->getServerSettings());
-    $this->assign('contactFields', $this->getModule()->getContactFormFields());
     return parent::getContent('overviewTabContent');
   }
   public function getFaqList()

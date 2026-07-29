@@ -18,28 +18,9 @@ class popupPps extends modulePps
     add_filter('wp_nav_menu_objects', [$this, 'checkMenuItemsForPopUps']);
     // Add to admin bar new item
     add_action('admin_bar_menu', [$this, 'addAdminBarNewItem'], 300);
-    add_action('wp_footer', [$this, 'addSuploveLink'], 0);
 
     add_action('admin_bar_init', [$this, 'checkAdminAreaPopupShow']);
     dispatcherPps::addFilter('popupCss', [$this, 'modifyPopupCss'], 10, 2);
-  }
-  public function addSuploveLink()
-  {
-    if (!framePps::_()->getModule('supsystic_promo')->checkLoveLink()) {
-      return false;
-    }
-    if (function_exists('is_front_page') && !is_admin() && is_front_page()) {
-      if (empty(framePps::_()->getModule('options')->get('remove_love_link')) || !framePps::_()->getModule('supsystic_promo')->isPro()) {
-        if (empty(get_option('supsystic_pps_love_link_title'))) {
-          $loveLinkTitles = ['WordPress PopUp Plugin', 'WordPress PopUp', 'Best Wordpress Popup Plugin', 'Wordpress Popup Plugin Free', 'Pop Up WordPress Plugin', 'Popup Builder Wordpress', 'Popup Plugin', 'WP Popup'];
-          $randomTitle = array_rand($loveLinkTitles, 1);
-          $randomTitleVal = $loveLinkTitles[$randomTitle];
-          update_option('supsystic_pps_love_link_title', $randomTitleVal);
-        }
-        $title = get_option('supsystic_pps_love_link_title');
-        echo '<a title="' . $title . '" style="display:none;" rel="nofollow"  href="https://supsystic.com/plugins/popup-plugin/?utm_medium=love_link" target="_blank">' . $title . '</a>';
-      }
-    }
   }
   public function modifyPopupCss($css, $popup)
   {

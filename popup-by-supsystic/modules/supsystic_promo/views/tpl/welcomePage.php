@@ -40,7 +40,7 @@
               <iframe type="text/html"
                 width="90%"
                 height="330px"
-                src="https://www.youtube.com/embed/v8h2k3vvpdM"
+                src="//www.youtube.com/embed/v8h2k3vvpdM"
                 frameborder="0">
               </iframe>
             </div>

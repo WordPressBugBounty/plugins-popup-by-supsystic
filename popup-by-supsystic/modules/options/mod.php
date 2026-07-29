@@ -35,7 +35,7 @@ class optionsPps extends modulePps
   }
   public function getAllowedPublicOptions()
   {
-    $allowKeys = ['add_love_link', 'disable_autosave'];
+    $allowKeys = ['disable_autosave'];
     $res = [];
     foreach ($allowKeys as $k) {
       $res[$k] = $this->get($k);
@@ -160,19 +160,6 @@ class optionsPps extends modulePps
               'desc' => __('By default our plugin will make autosave all your changes that you do in PopUp edit screen, but you can disable this feature here. Just don\'t forget to save your PopUp each time you make any changes in it.', PPS_LANG_CODE),
               'def' => '0',
               'html' => 'checkboxHiddenVal',
-            ],
-            'add_love_link' => [
-              'label' => __('Show promo link', PPS_LANG_CODE),
-              'desc' => __('To promote our plugin, you can show the promo link below the table, if you don\'t want to show the promo link you can also hide it. You can completely remove the link under the table by purchasing the PRO version of the plugin. Thank you for cooperation!', PPS_LANG_CODE),
-              'def' => '0',
-              'html' => 'checkboxHiddenVal',
-            ],
-            'remove_love_link' => [
-              'label' => __('Remove promo link', PPS_LANG_CODE),
-              'desc' => __('If you want to delete promo link below the table from HTML just check this box. Only for PRO users.', PPS_LANG_CODE),
-              'def' => '0',
-              'html' => 'checkboxHiddenVal',
-              'pro' => '',
             ],
             'access_roles' => [
               'label' => __('User role can use plugin', PPS_LANG_CODE),

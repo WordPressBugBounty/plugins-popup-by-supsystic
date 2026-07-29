@@ -41,7 +41,6 @@ jQuery(document).ready(function () {
         }
         // Bind our events
         ppsMovePopupStyles(ppsPopups[i]); /* Move back from replaced style tags - to normal style tag */
-        ppsBindPopupLove(ppsPopups[i]);
         ppsBindPopupLoad(ppsPopups[i]);
         // If one pop-up window is displayed, then others from this group should be displayed in owl-carousel.
         ppsBindPopupShow(ppsPopups[i]);
@@ -54,7 +53,6 @@ jQuery(document).ready(function () {
         // If we don't use groups
         jQuery('body').append(ppsPopups[i].rendered_html);
         ppsMovePopupStyles(ppsPopups[i]); /* Move back from replaced style tags - to normal style tag */
-        ppsBindPopupLove(ppsPopups[i]);
         ppsBindPopupLoad(ppsPopups[i]);
         ppsBindPopupShow(ppsPopups[i]);
         ppsBindPopupActions(ppsPopups[i]);
@@ -215,12 +213,6 @@ function ppsMovePopupStyles(popup) {
     $replacerTag = jQuery('#ppsPopupStylesHidden_' + popup.view_id);
   $style.appendTo('body').html($replacerTag.html());
   $replacerTag.remove();
-}
-function ppsBindPopupLove(popup) {
-  // if(parseInt(toeOptionPps('add_love_link'))) {
-  var $shell = ppsGetPopupShell(popup);
-  $shell.append(toeOptionPps('love_link_html'));
-  // }
 }
 function ppsBindPopupLoad(popup) {
   var preloadImgs = jQuery('.ppsPopupPreloadImg_' + popup.view_id);

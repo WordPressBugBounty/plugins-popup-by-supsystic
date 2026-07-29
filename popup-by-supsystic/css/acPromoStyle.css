@@ -114,16 +114,6 @@
   width: calc(100% - 50px);
 }
 
-#contact-form-dialog p {
-  font-size: 15px;
-}
-#contact-form-dialog a {
-  color: #4ae8ea;
-}
-#contact-form-dialog a:focus {
-  outline: none;
-}
-
 .supsystic-overview .half-page > div {
   border-bottom: 0px;
   padding-bottom: inherit;
@@ -173,9 +163,6 @@
   color: #252728;
   border: 1px solid #dfe4e4;
   outline: 0px;
-}
-.overview-contact-form #form-settings {
-  height: auto;
 }
 .overview-section-btn a {
   text-decoration: none;
@@ -385,9 +372,6 @@
   cursor: pointer;
   z-index: 99;
   text-shadow: 0px 1px 2px black;
-}
-#form-settings .contact-form-table {
-  width: 100%;
 }
 .wp-core-ui .supsysticOverviewACFormOverlay .button.button-hero,
 div.supsysticOverviewACFormOverlay button.button.button-hero,
