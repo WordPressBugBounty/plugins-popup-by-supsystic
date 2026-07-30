@@ -33,8 +33,11 @@ class modulesModelPps extends modelPps
     $d = prepareParamsPps($d);
     if (is_numeric($id) && $id) {
       if (isset($d['active'])) {
-        $d['active'] = (is_string($d['active']) && $d['active'] == 'true') || $d['active'] == 1 ? 1 : 0;
-      } //mmm.... govnokod?....)))
+        // Loose `== 1` here used to accept any truthy-looking value under PHP 7's
+        // looser numeric-string comparisons; filter_var() is version-stable and
+        // avoids a module silently landing on active=0 from an unexpected value type.
+        $d['active'] = filter_var($d['active'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+      }
       /* else
        $d['active'] = 0;*/
 

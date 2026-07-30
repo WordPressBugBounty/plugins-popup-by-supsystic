@@ -17,7 +17,7 @@
  */
 class Twig_Node_Expression_BlockReference extends Twig_Node_Expression
 {
-  public function __construct(Twig_NodeInterface $name, $asString = false, $lineno, $tag = null)
+  public function __construct(Twig_NodeInterface $name, $asString = false, $lineno = 0, $tag = null)
   {
     parent::__construct(['name' => $name], ['as_string' => $asString, 'output' => false], $lineno, $tag);
   }

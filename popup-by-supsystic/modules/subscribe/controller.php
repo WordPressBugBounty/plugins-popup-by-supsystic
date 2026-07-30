@@ -87,8 +87,9 @@ class subscribeControllerPps extends controllerPps
     if (!$haveErrors) {
       //reqPps::setVar('pps_email_confirmed_'. $lastPopup['id'], '1', 'cookie', array('expire' => 999 * 24 * 60 * 60));
       $this->_setConfirmedCookie($lastPopup['id']);
-      $subscribedUrl = get_user_meta($userId, '_subscribe_url', true);
-      if (strpos($subscribedUrl, $_SERVER['HTTP_HOST']) === false) {
+      $subscribedUrl = esc_url_raw(get_user_meta($userId, '_subscribe_url', true));
+      $subscribedHost = $subscribedUrl ? wp_parse_url($subscribedUrl, PHP_URL_HOST) : false;
+      if (!$subscribedHost || strcasecmp($subscribedHost, $_SERVER['HTTP_HOST']) !== 0) {
         $subscribedUrl = '';
       }
     }

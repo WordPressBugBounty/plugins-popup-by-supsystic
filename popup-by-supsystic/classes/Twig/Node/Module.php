@@ -17,7 +17,7 @@
  */
 class Twig_Node_Module extends Twig_Node
 {
-  public function __construct(Twig_NodeInterface $body, Twig_Node_Expression $parent = null, Twig_NodeInterface $blocks, Twig_NodeInterface $macros, Twig_NodeInterface $traits, $embeddedTemplates, $filename)
+  public function __construct(Twig_NodeInterface $body, ?Twig_Node_Expression $parent = null, ?Twig_NodeInterface $blocks = null, ?Twig_NodeInterface $macros = null, ?Twig_NodeInterface $traits = null, $embeddedTemplates = null, $filename = null)
   {
     // embedded templates are set as attributes so that they are only visited once by the visitors
     parent::__construct(['parent' => $parent, 'body' => $body, 'blocks' => $blocks, 'macros' => $macros, 'traits' => $traits], ['filename' => $filename, 'index' => null, 'embedded_templates' => $embeddedTemplates], 1);

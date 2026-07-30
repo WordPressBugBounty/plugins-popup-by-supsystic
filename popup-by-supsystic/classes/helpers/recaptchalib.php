@@ -242,12 +242,18 @@ function _recaptcha_aes_pad($val)
 
 function _recaptcha_aes_encrypt($val, $ky)
 {
+  // Legacy reCAPTCHA v1 Mailhide feature; unreachable on PHP 7.2+ since the
+  // mcrypt extension no longer exists, so mcrypt_encrypt() is never called
+  // and MCRYPT_* below is never evaluated. Not called anywhere in this plugin.
   if (!function_exists('mcrypt_encrypt')) {
     die('To use reCAPTCHA Mailhide, you need to have the mcrypt php module installed.');
   }
+  // phpcs:ignore PHPCompatibility.Constants.RemovedConstants.mcrypt_mode_cbcDeprecatedRemoved -- unreachable, see guard above.
   $mode = MCRYPT_MODE_CBC;
+  // phpcs:ignore PHPCompatibility.Constants.RemovedConstants.mcrypt_rijndael_128DeprecatedRemoved -- unreachable, see guard above.
   $enc = MCRYPT_RIJNDAEL_128;
   $val = _recaptcha_aes_pad($val);
+  // phpcs:ignore PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved, PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_encryptDeprecatedRemoved -- unreachable, see guard above.
   return mcrypt_encrypt($enc, $ky, $val, $mode, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0");
 }
 

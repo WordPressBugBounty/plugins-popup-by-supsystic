@@ -43,6 +43,7 @@ abstract class ConsumerStrategies_AbstractConsumer extends Base_MixpanelBase
     }
 
     if ($this->_debug()) {
+      // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection -- $code (arg 0) is only passed by value on line 42, never reassigned.
       $arr = debug_backtrace();
       $class = get_class($arr[0]['object']);
       $line = $arr[0]['line'];

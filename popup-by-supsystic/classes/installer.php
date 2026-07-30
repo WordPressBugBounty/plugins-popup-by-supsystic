@@ -30,24 +30,35 @@ class installerPps
 			  UNIQUE INDEX `code` (`code`)
 			) DEFAULT CHARSET=utf8;"),
       );
-      dbPps::query("INSERT INTO `@__modules` (id, code, active, type_id, label) VALUES
-				(NULL, 'adminmenu',1,1,'Admin Menu'),
-				(NULL, 'options',1,1,'Options'),
-				(NULL, 'user',1,1,'Users'),
-				(NULL, 'pages',1,1,'Pages'),
-				(NULL, 'templates',1,1,'templates'),
-				(NULL, 'supsystic_promo',1,1,'supsystic_promo'),
-				(NULL, 'admin_nav',1,1,'admin_nav'),
-
-				(NULL, 'popup',1,1,'popup'),
-				(NULL, 'subscribe',1,1,'subscribe'),
-				(NULL, 'sm',1,1,'sm'),
-				(NULL, 'statistics',1,1,'statistics'),
-
-				(NULL, 'mail',1,1,'mail');");
     }
-    if (!dbPps::exist('@__modules', 'code', 'tgm_promo')) {
-      dbPps::query("INSERT INTO `@__modules` (id, code, active, type_id, label) VALUES (NULL, 'tgm_promo',1,1,'tgm_promo')");
+    // Core system modules are only ever seeded once, when the table is first
+    // created. On sites where the table already existed (partial/old install,
+    // manual DB edits, etc.) a module row can end up missing or stuck at
+    // active=0 forever, silently breaking that module (e.g. "subscribe") with
+    // no automatic repair. Re-check and self-heal every one of them here, on
+    // every init() (activation + version updates), instead of a one-off fix
+    // for a single module.
+    $coreModules = [
+      'adminmenu' => 'Admin Menu',
+      'options' => 'Options',
+      'user' => 'Users',
+      'pages' => 'Pages',
+      'templates' => 'templates',
+      'supsystic_promo' => 'supsystic_promo',
+      'admin_nav' => 'admin_nav',
+      'popup' => 'popup',
+      'subscribe' => 'subscribe',
+      'sm' => 'sm',
+      'statistics' => 'statistics',
+      'mail' => 'mail',
+      'tgm_promo' => 'tgm_promo',
+    ];
+    foreach ($coreModules as $code => $label) {
+      if (!dbPps::exist('@__modules', 'code', $code)) {
+        dbPps::query("INSERT INTO `@__modules` (id, code, active, type_id, label) VALUES (NULL, '" . $code . "',1,1,'" . $label . "')");
+      } else {
+        dbPps::query("UPDATE `@__modules` SET active = 1 WHERE code = '" . $code . "' AND active = 0");
+      }
     }
     /**
      *  modules_type

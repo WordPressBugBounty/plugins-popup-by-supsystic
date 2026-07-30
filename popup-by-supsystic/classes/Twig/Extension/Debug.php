@@ -61,6 +61,7 @@ function twig_var_dump(Twig_Environment $env, $context)
     var_dump($vars);
   } else {
     for ($i = 2; $i < $count; $i++) {
+      // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection -- $env (arg 0) is only read (method call), never reassigned, and this loop starts at index 2.
       var_dump(func_get_arg($i));
     }
   }

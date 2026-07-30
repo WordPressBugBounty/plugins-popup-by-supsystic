@@ -213,6 +213,7 @@ class Twig_Compiler implements Twig_CompilerInterface
       // when mbstring.func_overload is set to 2
       // mb_substr_count() replaces substr_count()
       // but they have different signatures!
+      // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated -- ini_get() on a removed directive just returns false on PHP 8+, so this correctly falls through to the substr_count() branch below.
       if (((int) ini_get('mbstring.func_overload')) & 2) {
         // this is much slower than the "right" version
         $this->sourceLine += mb_substr_count(mb_substr($this->source, $this->sourceOffset), "\n");

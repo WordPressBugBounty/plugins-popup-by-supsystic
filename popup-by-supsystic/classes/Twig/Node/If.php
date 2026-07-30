@@ -17,7 +17,7 @@
  */
 class Twig_Node_If extends Twig_Node
 {
-  public function __construct(Twig_NodeInterface $tests, Twig_NodeInterface $else = null, $lineno, $tag = null)
+  public function __construct(Twig_NodeInterface $tests, ?Twig_NodeInterface $else = null, $lineno = 0, $tag = null)
   {
     parent::__construct(['tests' => $tests, 'else' => $else], [], $lineno, $tag);
   }

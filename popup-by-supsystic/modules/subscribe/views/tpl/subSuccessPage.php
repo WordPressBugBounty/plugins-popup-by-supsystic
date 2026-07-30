@@ -73,7 +73,7 @@
       } else {
         $redirectUrl = get_bloginfo('wpurl');
       }
-      $redirectUrl = uriPps::normal($redirectUrl);
+      $redirectUrl = esc_url_raw(uriPps::normal($redirectUrl));
       $autoRedirectTime = 10;
       if (isset($this->popup['params']['tpl']['sub_confirm_reload_time']) && !empty($this->popup['params']['tpl']['sub_confirm_reload_time'])) {
         $autoRedirectTime = (int) $this->popup['params']['tpl']['sub_confirm_reload_time'];
@@ -84,7 +84,7 @@
       <?php echo viewPps::ksesString($successMessage); ?>
     </div>
     <div class="ppsConfirmRedirectShell">
-      <?php printf(__('<a href="%s">Back to site</a> in <i id="ppsConfirmBackCounter">%d</i> seconds'), $redirectUrl, $autoRedirectTime); ?>
+      <?php printf(__('<a href="%s">Back to site</a> in <i id="ppsConfirmBackCounter">%d</i> seconds'), esc_url($redirectUrl), (int) $autoRedirectTime); ?>
     </div>
     <script type="text/javascript">
       var ppsAutoRedirectTime = <?php echo viewPps::ksesString($autoRedirectTime); ?> ,
@@ -96,7 +96,7 @@
           document.getElementById('ppsConfirmBackCounter').innerHTML = ppsAutoRedirectTime;
           setTimeout(ppsAutoRedirectWaitClb, 1000);
         } else {
-          window.location.href = '<?php echo viewPps::ksesString($redirectUrl); ?>';
+          window.location.href = '<?php echo esc_js($redirectUrl); ?>';
         }
       }
       setTimeout(ppsAutoRedirectWaitClb, 1000);

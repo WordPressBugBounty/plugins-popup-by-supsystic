@@ -89,6 +89,7 @@ class Twig_Lexer implements Twig_LexerInterface
    */
   public function tokenize($code, $filename = null)
   {
+    // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated -- ini_get() on a removed directive just returns false on PHP 8+, so this correctly falls through to the else branch below.
     if (function_exists('mb_internal_encoding') && ((int) ini_get('mbstring.func_overload')) & 2) {
       $mbEncoding = mb_internal_encoding();
       mb_internal_encoding('ASCII');

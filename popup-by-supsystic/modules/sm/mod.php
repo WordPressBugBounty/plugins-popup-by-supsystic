@@ -32,7 +32,7 @@ class smPps extends modulePps //sm == socialmedia
       $this->_availableLinks = [
         'facebook' => ['label' => __('Facebook', PPS_LANG_CODE), 'share_link' => 'https://www.facebook.com/sharer/sharer.php?u=', 'id' => 1],
         'googleplus' => ['label' => __('Google+', PPS_LANG_CODE), 'share_link' => 'https://plus.google.com/share?url=', 'id' => 2],
-        'twitter' => ['label' => __('Twitter', PPS_LANG_CODE), 'share_link' => 'https://twitter.com/home?status=', 'id' => 3],
+        'twitter' => ['label' => __('X', PPS_LANG_CODE), 'share_link' => 'https://x.com/intent/tweet?text=', 'id' => 3],
       ];
     }
     return $this->_availableLinks;

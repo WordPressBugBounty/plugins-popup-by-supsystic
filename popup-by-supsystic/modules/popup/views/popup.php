@@ -139,7 +139,7 @@ class popupViewPps extends viewPps
       }
     }
 
-    $subDestList = framePps::_()->getModule('subscribe')->getDestList();
+    $subDestList = framePps::_()->getModule('subscribe') ? framePps::_()->getModule('subscribe')->getDestList() : [];
     $subDestListForSelect = [];
     foreach ($subDestList as $key => $data) {
       $subDestListForSelect[$key] = $data['label'];
@@ -456,6 +456,9 @@ class popupViewPps extends viewPps
   }
   public function getMainPopupSubTab()
   {
+    if (!framePps::_()->getModule('subscribe')) {
+      return '';
+    }
     framePps::_()->getModule('subscribe')->loadAdminEditAssets();
     /*MailPoet check*/
     framePps::_()->getModule('subscribe')->getModel()->getMailPoetVer();
@@ -813,9 +816,13 @@ class popupViewPps extends viewPps
       (isset($popup['params']['tpl']['enb_login']) && !empty($popup['params']['tpl']['enb_login'])) ||
       (isset($popup['params']['tpl']['enb_reg']) && !empty($popup['params']['tpl']['enb_reg']))
     ) {
-      $popup['params']['tpl']['sub_form_start'] = framePps::_()->getModule('subscribe')->generateFormStart($popup);
-      $popup['params']['tpl']['sub_form_end'] = framePps::_()->getModule('subscribe')->generateFormEnd($popup);
-      $popup['params']['tpl']['sub_fields_html'] = framePps::_()->getModule('subscribe')->generateFields($popup);
+      if (framePps::_()->getModule('subscribe')) {
+        $popup['params']['tpl']['sub_form_start'] = framePps::_()->getModule('subscribe')->generateFormStart($popup);
+        $popup['params']['tpl']['sub_form_end'] = framePps::_()->getModule('subscribe')->generateFormEnd($popup);
+        $popup['params']['tpl']['sub_fields_html'] = framePps::_()->getModule('subscribe')->generateFields($popup);
+      } else {
+        $popup['params']['tpl']['sub_form_start'] = $popup['params']['tpl']['sub_form_end'] = $popup['params']['tpl']['sub_fields_html'] = '';
+      }
     }
     // Subscribe can be disabled - but login/registration can be enbled.
     // In our templates HTML we have next condition - [if enb_subscribe] - and only in this case it will show form (any - subscribe/login/registration)

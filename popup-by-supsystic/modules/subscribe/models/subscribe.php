@@ -283,7 +283,7 @@ class subscribeModelPps extends modelPps
             $username = $this->_getUsernameFromEmail($email, $username);
             $ignoreConfirm = (isset($popup['params']['tpl'][$pref . '_ignore_confirm']) && $popup['params']['tpl'][$pref . '_ignore_confirm']) || $forceIgnoreConfirm;
             $confirmHash = md5($email . NONCE_KEY);
-            $d['_subscribe_url'] = dbPps::prepareHtmlIn(reqPps::getVar('HTTP_REFERER', 'server'));
+            $d['_subscribe_url'] = esc_url_raw(reqPps::getVar('HTTP_REFERER', 'server'));
             $saveData = [
               'username' => $username,
               'email' => $email,

@@ -4,7 +4,8 @@ Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 1.11.2
+Requires PHP: 7.4
+Stable tag: 1.12.0
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +128,10 @@ Yes. Popups are fully responsive and can be controlled separately for mobile and
 = Can I connect it to my email marketing service? =
 Email marketing integrations are available in the Pro version.
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.]( https://patchstack.com/database/vdp/9e5fb5a0-2ab7-489d-9ef9-d0240885254b )
+
 == Screenshots ==
 1. Modern Lead Capture Popup — Clean, Brand-Aligned Design
 2. Display Announcements Without Disrupting User Experience
@@ -139,163 +144,68 @@ Email marketing integrations are available in the Pro version.
 
 
 == Changelog ==
-1.11.2 / 28.07.2026 =
+
+= 2026 =
+
+= 1.12.0 / 29.07.2026 =
+ * Completed a full PHP compatibility pass across the plugin core, the bundled templating engine, and the libraries
+ * Fixed an edge case where the subscription module could stay inactive after certain update paths, which could interrupt the popup editor or the subscribe/login forms
+ * Removed an outdated cross-promotion notice from the Social tab
+ * Security fix hardened the subscription confirmation page
  * Minor fixes
 
-1.11.1 / 30.05.2026 =
- * Tested up WP 7.0
- 
-1.11.0 / 30.03.2026 =
- * Add fix for designs
- * Add fox for snow effect
- * Remove console looking
- * Add fix for popup + contact form
-
-1.10.38 / 11.03.2026 =
- * Add fix for close button popup
- * Add new promo overview banner
-
-1.10.37 / 11.03.2026 =
- * Maintenance and compatibility update tested with WordPress 6.9.3 and PHP 8.4.
- * Minor fixes and overview update.
-
-1.10.36 / 19.01.2026 =
- * Maintenance and compatibility update tested with WordPress 6.9 and PHP 8.4.
- * Includes a fix for a cache-related issue and additional stability improvements.
- * Includes security hardening and stability fixes
-
-1.10.35 / 26.11.2025 =
- * Minor fixes
- * Updates for WP 6.8.3
- * Fix issue with Zone.Identifier
-
-1.10.34 / 17.06.2025 =
- * Minor fixes and overview update
-
-1.10.33 / 11.06.2025 =
+= 1.11.2 / 28.07.2026 =
  * Minor fixes
 
-1.10.32 / 06.05.2025 =
- * Add fix for textdomain
- * Add support WordPress 6.8.1
+= 1.11.1 / 30.05.2026 =
+ * Confirmed compatibility with WordPress 7.0
 
-1.10.31 / 08.04.2025 =
- * Fix UI/UX
+= 1.11.0 / 30.03.2026 =
+ * Fixed several popup design and overlay rendering issues
+ * Fixed the snow effect animation
+ * Removed leftover debug console output
+ * Fixed a conflict between popups and contact forms
 
-1.10.30 / 20.11.2024 =
- * Fix security issue
+= 1.10.38 / 11.03.2026 =
+ * Fixed the popup close button
+ * Added a new overview banner
 
-1.10.29 / 20.03.2024 =
- * Add expertise level for AC form
+= 1.10.37 / 11.03.2026 =
+ * Maintenance and compatibility update, tested with WordPress 6.9.3 and PHP 8.4
+ * General stability improvements
 
+= 1.10.36 / 19.01.2026 =
+ * Maintenance and compatibility update, tested with WordPress 6.9 and PHP 8.4
+ * Resolved a caching-related display issue
+ * Additional security hardening and stability fixes
 
-1.10.28 / 23.01.2024 =
- * Add security nonces
+= 2025 =
+ * Delivered ongoing compatibility updates for WordPress 6.8.x
+ * Fixed a translation/textdomain loading issue and a file-metadata (Zone.Identifier) edge case
+ * General UI polish and stability fixes across the plugin
 
-1.10.27 / 21.12.2023 =
- * love link fix
+= 2024 =
+ * Added security nonce verification across admin actions
+ * Improved the ActiveCampaign subscription form with an expertise-level field option
+ * Additional security fixes
 
-1.10.26 / 04.12.2023 =
- * Minor fixes
+= 2023 =
+ * Completed a full compatibility pass for PHP 8.2 and WordPress 6.2
+ * Multiple rounds of hardening in response to the WordPress.org security scanner (WPScan), including nonce verification and safer string handling
+ * Fixed a popup-saving issue and a language-domain loading bug
+ * Retired the legacy "Neo" template in favor of better-supported designs
 
-1.10.25 / 30.10.2023 =
- * Minor fixes
-1.10.24 / 05.09.2023 =
- * Implement love link
+= 2022 =
+ * Added support for WordPress 6.0 and PHP 8.1
+ * Fixed a Media Library integration issue and several HTML-rendering edge cases
+ * Addressed feedback from the WordPress.org plugin review team
 
-1.10.23 / 09.08.2023 =
- * Fixed issue with save popup
+= 2021 =
+ * Added WordPress 5.7–5.8 compatibility
+ * Improved the reliability of plugin activation and the installer's data handling
+ * UI refinements to checkboxes, radio buttons, and admin notices
 
-1.10.22 / 31.07.2023 =
- * Fixed PPS_LANG_CODE issue
-
-1.10.21 / 28.07.2023 =
- * Fixes for WPScan
-
-1.10.20 / 27.07.2023 =
- * Compatibility fixes for php 8.2
- * Fixes for WPScan
-
-= 1.10.19 / 22.06.2023 =
- * Compatibility fixes for php 8.2
- * remove Neo template
- * Reme parseStr for WPScan
-
-= 1.10.18 / 07.06.2023 =
- * Compatibility fixes for php 8.2
- * Compatibility fixes for wordpress 6.2
- * fix fatal error
- * disable NEO template
-
-= 1.10.17 / 15.05.2023 =
- * Compatibility fixes for php 8.2
- * Compatibility fixes for wordpress 6.2
- * changed overview ads
- * fixes for nonce
- * fixes for html striptags
-
-= 1.10.15 / 30.08.2022 =
- * Add support PHP 8.1
- * Fixes WP 6.0
-
-= 1.10.14 / 03.06.2022 =
- * Fixes to HTML tags
- * Add support WP 6.0
- * Fixes for Media Library
-
-= 1.10.13 / 13.04.2022 =
- * Add fix for wp review
-
-= 1.10.12 / 11.04.2022 =
- * Add fix for wp review
-
-= 1.10.11/ 11.04.2022 =
- * Add fix for wp review
-
-= 1.10.10 / 10.03.2021 =
- * Add fix for wp review
- * Add fix for popup
- * Replace base64 with escaped serialized array from installer with backward
-
-= 1.10.9 / 10.03.2021 =
- * Minor fixes
- * Fixes for controller
-
-= 1.10.8 / 13.12.2021 =
- * Minor fixes
-
-= 1.10.7 / 17.08.2021 =
- * Minor fixes
- * WP 5.8 support
-
-= 1.10.6 / 22.06.2021 =
- * Minor fixes
-
-= 1.10.5 / 01.04.2021 =
- * Add fix CSS tab
- * Add fix for problem with activation
-
-= 1.10.4 / 26.03.2021 =
- * Add fix for OVH gateway
-
-= 1.10.3 / 16.03.2021 =
- * Add fix for WP 5.7
- * Fixed radio Buttons
- * Fixed checkboxes
- * disabled iCheck
- * add cookie for notices
-
-
-
-= 1.10.2 / 15.09.2020 =
- * Add fix for WP 5.5
- * Add fix for apostrophe
-
-= 1.10.1 / 23.06.2020 =
- * Add fix for mailPoetV3
- * Add fix for mobile
-
-= 1.10.0 / 14.01.2020 =
- * Fix for GetResponse
- * Remove PHPMailer
- * Minor Fixes
+= 2020 =
+ * Added WordPress 5.5 compatibility
+ * Fixed the MailPoet 3 integration and a mobile display issue
+ * Improved the GetResponse integration and simplified the email-sending code

@@ -31,14 +31,14 @@ class supsystic_promoViewPps extends viewPps
           'With Popup by Supsystic you can show popup in different ways – when page loads, after user scroll page, on exit from site, after user comment. Besides you can show popup by clicking on certain link, button, image or even show it by clicking the Menu item. Just add required code and everything is done!<br />More info you can find here <a target="_blank" href="%s">here</a>',
           PPS_LANG_CODE,
         ),
-        '//supsystic.com/open-popup-on-click/',
+        '//supsystic.com/documentation/open-popup-click/',
       ),
       __('What is A/B testing?', PPS_LANG_CODE) => sprintf(
         __(
           'A/B testing is one of the easiest ways to increase conversion rates and learn more about your audience!<br />A/B test in Popup plugin involves testing two or more versions of a popup window - an A version (original) and a B versions (the variation) - with live traffic and measuring the effect each version has on your conversion rate.<br />To know more detail – click <a target="_blank" href="%s">here</a>',
           PPS_LANG_CODE,
         ),
-        'http://supsystic.com/what-is-ab-testing/',
+        '//supsystic.com/documentation/ab-testing/',
       ),
       __('How to create Subscribe Custom Fields?', PPS_LANG_CODE) => sprintf(
         __(
@@ -46,7 +46,7 @@ class supsystic_promoViewPps extends viewPps
 Go to Design tab -> Subscribe section -> Subscription Fields block. Here you can add any new fields which you want. Read more <a target="_blank" href="%s">here.</a>',
           PPS_LANG_CODE,
         ),
-        '//supsystic.com/subscribe-custom-fields-builder/',
+        '//supsystic.com/documentation/popup-subscription-settings/',
       ),
       __('How to subscribe to MailChimp?', PPS_LANG_CODE) => __(
         'To subscribe to MailChimp you need enter your MailChimp API key and name of list for subscription. To find your MailChimp API key - follow the instructions below:<br />
@@ -70,7 +70,7 @@ Here you can edit css style of the pop-up window.',
 					Check the example of <a target="_blank" href="%s">Build-In Page Popup.</a>',
           PPS_LANG_CODE,
         ),
-        'http://supsystic.com/build-page-popup/',
+        '//supsystic.com/example/built-in-page-popup/',
       ),
     ];
   }

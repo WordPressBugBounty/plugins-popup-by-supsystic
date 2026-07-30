@@ -163,6 +163,14 @@ class modInstallerPps
     }
     $locations = self::_getPluginLocations();
     if ($modules = self::_getExtendModules($locations)) {
+      // Resolve "license" first: activate() below only lets any other module
+      // in this extension come back on if a currently valid license exists,
+      // so license itself must already be up to date by the time we get there.
+      usort($modules, function ($a, $b) {
+        $aCode = is_array($a) ? $a['code'] ?? '' : '';
+        $bCode = is_array($b) ? $b['code'] ?? '' : '';
+        return ($bCode === 'license' ? 1 : 0) - ($aCode === 'license' ? 1 : 0);
+      });
       foreach ($modules as $m) {
         if (!empty($m)) {
           //If module Exists - just activate it, we can't check this using framePps::moduleExists because this will not work for multy-site WP
@@ -198,6 +206,15 @@ class modInstallerPps
    */
   public static function deactivate()
   {
+    if (!framePps::_()->getModule('options')) {
+      // 'options' is a core module of the base plugin; without it we can't
+      // reach the modules table model at all. Bail instead of fataling on a
+      // null method call -- the base plugin's own installer self-heals core
+      // module rows (including 'options') on its next activation/update.
+      errorsPps::push(__('Core "options" module is not active, cannot deactivate modules', PPS_LANG_CODE), errorsPps::MOD_INSTALL);
+      self::displayErrors(false);
+      return false;
+    }
     $locations = self::_getPluginLocations();
     if ($modules = self::_getExtendModules($locations)) {
       foreach ($modules as $m) {
@@ -223,9 +240,34 @@ class modInstallerPps
     }
     return true;
   }
+  /**
+   * Whether the "license" module row is currently marked active in the
+   * modules table. Read directly from the table (not via getModule('license'),
+   * which would require that module to already be loaded in this request)
+   * so it reflects any activation this same check() pass just performed.
+   */
+  private static function _licenseModuleActive()
+  {
+    $active = dbPps::get("SELECT active FROM @__modules WHERE code = 'license'", 'one');
+    return $active !== null && (int) $active === 1;
+  }
   public static function activate($modDataArr)
   {
     if (!empty($modDataArr['code']) && !framePps::_()->moduleActive($modDataArr['code'])) {
+      if (!framePps::_()->getModule('options')) {
+        // Same 'options' dependency as deactivate() above -- bail rather
+        // than fatal on a null method call.
+        errorsPps::push(__('Core "options" module is not active, cannot activate modules', PPS_LANG_CODE), errorsPps::MOD_INSTALL);
+        return;
+      }
+      // Only "license" comes back automatically just because the extension
+      // plugin itself was (re)activated. Every other of its modules must only
+      // be reactivated once a currently valid license exists -- otherwise a
+      // bare deactivate/reactivate of the plugin would silently re-enable
+      // every paid feature regardless of license state.
+      if ($modDataArr['code'] !== 'license' && dbPps::exist('@__modules', 'code', 'license') && !self::_licenseModuleActive()) {
+        return;
+      }
       //If module is not active - then acivate it
       if (
         framePps::_()
@@ -266,13 +308,13 @@ class modInstallerPps
   public static function uninstall()
   {
     $locations = self::_getPluginLocations();
+    $optionsModule = framePps::_()->getModule('options');
     if ($modules = self::_getExtendModules($locations)) {
       foreach ($modules as $m) {
         self::_uninstallTables($m);
-        framePps::_()
-          ->getModule('options')
-          ->getModel('modules')
-          ->delete(['code' => $m['code']]);
+        if ($optionsModule) {
+          $optionsModule->getModel('modules')->delete(['code' => $m['code']]);
+        }
         utilsPps::deleteDir(PPS_MODULES_DIR . $m['code']);
       }
     }

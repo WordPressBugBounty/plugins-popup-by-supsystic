@@ -81,7 +81,7 @@ class Twig_Environment
    * @param Twig_LoaderInterface $loader  A Twig_LoaderInterface instance
    * @param array                $options An array of options
    */
-  public function __construct(Twig_LoaderInterface $loader = null, $options = [])
+  public function __construct(?Twig_LoaderInterface $loader = null, $options = [])
   {
     if (null !== $loader) {
       $this->setLoader($loader);
