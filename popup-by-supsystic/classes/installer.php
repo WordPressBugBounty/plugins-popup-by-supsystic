@@ -556,7 +556,6 @@ class installerPps
     $lastAutoIncrement = dbPps::getAutoIncrement('@__popup');
     $lastAutoIncrement = $lastAutoIncrement && $lastAutoIncrement > 30 ? $lastAutoIncrement : 100;
     $popupLastId = 39;
-    //dbPps::query('DELETE FROM @__popup WHERE id IN ('. implode(',', range(0, $popupLastId)). ')');	// We updated all popups as we did changes in all of them
     if (!dbPps::exist('@__popup', 'id', '7')) {
       // First set of additional templates
       dbPps::query('INSERT INTO @__popup (id,label,active,original_id,params,html,css,img_preview,show_on,show_to,show_pages,type_id,date_created,sort_order) VALUES

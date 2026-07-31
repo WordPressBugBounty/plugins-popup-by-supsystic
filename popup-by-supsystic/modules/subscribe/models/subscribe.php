@@ -354,8 +354,16 @@ class subscribeModelPps extends modelPps
       // If there was selected some special role - check it here
       $this->_lastPopup = $popup;
       if (isset($popup['params']['tpl'][$pref . '_wp_create_user_role']) && !empty($popup['params']['tpl'][$pref . '_wp_create_user_role']) && $popup['params']['tpl'][$pref . '_wp_create_user_role'] != 'subscriber') {
-        $user = new WP_User($userId);
-        $user->set_role($popup['params']['tpl'][$pref . '_wp_create_user_role']);
+        $requestedRole = $popup['params']['tpl'][$pref . '_wp_create_user_role'];
+        // Never trust a role coming from stored popup config - only allow roles
+        // that are also offered in the admin UI's own role picker, which already
+        // excludes 'administrator' and 'editor' (see getAvailableUserRolesForSelect()).
+        $subscribeMod = framePps::_()->getModule('subscribe');
+        $allowedRoles = $subscribeMod ? $subscribeMod->getAvailableUserRolesForSelect() : [];
+        if (isset($allowedRoles[$requestedRole])) {
+          $user = new WP_User($userId);
+          $user->set_role($requestedRole);
+        }
       }
       if (isset($popup['params']['tpl'][$pref . '_fields']) && !empty($popup['params']['tpl'][$pref . '_fields'])) {
         foreach ($popup['params']['tpl'][$pref . '_fields'] as $k => $f) {
@@ -437,7 +445,11 @@ class subscribeModelPps extends modelPps
     $pref = $forReg ? 'reg' : 'sub';
     $blogName = wp_specialchars_decode(get_bloginfo('name'));
     $blogName = str_replace('&#039;', "'", $blogName);
-    $confirmLinkData = ['email' => $email, 'hash' => $confirmHash, '_wpnonce' => wp_create_nonce('pps_nonce')];
+    // Use a dedicated nonce action tied to this specific subscriber/hash rather
+    // than the generic 'pps_nonce' action used to gate admin-only AJAX actions -
+    // this link is emailed to the (unauthenticated) subscriber, so it must never
+    // double as a valid nonce for anything else.
+    $confirmLinkData = ['email' => $email, 'hash' => $confirmHash, '_wpnonce' => wp_create_nonce('pps_subscribe_confirm_' . $confirmHash)];
     if ($forReg) {
       $confirmLinkData['for_reg'] = 1;
     }

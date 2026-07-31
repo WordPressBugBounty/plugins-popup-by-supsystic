@@ -353,7 +353,6 @@ class popupViewPps extends viewPps
   }
   private function _initBigDataStats()
   {
-    // $canSend = (int) framePps::_()->getModule('options')->get('send_stats');
     // if( $canSend ) {
     // 	framePps::_()->getModule('supsystic_promo')->connectItemEditStats();
     // }

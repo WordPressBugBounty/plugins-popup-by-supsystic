@@ -2,10 +2,9 @@
 Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
-Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.12.0
+Stable tag: 1.13.0
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,11 +146,14 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 2026 =
 
-= 1.12.0 / 29.07.2026 =
+= 1.13.0 / 31.07.2026 =
+ * Added an extra safeguard so that user roles assigned through the subscription form can never be escalated beyond what you explicitly allow in the popup editor
  * Completed a full PHP compatibility pass across the plugin core, the bundled templating engine, and the libraries
  * Fixed an edge case where the subscription module could stay inactive after certain update paths, which could interrupt the popup editor or the subscribe/login forms
  * Removed an outdated cross-promotion notice from the Social tab
- * Security fix hardened the subscription confirmation page
+ 
+= 1.12.0 / 29.07.2026 =
+ * Security patch and fixes hardened the subscription confirmation page
  * Minor fixes
 
 = 1.11.2 / 28.07.2026 =

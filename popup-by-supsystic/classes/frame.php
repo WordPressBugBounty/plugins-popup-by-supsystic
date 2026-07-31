@@ -164,6 +164,39 @@ class framePps
     }
   }
   /**
+   * Union a controller's own permission map with the base controller's map.
+   * A plain array_merge() here is wrong: both maps use the same top-level
+   * keys (PPS_METHODS / PPS_USERLEVELS), so array_merge() would let one
+   * wholesale replace the other instead of combining their method lists -
+   * silently dropping restrictions the controller itself defined (e.g. this
+   * previously let the popup module's admin-only 'save' restriction be
+   * overwritten away by the base controller's smaller default list).
+   * @param array $permissions Controller's own permissions
+   * @param array $permissionsBase Base controller's permissions
+   * @return array merged permissions map
+   */
+  private function _mergePermissions($permissions, $permissionsBase)
+  {
+    foreach ([PPS_METHODS, PPS_USERLEVELS] as $permKey) {
+      if (empty($permissionsBase[$permKey])) {
+        continue;
+      }
+      if (!isset($permissions[$permKey])) {
+        $permissions[$permKey] = [];
+      }
+      foreach ($permissionsBase[$permKey] as $userlevel => $methods) {
+        $incoming = is_array($methods) ? $methods : [$methods];
+        if (isset($permissions[$permKey][$userlevel])) {
+          $existing = is_array($permissions[$permKey][$userlevel]) ? $permissions[$permKey][$userlevel] : [$permissions[$permKey][$userlevel]];
+          $permissions[$permKey][$userlevel] = array_unique(array_merge($existing, $incoming));
+        } else {
+          $permissions[$permKey][$userlevel] = $incoming;
+        }
+      }
+    }
+    return $permissions;
+  }
+  /**
    * Check permissions for action in controller by $code
    * @param string $code Code of controller that need to be checked
    * @param string $action Action that need to be checked
@@ -177,7 +210,7 @@ class framePps
     if ($mod) {
       $permissions = $mod->getController()->getPermissions();
       $permissionsBase = $mod->getController()->getBasePermissions();
-      $permissions = array_merge($permissions, $permissionsBase);
+      $permissions = $this->_mergePermissions($permissions, $permissionsBase);
       if (!empty($permissions)) {
         // Special permissions
         if (isset($permissions[PPS_METHODS]) && !empty($permissions[PPS_METHODS])) {

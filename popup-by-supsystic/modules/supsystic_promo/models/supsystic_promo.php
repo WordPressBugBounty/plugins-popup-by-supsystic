@@ -26,15 +26,7 @@ class supsystic_promoModelPps extends modelPps
     // In any case - give user posibility to move futher
     return true;
   }
-  public function saveUsageStat($code, $unique = false)
-  {
-    // if($unique && $this->_checkUniqueStat($code)) {
-    // 	return;
-    // }
-    // $query = 'INSERT INTO @__usage_stat SET code = "'. dbPps::escape($code). '", visits = 1
-    // 	ON DUPLICATE KEY UPDATE visits = visits + 1';
-    // return dbPps::query($query);
-  }
+  public function saveUsageStat($code, $unique = false) {}
   private function _checkUniqueStat($code)
   {
     // $uniqueStats = get_option(PPS_CODE. '_unique_stats');
@@ -47,17 +39,8 @@ class supsystic_promoModelPps extends modelPps
     // update_option(PPS_CODE. '_unique_stats', $uniqueStats);
     // return true;
   }
-  public function saveSpentTime($code, $spent)
-  {
-    // $spent = (int) $spent;
-    // $query = 'UPDATE @__usage_stat SET spent_time = spent_time + '. $spent. ' WHERE code = "'. $code. '"';
-    // return dbPps::query($query);
-  }
-  public function getAllUsageStat()
-  {
-    // $query = 'SELECT * FROM @__usage_stat';
-    // return dbPps::get($query);
-  }
+  public function saveSpentTime($code, $spent) {}
+  public function getAllUsageStat() {}
   public function sendUsageStat()
   {
     // $allStat = $this->getAllUsageStat();
@@ -75,16 +58,8 @@ class supsystic_promoModelPps extends modelPps
     // // In any case - give user posibility to move futher
     // return true;
   }
-  public function clearUsageStat()
-  {
-    // $query = 'DELETE FROM @__usage_stat';
-    // return dbPps::query($query);
-  }
-  public function getUserStatsCount()
-  {
-    // $query = 'SELECT SUM(visits) AS total FROM @__usage_stat';
-    // return (int) dbPps::get($query, 'one');
-  }
+  public function clearUsageStat() {}
+  public function getUserStatsCount() {}
   public function checkAndSend($force = false)
   {
     // $statCount = $this->getUserStatsCount();
@@ -172,7 +147,6 @@ class supsystic_promoModelPps extends modelPps
   }
   public function bigStatAddCheck($key, $properties = [])
   {
-    // $canSend = (int) framePps::_()->getModule('options')->get('send_stats');
     // if( $canSend ) {
     // 	$this->bigStatAdd( $key, $properties );
     // }
@@ -201,7 +175,6 @@ class supsystic_promoModelPps extends modelPps
     // 	}
     // }
     // $this->bigStatAdd('Deactivated', $deactivateParams);
-    // $startUsage = (int) framePps::_()->getModule('options')->get('plug_welcome_show');
     // if($startUsage) {
     // 	$usedTime = time() - $startUsage;
     // 	$this->bigStatAdd('Used Time', array(
