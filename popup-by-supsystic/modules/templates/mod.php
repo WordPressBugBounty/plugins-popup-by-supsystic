@@ -18,10 +18,11 @@ class templatesPps extends modulePps
         $this->loadCoreCss();
         $this->loadChosenSelects();
 
-        framePps::_()->addScript('ppsAcPromoScript', PPS_JS_PATH . 'acPromoScript.js');
-        framePps::_()->addStyle('ppsAcPromoStyle', PPS_CSS_PATH . 'acPromoStyle.css');
-
         framePps::_()->addStyle('suptablesui', PPS_CSS_PATH . 'suptablesui.min.css');
+        // Despite the name, this file also carries core admin layout styles (breadcrumbs,
+        // footer, content wrapper, overview tab sections) shared across all plugin tabs -
+        // not just the (removed) AC promo popup. Keep enqueued.
+        framePps::_()->addStyle('ppsAcPromoStyle', PPS_CSS_PATH . 'acPromoStyle.css');
         framePps::_()->addScript('adminOptionsPps', PPS_JS_PATH . 'admin.options.js', [], false, true);
         add_action('admin_enqueue_scripts', [$this, 'loadMediaScripts']);
         add_action('init', [$this, 'connectAdditionalAdminAssets']);
@@ -79,25 +80,6 @@ class templatesPps extends modulePps
       if (is_admin()) {
         $jsData['isPro'] = framePps::_()->getModule('supsystic_promo')->isPro();
         $jsData['mainLink'] = framePps::_()->getModule('supsystic_promo')->getMainLink();
-        $show = true;
-        $acRemind = get_option('pps_ac_remind', false);
-        if (!empty($acRemind)) {
-          $currentDate = date('Y-m-d h:i:s');
-          if ($currentDate > $acRemind) {
-            $show = true;
-          } else {
-            $show = false;
-          }
-        }
-        $acSubscribe = get_option('pps_ac_subscribe', false);
-        if (!empty($acSubscribe)) {
-          $show = false;
-        }
-        $acDisabled = get_option('pps_ac_disabled', false);
-        if (!empty($acDisabled)) {
-          $show = false;
-        }
-        $jsData['ppsAcShow'] = $show;
       }
       $jsData = dispatcherPps::applyFilters('jsInitVariables', $jsData);
       framePps::_()->addJSVar('corePps', 'PPS_DATA', $jsData);
@@ -225,7 +207,7 @@ class templatesPps extends modulePps
   {
     static $loaded = false;
     if (!$loaded) {
-      framePps::_()->addStyle('magic.anim', $this->_assetsUrl . 'css/magic.min.css');
+      framePps::_()->addStyle('magic.anim', $this->_assetsUrl . 'lib/css/magic.min.css');
       $loaded = true;
     }
   }

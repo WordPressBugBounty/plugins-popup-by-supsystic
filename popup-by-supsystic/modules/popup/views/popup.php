@@ -262,7 +262,9 @@ class popupViewPps extends viewPps
     $this->assign('selectedShowCategories', $selectedShowCategories);
 
     $this->assign('smLinks', framePps::_()->getModule('sm')->getAvailableLinks());
-    $this->assign('smDesigns', framePps::_()->getModule('sm')->getAvailableDesigns());
+    $this->assign('smStyleColorOptions', framePps::_()->getModule('sm')->getStyleColorOptions());
+    $this->assign('smStyleRadiusOptions', framePps::_()->getModule('sm')->getStyleRadiusOptions());
+    $this->assign('smBorderTypeOptions', framePps::_()->getModule('sm')->getBorderTypeOptions());
 
     $this->assign('hideForList', $hideForList);
     $this->assign('countriesForSelect', $countriesForSelect);
@@ -280,13 +282,13 @@ class popupViewPps extends viewPps
       'ppsPopupDesign' => [
         'title' => __('Appearance', PPS_LANG_CODE),
         'content' => $this->getMainPopupDesignTab(),
-        'fa_icon' => 'fa-picture-o',
+        'fa_icon' => 'fa-image',
         'sort_order' => 0,
       ],
       'ppsPopupAnimation' => [
         'title' => __('Popup Opening Animation', PPS_LANG_CODE),
         'content' => $this->getMainPopupAnimationTab(),
-        'fa_icon' => 'fa-cog fa-spin',
+        'fa_icon' => 'fa-gear fa-spin',
         'sort_order' => 50,
       ],
     ];
@@ -294,7 +296,7 @@ class popupViewPps extends viewPps
       $designTabs['ppsPopupTexts'] = [
         'title' => __('Texts', PPS_LANG_CODE),
         'content' => $this->getMainPopupTextsTab(),
-        'fa_icon' => 'fa-pencil-square-o',
+        'fa_icon' => 'fa-pen-to-square',
         'sort_order' => 30,
       ];
     }
@@ -302,7 +304,7 @@ class popupViewPps extends viewPps
       $designTabs['ppsPopupSm'] = [
         'title' => __('Social', PPS_LANG_CODE),
         'content' => $this->getMainPopupSmTab(),
-        'fa_icon' => 'fa-thumbs-o-up',
+        'fa_icon' => 'fa-thumbs-up',
         'sort_order' => 40,
       ];
     }
@@ -320,7 +322,7 @@ class popupViewPps extends viewPps
       'ppsPopupTpl' => [
         'title' => __('Design', PPS_LANG_CODE),
         'content' => $this->getMainPopupTplTab(),
-        'fa_icon' => 'fa-picture-o',
+        'fa_icon' => 'fa-image',
         'sort_order' => 10,
       ],
       'ppsPopupEditors' => [
@@ -348,14 +350,7 @@ class popupViewPps extends viewPps
     uasort($tabs, [$this, 'sortEditPopupTabsClb']);
     $this->assign('tabs', $tabs);
     dispatcherPps::doAction('beforePopupEditRender', $popup);
-    $this->_initBigDataStats();
     return parent::getContent('popupEditAdmin');
-  }
-  private function _initBigDataStats()
-  {
-    // if( $canSend ) {
-    // 	framePps::_()->getModule('supsystic_promo')->connectItemEditStats();
-    // }
   }
   public function showEditPopupFormControls()
   {

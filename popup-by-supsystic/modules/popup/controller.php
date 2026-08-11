@@ -34,7 +34,9 @@ class popupControllerPps extends controllerPps
   }
   protected function _prepareTextLikeSearch($val)
   {
-    $query = '(label LIKE "%' . $val . '%"';
+    global $wpdb;
+    $escaped = esc_sql($wpdb->esc_like($val));
+    $query = '(label LIKE "%' . $escaped . '%"';
     if (is_numeric($val)) {
       $query .= ' OR id LIKE "%' . (int) $val . '%"';
     }
@@ -90,7 +92,8 @@ class popupControllerPps extends controllerPps
     if ($this->_prevPopupId) {
       $this->_prepareGoogleMapAssetsForPreview($this->_prevPopupId);
       $popup = $this->getModel()->getById($this->_prevPopupId);
-      $assetsStr = '<link rel="stylesheet" href="' . $this->getModule()->getModPath() . 'css/frontend.popup.css" type="text/css" media="all" />';
+      $assetsStr = '<link rel="stylesheet" href="' . PPS_CSS_PATH . 'font-awesome.min.css" type="text/css" media="all" />';
+      $assetsStr .= '<link rel="stylesheet" href="' . $this->getModule()->getModPath() . 'css/frontend.popup.css" type="text/css" media="all" />';
       if (isset($popup['params']['tpl']['enb_contact_form']) && !empty($popup['params']['tpl']['enb_contact_form']) && $this->getModule()->contactFormsSupported()) {
         global $wpdb;
         $form = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}cfs_forms WHERE id= %d ", $popup['params']['tpl']['contact_form']), ARRAY_A);

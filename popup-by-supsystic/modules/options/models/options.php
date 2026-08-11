@@ -27,7 +27,6 @@ class optionsModelPps extends modelPps
       if (!$ignoreDbUpdate) {
         $this->_updateOptsInDb();
       }
-      //framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat('option.'. $optKey);
     }
   }
   public function getAll()

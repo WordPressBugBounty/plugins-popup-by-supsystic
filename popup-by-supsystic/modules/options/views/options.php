@@ -30,7 +30,6 @@ class optionsViewPps extends viewPps
     $activeTab = $this->getModule()->getActiveTab();
     $content = 'No tab content found - ERROR';
     if (isset($tabs[$activeTab]) && isset($tabs[$activeTab]['callback'])) {
-      //framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat('tab.'. $activeTab);
       $content = call_user_func($tabs[$activeTab]['callback']);
     }
     $activeParentTabs = [];

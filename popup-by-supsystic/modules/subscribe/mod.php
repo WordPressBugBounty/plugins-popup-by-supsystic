@@ -250,9 +250,30 @@ class subscribePps extends modulePps
       }
     }
     if (!empty($resHtml) && $enbRecaptcha && framePps::_()->getModule('sub_fields')) {
-      $resHtml .= htmlPps::recaptcha('recap', [
-        'sitekey' => $popup['params']['tpl']['capt_site_key'],
-      ]);
+      $captType = !empty($popup['params']['tpl']['capt_type']) ? $popup['params']['tpl']['capt_type'] : 'recaptcha';
+      switch ($captType) {
+        case 'recaptcha_v3':
+          $resHtml .= htmlPps::recaptchaV3('recapv3', [
+            'sitekey' => isset($popup['params']['tpl']['recapv3_site_key']) ? $popup['params']['tpl']['recapv3_site_key'] : '',
+          ]);
+          break;
+        case 'hcaptcha':
+          $resHtml .= htmlPps::hcaptcha('hcap', [
+            'sitekey' => isset($popup['params']['tpl']['hcap_site_key']) ? $popup['params']['tpl']['hcap_site_key'] : '',
+          ]);
+          break;
+        case 'turnstile':
+          $resHtml .= htmlPps::turnstile('turnstile', [
+            'sitekey' => isset($popup['params']['tpl']['turnstile_site_key']) ? $popup['params']['tpl']['turnstile_site_key'] : '',
+          ]);
+          break;
+        case 'recaptcha':
+        default:
+          $resHtml .= htmlPps::recaptcha('recap', [
+            'sitekey' => isset($popup['params']['tpl']['capt_site_key']) ? $popup['params']['tpl']['capt_site_key'] : '',
+          ]);
+          break;
+      }
     }
     return $resHtml;
   }

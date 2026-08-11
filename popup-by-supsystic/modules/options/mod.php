@@ -48,7 +48,6 @@ class optionsPps extends modulePps
       return $this->getView()->getAdminPage();
     } else {
       installerPps::setUsed(); // Show this welcome page - only one time
-      framePps::_()->getModule('supsystic_promo')->getModel()->bigStatAdd('Welcome Show');
       framePps::_()->getModule('options')->getModel()->save('plug_welcome_show', time()); // Remember this
       return framePps::_()->getModule('supsystic_promo')->showWelcomePage();
     }

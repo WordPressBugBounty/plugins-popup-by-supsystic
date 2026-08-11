@@ -51,7 +51,6 @@ class installerPps
       'sm' => 'sm',
       'statistics' => 'statistics',
       'mail' => 'mail',
-      'tgm_promo' => 'tgm_promo',
     ];
     foreach ($coreModules as $code => $label) {
       if (!dbPps::exist('@__modules', 'code', $code)) {
@@ -154,23 +153,6 @@ class installerPps
       );
     }
     /**
-     * Plugin usage statistics
-     */
-    if (!dbPps::exist('@__usage_stat')) {
-      dbDelta(
-        dbPps::prepareQuery("CREATE TABLE `@__usage_stat` (
-			  `id` int(11) NOT NULL AUTO_INCREMENT,
-			  `code` varchar(64) NOT NULL,
-			  `visits` int(11) NOT NULL DEFAULT '0',
-			  `spent_time` int(11) NOT NULL DEFAULT '0',
-			  `modify_timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-			  UNIQUE INDEX `code` (`code`),
-			  PRIMARY KEY (`id`)
-			) DEFAULT CHARSET=utf8"),
-      );
-      dbPps::query("INSERT INTO `@__usage_stat` (code, visits) VALUES ('installed', 1)");
-    }
-    /**
      * Statistics
      */
     if (!dbPps::exist('@__statistics')) {
@@ -269,7 +251,6 @@ class installerPps
   }
   public static function delete()
   {
-    self::_checkSendStat('delete');
     global $wpdb;
     $wpPrefix = $wpdb->prefix;
     $wpdb->query('DROP TABLE IF EXISTS `' . $wpPrefix . PPS_DB_PREF . 'modules`');
@@ -285,14 +266,6 @@ class installerPps
   }
   public static function deactivate()
   {
-    self::_checkSendStat('deactivate');
-  }
-  private static function _checkSendStat($statCode)
-  {
-    if (class_exists('framePps') && framePps::_()->getModule('supsystic_promo') && framePps::_()->getModule('options')) {
-      framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat($statCode);
-      framePps::_()->getModule('supsystic_promo')->getModel()->checkAndSend(true);
-    }
   }
   public static function update()
   {

@@ -2,10 +2,6 @@
 
 class supsystic_promoViewPps extends viewPps
 {
-  public function displayAdminFooter()
-  {
-    parent::display('adminFooter');
-  }
   public function showAdditionalmainAdminShowOnOptions($popup)
   {
     $this->assign('promoLink', $this->getModule()->generateMainLink('utm_source=plugin&utm_medium=onexit&utm_campaign=popup'));
@@ -143,9 +139,5 @@ Here you can edit css style of the pop-up window.',
     $this->assign('contactFormLink', $this->getModule()->getContactLink());
     $this->assign('finishSiteLink', $this->getModule()->generateMainLink('utm_source=plugin&utm_medium=final_step_b_step&utm_campaign=popup'));
     return parent::getContent('adminTour');
-  }
-  public function getPluginDeactivation()
-  {
-    return parent::getContent('pluginDeactivation');
   }
 }

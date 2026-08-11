@@ -192,14 +192,6 @@ class popupModelPps extends modelPps
     if (!empty($d['label'])) {
       if (!empty($d['original_id'])) {
         $original = $this->getById($d['original_id']);
-        framePps::_()
-          ->getModule('supsystic_promo')
-          ->getModel()
-          ->saveUsageStat('create_from_tpl.' . strtolower(str_replace(' ', '-', $original['label'])));
-        framePps::_()
-          ->getModule('supsystic_promo')
-          ->getModel()
-          ->bigStatAddCheck('Used Template', ['Selected Template' => $original['label']]);
         unset($original['id']);
         $original['label'] = $d['label'];
         $original['original_id'] = $d['original_id'];
@@ -315,13 +307,6 @@ class popupModelPps extends modelPps
     }
     $res = $this->updateById($d);
     if ($res) {
-      /*$currentPopup = $this->getById($d['id']);
-      $difs = $this->getDifferences($popup, $currentPopup);
-      if(!empty($difs)) {
-          foreach($difs as $dif) {
-              framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat('save_popup.'. $dif);
-          }
-      }*/
       $this->_bindShowToPages($d);
       dispatcherPps::doAction('afterPopUpUpdate', $d);
     }
@@ -548,14 +533,6 @@ class popupModelPps extends modelPps
       }
       // Save main settings - as they should not influence for display settings
       $this->_assignKeyArr($currentPopup, $newTpl, 'params.main');
-      framePps::_()
-        ->getModule('supsystic_promo')
-        ->getModel()
-        ->saveUsageStat('change_to_tpl.' . strtolower(str_replace(' ', '-', $newTpl['label'])));
-      framePps::_()
-        ->getModule('supsystic_promo')
-        ->getModel()
-        ->bigStatAddCheck('Used Template', ['Changed to Template' => $newTpl['label']]);
       $newTpl['original_id'] = $newTpl['id']; // It will be our new original
       $newTpl['id'] = $currentPopup['id'];
       $newTpl['label'] = $currentPopup['label'];
@@ -722,7 +699,6 @@ class popupModelPps extends modelPps
         unset($original['date_created']);
         $original['label'] = $d['copy_label'];
         $original['views'] = $original['unique_views'] = $original['actions'] = 0;
-        //framePps::_()->getModule('supsystic_promo')->getModel()->saveUsageStat('save_as_copy');
         return $this->insertFromOriginal($original);
       } else {
         $this->pushError(__('Invalid ID', PPS_LANG_CODE));

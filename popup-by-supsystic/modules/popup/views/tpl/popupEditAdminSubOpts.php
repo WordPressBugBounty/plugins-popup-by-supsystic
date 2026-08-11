@@ -494,21 +494,42 @@
               'attrs' => 'class="ppsProOpt"',
             ]),
           ); ?>
-          <?php _e('Re-Captcha', PPS_LANG_CODE); ?>
+          <?php _e('Anti-bot Protection', PPS_LANG_CODE); ?>
         </label>
         <?php if (!$this->isPro) { ?>
         <span class="ppsProOptMiniLabel" style="margin-bottom: 0; margin-top: -5px;">
           <a target="_blank" href="<?php echo viewPps::ksesString(framePps::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=re_captcha&utm_campaign=popup')); ?>"><?php _e('PRO option', PPS_LANG_CODE); ?></a>
+          <span class="description"><?php _e('PRO version supports reCaptcha v2, reCaptcha v3, hCaptcha and Cloudflare Turnstile.', PPS_LANG_CODE); ?></span>
         </span>
         <?php } else { ?>
         <div class="ppsReCaptchaOptsShell">
           <table class="form-table ppsSubShellOptsTbl">
             <tr>
               <th scope="row">
+                <?php _e('Captcha Type', PPS_LANG_CODE); ?>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::selectbox('params[tpl][capt_type]', [
+                    'value' => isset($this->popup['params']['tpl']['capt_type']) ? $this->popup['params']['tpl']['capt_type'] : 'recaptcha',
+                    'attrs' => 'class="ppsCaptTypeSelect"',
+                    'options' => [
+                      'recaptcha' => __('reCaptcha v2', PPS_LANG_CODE),
+                      'recaptcha_v3' => __('reCaptcha v3', PPS_LANG_CODE),
+                      'hcaptcha' => __('hCaptcha', PPS_LANG_CODE),
+                      'turnstile' => __('Cloudflare Turnstile', PPS_LANG_CODE),
+                    ],
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="recaptcha">
+              <th scope="row">
                 <?php _e('ReCaptcha Site Key', PPS_LANG_CODE); ?>
-                <i class="fa fa-question supsystic-tooltip" title="<?php echo viewPps::ksesString(
-                  esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')),
-                ); ?>"></i>
+                <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv2_site">
+                <span class="tooltipContent" id="tooltip_pps_recapv2_site">
+                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                </span>
               </th>
               <td>
                 <?php echo viewPps::ksesString(
@@ -518,17 +539,102 @@
                 ); ?>
               </td>
             </tr>
-            <tr>
+            <tr class="ppsCaptTypeRow" data-for="recaptcha">
               <th scope="row">
                 <?php _e('ReCaptcha Secret Key', PPS_LANG_CODE); ?>
-                <i class="fa fa-question supsystic-tooltip" title="<?php echo viewPps::ksesString(
-                  esc_html(sprintf(__('Your secret key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')),
-                ); ?>"></i>
+                <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv2_secret">
+                <span class="tooltipContent" id="tooltip_pps_recapv2_secret">
+                <?php echo esc_html(sprintf(__('Your secret key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                </span>
               </th>
               <td>
                 <?php echo viewPps::ksesString(
                   htmlPps::text('params[tpl][capt_secret_key]', [
                     'value' => isset($this->popup['params']['tpl']['capt_secret_key']) ? $this->popup['params']['tpl']['capt_secret_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="recaptcha_v3">
+              <th scope="row">
+                <?php _e('ReCaptcha v3 Site Key', PPS_LANG_CODE); ?>
+                <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv3_site">
+                <span class="tooltipContent" id="tooltip_pps_recapv3_site">
+                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>. Make sure you create a v3 key.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                </span>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][recapv3_site_key]', [
+                    'value' => isset($this->popup['params']['tpl']['recapv3_site_key']) ? $this->popup['params']['tpl']['recapv3_site_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="recaptcha_v3">
+              <th scope="row">
+                <?php _e('ReCaptcha v3 Secret Key', PPS_LANG_CODE); ?>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][recapv3_secret_key]', [
+                    'value' => isset($this->popup['params']['tpl']['recapv3_secret_key']) ? $this->popup['params']['tpl']['recapv3_secret_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="hcaptcha">
+              <th scope="row">
+                <?php _e('hCaptcha Site Key', PPS_LANG_CODE); ?>
+                <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_hcap_site">
+                <span class="tooltipContent" id="tooltip_pps_hcap_site">
+                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dashboard.hcaptcha.com/sites', 'https://dashboard.hcaptcha.com/sites')); ?>
+                </span>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][hcap_site_key]', [
+                    'value' => isset($this->popup['params']['tpl']['hcap_site_key']) ? $this->popup['params']['tpl']['hcap_site_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="hcaptcha">
+              <th scope="row">
+                <?php _e('hCaptcha Secret Key', PPS_LANG_CODE); ?>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][hcap_secret_key]', [
+                    'value' => isset($this->popup['params']['tpl']['hcap_secret_key']) ? $this->popup['params']['tpl']['hcap_secret_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="turnstile">
+              <th scope="row">
+                <?php _e('Turnstile Site Key', PPS_LANG_CODE); ?>
+                <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_turnstile_site">
+                <span class="tooltipContent" id="tooltip_pps_turnstile_site">
+                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dash.cloudflare.com/?to=/:account/turnstile', 'https://dash.cloudflare.com/?to=/:account/turnstile')); ?>
+                </span>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][turnstile_site_key]', [
+                    'value' => isset($this->popup['params']['tpl']['turnstile_site_key']) ? $this->popup['params']['tpl']['turnstile_site_key'] : '',
+                  ]),
+                ); ?>
+              </td>
+            </tr>
+            <tr class="ppsCaptTypeRow" data-for="turnstile">
+              <th scope="row">
+                <?php _e('Turnstile Secret Key', PPS_LANG_CODE); ?>
+              </th>
+              <td>
+                <?php echo viewPps::ksesString(
+                  htmlPps::text('params[tpl][turnstile_secret_key]', [
+                    'value' => isset($this->popup['params']['tpl']['turnstile_secret_key']) ? $this->popup['params']['tpl']['turnstile_secret_key'] : '',
                   ]),
                 ); ?>
               </td>
@@ -544,7 +650,7 @@
       <th scope="row">
         <?php _e('Blacklist', PPS_LANG_CODE); ?>
         <i class="fa fa-question supsystic-tooltip" title="<?php echo viewPps::ksesString(
-          esc_html(__('Here you can add emails, or email doamains, into blacklist - and they will not be able to subscribe. To add several emails (rules) - use "," symbol (coma) as separator. To add email domain - for examle @email.com - use "*@email.com" rule.', PPS_LANG_CODE)),
+          esc_html(__('Here you can add emails, or email domains, into blacklist - and they will not be able to subscribe. To add several emails (rules) - use "," symbol (coma) as separator. To add email domain - for examle @email.com - use "*@email.com" rule.', PPS_LANG_CODE)),
         ); ?>"></i>
         <?php if (!$this->isPro) { ?>
         <span class="ppsProOptMiniLabel"><a target="_blank" href="<?php echo viewPps::ksesString(framePps::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=blacklist&utm_campaign=popup')); ?>"><?php _e('PRO option', PPS_LANG_CODE); ?></a></span>

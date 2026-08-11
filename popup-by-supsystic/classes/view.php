@@ -70,6 +70,7 @@ abstract class viewPps extends baseObjectPps
       $allowedHtml = wp_kses_allowed_html();
       $allowedDiv = [
         'style' => [],
+        'link' => ['rel' => 1, 'href' => 1, 'type' => 1, 'media' => 1],
         'div' => [
           'data-wp-editor-id' => 1,
           'data-switch-block' => 1,
@@ -86,7 +87,6 @@ abstract class viewPps extends baseObjectPps
           'data-unit' => 1,
           'data-mapid' => 1,
           'data-viewid' => 1,
-          'onclick' => 1,
           'data-is-mobile' => 1,
           'data-tab-link' => 1,
           'data-tab-item' => 1,
@@ -136,7 +136,6 @@ abstract class viewPps extends baseObjectPps
           'data-txt-open' => 1,
           'data-nonce' => 1,
           'data-url' => 1,
-          'onclick' => 1,
           'data-active-label' => 1,
           'data-apply-label' => 1,
           'style' => 1,
@@ -161,7 +160,6 @@ abstract class viewPps extends baseObjectPps
         'input' => [
           'data-switch-block' => 1,
           'data-pos' => 1,
-          'onclick' => 1,
           'data-type' => 1,
           'data-hideid' => 1,
           'data-parent-selector' => 1,
@@ -194,17 +192,22 @@ abstract class viewPps extends baseObjectPps
         'tfoot' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
         'th' => ['colspan' => 1, 'rowspan' => 1, 'scope' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
         'thead' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
-        'tr' => ['style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
+        'tr' => ['data-for' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
         'select' => ['data-iter' => 1, 'name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'multiple' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1],
         'option' => ['name' => 1, 'checked' => 1, 'disabled' => 1, 'selected' => 1, 'style' => 1, 'title' => 1, 'align' => 1, 'class' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'value' => 1],
         'sup' => [],
         'sub' => [],
-        'button' => ['data-wp-editor-id' => 1, 'style' => 1, 'class' => 1, 'id' => 1, 'data-mapid' => 1, 'data-viewid' => 1, 'onclick' => 1],
+        'button' => ['data-wp-editor-id' => 1, 'style' => 1, 'class' => 1, 'id' => 1, 'data-mapid' => 1, 'data-viewid' => 1],
         'img' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'alt' => 1, 'border' => 1],
         'track' => ['src' => 1, 'kind' => 1, 'label' => 1, 'srclang' => 1],
         'source' => ['src' => 1, 'type' => 1],
         'audio' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'autoplay' => 1, 'controls' => 1, 'crossorigin' => 1, 'loop' => 1, 'muted' => 1, 'preload' => 1],
-        'iframe' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'title' => 1, 'allow' => 1, 'allowfullscreen' => 1, 'allowpaymentrequest' => 1, 'csp' => 1, 'height' => 1, 'loading' => 1, 'name' => 1, 'referrerpolicy' => 1, 'sandbox' => 1, 'srcdoc' => 1],
+        // 'srcdoc' intentionally excluded: unlike 'src' (a URL, protocol-checked by
+        // wp_kses), 'srcdoc' is raw HTML that the browser parses and renders as a
+        // same-origin document, including any <script> it contains. wp_kses() only
+        // validates attribute names/tag structure, not HTML embedded inside an
+        // attribute value, so allowing 'srcdoc' here is a stored-XSS vector.
+        'iframe' => ['src' => 1, 'style' => 1, 'width' => 1, 'height' => 1, 'id' => 1, 'class' => 1, 'title' => 1, 'allow' => 1, 'allowfullscreen' => 1, 'allowpaymentrequest' => 1, 'csp' => 1, 'height' => 1, 'loading' => 1, 'name' => 1, 'referrerpolicy' => 1, 'sandbox' => 1],
       ];
       self::$_allowedHtml = array_merge($allowedHtml, $allowedDiv);
     }

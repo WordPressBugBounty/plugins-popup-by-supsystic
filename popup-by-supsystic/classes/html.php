@@ -668,9 +668,46 @@ class htmlPps
     }
     return $res;
   }
-  public static function capcha()
+  public static function recaptcha($name, $params = ['sitekey' => ''])
   {
-    return recapchaPps::_()->getHtml();
+    $params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
+    $params['attrs'] .= ' data-sitekey="' . esc_attr(isset($params['sitekey']) ? $params['sitekey'] : '') . '"';
+    if (!empty($params['theme'])) {
+      $params['attrs'] .= ' data-theme="' . esc_attr($params['theme']) . '"';
+    }
+    if (!empty($params['size'])) {
+      $params['attrs'] .= ' data-size="' . esc_attr($params['size']) . '"';
+    }
+    framePps::_()->addScript(PPS_CODE . '.google.recaptcha', PPS_JS_PATH . 'google.recaptcha.js', ['jquery'], false, true);
+    framePps::_()->addScript('google.recaptcha.api', 'https://www.google.com/recaptcha/api.js?onload=ppsInitCaptcha&render=explicit', [PPS_CODE . '.google.recaptcha'], false, true);
+    return '<div class="g-recaptcha ' . self::nameToClassId($name) . '" ' . $params['attrs'] . '></div>';
+  }
+  public static function hcaptcha($name, $params = ['sitekey' => ''])
+  {
+    $params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
+    $params['attrs'] .= ' data-sitekey="' . esc_attr(isset($params['sitekey']) ? $params['sitekey'] : '') . '"';
+    framePps::_()->addScript(PPS_CODE . '.captcha_pro', PPS_JS_PATH . 'captcha_pro.frontend.js', ['jquery'], false, true);
+    framePps::_()->addScript('hcaptcha.api', 'https://js.hcaptcha.com/1/api.js?render=explicit&onload=ppsHcaptchaApiLoaded', [PPS_CODE . '.captcha_pro'], false, true);
+    return '<div class="h-captcha ' . self::nameToClassId($name) . '" ' . $params['attrs'] . '></div>';
+  }
+  public static function turnstile($name, $params = ['sitekey' => ''])
+  {
+    $params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
+    $params['attrs'] .= ' data-sitekey="' . esc_attr(isset($params['sitekey']) ? $params['sitekey'] : '') . '"';
+    framePps::_()->addScript(PPS_CODE . '.captcha_pro', PPS_JS_PATH . 'captcha_pro.frontend.js', ['jquery'], false, true);
+    framePps::_()->addScript('turnstile.api', 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=ppsTurnstileApiLoaded', [PPS_CODE . '.captcha_pro'], false, true);
+    return '<div class="cf-turnstile ' . self::nameToClassId($name) . '" ' . $params['attrs'] . '></div>';
+  }
+  public static function recaptchaV3($name, $params = ['sitekey' => '', 'action' => 'pps_form_submit'])
+  {
+    $params['attrs'] = isset($params['attrs']) ? $params['attrs'] : '';
+    $sitekey = isset($params['sitekey']) ? $params['sitekey'] : '';
+    $params['attrs'] .= ' data-sitekey="' . esc_attr($sitekey) . '"';
+    $params['attrs'] .= ' data-action="' . esc_attr(isset($params['action']) ? $params['action'] : 'pps_form_submit') . '"';
+    framePps::_()->addScript(PPS_CODE . '.captcha_pro', PPS_JS_PATH . 'captcha_pro.frontend.js', ['jquery'], false, true);
+    framePps::_()->addScript('recaptcha_v3.api', 'https://www.google.com/recaptcha/api.js?render=' . rawurlencode($sitekey), [PPS_CODE . '.captcha_pro'], false, true);
+    $classId = self::nameToClassId($name);
+    return '<div class="ppsRecaptchaV3 ' . $classId . '" ' . $params['attrs'] . '></div>' . self::hidden('recapv3-response', ['attrs' => 'class="ppsRecaptchaV3Value"']);
   }
   public static function textIncDec($name, $params = ['value' => '', 'attrs' => '', 'options' => [], 'onclick' => '', 'id' => ''])
   {

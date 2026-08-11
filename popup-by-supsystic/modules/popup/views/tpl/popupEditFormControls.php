@@ -13,7 +13,7 @@
     <?php _e('Save', PPS_LANG_CODE); ?>
   </button>
   <button class="button button-primary ppsPopupCloneBtn" title="<?php _e('Clone to New PopUp', PPS_LANG_CODE); ?>">
-    <i class="fa fa-fw fa-files-o"></i>
+    <i class="fa fa-fw fa-clone"></i>
     <?php _e('Clone', PPS_LANG_CODE); ?>
   </button>
   <button class="button button-primary ppsPopupPreviewBtn">
@@ -25,7 +25,7 @@
     <span></span>
   </button>
   <button class="button button-primary ppsPopupRemoveBtn">
-    <i class="fa fa-fw fa-trash-o"></i>
+    <i class="fa fa-fw fa-trash"></i>
     <?php _e('Delete', PPS_LANG_CODE); ?>
   </button>
 </span>

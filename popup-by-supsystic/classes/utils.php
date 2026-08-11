@@ -19,7 +19,10 @@ class utilsPps
   }
   public static function unserialize($data)
   {
-    if (@!unserialize($data)) {
+    // Disallow object instantiation throughout: this plugin only ever needs to
+    // unserialize scalars/arrays it wrote itself, and allowing classes here is
+    // what makes PHP Object Injection possible via crafted serialized payloads.
+    if (@!unserialize($data, ['allowed_classes' => false])) {
       $fixed = preg_replace_callback(
         '/s:([0-9]+):\"(.*?)\";/',
         function ($matches) {
@@ -27,9 +30,9 @@ class utilsPps
         },
         $data,
       );
-      return unserialize($fixed);
+      return unserialize($fixed, ['allowed_classes' => false]);
     } else {
-      return unserialize($data);
+      return unserialize($data, ['allowed_classes' => false]);
     }
   }
   public static function serialize($data)

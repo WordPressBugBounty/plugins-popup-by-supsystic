@@ -38,7 +38,7 @@
     <i class="fa fa-line-chart"></i>
   </a>
   <a href="#" class="button ppsPopupStatChartTypeBtn" data-type="bar">
-    <i class="fa fa-bar-chart"></i>
+    <i class="fa fa-chart-bar"></i>
   </a>
   <a href="#" class="button ppsPopupStatGraphZoomReset" style="display: none;">
     <i class="fa fa-undo"></i>

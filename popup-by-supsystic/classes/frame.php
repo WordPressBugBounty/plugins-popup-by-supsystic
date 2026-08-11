@@ -54,7 +54,11 @@ class framePps
         $this->_mod = $mod;
       }
       $action = reqPps::getVar('action');
-      if ($action) {
+      // Only allow plain method-name actions. Reject "Class::method" or any other
+      // callable syntax so it can't be used to bypass the permission/nonce checks
+      // below (which compare against the raw action string) while still resolving
+      // to a real controller method when used as a PHP callable.
+      if ($action && preg_match('/^[A-Za-z0-9_]+$/', $action)) {
         $this->_action = $action;
       }
     }

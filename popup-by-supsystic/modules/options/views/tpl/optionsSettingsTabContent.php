@@ -89,14 +89,14 @@
               <div class="popupGroupDivWrapper" style="margin-top:15px;">
                 <div class="popupGroupDivExample popupGroupDiv button button-primary" title="Remove group" style="margin-right:15px;">
                   <input type="hidden" disabled class="popupGroupDivTitleInput" name="opt_values[groups][]" value="Group">
-                  <span class="popupGroupDivRemove"> <i class="fa fa-close"></i></span>
+                  <span class="popupGroupDivRemove"> <i class="fa fa-xmark"></i></span>
                   <span class="popupGroupDivTitle"> Group</span>
                 </div>
                 <?php if (!empty($this->options['general']['opts']['groups']['value'])) { ?>
                 <?php foreach ($this->options['general']['opts']['groups']['value'] as $group) { ?>
                 <div class="popupGroupDiv button button-primary" title="Remove group" style="margin-right:15px;">
                   <input type="hidden" class="popupGroupDivTitleInput" name="opt_values[groups][]" value="<?php echo viewPps::ksesString($group); ?>">
-                  <span class="popupGroupDivRemove"> <i class="fa fa-close"></i></span>
+                  <span class="popupGroupDivRemove"> <i class="fa fa-xmark"></i></span>
                   <span class="popupGroupDivTitle"> <?php echo viewPps::ksesString($group); ?></span>
                 </div>
                 <?php } ?>

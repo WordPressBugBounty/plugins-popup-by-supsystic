@@ -4,7 +4,7 @@ Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.13.0
+Stable tag: 1.13.1
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,7 @@ Capture subscribers with:
 * Scroll-triggered content upgrades
 * Timed newsletter invitations
 * Inline opt-in popups
+* Spam protection on the subscribe form via Google reCaptcha v2 (PRO also adds reCaptcha v3, hCaptcha and Cloudflare Turnstile - pick whichever captcha fits your site)
 
 
 Set frequency limits so visitors don’t feel overwhelmed.
@@ -145,6 +146,19 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 = 2026 =
+
+= 1.13.1 / 11.08.2026 =
+ * General security hardening and code improvements
+ * Fixed a fatal error in the subscribe form's reCaptcha rendering
+ * Added support for three new PRO CAPTCHA types on the subscribe form: reCaptcha v3, hCaptcha, and Cloudflare Turnstile - selectable alongside the existing reCaptcha v2
+ * Added new social sharing networks (Pinterest, LinkedIn, Reddit, WhatsApp, Telegram, Tumblr, VK) alongside Facebook and X, each with its own brand-color styling; existing popups migrate automatically
+ * Removed the discontinued Google+ share button (network shut down in 2019)
+ * Removed unused legacy reCaptcha v1 library
+ * Upgraded the bundled icon font to Font Awesome 6 (matching Gallery by Supsystic) across the whole plugin - admin and frontend
+ * Rebuilt the Social block: added Pinterest, LinkedIn, Reddit, WhatsApp, Telegram, Tumblr, VK, Viber and LiveJournal alongside Facebook and X, each rendered with its own brand icon and color; added box size, font size, transparency, border radius, and brand/black/white/custom color style controls (ported from Gallery Pro's social sharing settings)
+ * Existing popups migrate automatically to the new network picker; the retired Google+ button no longer renders
+ * Fixed every remaining admin icon that went blank after the Font Awesome 6 upgrade (License tab, Delete/Clone buttons, Design/Texts/Social tabs, and others found in a full plugin-wide sweep) - old v4 icon names replaced with their v6 equivalents
+ * Fixed the popup preview window silently dropping any `<link>` stylesheet tag (including Font Awesome), so icon-based content was invisible in preview even though it rendered fine on the live page
 
 = 1.13.0 / 31.07.2026 =
  * Added an extra safeguard so that user roles assigned through the subscription form can never be escalated beyond what you explicitly allow in the popup editor

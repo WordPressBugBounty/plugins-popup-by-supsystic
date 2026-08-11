@@ -34,6 +34,14 @@ jQuery(document).ready(function () {
     jQuery('body').find('.tooltipContent').show();
     jQuery('[data-tooltip-content]').tooltipster(tooltipsterSettings);
   }
+
+  jQuery('.overview-section-btn').on('click', function () {
+    jQuery('.overview-section').hide();
+    jQuery(".overview-section[data-section='" + jQuery(this).data('section') + "']").show();
+    jQuery('.overview-section-btn-active').removeClass('overview-section-btn-active');
+    jQuery(this).addClass('overview-section-btn-active');
+  });
+  jQuery('.overview-section-btn').eq(0).trigger('click');
 });
 
 (function (factory) {
@@ -144,36 +152,6 @@ jQuery(document).ready(function () {
   };
 });
 
-if (jQuery('body').find('.supsystic-admin-notice[data-code="enb_promo_link_msg"]').length > 0) {
-  var dontShowPromo = jQuery.cookie('enbPromogLinkMsg3Day');
-  if (dontShowPromo) {
-    jQuery('.supsystic-admin-notice[data-code="enb_promo_link_msg"]').hide();
-  }
-}
-jQuery('body').on('click', '.supsystic-admin-notice[data-code="enb_promo_link_msg"] .notice-dismiss', function () {
-  jQuery.cookie('enbPromogLinkMsg3Day', true, { expires: 3 });
-});
-
-if (jQuery('body').find('.supsystic-admin-notice[data-code="check_other_plugs_msg"]').length > 0) {
-  var dontShowPromo = jQuery.cookie('checkOtherPlugsMsg3Day');
-  if (dontShowPromo) {
-    jQuery('.supsystic-admin-notice[data-code="check_other_plugs_msg"]').hide();
-  }
-}
-jQuery('body').on('click', '.supsystic-admin-notice[data-code="check_other_plugs_msg"] .notice-dismiss', function () {
-  jQuery.cookie('checkOtherPlugsMsg3Day', true, { expires: 3 });
-});
-
-if (jQuery('body').find('.supsystic-admin-notice[data-code="enb_stats_msg"]').length > 0) {
-  var dontShowPromo = jQuery.cookie('checkStatsMsg3Day');
-  if (dontShowPromo) {
-    jQuery('.supsystic-admin-notice[data-code="enb_stats_msg"]').hide();
-  }
-}
-jQuery('body').on('click', '.supsystic-admin-notice[data-code="enb_stats_msg"] .notice-dismiss', function () {
-  jQuery.cookie('checkStatsMsg3Day', true, { expires: 3 });
-});
-
 var ppsAdminFormChanged = [];
 window.onbeforeunload = function () {
   // If there are at lease one unsaved form - show message for confirnation for page leave
@@ -240,8 +218,8 @@ jQuery(document).ready(function () {
       .find('.ppsFieldsetToggleBtn')
       .click(function () {
         var icon = jQuery(this).find('i'),
-          show = icon.hasClass('fa-plus');
-        show ? icon.removeClass('fa-plus').addClass('fa-minus') : icon.removeClass('fa-minus').addClass('fa-plus');
+          show = icon.hasClass('fa-square-plus');
+        show ? icon.removeClass('fa-square-plus').addClass('fa-square-minus') : icon.removeClass('fa-square-minus').addClass('fa-square-plus');
         jQuery(self)
           .find('.ppsFieldsetContent')
           .slideToggle(300, function () {
@@ -321,8 +299,6 @@ jQuery(document).ready(function () {
       cloneWidthElement.remove();
     }, 500);
   }
-  // Check for showing review notice after a week usage
-  ppsInitPlugNotices();
 });
 function ppsInitTooltips(selector) {
   var tooltipsterSettings = {
@@ -625,60 +601,6 @@ function prepareToPlotDate(data) {
     }
   }
   return data;
-}
-function ppsInitPlugNotices() {
-  var $notices = jQuery('.supsystic-admin-notice');
-  if ($notices && $notices.length) {
-    $notices.each(function () {
-      jQuery(this)
-        .find('.notice-dismiss')
-        .click(function () {
-          var $notice = jQuery(this).parents('.supsystic-admin-notice');
-          if (!$notice.data('stats-sent')) {
-            // User closed this message - that is his choise, let's respect this and save it's saved status
-            jQuery.sendFormPps({
-              data: {
-                mod: 'supsystic_promo',
-                _wpnonce: PPS_NONCE['pps_nonce'],
-                action: 'addNoticeAction',
-                code: $notice.data('code'),
-                choice: 'hide',
-              },
-            });
-          }
-        });
-      jQuery(this)
-        .find('[data-statistic-code]')
-        .click(function () {
-          var href = jQuery(this).attr('href'),
-            $notice = jQuery(this).parents('.supsystic-admin-notice');
-          jQuery.sendFormPps({
-            data: {
-              mod: 'supsystic_promo',
-              _wpnonce: PPS_NONCE['pps_nonce'],
-              action: 'addNoticeAction',
-              code: $notice.data('code'),
-              choice: jQuery(this).data('statistic-code'),
-            },
-          });
-          $notice.data('stats-sent', 1).find('.notice-dismiss').trigger('click');
-          if (!href || href === '' || href === '#') return false;
-        });
-      var $enbStatsBtn = jQuery(this).find('.ppsEnbStatsAdBtn');
-      if ($enbStatsBtn && $enbStatsBtn.length) {
-        $enbStatsBtn.click(function () {
-          jQuery.sendFormPps({
-            data: {
-              mod: 'supsystic_promo',
-              _wpnonce: PPS_NONCE['pps_nonce'],
-              action: 'enbStatsOpt',
-            },
-          });
-          return false;
-        });
-      }
-    });
-  }
 }
 /**
  * Main promo popup will show each time user will try to modify PRO option with free version only

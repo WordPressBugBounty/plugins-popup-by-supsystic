@@ -172,11 +172,12 @@ class subscribeModelPps extends modelPps
       }
     }
     $enbRecaptcha = isset($popup['params']['tpl']['enb_captcha']) && !empty($popup['params']['tpl']['enb_captcha']);
-    if ($enbRecaptcha && framePps::_()->getModule('sub_fields') && method_exists(framePps::_()->getModule('sub_fields'), 'validateReCaptcha')) {
+    if ($enbRecaptcha && framePps::_()->getModule('sub_fields') && method_exists(framePps::_()->getModule('sub_fields'), 'validateCaptcha')) {
+      $captType = !empty($popup['params']['tpl']['capt_type']) ? $popup['params']['tpl']['capt_type'] : 'recaptcha';
       if (
         !framePps::_()
           ->getModule('sub_fields')
-          ->validateReCaptcha($popup['params']['tpl']['capt_secret_key'], $d['g-recaptcha-response'])
+          ->validateCaptcha($captType, $popup['params']['tpl'], $d)
       ) {
         $this->pushError(framePps::_()->getModule('sub_fields')->getErrors());
         return false;

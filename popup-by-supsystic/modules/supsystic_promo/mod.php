@@ -3,7 +3,6 @@
 class supsystic_promoPps extends modulePps
 {
   private $_mainLink = '';
-  private $_minDataInStatToSend = 20; // At least 20 points in table shuld be present before send stats
   private $_assetsUrl = '';
   public function __construct($d)
   {
@@ -13,7 +12,6 @@ class supsystic_promoPps extends modulePps
   public function init()
   {
     parent::init();
-    add_action('admin_footer', [$this, 'displayAdminFooter'], 9);
     if (is_admin()) {
       add_action('init', [$this, 'checkWelcome']);
     }
@@ -21,92 +19,8 @@ class supsystic_promoPps extends modulePps
     dispatcherPps::addFilter('mainAdminTabs', [$this, 'addAdminTab']);
     dispatcherPps::addFilter('subDestList', [$this, 'addSubDestList']);
     dispatcherPps::addFilter('showTplsList', [$this, 'checkProTpls']);
-    // dispatcherPps::addAction('discountMsg', array($this, 'getDiscountMsg'));
-    // add_action('admin_notices', array($this, 'checkAdminPromoNotices'));
     // Admin tutorial
     add_action('admin_enqueue_scripts', [$this, 'loadTutorial']);
-  }
-  public function checkAdminPromoNotices()
-  {
-    if (!framePps::_()->isAdminPlugOptsPage()) {
-      // Our notices - only for our plugin pages for now
-      return;
-    }
-    $notices = [];
-    // Start usage
-    $startUsage = (int) framePps::_()->getModule('options')->get('start_usage');
-    $currTime = time();
-    $day = 24 * 3600;
-    if ($startUsage) {
-      // Already saved
-      $rateMsg = sprintf(__('<h3>Hey, I noticed you just use %s over a week – that’s awesome!</h3><p>Could you please do me a BIG favor and give it a 5-star rating on WordPress? Just to help us spread the word and boost our motivation.</p>', PPS_LANG_CODE), PPS_WP_PLUGIN_NAME);
-      $rateMsg .=
-        '<p><a href="https://wordpress.org/support/view/plugin-reviews/popup-by-supsystic?rate=5#postform" target="_blank" class="button button-primary" data-statistic-code="done">' .
-        __('Ok, you deserve it', PPS_LANG_CODE) .
-        '</a>
-			<a href="#" class="button" data-statistic-code="later">' .
-        __('Nope, maybe later', PPS_LANG_CODE) .
-        '</a>
-			<a href="#" class="button" data-statistic-code="hide">' .
-        __('I already did', PPS_LANG_CODE) .
-        '</a></p>';
-      $enbStatsMsg =
-        '<p>' .
-        sprintf(
-          __(
-            'You can help us improve our plugin - by <a href="%s" data-statistic-code="hide" class="button button-primary ppsEnbStatsAdBtn">enabling Usage Statistics</a>. We will collect only our plugin usage statistics data - to understand Your needs and make our solution better for You.',
-            PPS_LANG_CODE,
-          ),
-          framePps::_()->getModule('options')->getTabUrl('settings'),
-        ) .
-        '</p>';
-      // $checkOtherPlugins = '<p>'
-      // 	. sprintf(__('Check out <a href="%s" target="_blank" class="button button-primary" data-statistic-code="hide">our other Plugins</a>! Years of experience in WordPress plugins developers made those list unbreakable!', PPS_LANG_CODE), framePps::_()->getModule('options')->getTabUrl('featured-plugins'))
-      // . '</p>';
-      $notices = [
-        'rate_msg' => ['html' => $rateMsg, 'show_after' => 7 * $day],
-        'enb_stats_msg' => ['html' => $enbStatsMsg, 'show_after' => 5 * $day],
-        // 'check_other_plugs_msg' => array('html' => $checkOtherPlugins, 'show_after' => 1 * $day),
-      ];
-      foreach ($notices as $nKey => $n) {
-        if ($currTime - $startUsage <= $n['show_after']) {
-          unset($notices[$nKey]);
-          continue;
-        }
-        $done = (int) framePps::_()
-          ->getModule('options')
-          ->get('done_' . $nKey);
-        if ($done) {
-          unset($notices[$nKey]);
-          continue;
-        }
-        $hide = (int) framePps::_()
-          ->getModule('options')
-          ->get('hide_' . $nKey);
-        if ($hide) {
-          unset($notices[$nKey]);
-          continue;
-        }
-        $later = (int) framePps::_()
-          ->getModule('options')
-          ->get('later_' . $nKey);
-        if ($later && $currTime - $later <= 2 * $day) {
-          // remember each 2 days
-          unset($notices[$nKey]);
-          continue;
-        }
-      }
-    } else {
-      framePps::_()->getModule('options')->getModel()->save('start_usage', $currTime);
-    }
-    if (!empty($notices)) {
-      $html = '';
-      foreach ($notices as $nKey => $n) {
-        $this->getModel()->saveUsageStat($nKey . '.' . 'show', true);
-        $html .= '<div class="updated notice is-dismissible supsystic-admin-notice" data-code="' . $nKey . '">' . $n['html'] . '</div>';
-      }
-      echo viewPps::ksesString($html);
-    }
   }
   public function addAdminTab($tabs)
   {
@@ -145,12 +59,6 @@ class supsystic_promoPps extends modulePps
   public function showWelcomePage()
   {
     $this->getView()->showWelcomePage();
-  }
-  public function displayAdminFooter()
-  {
-    if (framePps::_()->isAdminPlugPage()) {
-      $this->getView()->displayAdminFooter();
-    }
   }
   private function _preparePromoLink($link, $ref = '')
   {
@@ -222,10 +130,6 @@ class supsystic_promoPps extends modulePps
   {
     return $this->_preparePromoLink($link, $ref);
   }
-  public function getMinStatSend()
-  {
-    return $this->_minDataInStatToSend;
-  }
   public function getMainLink()
   {
     if (empty($this->_mainLink)) {
@@ -266,7 +170,6 @@ class supsystic_promoPps extends modulePps
     if ($from == 'welcome-page' && $pl == PPS_CODE && framePps::_()->getModule('user')->isAdmin()) {
       $welcomeSent = (int) get_option(PPS_DB_PREF . 'welcome_sent');
       if (!$welcomeSent) {
-        $this->getModel()->welcomePageSaveInfo();
         update_option(PPS_DB_PREF . 'welcome_sent', 1);
       }
       $skipTutorial = (int) reqPps::getVar('skip_tutorial', 'get');
@@ -538,50 +441,11 @@ class supsystic_promoPps extends modulePps
     wp_enqueue_style('wp-pointer');
     wp_enqueue_script('jquery-ui');
     wp_enqueue_script('wp-pointer');
-    framePps::_()->addScript(PPS_CODE . 'admin.tour', $this->getModPath() . 'js/admin.tour.js');
+    framePps::_()->addScript(PPS_CODE . 'admin.tour', $this->getModPath() . 'js/admin.tour.js', ['jquery', 'jquery-ui-core', 'wp-pointer']);
     framePps::_()->addJSVar(PPS_CODE . 'admin.tour', 'ppsAdminTourData', $tourData);
   }
   public function getContactFormPlgUrl()
   {
-    return 'http://wordpress.org/support/plugin/contact-form-by-supsystic';
-  }
-  public function connectItemEditStats()
-  {
-    framePps::_()->addScript(PPS_CODE . '.admin.item.edit.stats', $this->getModPath() . 'js/admin.item.edit.stats.js');
-  }
-  // public function getDiscountMsg() {
-  // 	if($this->isPro()
-  // 		&& framePps::_()->getModule('options')->getActiveTab() == 'license'
-  // 		&& framePps::_()->getModule('license')
-  // 		&& framePps::_()->getModule('license')->getModel()->isActive()
-  // 	) {
-  // 		$proPluginsList = array(
-  // 			'ultimate-maps-by-supsystic-pro', 'newsletters-by-supsystic-pro', 'contact-form-by-supsystic-pro', 'live-chat-pro',
-  // 			'digital-publications-supsystic-pro', 'coming-soon-supsystic-pro', 'price-table-supsystic-pro', 'tables-generator-pro',
-  // 			'social-share-pro', 'popup-by-supsystic-pro', 'supsystic_slider_pro', 'supsystic-gallery-pro', 'google-maps-easy-pro',
-  // 			'backup-supsystic-pro',
-  // 		);
-  // 		$activePluginsList = get_option('active_plugins', array());
-  // 		$activeProPluginsCount = 0;
-  // 		foreach($activePluginsList as $actPl) {
-  // 			foreach($proPluginsList as $proPl) {
-  // 				if(strpos($actPl, $proPl) !== false) {
-  // 					$activeProPluginsCount++;
-  // 				}
-  // 			}
-  // 		}
-  // 		if($activeProPluginsCount === 1) {
-  // 			$buyLink = $this->getDiscountBuyUrl();
-  // 			$this->getView()->getDiscountMsg($buyLink);
-  // 		}
-  // 	}
-  // }
-  public function getDiscountBuyUrl()
-  {
-    $license = framePps::_()->getModule('license')->getModel()->getCredentials();
-    $license['key'] = md5($license['key']);
-    $license = urlencode(base64_encode(implode('|', $license)));
-    $plugin_code = 'popup_by_supsystic_pro';
-    return 'http://supsystic.com/?mod=manager&pl=lms&action=applyDiscountBuyUrl&plugin_code=' . $plugin_code . '&lic=' . $license;
+    return '//wordpress.org/support/plugin/contact-form-by-supsystic';
   }
 }

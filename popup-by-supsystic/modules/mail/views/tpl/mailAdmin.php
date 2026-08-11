@@ -15,11 +15,11 @@
 <div id="ppsMailTestResShell" style="display: none;">
   <?php _e('Did you receive test email?', PPS_LANG_CODE); ?><br />
   <button class="ppsMailTestResBtn button button-primary" data-res="1">
-    <i class="fa fa-check-square-o"></i>
+    <i class="fa fa-square-check"></i>
     <?php _e('Yes! It works!', PPS_LANG_CODE); ?>
   </button>
   <button class="ppsMailTestResBtn button button-primary" data-res="0">
-    <i class="fa fa-exclamation-triangle"></i>
+    <i class="fa fa-warning"></i>
     <?php _e('No, I need to contact my hosting provider with mail function issue.', PPS_LANG_CODE); ?>
   </button>
 </div>

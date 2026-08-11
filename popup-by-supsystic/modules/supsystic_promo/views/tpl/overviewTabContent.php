@@ -9,12 +9,12 @@
         <ul>
           <li class="overview-section-btn" data-section="faq"><i class="fa fa-info-circle"></i> FAQ and Documentation</li>
           <li class="overview-section-btn" data-section="video"><i class="fa fa-play"></i> Video tutorial</li>
-          <li class="overview-section-btn" data-section="settings"><i class="fa fa-cog"></i> Server Settings</li>
+          <li class="overview-section-btn" data-section="settings"><i class="fa fa-gear"></i> Server Settings</li>
           <li class="overview-section-btn" data-section="support"><i class="fa fa-life-ring"></i> Support</li>
           <li class="overview-section-btn" data-section="promo_video"><i class="fa fa-star"></i> Our promo video</li>
-          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="https://supsystic.com/plugins/popup-plugin/?utm_source=plugin&utm_campaign=popup"> Plugin page on supsystic.com <sup><i class="fa fa-external-link"></i></sup></a></li>
-          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="https://supsystic.com/plugins/popup-plugin/?utm_source=plugin&utm_campaign=popup"> Compare FREE and PRO features <sup><i class="fa fa-external-link"></i></sup></a></li>
-          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="https://supsystic.com/wordpress-plugins/?utm_source=plugin&utm_campaign=popup"> Check other supsystic FREE plugins <sup><i class="fa fa-external-link"></i></sup></a></li>
+          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="//supsystic.com/plugins/popup-plugin/?utm_source=plugin&utm_campaign=popup"> Plugin page on supsystic.com <sup><i class="fa fa-external-link"></i></sup></a></li>
+          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="//supsystic.com/plugins/popup-plugin/?utm_source=plugin&utm_campaign=popup"> Compare FREE and PRO features <sup><i class="fa fa-external-link"></i></sup></a></li>
+          <li class="overview-section-btn"><a target="_blank" title="Go to supsystic.com" href="//supsystic.com/wordpress-plugins/?utm_source=plugin&utm_campaign=popup"> Check other supsystic FREE plugins <sup><i class="fa fa-external-link"></i></sup></a></li>
         </ul>
       </div>
       <div class="border-wrapper">
@@ -23,7 +23,7 @@
           <div class="contact-info-section">
             <p>
               If you are experiencing any issues with the plugin, would like to request a new feature or improvement, or have any other questions, please contact our technical support team through our website:
-              <a href="https://supsystic.com/contact-us/" target="_blank">https://supsystic.com/contact-us/</a>
+              <a href="//supsystic.com/contact-us/" target="_blank">supsystic.com/contact-us/</a>
             </p>
           </div>
           <div class="clear"></div>
@@ -39,7 +39,7 @@
           </div>
           <?php } ?>
           <div style="clear: both;"></div>
-          <a target="_blank" href="https://supsystic.com/docs/popup-documentation/?utm_source=plugin&utm_medium=faq&utm_campaign=popup" class="button button-primary button-hero">
+          <a target="_blank" href="//supsystic.com/docs/popup-documentation/?utm_source=plugin&utm_medium=faq&utm_campaign=popup" class="button button-primary button-hero">
             <i class="fa fa-info-circle"></i>
             Check all FAQs
           </a>
@@ -66,7 +66,7 @@
           <div class="clear"></div>
         </div>
         <div data-section="settings" class="server-settings overview-section">
-          <h3><i class="fa fa-cog"></i> Server settings</h3>
+          <h3><i class="fa fa-gear"></i> Server settings</h3>
           <ul class="settings-list">
             <?php foreach ($this->serverSettings as $title => $element) { ?>
             <li class="settings-line">
@@ -80,10 +80,10 @@
       </div>
     </div>
     <div class="half-page half-page-right">
-      <a href="https://supsystic.com/contact-us" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-upgrade.png"></a>
-      <a href="https://supsystic.com/pricing/?utm_source=plugin&utm_campaign=popup" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-01.png"></a>
-      <a href="https://supsystic.com/plugins/plugins-bundle/?utm_source=plugin&utm_campaign=popup" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-02.png"></a>
-      <a href="https://supsystic.com/wordpress-plugins/?utm_source=plugin&utm_campaign=popup" target="_blank"><img style="margin-top:20px;" class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-03.png"></a>
+      <a href="//supsystic.com/contact-us" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-upgrade.png"></a>
+      <a href="//supsystic.com/pricing/?utm_source=plugin&utm_campaign=popup" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-01.png"></a>
+      <a href="//supsystic.com/plugins/plugins-bundle/?utm_source=plugin&utm_campaign=popup" target="_blank"><img class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-02.png"></a>
+      <a href="//supsystic.com/wordpress-plugins/?utm_source=plugin&utm_campaign=popup" target="_blank"><img style="margin-top:20px;" class="overview-supsystic-img" src="<?php echo PPS_PLUGINS_URL . '/' . PPS_PLUG_NAME; ?>/modules/supsystic_promo/img/overview-03.png"></a>
       <?php if (framePps::_()->getModule('supsystic_promo')->isPro()) { ?>
       <?php } ?>
       <div class="clear"></div>

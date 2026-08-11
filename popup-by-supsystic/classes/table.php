@@ -413,11 +413,14 @@ abstract class tablePps
                 $res .= $k . ' = ' . $val . ' ' . $delim . ' ';
                 break;
               default:
-                $res .= $k . ' = \'' . $val . '\' ' . $delim . ' ';
+                // Values are concatenated straight into the query with no
+                // $wpdb->prepare(); esc_sql() is the only thing standing between
+                // this and SQL injection for every INSERT/UPDATE/WHERE built here.
+                $res .= $k . ' = \'' . esc_sql($val) . '\' ' . $delim . ' ';
                 break;
             }
           } else {
-            $res .= $k . ' = \'' . $val . '\' ' . $delim . ' ';
+            $res .= $k . ' = \'' . esc_sql($val) . '\' ' . $delim . ' ';
           }
         } elseif ($k == 'additionalCondition') {
           //just add some string to query

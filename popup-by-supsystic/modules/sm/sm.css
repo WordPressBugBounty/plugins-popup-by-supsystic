@@ -1,36 +1,96 @@
-.ppsSmLinksShell,
-.ppsSm .supsystic-social-sharing {
+/* Social share icons - ported 1:1 from gallery-by-supsystic's working implementation
+   (GridGallery_Galleries views/shortcode/gallery.twig + assets/css/grid-gallery.galleries.frontend.css),
+   just prefixed pps* to stay isolated from gallery/gallery-pro if both plugins run on the same site. */
+.ppsSmLinksShell {
+  display: flex;
+  position: relative;
   text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
 }
 .ppsSmLink {
+  display: flex;
+  position: relative;
+  margin: 4px;
+  width: 30px;
+  height: 30px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Font Awesome 6 Brands';
+}
+a.ppsSmLink:hover {
+  opacity: 1 !important;
+}
+.ppsSmLinkWhite {
+  background: white;
+  color: black;
+}
+.ppsSmLinkBlack {
+  background: black;
+  color: white;
+}
+.ppsSmLinkSquare {
+  border-radius: 0;
+}
+.ppsSmLinkRound {
+  border-radius: 50%;
+}
+.ppsSmLinkRounded {
+  border-radius: 10%;
+}
+.ppsSmLinkfacebook::before {
+  content: '\f39e';
+}
+.ppsSmLinktwitter::before {
+  content: '\e61b';
+}
+.ppsSmLinkvkontakte::before {
+  content: '\f189';
+}
+.ppsSmLinkreddit::before {
+  content: '\f281';
+}
+.ppsSmLinkpinterest::before {
+  content: '\f231';
+}
+.ppsSmLinktelegram::before {
+  content: '\f3fe';
+}
+.ppsSmLinkviber::before {
+  content: '\f409';
+}
+.ppsSmLinklivejournal::before {
+  content: ' ';
+  background: url('[PPS_MOD_PATH]img/livejournal.png');
+  background-size: contain;
   display: inline-block;
-  background-repeat: no-repeat;
-  float: none;
+  position: relative;
+  width: 80%;
+  height: 80%;
 }
-.ppsSmLink.boxy,
-.ppsSmLink.simple {
-  width: 48px;
-  height: 48px;
+.ppsSmLinkBlack.ppsSmLinklivejournal::before {
+  filter: invert(1);
 }
-.ppsSmLink.boxy {
-  margin: 0 6px 6px 0;
+.ppsSmLinkWhite.ppsSmLinklivejournal::before {
+  filter: invert(0);
 }
-.ppsSmLink.boxy.facebook {
-  background-image: url('[PPS_MOD_PATH]img/Facebook-boxy.png');
+.ppsSmLinkBrand.ppsSmLinklivejournal::before {
+  filter: invert(1);
 }
-.ppsSmLink.boxy.googleplus {
-  background-image: url('[PPS_MOD_PATH]img/Googleplus-boxy.png');
+.ppsSmLinklinkedin::before {
+  content: '\f0e1';
 }
-.ppsSmLink.boxy.twitter {
-  background-image: url('[PPS_MOD_PATH]img/Twitter-boxy.png');
+.ppsSmLinktumblr::before {
+  content: '\f173';
 }
-
-.ppsSmLink.simple.facebook {
-  background-image: url('[PPS_MOD_PATH]img/facebook-simple.png');
-}
-.ppsSmLink.simple.googleplus {
-  background-image: url('[PPS_MOD_PATH]img/googleplus-simple.png');
-}
-.ppsSmLink.simple.twitter {
-  background-image: url('[PPS_MOD_PATH]img/twitter-simple.png');
+.ppsSmLinkwhatsapp::before {
+  content: '\f232';
 }

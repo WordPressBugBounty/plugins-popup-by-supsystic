@@ -4,7 +4,7 @@
       <ul id="ppsPopupTblNavBtnsShell" class="supsystic-bar-controls">
         <li title="<?php _e('Delete selected', PPS_LANG_CODE); ?>">
           <button class="button" id="ppsPopupRemoveGroupBtn" disabled data-toolbar-button>
-            <i class="fa fa-fw fa-trash-o"></i>
+            <i class="fa fa-fw fa-trash"></i>
             <?php _e('Delete selected', PPS_LANG_CODE); ?>
           </button>
         </li>
