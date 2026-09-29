@@ -82,7 +82,7 @@
         <?php _e('Aweber Unique List ID', PPS_LANG_CODE); ?>
         <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_01"></i>
         <span class="tooltipContent" id="tooltip_01">
-          <?php echo viewPps::ksesString(esc_html(sprintf(__('Check <a href="%s" target="_blank">this page</a> for more details', PPS_LANG_CODE), 'https://help.aweber.com/hc/en-us/articles/204028426-What-Is-The-Unique-List-ID-'))); ?>
+          <?php echo viewPps::ksesString(wp_kses_post(sprintf(__('Check <a href="%s" target="_blank">this page</a> for more details', PPS_LANG_CODE), 'https://help.aweber.com/hc/en-us/articles/204028426-What-Is-The-Unique-List-ID-'))); ?>
         </span>
       </th>
       <td>
@@ -99,7 +99,7 @@
         <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_02"></i>
         <span class="tooltipContent" id="tooltip_02">
           <?php echo viewPps::ksesString(
-            esc_html(sprintf(__('You can easy track your subscribers from PopUp using this feature. For more info - check <a href="%s" target="_blank">this page</a>.', PPS_LANG_CODE), 'https://help.aweber.com/hc/en-us/articles/204028856-Where-Can-I-See-My-Subscribers-Ad-Tracking-Categories-')),
+            wp_kses_post(sprintf(__('You can easy track your subscribers from PopUp using this feature. For more info - check <a href="%s" target="_blank">this page</a>.', PPS_LANG_CODE), 'https://help.aweber.com/hc/en-us/articles/204028856-Where-Can-I-See-My-Subscribers-Ad-Tracking-Categories-')),
           ); ?>
         </span>
       </th>
@@ -117,7 +117,7 @@
         <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_03"></i>
         <span class="tooltipContent" id="tooltip_03">
           <?php echo viewPps::ksesString(
-            esc_html(
+            wp_kses_post(
               sprintf(
                 __(
                   'To find your MailChimp API Key login to your mailchimp account at <a href="%s" target="_blank">%s</a> then from the left main menu, click on your Username, then select "Account" in the flyout menu. From the account page select "Extras", "API Keys". Your API Key will be listed in the table labeled "Your API Keys". Copy / Paste your API key into "MailChimp API key" field here. For more detailed instruction - check article <a href="%s" target="_blank">here</a>.',
@@ -359,7 +359,7 @@
         <i class="fa fa-question supsystic-tooltip-bottom" data-tooltip-content="#tooltip_pro_01">
           <span class="tooltipContent" id="tooltip_pro_01">
             <?php echo viewPps::ksesString(
-              esc_html(
+              wp_kses_post(
                 sprintf(
                   __('This is PRO feature, and it will be available once you will install <a href="%s" target="_blank">PRO version</a> of our plugin', PPS_LANG_CODE),
                   framePps::_()
@@ -528,7 +528,7 @@
                 <?php _e('ReCaptcha Site Key', PPS_LANG_CODE); ?>
                 <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv2_site">
                 <span class="tooltipContent" id="tooltip_pps_recapv2_site">
-                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                <?php echo wp_kses_post(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
                 </span>
               </th>
               <td>
@@ -544,7 +544,7 @@
                 <?php _e('ReCaptcha Secret Key', PPS_LANG_CODE); ?>
                 <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv2_secret">
                 <span class="tooltipContent" id="tooltip_pps_recapv2_secret">
-                <?php echo esc_html(sprintf(__('Your secret key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                <?php echo wp_kses_post(sprintf(__('Your secret key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
                 </span>
               </th>
               <td>
@@ -560,7 +560,7 @@
                 <?php _e('ReCaptcha v3 Site Key', PPS_LANG_CODE); ?>
                 <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_recapv3_site">
                 <span class="tooltipContent" id="tooltip_pps_recapv3_site">
-                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>. Make sure you create a v3 key.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
+                <?php echo wp_kses_post(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>. Make sure you create a v3 key.', PPS_LANG_CODE), 'https://www.google.com/recaptcha/admin#list', 'https://www.google.com/recaptcha/admin#list')); ?>
                 </span>
               </th>
               <td>
@@ -588,7 +588,7 @@
                 <?php _e('hCaptcha Site Key', PPS_LANG_CODE); ?>
                 <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_hcap_site">
                 <span class="tooltipContent" id="tooltip_pps_hcap_site">
-                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dashboard.hcaptcha.com/sites', 'https://dashboard.hcaptcha.com/sites')); ?>
+                <?php echo wp_kses_post(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dashboard.hcaptcha.com/sites', 'https://dashboard.hcaptcha.com/sites')); ?>
                 </span>
               </th>
               <td>
@@ -616,7 +616,7 @@
                 <?php _e('Turnstile Site Key', PPS_LANG_CODE); ?>
                 <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_pps_turnstile_site">
                 <span class="tooltipContent" id="tooltip_pps_turnstile_site">
-                <?php echo esc_html(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dash.cloudflare.com/?to=/:account/turnstile', 'https://dash.cloudflare.com/?to=/:account/turnstile')); ?>
+                <?php echo wp_kses_post(sprintf(__('Your site key, generated on <a href="%s" target="_blank">%s</a>.', PPS_LANG_CODE), 'https://dash.cloudflare.com/?to=/:account/turnstile', 'https://dash.cloudflare.com/?to=/:account/turnstile')); ?>
                 </span>
               </th>
               <td>
@@ -811,7 +811,7 @@
       <td>
         <?php echo viewPps::ksesString(
           htmlPps::textarea('params[tpl][sub_txt_confirm_mail_message]', [
-            'value' => esc_html(
+            'value' => wp_kses_post(
               isset($this->popup['params']['tpl']['sub_txt_confirm_mail_message'])
                 ? $this->popup['params']['tpl']['sub_txt_confirm_mail_message']
                 : __('You subscribed on site <a href="[siteurl]">[sitename]</a>. Follow <a href="[confirm_link]">this link</a> to complete your subscription. If you did not subscribe here - just ignore this message.', PPS_LANG_CODE),
@@ -864,7 +864,7 @@
       <td>
         <?php echo viewPps::ksesString(
           htmlPps::textarea('params[tpl][sub_txt_subscriber_mail_message]', [
-            'value' => esc_html(isset($this->popup['params']['tpl']['sub_txt_subscriber_mail_message']) ? $this->popup['params']['tpl']['sub_txt_subscriber_mail_message'] : __('Username: [user_login]<br />Password: [password]<br />[login_url]', PPS_LANG_CODE)),
+            'value' => wp_kses_post(isset($this->popup['params']['tpl']['sub_txt_subscriber_mail_message']) ? $this->popup['params']['tpl']['sub_txt_subscriber_mail_message'] : __('Username: [user_login]<br />Password: [password]<br />[login_url]', PPS_LANG_CODE)),
           ]),
         ); ?><br />
         <div class="ppsPopupAttachFilesShell" data-key="subscriber">

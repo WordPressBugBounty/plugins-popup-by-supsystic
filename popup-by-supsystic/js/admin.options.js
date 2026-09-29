@@ -1,3 +1,31 @@
+/**
+ * Tooltip titles may contain simple markup (links, <br>, images), but a title attribute
+ * is decoded by the browser, so treat it as untrusted: parse it in an inert document
+ * and drop scripting elements, event handlers and script URLs before inserting it.
+ */
+function ppsSanitizeTooltipHtml(html) {
+  var doc = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html');
+  var blocked = 'script,style,iframe,frame,frameset,object,embed,applet,link,meta,base,form,input,button,textarea,select,svg,math,template,noscript';
+  jQuery(doc.body).find(blocked).remove();
+  jQuery(doc.body)
+    .find('*')
+    .each(function () {
+      for (var i = this.attributes.length - 1; i >= 0; i--) {
+        var name = this.attributes[i].name.toLowerCase(),
+          value = this.attributes[i].value.replace(/[\s\u0000-\u001F]+/g, '').toLowerCase();
+        if (
+          name.indexOf('on') === 0 ||
+          name === 'style' ||
+          name === 'srcdoc' ||
+          ((name === 'href' || name === 'src' || name === 'xlink:href' || name === 'action' || name === 'formaction') &&
+            (value.indexOf('javascript:') === 0 || value.indexOf('vbscript:') === 0 || (value.indexOf('data:') === 0 && value.indexOf('data:image/') !== 0)))
+        ) {
+          this.removeAttribute(this.attributes[i].name);
+        }
+      }
+    });
+  return doc.body.innerHTML;
+}
 jQuery(document).ready(function () {
   tooltipsterize();
   function tooltipsterize() {
@@ -27,7 +55,7 @@ jQuery(document).ready(function () {
         if (title) {
           jQuery(this).attr('title', '');
           jQuery(this).attr('data-tooltip-content', '#tooltip_' + counter + '');
-          var html = '<span class="tooltipContent" id="tooltip_' + counter + '">' + title + '</span>';
+          var html = '<span class="tooltipContent" id="tooltip_' + counter + '">' + ppsSanitizeTooltipHtml(title) + '</span>';
           jQuery('.tooltip_templates').append(html);
         }
       });

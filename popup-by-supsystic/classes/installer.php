@@ -267,9 +267,55 @@ class installerPps
   public static function deactivate()
   {
   }
+  /**
+   * Popups created from a template while html/css were SQL-escaped twice were stored with
+   * literal "\r\n" / "\"" sequences, which breaks their Twig rendering. Undo exactly one
+   * level of escaping, and only for fields that look like that: they contain a literal
+   * "\r\n" or "\n" and no real line break at all (every bundled template has line breaks).
+   *
+   * @return int Number of repaired popups.
+   */
+  public static function repairDoubleEscapedPopups()
+  {
+    global $wpdb;
+    $table = $wpdb->prefix . 'pps_popup';
+    if (!$wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table))) {
+      return 0;
+    }
+    $unescape = function ($value) {
+      return preg_replace_callback(
+        '/\\\\([\\\\\'"nrZ0])/',
+        function ($m) {
+          $map = ['n' => "\n", 'r' => "\r", 'Z' => "\x1A", '0' => "\0"];
+          return isset($map[$m[1]]) ? $map[$m[1]] : $m[1];
+        },
+        $value,
+      );
+    };
+    $isDoubleEscaped = function ($value) {
+      return is_string($value) && $value !== '' && strpos($value, "\n") === false && preg_match('/\\\\[rn]/', $value);
+    };
+    $repaired = 0;
+    $rows = $wpdb->get_results("SELECT id, html, css FROM {$table} WHERE original_id != 0", ARRAY_A);
+    foreach ((array) $rows as $row) {
+      $update = [];
+      foreach (['html', 'css'] as $field) {
+        if ($isDoubleEscaped($row[$field])) {
+          $update[$field] = $unescape($row[$field]);
+        }
+      }
+      if ($update && $wpdb->update($table, $update, ['id' => (int) $row['id']]) !== false) {
+        $repaired++;
+      }
+    }
+    return $repaired;
+  }
   public static function update()
   {
     global $wpdb;
+    if (!get_option('pps_double_escaped_popups_repaired')) {
+      update_option('pps_double_escaped_popups_repaired', ['time' => time(), 'repaired' => self::repairDoubleEscapedPopups()], false);
+    }
     $wpPrefix = $wpdb->prefix; /* add to 0.0.3 Versiom */
     $currentVersion = get_option($wpPrefix . PPS_DB_PREF . 'db_version', 0);
     if (!$currentVersion || version_compare(PPS_VERSION, $currentVersion, '>')) {

@@ -104,8 +104,9 @@ class optionsPps extends modulePps
   }
   public function getActiveTab()
   {
-    $reqTab = sanitize_text_field(reqPps::getVar('tab'));
-    return empty($reqTab) ? 'popup' : esc_attr($reqTab);
+    // Tab keys are plain slugs; anything else (entities, quotes, markup) is attacker input.
+    $reqTab = sanitize_key((string) reqPps::getVar('tab'));
+    return empty($reqTab) ? 'popup' : $reqTab;
   }
   public function getTabUrl($tab = '')
   {

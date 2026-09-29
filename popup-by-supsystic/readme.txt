@@ -2,9 +2,9 @@
 Contributors: supsystic.com
 Donate link: https://supsystic.com/plugins/popup-plugin
 Tags: popup, popups, exit intent, lead capture, modal
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.13.1
+Stable tag: 1.13.2
 License: GNU General Public License v2.0 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,6 +146,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 = 2026 =
+
+= 1.13.2 / 29.09.2026 =
+ * General security hardening and code improvements
 
 = 1.13.1 / 11.08.2026 =
  * General security hardening and code improvements

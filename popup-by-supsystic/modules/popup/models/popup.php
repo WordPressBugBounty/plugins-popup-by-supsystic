@@ -181,8 +181,8 @@ class popupModelPps extends modelPps
   protected function _escTplData($data)
   {
     $data['label'] = dbPps::prepareHtmlIn($data['label']);
-    $data['html'] = dbPps::escape($data['html']);
-    $data['css'] = dbPps::escape($data['css']);
+    // html/css are not SQL-escaped here: tablePps::_getQueryString() escapes every value
+    // with esc_sql(), and escaping twice stored literal "\r\n" / "\"" that broke Twig.
     return $data;
   }
   public function createFromTpl($d = [])

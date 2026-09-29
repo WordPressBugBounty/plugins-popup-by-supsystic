@@ -578,7 +578,7 @@ if (isset($this->popup['ab_id']) && !empty($this->popup['ab_id'])) {
     <?php _e('for URL match', PPS_LANG_CODE); ?>
     <i class="fa fa-question supsystic-tooltip" data-tooltip-content="#tooltip_04"></i>
     <span class="tooltipContent" id="tooltip_04">
-      <?php echo esc_html(
+      <?php echo wp_kses_post(
         sprintf(
           __('You can enter here URL pattern - and users with URL matched this pattern will not see (or vice versa) your PopUp. Use <a _target="_blank" href="%s">official documentation</a> about regular expression to make this work correctly.', PPS_LANG_CODE),
           'https://php.net/manual/en/reference.pcre.pattern.syntax.php',

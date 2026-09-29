@@ -43,7 +43,8 @@ abstract class viewPps extends baseObjectPps
   {
     $allowedHtml = self::getAllowedHtml();
     if (!empty($str) && is_string($str)) {
-      $str = htmlspecialchars_decode($str);
+      // Do not entity-decode here: templates escape values with esc_attr()/esc_html(),
+      // and decoding before wp_kses() turned that escaping back into live markup (XSS).
       $re = '/rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/';
       $str = preg_replace_callback(
         $re,
