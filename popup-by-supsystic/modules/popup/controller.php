@@ -56,10 +56,12 @@ class popupControllerPps extends controllerPps
   }
   protected function _prepareSortOrder($sortOrder)
   {
-    if ($sortOrder == 'conversion') {
-      $sortOrder = '(actions / unique_views)'; // Conversion in real-time calculation
+    if ($sortOrder === 'conversion') {
+      return '(actions / unique_views)'; // Conversion in real-time calculation
     }
-    return $sortOrder;
+    // sidx goes straight into ORDER BY - only the list's sortable columns are allowed
+    $sortable = ['id', 'label', 'views', 'unique_views', 'actions', 'active', 'date_created'];
+    return in_array($sortOrder, $sortable, true) ? $sortOrder : 'id';
   }
   public function remove()
   {

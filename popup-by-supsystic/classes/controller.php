@@ -185,8 +185,9 @@ abstract class controllerPps
 
     $page = (int) reqPps::getVar('page');
     $rowsLimit = (int) reqPps::getVar('rows');
-    $orderBy = reqPps::getVar('sidx');
-    $sortOrder = reqPps::getVar('sord');
+    $orderBy = (string) reqPps::getVar('sidx');
+    // sord goes straight into ORDER BY - allow only the two real directions
+    $sortOrder = strtoupper((string) reqPps::getVar('sord')) === 'ASC' ? 'ASC' : 'DESC';
 
     // Our custom search
     $search = reqPps::getVar('search');
@@ -281,8 +282,18 @@ abstract class controllerPps
   {
     return $searchString;
   }
+  /**
+   * sidx is concatenated into ORDER BY, and $wpdb->prepare() can't parameterize
+   * identifiers - so accept only real column names of this module's table.
+   * Controllers that sort by computed values should re-define this with their own whitelist.
+   */
   protected function _prepareSortOrder($sortOrder)
   {
-    return $sortOrder;
+    $sortOrder = (string) $sortOrder;
+    $tbl = $this->getModel() ? $this->getModel()->getTbl() : '';
+    if ($sortOrder !== '' && $tbl && framePps::_()->getTable($tbl)->haveField($sortOrder)) {
+      return $sortOrder;
+    }
+    return '';
   }
 }

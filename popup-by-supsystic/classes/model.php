@@ -43,7 +43,8 @@ abstract class modelPps extends baseObjectPps
    */
   public function setSortOrder($sortOrder)
   {
-    $this->_sortOrder = $sortOrder;
+    $sortOrder = strtoupper(trim((string) $sortOrder));
+    $this->_sortOrder = in_array($sortOrder, ['ASC', 'DESC'], true) ? $sortOrder : '';
     return $this;
   }
   public function setLimit($limit)
