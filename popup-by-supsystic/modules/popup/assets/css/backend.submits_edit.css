@@ -1,0 +1,251 @@
+.ppsgenPopupSubmitsWrapperWarning {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 15px;
+  border-left: 3px solid orange;
+}
+
+.ppsgenPopupSubmitsRow {
+  margin-bottom: 15px;
+}
+
+.ppsgenPopupSubmitsRowTitle {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ppsgenPopupSubmitsRowTitleEl {
+  padding: 2px;
+}
+
+.ppsgenPopupSubmitsRowTitleBtns {
+  min-width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.ppsgenPopupSubmitsRowTitleDeleteBtn {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px;
+  color: white;
+}
+
+.ppsgenPopupSubmitsRowData {
+  display: none;
+  position: relative;
+  margin-top: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.ppsgenPopupSubmitsRowDataField {
+  background: #f5f6ff;
+  padding: 3px 10px;
+  margin-bottom: 4px;
+}
+
+.ppsgenPopupSubmitsRowDataFieldKey {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.ppsgenPopupStatsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background: #f0f3ff;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.ppsgenPopupStatsActions {
+  margin-bottom: 12px;
+  text-align:right;
+}
+
+.ppsgenPopupStatsRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #ffffff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  box-shadow: 0 0 0 1px #e0e5ff inset;
+}
+
+.ppsgenPopupStatsRow .dashicons {
+  color: #7487ff;
+}
+
+.ppsgenStatsTrendPanel {
+  margin-top: 24px;
+  padding: 18px 20px 20px;
+  background: #fff;
+  border: 1px solid #e3e6ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(31, 41, 55, 0.05);
+}
+
+.ppsgenStatsTrendToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.ppsgenStatsTrendGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenStatsTrendBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #d4d9e6;
+  border-radius: 999px;
+  background: #f8f9fc;
+  color: #384152;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ppsgenStatsTrendBtn:hover {
+  border-color: #aeb8d3;
+  background: #eef2fb;
+  color: #1f2937;
+}
+
+.ppsgenStatsTrendBtnActive {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.ppsgenStatsTrendLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.ppsgenStatsTrendLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenStatsTrendColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.ppsgenStatsTrendColorPrimary {
+  background: #2563eb;
+}
+
+.ppsgenStatsTrendColorSecondary {
+  background: #10b981;
+}
+
+.ppsgenStatsTrendColorTertiary {
+  background: #8b5cf6;
+}
+
+.ppsgenStatsTrendColorDanger {
+  background: #ef4444;
+}
+
+.ppsgenStatsTrendChart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+  gap: 10px;
+  align-items: end;
+  min-height: 200px;
+  padding-top: 8px;
+}
+
+.ppsgenStatsTrendCol {
+  min-width: 0;
+}
+
+.ppsgenStatsTrendBars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 150px;
+}
+
+.ppsgenStatsTrendBar {
+  width: 100%;
+  max-width: 14px;
+  min-height: 2px;
+  border-radius: 8px 8px 3px 3px;
+}
+
+.ppsgenStatsTrendBarPrimary {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+}
+
+.ppsgenStatsTrendBarSecondary {
+  background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
+}
+
+.ppsgenStatsTrendBarTertiary {
+  background: linear-gradient(180deg, #c4b5fd 0%, #8b5cf6 100%);
+}
+
+.ppsgenStatsTrendBarDanger {
+  background: linear-gradient(180deg, #fca5a5 0%, #ef4444 100%);
+}
+
+.ppsgenStatsTrendLabel {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ppsgenStatsTrendEmpty {
+  padding: 16px 0 4px;
+  color: #6b7280;
+  font-size: 13px;
+}

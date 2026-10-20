@@ -1,0 +1,451 @@
+<?php
+
+class supsystic_promoPps extends modulePps
+{
+  private $_mainLink = '';
+  private $_assetsUrl = '';
+  public function __construct($d)
+  {
+    parent::__construct($d);
+    $this->getMainLink();
+  }
+  public function init()
+  {
+    parent::init();
+    if (is_admin()) {
+      add_action('init', [$this, 'checkWelcome']);
+    }
+    $this->weLoveYou();
+    dispatcherPps::addFilter('mainAdminTabs', [$this, 'addAdminTab']);
+    dispatcherPps::addFilter('subDestList', [$this, 'addSubDestList']);
+    dispatcherPps::addFilter('showTplsList', [$this, 'checkProTpls']);
+    // Admin tutorial
+    add_action('admin_enqueue_scripts', [$this, 'loadTutorial']);
+  }
+  public function addAdminTab($tabs)
+  {
+    $tabs['overview'] = [
+      'label' => __('Overview', PPS_LANG_CODE),
+      'callback' => [$this, 'getOverviewTabContent'],
+      'fa_icon' => 'fa-info',
+      'sort_order' => 5,
+    ];
+    return $tabs;
+  }
+  public function addSubDestList($subDestList)
+  {
+    if (!$this->isPro()) {
+      $subDestList = array_merge($subDestList, [
+        'constantcontact' => ['label' => __('Constant Contact - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'campaignmonitor' => ['label' => __('Campaign Monitor - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'verticalresponse' => ['label' => __('Vertical Response - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'get_response' => ['label' => __('GetResponse - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'icontact' => ['label' => __('iContact - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'activecampaign' => ['label' => __('Active Campaign - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'mailrelay' => ['label' => __('Mailrelay - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'sgautorepondeur' => ['label' => __('SG Autorepondeur - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'benchmarkemail' => ['label' => __('Benchmark - PRO', PPS_LANG_CODE), 'require_confirm' => true],
+        'convertkit' => ['label' => __('ConvertKit - PRO', PPS_LANG_CODE), 'require_confirm' => false],
+        'vision6' => ['label' => __('Vision6 - PRO', PPS_LANG_CODE), 'require_confirm' => false],
+        'ymlp' => ['label' => __('Your Mailing List Provider (Ymlp) - PRO', PPS_LANG_CODE), 'require_confirm' => false],
+      ]);
+    }
+    return $subDestList;
+  }
+  public function getOverviewTabContent()
+  {
+    return $this->getView()->getOverviewTabContent();
+  }
+  public function showWelcomePage()
+  {
+    $this->getView()->showWelcomePage();
+  }
+  private function _preparePromoLink($link, $ref = '')
+  {
+    if (empty($ref)) {
+      $ref = 'user';
+    }
+    return $link;
+  }
+  public function weLoveYou()
+  {
+    if (!$this->isPro()) {
+      dispatcherPps::addFilter('popupEditTabs', [$this, 'addUserExp'], 10, 2);
+      dispatcherPps::addFilter('popupEditDesignTabs', [$this, 'addUserExpDesign']);
+      dispatcherPps::addFilter('editPopupMainOptsShowOn', [$this, 'showAdditionalmainAdminShowOnOptions']);
+    }
+  }
+  public function showAdditionalmainAdminShowOnOptions($popup)
+  {
+    $this->getView()->showAdditionalmainAdminShowOnOptions($popup);
+  }
+  public function addUserExp($tabs, $popup)
+  {
+    $modPath = $this->getAssetsUrl();
+    // $tabs['ppsPopupAbTesting'] = array(
+    // 	'title' => __('Testing', PPS_LANG_CODE),
+    // 	'content' => '<a href="'. $this->generateMainLink('utm_source=plugin&utm_medium=abtesting&utm_campaign=popup'). '" target="_blank" class="button button-primary">'
+    // 		. __('Get PRO', PPS_LANG_CODE). '</a><br /><a href="'. $this->generateMainLink('utm_source=plugin&utm_medium=abtesting&utm_campaign=popup'). '" target="_blank">'
+    // 		. '<img style="max-width: 100%;" src="'. $modPath. 'img/AB-testing-pro.jpg" />'
+    // 	. '</a>',
+    // 	'icon_content' => '<b>A/B</b>',
+    // 	'avoid_hide_icon' => true,
+    // 	'sort_order' => 55,
+    // );
+    if (!in_array($popup['type'], [PPS_FB_LIKE, PPS_IFRAME, PPS_SIMPLE_HTML, PPS_PDF, PPS_AGE_VERIFY, PPS_FULL_SCREEN])) {
+      $tabs['ppsLoginRegister'] = [
+        'title' => __('Login/Registration', PPS_LANG_CODE),
+        'content' =>
+          '<a href="' .
+          $this->generateMainLink('utm_source=plugin&utm_medium=login_registration&utm_campaign=popup') .
+          '" target="_blank" class="button button-primary">' .
+          __('Get PRO', PPS_LANG_CODE) .
+          '</a><br /><a href="' .
+          $this->generateMainLink('utm_source=plugin&utm_medium=login_registration&utm_campaign=popup') .
+          '" target="_blank">' .
+          '<img style="max-width: 100%;" src="' .
+          $modPath .
+          'img/login-registration-1.jpg" />' .
+          '</a>',
+        'fa_icon' => 'fa-sign-in',
+        'sort_order' => 25,
+      ];
+    }
+    return $tabs;
+  }
+  public function addUserExpDesign($tabs)
+  {
+    $tabs['ppsPopupLayeredPopup'] = [
+      'title' => __('Popup Location', PPS_LANG_CODE),
+      'content' => $this->getView()->getLayeredStylePromo(),
+      'fa_icon' => 'fa-arrows',
+      'sort_order' => 15,
+    ];
+    return $tabs;
+  }
+  /**
+   * Public shell for private method
+   */
+  public function preparePromoLink($link, $ref = '')
+  {
+    return $this->_preparePromoLink($link, $ref);
+  }
+  public function getMainLink()
+  {
+    if (empty($this->_mainLink)) {
+      $affiliateQueryString = '';
+      $this->_mainLink = 'https://supsystic.com/plugins/popup-plugin/' . $affiliateQueryString;
+    }
+    return $this->_mainLink;
+  }
+  public function generateMainLink($params = '')
+  {
+    $mainLink = $this->getMainLink();
+    if (!empty($params)) {
+      return $mainLink . (strpos($mainLink, '?') ? '&' : '?') . $params;
+    }
+    return $mainLink;
+  }
+  public function isPro()
+  {
+    static $isPro;
+    if (is_null($isPro)) {
+      // license is always active with PRO - even if license key was not entered,
+      // add_options module was from the begining of the times in PRO, and will be active only once user will activate license on site
+      $isPro = framePps::_()->getModule('pro_tpls');
+    }
+    return $isPro;
+  }
+  public function getAssetsUrl()
+  {
+    if (empty($this->_assetsUrl)) {
+      $this->_assetsUrl = framePps::_()->getModule('popup')->getAssetsUrl() . 'promo/';
+    }
+    return $this->_assetsUrl;
+  }
+  public function checkWelcome()
+  {
+    $from = reqPps::getVar('from', 'get');
+    $pl = reqPps::getVar('pl', 'get');
+    if ($from == 'welcome-page' && $pl == PPS_CODE && framePps::_()->getModule('user')->isAdmin()) {
+      $welcomeSent = (int) get_option(PPS_DB_PREF . 'welcome_sent');
+      if (!$welcomeSent) {
+        update_option(PPS_DB_PREF . 'welcome_sent', 1);
+      }
+      $skipTutorial = (int) reqPps::getVar('skip_tutorial', 'get');
+      if ($skipTutorial) {
+        $tourHst = $this->getModel()->getTourHst();
+        $tourHst['closed'] = 1;
+        $this->getModel()->setTourHst($tourHst);
+      }
+    }
+  }
+  public function getContactLink()
+  {
+    return $this->getMainLink() . '#contact';
+  }
+  public function checkProTpls($list)
+  {
+    if (!$this->isPro()) {
+      $imgsPath = framePps::_()->getModule('popup')->getAssetsUrl() . 'img/preview/';
+      $promoList = [
+        ['label' => 'List Building Layered', 'img_preview' => 'list-building-layered.jpg', 'sort_order' => 18, 'type_id' => 10],
+        ['label' => 'Full Screen Transparent', 'img_preview' => 'full-screen-transparent.jpg', 'sort_order' => 20, 'type_id' => 8],
+        ['label' => 'Age Verification', 'img_preview' => 'age-verification.jpg', 'sort_order' => 10, 'type_id' => 7],
+        ['label' => 'WordPress Login', 'img_preview' => 'wordpress-login.jpg', 'sort_order' => 15, 'type_id' => 9],
+        ['label' => 'Bump!', 'img_preview' => 'bump.jpg', 'sort_order' => 16, 'type_id' => 10],
+        ['label' => 'Subscribe Me Bar', 'img_preview' => 'subscribe-me-bar.jpg', 'sort_order' => 17, 'type_id' => 10],
+        ['label' => 'Black Friday', 'img_preview' => 'black-friday.jpg', 'sort_order' => 16, 'type_id' => 10],
+        ['label' => 'Pyramid', 'img_preview' => 'pyramid.jpg', 'sort_order' => 19, 'type_id' => 10],
+        ['label' => 'Catch Eye', 'img_preview' => 'catch-eye.jpg', 'sort_order' => 17, 'type_id' => 10],
+        ['label' => 'Logout Reminder', 'img_preview' => 'wordpress-logout.jpg', 'sort_order' => 16, 'type_id' => 9],
+        ['label' => 'Ho Ho Holiday Sale', 'img_preview' => 'HoHoHolidaySale.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Exclusive Christmas', 'img_preview' => 'ExclusiveChristmasBg2.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Christmas-4', 'img_preview' => 'christmas-4-prev.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Holiday Discount', 'img_preview' => '358-prev-holiday-discount.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Winter Sale', 'img_preview' => '365-5-winter-sale-prev.png', 'sort_order' => 0, 'type_id' => 7],
+        ['label' => 'Christmas Tree', 'img_preview' => '365-6-img-prev.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Christmas Candies', 'img_preview' => '361-christmas-candies-prev.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Xmas Discount', 'img_preview' => '373-xmas-discount-prev.png', 'sort_order' => 0, 'type_id' => 11],
+        ['label' => 'Exclusive Subscription', 'img_preview' => '230-7-exclusive-subscr-preview.png', 'sort_order' => 1, 'type_id' => 1],
+        ['label' => 'Pretty', 'img_preview' => '2016-8-Pretty-prev.png', 'sort_order' => 1, 'type_id' => 1],
+        ['label' => 'Get Discount', 'img_preview' => '2016-9-get-discount-prev.png', 'sort_order' => 1, 'type_id' => 1],
+        ['label' => 'Winter Subscribe', 'img_preview' => '2016-10-winter-subscr-prev.png', 'sort_order' => 1, 'type_id' => 1],
+        ['label' => 'Lavender Mood', 'img_preview' => '2016-11-lavender-mood-prev.png', 'sort_order' => 1, 'type_id' => 1],
+      ];
+      foreach ($promoList as $i => $t) {
+        $promoList[$i]['img_preview_url'] = $imgsPath . $promoList[$i]['img_preview'];
+        $promoList[$i]['promo'] = strtolower(str_replace([' ', '!'], '', $t['label']));
+        $promoList[$i]['promo_link'] = $this->generateMainLink('utm_source=plugin&utm_medium=' . $promoList[$i]['promo'] . '&utm_campaign=popup');
+      }
+      foreach ($list as $i => $t) {
+        if (isset($t['id']) && $t['id'] >= 50) {
+          unset($list[$i]);
+        }
+      }
+      $list = array_merge($list, $promoList);
+    }
+    return $list;
+  }
+  public function loadTutorial()
+  {
+    // Don't run on WP < 3.3
+    if (get_bloginfo('version') < '3.3') {
+      return;
+    }
+
+    if (is_admin() && current_user_can(framePps::_()->getModule('adminmenu')->getMainCap())) {
+      $this->checkToShowTutorial();
+    }
+  }
+  public function checkToShowTutorial()
+  {
+    if (reqPps::getVar('tour', 'get') == 'clear-hst') {
+      $this->getModel()->clearTourHst();
+    }
+    $hst = $this->getModel()->getTourHst();
+    if ((isset($hst['closed']) && $hst['closed']) || (isset($hst['finished']) && $hst['finished'])) {
+      return;
+    }
+    $tourData = [];
+    $tourData['tour'] = [
+      'welcome' => [
+        'points' => [
+          'first_welcome' => [
+            'target' => '#toplevel_page_popup-wp-supsystic',
+            'options' => [
+              'position' => [
+                'edge' => 'bottom',
+                'align' => 'top',
+              ],
+            ],
+            'show' => 'plugin',
+          ],
+        ],
+      ],
+      'create_first' => [
+        'points' => [
+          'create_bar_btn' => [
+            'target' => '.supsystic-content .supsystic-navigation .supsystic-tab-popup_add_new',
+            'options' => [
+              'position' => [
+                'edge' => 'left',
+                'align' => 'right',
+              ],
+            ],
+            'show' => ['tab_popup', 'tab_settings', 'tab_overview'],
+          ],
+          'enter_title' => [
+            'target' => '#ppsCreatePopupForm input[type=text]',
+            'options' => [
+              'position' => [
+                'edge' => 'top',
+                'align' => 'bottom',
+              ],
+            ],
+            'show' => 'tab_popup_add_new',
+          ],
+          'select_tpl' => [
+            'target' => '.popup-list',
+            'options' => [
+              'position' => [
+                'edge' => 'bottom',
+                'align' => 'top',
+              ],
+            ],
+            'show' => 'tab_popup_add_new',
+          ],
+          'save_first_popup' => [
+            'target' => '#ppsCreatePopupForm .button-primary',
+            'options' => [
+              'position' => [
+                'edge' => 'left',
+                'align' => 'right',
+              ],
+            ],
+            'show' => 'tab_popup_add_new',
+          ],
+        ],
+      ],
+      'first_edit' => [
+        'points' => [
+          'popup_main_opts' => [
+            'target' => '#ppsPopupEditForm',
+            'options' => [
+              'position' => [
+                'edge' => 'right',
+                'align' => 'left',
+              ],
+              'pointerWidth' => 200,
+            ],
+            'show' => 'tab_popup_edit',
+          ],
+          'popup_design_opts' => [
+            'target' => '#ppsPopupEditForm',
+            'options' => [
+              'position' => [
+                'edge' => 'right',
+                'align' => 'top',
+              ],
+              'pointerWidth' => 200,
+            ],
+            'show' => 'tab_popup_edit',
+            'sub_tab' => '#ppsPopupTpl',
+          ],
+          'popup_subscribe_opts' => [
+            'target' => '#ppsPopupEditForm',
+            'options' => [
+              'position' => [
+                'edge' => 'right',
+                'align' => 'top',
+              ],
+              'pointerWidth' => 200,
+            ],
+            'show' => 'tab_popup_edit',
+            'sub_tab' => '#ppsPopupSubscribe',
+          ],
+          'popup_statistics_opts' => [
+            'target' => '#ppsPopupEditForm',
+            'options' => [
+              'position' => [
+                'edge' => 'right',
+                'align' => 'left',
+              ],
+              'pointerWidth' => 200,
+            ],
+            'show' => 'tab_popup_edit',
+            'sub_tab' => '#ppsPopupStatistics',
+          ],
+          'popup_code_opts' => [
+            'target' => '#ppsPopupEditForm',
+            'options' => [
+              'position' => [
+                'edge' => 'right',
+                'align' => 'left',
+              ],
+              'pointerWidth' => 200,
+            ],
+            'show' => 'tab_popup_edit',
+            'sub_tab' => '#ppsPopupEditors',
+          ],
+          'final' => [
+            'target' => '#ppsPopupMainControllsShell .ppsPopupSaveBtn',
+            'options' => [
+              'position' => [
+                'edge' => 'top',
+                'align' => 'bottom',
+              ],
+              'pointerWidth' => 500,
+            ],
+            'show' => 'tab_popup_edit',
+          ],
+        ],
+      ],
+    ];
+    $isAdminPage = framePps::_()->isAdminPlugOptsPage();
+    $activeTab = framePps::_()->getModule('options')->getActiveTab();
+    foreach ($tourData['tour'] as $stepId => $step) {
+      foreach ($step['points'] as $pointId => $point) {
+        $pointKey = $stepId . '-' . $pointId;
+        if (!empty($hst['passed'][$pointKey])) {
+          unset($tourData['tour'][$stepId]['points'][$pointId]);
+          continue;
+        }
+        $show = isset($point['show']) ? $point['show'] : 'plugin';
+        if (!is_array($show)) {
+          $show = [$show];
+        }
+        if ((in_array('plugin', $show) && !$isAdminPage) || (in_array('not_plugin', $show) && $isAdminPage)) {
+          unset($tourData['tour'][$stepId]['points'][$pointId]);
+          continue;
+        }
+        $showForTabs = false;
+        $hideForTabs = false;
+        foreach ($show as $s) {
+          if (strpos($s, 'tab_') === 0) {
+            $showForTabs = true;
+          }
+          if (strpos($s, 'tab_not_') === 0) {
+            $hideForTabs = true;
+          }
+        }
+        if ($showForTabs && (!in_array('tab_' . $activeTab, $show) || !$isAdminPage)) {
+          unset($tourData['tour'][$stepId]['points'][$pointId]);
+          continue;
+        }
+        if ($hideForTabs && (in_array('tab_not_' . $activeTab, $show) || !$isAdminPage)) {
+          unset($tourData['tour'][$stepId]['points'][$pointId]);
+          continue;
+        }
+        switch ($pointKey) {
+          case 'create_first-create_bar_btn':
+            $createdPopupsNum = framePps::_()->getModule('popup')->getModel()->addWhere('original_id != 0')->getCount();
+            if (!empty($createdPopupsNum)) {
+              unset($tourData['tour'][$stepId]['points'][$pointId]);
+            }
+            break;
+        }
+      }
+    }
+    foreach ($tourData['tour'] as $stepId => $step) {
+      if (empty($step['points'])) {
+        unset($tourData['tour'][$stepId]);
+      }
+    }
+    if (empty($tourData['tour'])) {
+      return;
+    }
+    $tourData['nonce'] = wp_create_nonce('pps_nonce');
+    $tourData['html'] = $this->getView()->getTourHtml();
+    framePps::_()->getModule('templates')->loadCoreJs();
+    wp_enqueue_style('wp-pointer');
+    wp_enqueue_script('jquery-ui');
+    wp_enqueue_script('wp-pointer');
+    framePps::_()->addScript(PPS_CODE . 'admin.tour', $this->getModPath() . 'js/admin.tour.js', ['jquery', 'jquery-ui-core', 'wp-pointer']);
+    framePps::_()->addJSVar(PPS_CODE . 'admin.tour', 'ppsAdminTourData', $tourData);
+  }
+  public function getContactFormPlgUrl()
+  {
+    return '//wordpress.org/support/plugin/contact-form-by-supsystic';
+  }
+}

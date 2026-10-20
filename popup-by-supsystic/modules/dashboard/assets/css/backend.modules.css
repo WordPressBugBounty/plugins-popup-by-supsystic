@@ -1,0 +1,327 @@
+.ppsgenModulesListWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 100%;
+  align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+  .ppsgenModulesListWrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 782px) {
+  .ppsgenModulesListWrapper {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.ppsgenModuleBlockWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid #dbe4ff;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, rgba(91, 124, 250, 0.1), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  box-shadow: 0 18px 42px rgba(55, 84, 170, 0.08);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.ppsgenModuleBlockWrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.ppsgenModuleBlockWrapper:hover {
+  transform: translateY(-3px);
+  border-color: #afc3ff;
+  box-shadow: 0 24px 50px rgba(48, 76, 170, 0.14);
+}
+
+.ppsgenModuleBlockWrapperPro {
+  border-color: #cbd7ff;
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.16), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.ppsgenModuleBlockWrapperComingSoon {
+  opacity: 0.75;
+}
+
+.ppsgenModuleBlockHead,
+.ppsgenModuleBlockBody,
+.ppsgenModuleBlockFooter {
+  position: relative;
+  z-index: 1;
+}
+
+.ppsgenModuleBlockHead {
+  margin-bottom: 18px;
+}
+
+.ppsgenModuleBlockEyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ppsgenModuleBlockDefault,
+.ppsgenModuleBlockProBadge,
+.ppsgenModuleBlockInfoBadge,
+.ppsgenModuleBlockComingSoon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ppsgenModuleBlockDefault {
+  color: #4561cb;
+  background: #eef3ff;
+}
+
+.ppsgenModuleBlockProBadge {
+  color: #ffffff;
+  background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.24);
+}
+
+.ppsgenModuleBlockInfoBadge {
+  color: #3556c5;
+  background: #eef3ff;
+}
+
+.ppsgenModuleBlockComingSoon {
+  color: #715208;
+  background: #fff2c4;
+}
+
+.ppsgenModuleBlockTitleRow {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.ppsgenModuleBlockIconWrap {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eef3ff 0%, #dbe6ff 100%);
+  color: #3556c5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.ppsgenModuleBlockIconWrap .dashicons {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.ppsgenModuleBlockTitleGroup {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.ppsgenModuleBlockTitle {
+  color: #233469;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ppsgenModuleBlockShortDescription {
+  margin-top: 7px;
+  color: #6170a6;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.ppsgenModuleBlockBody {
+  flex: 1 1 auto;
+}
+
+.ppsgenModuleBlockDescription {
+  color: #3a4569;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.ppsgenModuleBlockFeatureList {
+  margin: 16px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ppsgenModuleBlockFeatureList li {
+  position: relative;
+  margin: 0 0 10px 0;
+  padding-left: 24px;
+  color: #46526f;
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+
+.ppsgenModuleBlockFeatureList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6d8cff 100%);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+}
+
+.ppsgenModuleBlockFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(175, 195, 255, 0.42);
+}
+
+.ppsgenModuleBlockAvSt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenModuleBlockStatusChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenModuleBlockStatusChip .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.ppsgenModuleBlockStatusChipAvailable {
+  background: #eef6ff;
+  color: #315fc9;
+}
+
+.ppsgenModuleBlockStatusChipActive {
+  background: #eaf8ee;
+  color: #20834b;
+}
+
+.ppsgenModuleBlockStatusChipMuted {
+  background: #f3f4f8;
+  color: #70788c;
+}
+
+.ppsgenModuleBlockActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ppsgenModuleBtnActivate,
+.ppsgenModuleBtnActivatePro,
+.ppsgenModuleBtnDeactivate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.ppsgenModuleBtnActivate,
+.ppsgenModuleBtnActivatePro {
+  color: #ffffff;
+  background: linear-gradient(135deg, #2445d7 0%, #4f46e5 100%);
+  box-shadow: 0 14px 22px rgba(63, 81, 181, 0.22);
+}
+
+.ppsgenModuleBtnDeactivate {
+  color: #2e3a63;
+  background: #edf1fb;
+  border: 1px solid #dbe4ff;
+}
+
+.ppsgenModuleBtnActivate:hover,
+.ppsgenModuleBtnActivatePro:hover,
+.ppsgenModuleBtnDeactivate:hover {
+  transform: translateY(-1px);
+}
+
+.ppsgenModuleBtnActivate:hover,
+.ppsgenModuleBtnActivatePro:hover {
+  box-shadow: 0 18px 28px rgba(63, 81, 181, 0.28);
+}
+
+.ppsgenModuleBtnDeactivate:hover {
+  background: #e5ebfb;
+  border-color: #c8d5ff;
+}
+
+/* Link to the module's overview page (secondary, next to Activate / Deactivate / Explore PRO) */
+.ppsgenModuleBtnOverview {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid #dbe4ff;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #2e3a63;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.ppsgenModuleBtnOverview .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.ppsgenModuleBtnOverview:hover,
+.ppsgenModuleBtnOverview:focus {
+  border-color: #c8d5ff;
+  background: #f5f8ff;
+  color: #2445d7;
+  transform: translateY(-1px);
+}

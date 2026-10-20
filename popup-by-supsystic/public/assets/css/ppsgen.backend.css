@@ -1,0 +1,3221 @@
+@media screen and (max-width: 782px) {
+  .auto-fold #wpcontent {
+    padding-left: 0px;
+  }
+}
+
+#wpcontent {
+  padding-left: 0px;
+}
+
+#wpbody-content {
+  padding-bottom: 0px;
+}
+
+#wpbody-content > .notice {
+  display: none;
+}
+
+#wpfooter {
+  display: block;
+  position: relative;
+}
+
+.ppsgenLogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.ppsgenLogoMark {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.ppsgenProductBrand {
+  align-items: stretch;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 52px;
+  padding: 2px 0;
+  color: #253695;
+  line-height: 1.15;
+}
+
+.ppsgenProductBrandName {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.ppsgenProductBrandByline {
+  color: #6170a7;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.ppsgenRateLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 22px 0 8px;
+  text-decoration: none;
+}
+
+.ppsgenDashNavigationWrapper .ppsgenRateItP {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.ppsgenDashNavigationWrapper .ppsgenRateIt {
+  font-size: 18px;
+  text-decoration: none;
+  color: #ff9800;
+}
+
+.ppsgenDashNavigationWrapper .ppsgenRateIt:hover {
+  color: #ff9800;
+}
+
+.ppsgenThemeToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  margin-top: 10px;
+  padding: 0 12px;
+  border: 1px solid rgba(63, 81, 181, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #253695;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 8px 20px rgba(63, 81, 181, 0.12);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.ppsgenThemeToggleBtn:hover {
+  transform: translateY(-1px);
+  background: #ffffff;
+  color: #1b2f84;
+}
+
+.ppsgenThemeToggleBtn .dashicons {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  line-height: 14px;
+  color: currentColor;
+}
+
+.ppsgenDashLayoutWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #ecf4ff, #eaeef7, #e7e8ee, #e3e3e6, #dedede);
+}
+
+.ppsgenDashLayoutWrapper * {
+  /* box-sizing: content-box; */
+  box-sizing: border-box;
+}
+
+.ppsgenComponentFieldCodeMirror {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+}
+
+.ppsgenComponentFieldCodeMirror .CodeMirror {
+  height: calc(100vh - 300px);
+}
+
+textarea.ppsgen-custom-code-editor {
+  width: 100% !important;
+  min-height: 500px !important;
+}
+
+textarea.ppsgen-custom-code-editor + .CodeMirror {
+  width: 100% !important;
+  min-height: 500px !important;
+  height: auto !important;
+  border: 1px solid #dcdcde;
+}
+
+textarea.ppsgen-custom-code-editor + .CodeMirror .CodeMirror-scroll {
+  min-height: 500px !important;
+}
+
+.ppsgenDashContentWrapper {
+  display: block;
+  position: relative;
+  padding: 20px;
+  padding-bottom: 40px;
+  width: calc(100% - 190px);
+}
+
+.ppsgenLegacySwitchBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  position: absolute;
+  top: 18px;
+  left: 210px;
+  right: 20px;
+  z-index: 25;
+  min-height: 58px;
+  padding: 12px 48px 12px 18px;
+  border: 1px solid rgba(48, 83, 157, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 28px rgba(36, 58, 122, 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.ppsgenLegacySwitchBannerPermanent {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: 1;
+  width: auto;
+  margin: 0 0 20px;
+  padding: 12px 14px 12px 18px;
+}
+
+.ppsgenLegacySwitchBanner ~ .ppsgenDashContentWrapper {
+  padding-top: 96px;
+}
+
+.ppsgenLegacySwitchBannerClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid rgba(31, 94, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(238, 244, 255, 0.92);
+  color: #1f3f98;
+  cursor: pointer;
+}
+
+.ppsgenLegacySwitchBannerClose:hover {
+  background: #e2ebff;
+  color: #17337e;
+}
+
+.ppsgenLegacySwitchBannerClose .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.ppsgenLegacySwitchBannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ppsgenLegacySwitchBannerTitle {
+  color: #172554;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.ppsgenLegacySwitchBannerDesc {
+  color: #52607a;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.ppsgenLegacySwitchBannerActions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.ppsgenLegacySwitchBannerBtn,
+.ppsgenLegacySwitchBannerLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 13px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.ppsgenLegacySwitchBannerBtn {
+  border: 1px solid #1f5eff;
+  background: #1f5eff;
+  color: #ffffff;
+}
+
+.ppsgenLegacySwitchBannerLink {
+  border: 1px solid rgba(31, 94, 255, 0.22);
+  background: #eef4ff;
+  color: #1f3f98;
+}
+
+.ppsgenLegacySwitchBannerBtn:hover,
+.ppsgenLegacySwitchBannerLink:hover {
+  transform: translateY(-1px);
+}
+
+.ppsgenLegacySwitchBannerBtn:hover {
+  background: #174bd0;
+  color: #ffffff;
+}
+
+.ppsgenLegacySwitchBannerLink:hover {
+  background: #e2ebff;
+  color: #17337e;
+}
+
+.ppsgenLegacySwitchBannerBtn .dashicons,
+.ppsgenLegacySwitchBannerLink .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.ppsgenFeedbackNotice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 24px;
+  padding: 28px 30px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.42), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.26), transparent 28%),
+    linear-gradient(135deg, #18378f 0%, #2957bf 42%, #4b87f4 100%);
+  box-shadow: 0 16px 38px rgba(27, 58, 145, 0.20);
+}
+
+.ppsgenFeedbackNotice::before {
+  content: '';
+  position: absolute;
+  inset: auto auto -70px -40px;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ppsgenFeedbackNotice::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ppsgenFeedbackNoticeVisual,
+.ppsgenFeedbackNoticeContent {
+  position: relative;
+  z-index: 1;
+}
+
+.ppsgenFeedbackNoticeVisual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.ppsgenFeedbackNoticeLogoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+}
+
+.ppsgenFeedbackNoticeLogo {
+  max-width: 100%;
+  width: 200px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1) drop-shadow(0 8px 18px rgba(10, 25, 70, 0.25));
+}
+
+.ppsgenFeedbackNoticeBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ppsgenFeedbackNoticeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.ppsgenFeedbackNoticeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ppsgenFeedbackNoticeEyebrow {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.ppsgenFeedbackNoticeTitle {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.ppsgenFeedbackNoticeText {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.ppsgenFeedbackNoticeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.ppsgenFeedbackNoticeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.ppsgenFeedbackNoticeBtn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.ppsgenFeedbackNoticeBtnDisabled {
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.ppsgenFeedbackNoticeBtnLoading {
+  opacity: 0.82;
+}
+
+.ppsgenFeedbackNoticeBtnPrimary {
+  background: #ffffff;
+  color: #18378f;
+  border-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(12, 29, 84, 0.18);
+}
+
+.ppsgenFeedbackNoticeBtnPrimary:hover {
+  color: #18378f;
+  background: #f8fbff;
+  border-color: #f8fbff;
+}
+
+.ppsgenFeedbackNoticeClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ppsgenFeedbackNoticeClose:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.ppsgenFeedbackNoticeClose .dashicons {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.ppsgenFeedbackNoticeSubmitMarker {
+  display: none;
+}
+
+.ppsgenProOfferNotice {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 28px;
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 24px;
+  padding: 28px 30px;
+  border-radius: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.38), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, #0f172a 0%, #18264d 35%, #1d4ed8 70%, #60a5fa 100%);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.24);
+}
+
+.ppsgenProOfferNotice::before {
+  content: '';
+  position: absolute;
+  top: -90px;
+  left: -40px;
+  width: 240px;
+  height: 240px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ppsgenProOfferNotice::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  bottom: -110px;
+  width: 280px;
+  height: 280px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ppsgenProOfferNoticeHero,
+.ppsgenProOfferNoticeFeatures {
+  position: relative;
+  z-index: 1;
+}
+
+.ppsgenProOfferNoticeHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ppsgenProOfferNoticeEyebrow {
+  margin-bottom: 12px;
+  color: #fcd34d;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.ppsgenProOfferNoticeBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.ppsgenProOfferNoticeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.ppsgenProOfferNoticeTitle {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 42px;
+  line-height: 1.02;
+  font-weight: 900;
+}
+
+.ppsgenProOfferNoticeText {
+  max-width: 700px;
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.ppsgenProOfferNoticeCouponLabel {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+}
+
+.ppsgenProOfferNoticeCoupon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 0 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  backdrop-filter: blur(8px);
+}
+
+.ppsgenProOfferNoticeCoupon del {
+  margin-right: 2px;
+}
+
+.ppsgenProOfferNoticeSubtext {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ppsgenProOfferNoticeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.ppsgenProOfferNoticeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.ppsgenProOfferNoticeBtn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.ppsgenProOfferNoticeBtnPrimary {
+  background: #fcd34d;
+  border-color: #fcd34d;
+  color: #101828;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.22);
+}
+
+.ppsgenProOfferNoticeBtnPrimary:hover {
+  background: #fde68a;
+  border-color: #fde68a;
+  color: #101828;
+}
+
+.ppsgenProOfferNoticeBtnDisabled {
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.ppsgenProOfferNoticeBtnLoading {
+  opacity: 0.82;
+}
+
+.ppsgenProOfferNoticeFeatures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 24px 24px 28px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.ppsgenProOfferNoticeFeaturesTitle {
+  margin-bottom: 14px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.ppsgenProOfferNoticeFeatureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ppsgenProOfferNoticeFeatureList li {
+  position: relative;
+  margin: 0 0 12px;
+  padding-left: 28px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ppsgenProOfferNoticeFeatureList li:last-child {
+  margin-bottom: 0;
+}
+
+.ppsgenProOfferNoticeFeatureList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #86efac;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.ppsgenProOfferNoticeTab {
+  margin: 0;
+  min-height: 0;
+}
+
+.ppsgenProOfferNoticeCode {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(12, 18, 38, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ppsgenProOfferNoticeCode code {
+  display: block;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.ppsgenProOfferNoticeClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ppsgenProOfferNoticeClose:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.ppsgenProOfferNoticeClose .dashicons {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+@media screen and (max-width: 1180px) {
+  .ppsgenFeedbackNotice {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .ppsgenFeedbackNoticeVisual {
+    max-width: 340px;
+  }
+
+  .ppsgenProOfferNotice {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+}
+
+@media screen and (max-width: 782px) {
+  .ppsgenLegacySwitchBanner {
+    flex-direction: column;
+    align-items: stretch;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .ppsgenLegacySwitchBanner ~ .ppsgenDashContentWrapper {
+    padding-top: 168px;
+  }
+
+  .ppsgenLegacySwitchBannerActions {
+    justify-content: stretch;
+  }
+
+  .ppsgenLegacySwitchBannerBtn,
+  .ppsgenLegacySwitchBannerLink {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+
+  .ppsgenFeedbackNotice {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .ppsgenFeedbackNoticeTitle {
+    font-size: 28px;
+  }
+
+  .ppsgenFeedbackNoticeText {
+    font-size: 15px;
+  }
+
+  .ppsgenFeedbackNoticeActions {
+    flex-direction: column;
+  }
+
+  .ppsgenFeedbackNoticeBtn {
+    justify-content: center;
+  }
+
+  .ppsgenProOfferNotice {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .ppsgenProOfferNoticeTitle {
+    font-size: 32px;
+  }
+
+  .ppsgenProOfferNoticeText {
+    font-size: 15px;
+  }
+
+  .ppsgenProOfferNoticeActions {
+    flex-direction: column;
+  }
+
+  .ppsgenProOfferNoticeBtn {
+    justify-content: center;
+  }
+
+  .ppsgenProOfferNoticeFeatures {
+    padding: 20px 18px;
+  }
+
+  .ppsgenProOfferNoticeCoupon {
+    width: fit-content;
+    max-width: 100%;
+    font-size: 22px;
+  }
+
+  .ppsgenDashboardMailConfigProNotice {
+    padding: 16px 14px 14px;
+    border-radius: 16px;
+  }
+
+  .ppsgenDashboardMailConfigProNoticeTitle {
+    font-size: 20px;
+  }
+
+  .ppsgenDashboardMailConfigProNoticeActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ppsgenDashboardMailConfigProNoticeBtn {
+    width: 100%;
+  }
+}
+
+.ppsgenDashPluginLogo {
+  display: block;
+  position: relative;
+  font-size: 18px;
+  text-align: center;
+  color: #3f51b5;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.ppsgenDashNavigationWrapper {
+  display: block;
+  position: relative;
+  width: 190px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-right: 1px solid #c6c9ffb3;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.ppsgenDashNavigationWrapper a:active,
+.ppsgenDashNavigationWrapper a:focus {
+  outline: 0;
+  box-shadow: initial;
+}
+
+.ppsgenDashNavigationWrapper ul {
+  display: block;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.ppsgenDashNavigationWrapper li {
+  display: block;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ppsgenDashNavigationWrapper li a {
+  display: block;
+  position: relative;
+  color: #253695;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 5px;
+  letter-spacing: 0.5px;
+  border-left: 5px solid #c5d8ff;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.ppsgenDashNavigationChildUl {
+  background: #c5d8ff;
+}
+
+.ppsgenDashNavigationChildUl > li > a {
+  margin-top: 0px;
+}
+
+.ppsgenDashNavigationChildUl > li:has(> a[href*="tab=eca_chain_edit"]) {
+  display: none !important;
+}
+
+.ppsgenDashNavigationChildUl > li > a[href*="tab=eca_chain_edit"] {
+  display: none !important;
+}
+
+li.ppsgenDashNavigationLiSelected > a {
+  border-radius: 0px;
+  background: #3f51b5;
+  color: white;
+  border-left: 0px;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  padding-left: 10px;
+}
+
+.ppsgenDashNavigationChildUl > li.ppsgenDashNavigationLiSelectedChild > a {
+  border-radius: 0px;
+  background: #3f51b5;
+  color: white;
+  border-left: 0px;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  padding-left: 10px;
+}
+
+li.ppsgenDashNavigationLiParentSelectedWithChild > a {
+  border-radius: 0px;
+  background: #3f51b5;
+  color: white;
+  border-left: 0px;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  padding-left: 10px;
+}
+
+li.ppsgenDashNavigationLiHide {
+  display: none !important;
+}
+
+.ppsgenDashPluginVersion {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  letter-spacing: 0px;
+}
+
+.ppsgenModulePageTitleWrapper {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ppsgenTableListBtn {
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ppsgenTableListBtn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.ppsgenSaveBtn {
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 5px 20px;
+  padding-left: 15px;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.ppsgenSaveBtn .dashicons {
+  font-size: 16px;
+  line-height: 27px;
+  width: 20px;
+  height: 16px;
+  padding-right: 5px;
+}
+
+.ppsgenSaveBtn[disabled] {
+  opacity: 0.5;
+}
+
+.ppsgenDashboardMailConfigHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ppsgenDashboardMailConfigActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ppsgenDashboardMailConfigActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.ppsgenDashboardMailConfigActionBtn .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.ppsgenDashboardMailConfigActionBtnDelete {
+  color: #b42318;
+  border-color: #f3c7c7;
+  background: #fff5f5;
+}
+
+.ppsgenDashboardMailConfigActionBtnDelete .dashicons {
+  color: #b42318;
+}
+
+.ppsgenDashboardMailConfigActionBtnDelete:hover {
+  background: #b42318;
+  border-color: #b42318;
+  color: #fff;
+}
+
+.ppsgenDashboardMailConfigActionBtnDelete:hover .dashicons {
+  color: #fff;
+}
+
+.ppsgenDashboardMailConfigProNotice {
+  position: relative;
+  width: 100%;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 28%),
+    linear-gradient(135deg, #163a97 0%, #1f4dbd 55%, #4d8cff 100%);
+  box-shadow: 0 14px 30px rgba(31, 77, 189, 0.18);
+}
+
+.ppsgenDashboardMailConfigProNoticeHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.ppsgenDashboardMailConfigProNoticeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.45px;
+}
+
+.ppsgenDashboardMailConfigProNoticeProvider {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ppsgenDashboardMailConfigProNoticeTitle {
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.ppsgenDashboardMailConfigProNoticeText {
+  max-width: 860px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ppsgenDashboardMailConfigProNoticeMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.ppsgenDashboardMailConfigProNoticePrice,
+.ppsgenDashboardMailConfigProNoticeCoupon {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ppsgenDashboardMailConfigProNoticePrice del {
+  opacity: 0.75;
+  margin-right: 6px;
+}
+
+.ppsgenDashboardMailConfigProNoticeActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ppsgenDashboardMailConfigProNoticePayText {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.ppsgenDashboardMailConfigProNoticeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #18378f;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(12, 29, 84, 0.18);
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.ppsgenDashboardMailConfigProNoticeBtn:hover {
+  background: #f8fbff;
+  color: #18378f;
+  transform: translateY(-1px);
+}
+
+.ppsgenDashboardMailConfigProNoticeBtn .dashicons {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.ppsgenModulePageTitle {
+  display: block;
+  position: relative;
+  font-size: 1.3em;
+  color: #253695;
+}
+
+.ppsgenTableListBtnCenter {
+  position: relative;
+  margin-left: 50%;
+  transform: translate(-50%, -0%);
+}
+
+.ppsgenTableListBtnFilter {
+  padding: 5px 12px;
+}
+
+.ppsgenTableListBtnFilter .dashicons {
+  display: inline-block;
+  position: absolute;
+  font-size: 20px;
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+  color: #3f51b5;
+  right: -20px;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.ppsgenTableListFilterInput {
+  display: block;
+  position: relative;
+  margin-left: 50% !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  min-height: 20px !important;
+  font-size: 12px !important;
+  transform: translate(-50%, 0%);
+  width: 100px;
+}
+
+.ppsgenTableList {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ppsgenTableList thead {
+  position: sticky;
+  top: 31px;
+  z-index: 2;
+  background: white;
+}
+
+.ppsgenTableList * {
+  vertical-align: middle !important;
+}
+
+.ppsgenTableList .ppsgenTableListCellContent {
+  max-width: 100%;
+  max-height: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  margin: 0 auto;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.ppsgenTableList .ppsgenTableListCellContent:hover {
+  white-space: normal;
+  max-height: 300px;
+  overflow: visible;
+  z-index: 10;
+  position: relative;
+  padding: 0px;
+}
+
+.ppsgenTableList [data-key='updated_at'] .ppsgenTableListCellContent,
+.ppsgenTableList [data-key='created_at'] .ppsgenTableListCellContent {
+  white-space: normal;
+}
+
+.ppsgenTableList [data-key='id'] {
+  text-align: center;
+  width: 50px;
+}
+
+.ppsgenTableList [data-key='id'] button {
+  width: 50px;
+  padding: 5px 0px;
+}
+
+.ppsgenTableList [data-key='id'] * {
+  width: 50px;
+}
+
+.ppsgenTableList [data-key='is_default'] {
+  text-align: center;
+  width: 65px !important;
+}
+
+.ppsgenTableList [data-key='phone'] {
+  text-align: center;
+  width: 140px !important;
+}
+
+.ppsgenTableList [data-key='phone'] button,
+.ppsgenTableList [data-key='phone'] input {
+  width: 135px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='email'] {
+  text-align: center;
+  width: 180px !important;
+}
+
+.ppsgenTableList [data-key='email'] button,
+.ppsgenTableList [data-key='email'] input {
+  width: 160px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='is_default'] button,
+.ppsgenTableList [data-key='is_default'] select {
+  width: 55px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='is_enabled'] {
+  text-align: center;
+  width: 60px !important;
+}
+
+.ppsgenTableList [data-key='is_enabled'] button,
+.ppsgenTableList [data-key='is_enabled'] select {
+  width: 60px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='order_index'] {
+  text-align: center;
+  width: 50px !important;
+}
+
+.ppsgenTableList [data-key='order_index'] button,
+.ppsgenTableList [data-key='order_index'] input {
+  width: 50px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableListEditObj,
+.ppsgenTableListDeleteObj {
+  line-height: initial !important;
+}
+
+.ppsgenTableList [data-key='wp_user_id'] {
+  text-align: center;
+  width: 80px !important;
+}
+
+.ppsgenTableList [data-key='wp_user_id'] button,
+.ppsgenTableList [data-key='wp_user_id'] input {
+  width: 60px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='verified'] {
+  text-align: center;
+  width: 80px !important;
+}
+
+.ppsgenTableList [data-key='verified'] button,
+.ppsgenTableList [data-key='verified'] select {
+  width: 60px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='active'] {
+  text-align: center;
+  width: 80px !important;
+}
+
+.ppsgenTableList [data-key='active'] button,
+.ppsgenTableList [data-key='active'] select {
+  width: 60px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='created_at'] {
+  text-align: center;
+  width: 100px !important;
+}
+
+.ppsgenTableList [data-key='created_at'] button,
+.ppsgenTableList [data-key='created_at'] input {
+  width: 80px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenTableList [data-key='updated_at'] {
+  text-align: center;
+  width: 100px !important;
+}
+
+.ppsgenTableList [data-key='updated_at'] button,
+.ppsgenTableList [data-key='updated_at'] input {
+  width: 80px !important;
+  text-align: center !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ppsgenDashLayoutWrapper input {
+  line-height:2.7;
+}
+
+.ppsgenTableListEditObj:hover,
+.ppsgenTableListEditObj:active,
+.ppsgenTableListEditObj:focus {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.ppsgenTableListDeleteObj {
+  margin-left: 10px;
+}
+
+.ppsgenTableListCopyObj,
+.ppsgenTableListDeleteObj,
+.ppsgenTableListEditObj {
+  display: inline-block;
+  padding: 5px !important;
+  line-height: 0px !important;
+}
+
+.ppsgenTableListCopyObjChain .dashicons,
+.ppsgenTableListCopyObj .dashicons,
+.ppsgenTableListDeleteObj .dashicons,
+.ppsgenTableListEditObj .dashicons {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 0px !important;
+  line-height: initial !important;
+}
+
+.ppsgenTableListCopyObjChain .dashicons,
+.ppsgenTableListCopyObj .dashicons,
+.ppsgenTableListEditObj .dashicons,
+.ppsgenTableListDeleteObj .dashicons {
+  font-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.ppsgenTableListCopyObjChain .dashicons:before,
+.ppsgenTableListCopyObj .dashicons:before,
+.ppsgenTableListDeleteObj .dashicons:before,
+.ppsgenTableListEditObj .dashicons:before {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 15px !important;
+  width: 15px !important;
+  height: 15px !important;
+  line-height: initial !important;
+}
+
+.ppsgenTableListCell50 {
+  width: 50px !important;
+  text-align: center !important;
+}
+
+.ppsgenTableListCell100 {
+  width: 100px !important;
+  text-align: center !important;
+}
+
+.ppsgenTableListCell120 {
+  width: 120px !important;
+  text-align: center !important;
+}
+
+.ppsgenTableListCell150 {
+  width: 150px !important;
+  text-align: center !important;
+}
+
+.ppsgenTableListCell120 .ppsgenTableListDeleteObj {
+  margin: 0px;
+}
+
+.ppsgenTableListCell150 input[type='checkbox'],
+.ppsgenTableListCell150 input[type='radio'],
+.ppsgenTableListCell100 input[type='checkbox'],
+.ppsgenTableListCell100 input[type='radio'],
+.ppsgenTableListCell50 input[type='checkbox'],
+.ppsgenTableListCell50 input[type='radio'] {
+  margin: 0px !important;
+}
+
+.ppsgenTableListTopButtons {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ppsgenTableListTopButtonsLeft {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ppsgenTableListTopButtonsRight {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ppsgenTableListAddObj {
+  display: flex;
+  align-items: center;
+}
+
+.ppsgenTableListAddObj .dashicons {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  padding-right: 5px;
+}
+
+.ppsgenTableListDeleteSelectedObj {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ppsgenTableListDeleteAll {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ppsgenTableListSearch {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ppsgenTableListContactExport {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ppsgenTableListContactExport.dashicons,
+.ppsgenTableListSearch .dashicons,
+.ppsgenTableListDeleteSelectedObj .dashicons {
+  padding-right: 4px;
+}
+
+.ppsgenTableListDeleteObj:hover,
+.ppsgenTableListDeleteObj:active,
+.ppsgenTableListDeleteObj:focus,
+.ppsgenTableListDeleteSelectedObj:hover,
+.ppsgenTableListDeleteSelectedObj:active,
+.ppsgenTableListDeleteSelectedObj:focus,
+.ppsgenTableListAddObj:hover,
+.ppsgenTableListAddObj:active,
+.ppsgenTableListAddObj:focus,
+.ppsgenTableListAddObj {
+  text-decoration: none;
+  color: white;
+}
+
+.ppsgenSelectFilterColumnsWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.ppsgenSelectFilterColumnsWrapper .ppsgenselect-container {
+  width: 230px;
+  margin-right: 10px;
+}
+
+.ppsgenObjEditTabsButtons {
+  display: flex;
+  position: relative;
+}
+
+.ppsgen-form-input-rating-wrapper i {
+  color: orange;
+  opacity: 0.5;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ppsgen-form-input-rating-wrapper i.ppsgen-form-input-rating-icon-active {
+  opacity: 1;
+}
+
+.ppsgenObjEditTabButton {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.ppsgenObjEditTabs {
+  display: flex;
+  position: relative;
+  background: #ffffff;
+  padding: 10px;
+  overflow-x: auto;
+  overflow-y: visible;
+  min-height: calc(100vh - 180px);
+}
+
+.ppsgenObjEditTab {
+  display: none;
+  position: relative;
+  width: 100%;
+}
+
+.ppsgenObjEditTabButtonActive {
+  display: inline-block;
+  opacity: 1;
+}
+
+.ppsgenObjEditTabButton:hover {
+  opacity: 1;
+}
+
+.ppsgenObjEditTabActive {
+  display: block;
+  position: relative;
+  overflow: visible;
+}
+
+.ppsgenColorInputText {
+  width: 140px;
+  font-size: 13px;
+}
+
+.ppsgenModulePageTitleShortcode {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+
+.ppsgenW130 {
+  width: 130px;
+}
+
+.ppsgenW60 {
+  width: 50px;
+}
+
+.ppsgenW300 {
+  width: 300px;
+}
+
+.ppsgenW30 {
+  width: 30px;
+}
+
+.ppsgenW60 {
+  width: 60px;
+}
+
+.ppsgenSW55 {
+  width: 55px;
+}
+
+.ppsgenSWI55 {
+  width: 55px !important;
+}
+
+.ppsgenSWI90 {
+  width: 90px !important;
+}
+
+.ppsgenSWI120 {
+  width: 120px !important;
+}
+
+.ppsgenSWI180 {
+  width: 180px !important;
+}
+
+.ppsgenSW55 select {
+  width: 55px;
+}
+
+.ppsgenNoBottomMargin {
+  margin-bottom: 0px !important;
+}
+
+.wspgenWI100 {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.ppsgen-form-inputFieldWrap input[type='checkbox'],
+.ppsgen-form-inputFieldWrap input[type='radio'] {
+  margin: 0px !important;
+}
+
+@media (max-width: 1000px) {
+  .ppsgenTableListTopButtons {
+    flex-direction: column;
+  }
+
+  .ppsgenTableListTopButtonsRight {
+    margin-top: 10px;
+  }
+}
+
+.ppsgen-help-text-title {
+  display: flex;
+  position: relative;
+  font-size: 15px;
+  align-items: center;
+  background: #e1e5ff;
+  padding: 4px;
+  border-left: 3px solid #3f51b5;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.ppsgen-help-text-btn {
+  display: inline-block;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.ppsgen-help-text-title .dashicons {
+  color: #253695;
+  margin-right: 10px;
+}
+
+.ppsgen-help-text {
+  display: none;
+  position: relative;
+  align-items: center;
+  background: #e1e5ff;
+  padding: 4px;
+  border-left: 3px solid #3f51b5;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.ppsgen-help-text * {
+  font-size: 13px;
+}
+
+.ppsgenComponentListTabBtns {
+  display: block;
+  position: relative;
+}
+
+.ppsgenComponentListTabBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 10px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.ppsgenComponentListTabBtnActive {
+  opacity: 1;
+}
+
+.ppsgenComponentListTab {
+  display: none;
+}
+
+.ppsgenComponentListTabActive {
+  display: block;
+}
+
+.ppsgen-form-inputFieldWrap {
+  flex-wrap: wrap;
+}
+
+.ppsgenContactFieldEditFileWrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  gap: 5px;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0px;
+}
+
+.ppsgenContactFieldEditFileRow {
+  display: flex;
+  position: relative;
+  width: 100%;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ppsgenContactFieldEditFileBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ppsgenContactFieldEditFileBtn:hover,
+.ppsgenContactFieldEditFileBtn:active,
+.ppsgenContactFieldEditFileBtn:focus {
+  text-decoration: none;
+  color: white;
+}
+
+.ppsgenComponentRow {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 10px;
+  background: #e1e5ff;
+  padding: 0px 1.5px;
+  border-radius: 2px;
+}
+
+.ppsgenComponentRowInnerFull {
+  width: 100%;
+}
+
+.ppsgenComponentRowDashed {
+  border: 2px dashed #7e90ed47;
+}
+
+.ppsgenComponentLabel {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  padding: 0px 2px;
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+.ppsgenComponentOption {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ppsgenComponentOption select,
+.ppsgenComponentOption textarea,
+.ppsgenComponentOption input:not([type='checkbox']):not([type='radio']):not(.ed_button) {
+  width: 100%;
+  max-width: 500px;
+}
+
+.ppsgenComponentOption > div {
+  width: 100%;
+  max-width: 500px;
+}
+
+.ppsgenComponentOptionInline {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2px;
+}
+
+.ppsgenComponentOptionNoticeUnder {
+  font-size: 10px;
+  color: gray;
+}
+
+.ppsgenComponentLabelDesc {
+  display: inline-block;
+  position: relative;
+}
+
+.ppsgenComponentLabelDesc:hover .ppsgenComponentLabelContent {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+.ppsgenComponentLabelDescIcon {
+  display: inline-block;
+  position: relative;
+  color: #253695;
+  font-size: 19px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.ppsgenComponentLabelContent {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  transition: 0.4s;
+  opacity: 0;
+  left: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  margin-left: 20px;
+  width: max-content;
+  max-width: 400px;
+  padding: 5px;
+  background: white;
+  font-weight: 400;
+  border: 1px solid #d2d5fc;
+  border-radius: 10px;
+  z-index: 99;
+  box-shadow: 0px 0px 9px 0px #d0d0d0;
+}
+
+/* .ppsgenComponentOption label {} */
+
+.ppsgenComponentRow input[type='text'],
+.ppsgenComponentRow input[type='tel'],
+.ppsgenComponentRow input[type='date'],
+.ppsgenComponentRow input[type='datetime-local'],
+.ppsgenComponentRow input[type='month'],
+.ppsgenComponentRow input[type='week'],
+.ppsgenComponentRow input[type='time'],
+.ppsgenComponentRow input[type='url'],
+.ppsgenComponentRow input[type='password'],
+.ppsgenComponentRow input[type='range'],
+.ppsgenComponentRow input[type='number'],
+.ppsgenComponentRow input[type='email'],
+.ppsgenComponentRow textarea,
+.ppsgenComponentRow select {
+  border: 1px solid #7e90ed;
+  min-height: initial;
+}
+
+.ppsgenComponentOption .ppsgenselect-single {
+  border: 1px solid #7e90ed;
+  height: 35px;
+  line-height: 40px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%235679d3' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 19px;
+  background-position: right center;
+}
+
+.ppsgenComponentOption input:focus,
+.ppsgenComponentOption textarea:focus,
+.ppsgenComponentOption select:focus {
+  border-color: #5679d3;
+  box-shadow: 0 0 0 3px rgba(86, 121, 211, 0.2);
+  outline: none;
+}
+
+/* 
+.ppsgenComponentOption button,
+.ppsgenComponentOption .button {} */
+
+.ppsgenComponentOption button:hover,
+.ppsgenComponentOption .button:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.ppsgenComponentOption select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%235679d3' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.ppsgenSwitchWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.ppsgenSwitch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.ppsgenSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ppsgenSwitch label {
+  cursor: pointer !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8em;
+}
+
+.ppsgenSwitch label:after {
+  content: '';
+  position: absolute;
+  width: 21px;
+  height: 20px;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.ppsgenSwitch input:checked + label {
+  background-color: #2196f3;
+}
+
+.ppsgenSwitch input:checked + label:after {
+  transform: translateX(29px);
+}
+
+.ppsgenSwitch input[type='radio'] {
+  display: none;
+}
+
+.ppsgenSwitch input[type='radio']:checked + label {
+  background-color: #007bff;
+}
+
+.ppsgenComponentRowMB0 {
+  margin-bottom: 0px;
+}
+
+.ppsgenComponentRowMB10 {
+  margin-bottom: 10px;
+}
+
+.ppsgenComponentRowMBT5 {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.ppsgenComponentOptionsList {
+  border: 1px solid #8a99ff;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.ppsgenComponentOptionsListBtnWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ppsgenComponentOptionsListBtn {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.ppsgenComponentOptionsListBtnSort {
+  color: #2196f3;
+}
+
+.ppsgenComponentOptionsListBtnDelete {
+  color: #f44336;
+}
+
+.ppsgenComponentOptionsListBtnAdd {
+  color: #009688;
+}
+
+.ppsgenComponentSortablePlaceholder {
+  border: 2px dashed #2196f3;
+  height: 50px;
+  margin: 10px 0;
+  background: #e1e5ff;
+}
+
+.ppsgenComponentRow input[type='radio'],
+.ppsgenComponentRow input[type='checkbox'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ppsgenComponentRow input[type='radio']:checked::before,
+.ppsgenComponentRow input[type='checkbox']:checked::before {
+  margin: 0px !important;
+}
+
+.ppsgenComponentRow input[type='checkbox']:checked::before {
+  width: 1rem !important;
+  height: inherit;
+}
+
+.wp-picker-holder {
+  position: absolute;
+  z-index: 99;
+}
+
+.wp-picker-open + .wp-picker-input-wrap,
+.ppsgen-color-result,
+.wp-picker-clear {
+  display: none !important;
+}
+
+.wp-picker-container .wp-color-result.button {
+  height: 26px;
+  margin: 0px !important;
+  padding: 8px !important;
+  font-size: 11px;
+}
+
+.ppsgen-color-picker {
+  display: flex;
+  align-items: center;
+}
+
+.button.wp-color-result {
+  overflow: hidden;
+}
+
+.ppsgenselect-single {
+  border: 1px solid #7e90ed;
+  height: 30px;
+  line-height: 29px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%235679d3' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 19px;
+  background-position: right center;
+}
+
+.ppsgenComponentRow input[type='radio'] {
+  margin: 0px;
+}
+
+.ppsgenShowIconBtn,
+.ppsgenShowAnimationBtn {
+  background: #3f51b5;
+  text-align: center;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.ppsgenIconOverlayBg {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  z-index: 9999999;
+}
+
+.ppsgenIconBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 15px;
+  z-index: 99999999;
+  overflow-y: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overscroll-behavior: contain;
+}
+
+.ppsgenIconHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ppsgenIconSearch {
+  width: 100%;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.ppsgenIconTabs {
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.ppsgenIconClose {
+  display: inline-flex;
+  background: #3f51b5;
+  text-align: center;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 17px;
+  padding: 5px 5px;
+  line-height: 12px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.ppsgenIconTabs div[data-tab] {
+  background: #3f51b5;
+  text-align: center;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 5px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.ppsgenIconTabs div[data-tab].active {
+  opacity: 1;
+}
+
+.ppsgenIconContent {
+  overflow-y: auto;
+  height: 300px;
+  overscroll-behavior: contain;
+}
+
+.ppsgenIconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 40px);
+  gap: 10px;
+}
+
+.ppsgenIconItem {
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.ppsgenIconItem:hover {
+  background: #f0f0f0;
+}
+
+.ppsgenProFeatureImgPreview {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+.ppsgenTableTdSmallLongText {
+  display: block;
+  width: 100px;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.ppsgenExtFeature {
+  opacity: 0.5;
+}
+
+.ppsgenExtFeature:hover {
+  opacity: 1;
+}
+
+.ppsgenExtFeature:hover::after {
+  opacity: 0;
+}
+
+.ppsgenExtFeature::after {
+  content: attr(data-ext-label);
+  display: block;
+  position: absolute;
+  padding: 3px;
+  background: #f44336;
+  left: 0px;
+  top: 0px;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  color: white;
+  border-left: 1px solid #f44336;
+  border-radius: 0px 0px 3px 0px;
+}
+
+.ppsgenStepsContainerExtFeature {
+  padding-top: 23px !important;
+}
+
+.ppsgenStepsContainerExtFeature::after {
+  content: attr(data-ext-label);
+  display: block;
+  position: absolute;
+  padding: 3px;
+  background: #f44336;
+  left: 0px;
+  top: 0px;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  color: white;
+  border-left: 1px solid #f44336;
+  border-radius: 0px 0px 3px 0px;
+}
+
+.ppsgenChainsListExtFeature {
+  padding: 3px;
+  background: #f44336;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 2px;
+  color: white;
+  border-left: 1px solid #f44336;
+  border-radius: 3px;
+}
+
+.overviewContentStyle {
+  background: #ffffff;
+  border: 1px solid #dcdcde;
+  border-radius: 6px;
+  padding: 20px 24px;
+  max-width: 1000px;
+  line-height: 1.6;
+  font-size: 14px;
+  color: #1d2327;
+}
+
+.overviewContentStyle h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.overviewContentStyle h4 {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #50575e;
+}
+
+.overviewContentStyle h5 {
+  margin: 24px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d2327;
+}
+
+.overviewContentStyle p {
+  margin: 0 0 12px 0;
+  max-width: 920px;
+}
+
+.overviewContentStyle hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 24px 0;
+}
+
+.overviewContentStyle ol {
+  margin: 8px 0 0 18px;
+  padding: 0;
+}
+
+.overviewContentStyle ol > li {
+  margin-bottom: 10px;
+}
+
+.overviewContentStyle ul {
+  margin: 8px 0 0 18px;
+}
+
+.overviewContentStyle ul li {
+  margin-bottom: 6px;
+}
+
+.overviewContentStyle a {
+  display: inline-block;
+  margin-top: 4px;
+  text-decoration: none;
+  color: #2271b1;
+  font-weight: 500;
+}
+
+.overviewContentStyle a:hover {
+  color: #135e96;
+  text-decoration: underline;
+}
+
+.overviewContentStyle code {
+  background: #f6f7f7;
+  border: 1px solid #dcdcde;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 13px;
+  color: #2c3338;
+}
+
+.overviewContentStyle .dashicons {
+  font-size: 20px;
+  line-height: 1;
+  color: #2271b1;
+}
+
+.overviewContentStyle .eca-note {
+  background: #f0f6fc;
+  border-left: 4px solid #2271b1;
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.overviewContentStyle .eca-note strong {
+  font-weight: 600;
+}
+
+.ppsgen-popup-notice {
+  white-space: pre-line;
+}
+
+.ppsgenDeleteUndeliveredBtn {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+#ppsgenPreviewPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+}
+
+#ppsgenPreviewPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+}
+
+#ppsgenPreviewPopup .ppsgen-popup-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  resize: both;
+  min-height: 60px;
+  min-width: 300px;
+  background: #3f51b5;
+}
+
+#ppsgenPreviewPopup .ppsgen-popup-header {
+  display: flex;
+  padding: 10px;
+  background: #3f51b5;
+  border-bottom: 2px solid #051d87;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#ppsgenPreviewClose {
+  padding: 6px 14px;
+  cursor: pointer;
+  border: none;
+  background: #ddd;
+  border-radius: 4px;
+  color: black;
+}
+
+#ppsgenPreviewFrame {
+  width: 100%;
+  height: calc(100% - 42px);
+  border: 0;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.ppsgenLoadTemplatePreview[disabled] {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.ppsgenLoadPreview[disabled] {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.ppsgenPreviewFrameForm {
+  background:
+    linear-gradient(145deg, #fefefe 0%, #f6f8fa 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+}
+
+.ppsgenIconSvgOverlayBg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999999;
+}
+
+.ppsgenIconSvgBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 15px;
+  z-index: 99999999;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.ppsgenIconSvgHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ppsgenIconSvgSearch {
+  width: 100%;
+  padding: 6px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.ppsgenIconSvgClose {
+  display: inline-flex;
+  background: #3f51b5;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 17px;
+  padding: 5px;
+  line-height: 12px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+.ppsgenIconSvgTabs {
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.ppsgenIconSvgTabs div[data-tab] {
+  background: #3f51b5;
+  text-align: center;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.ppsgenIconSvgTabs div[data-tab].active {
+  opacity: 1;
+}
+
+.ppsgenIconSvgContent {
+  overflow-y: auto;
+  height: 500px;
+  overscroll-behavior: contain;
+}
+
+.ppsgenIconSvgGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 23%);
+  gap: 10px;
+}
+
+.ppsgenIconSvgItem {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.ppsgenIconSvgItem:hover {
+  background: #f0f0f0;
+}
+
+.ppsgenIconSvgItem svg {
+  max-height: 150px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.ppsgenIconSvgPagination {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ppsgenIconSvgPage {
+  background: #3f51b5;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 3px 6px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.ppsgenIconSvgPage.active {
+  opacity: 1;
+}
+
+.ppsgenShowUndrIconBtn {
+  background: #3f51b5;
+  text-align: center;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.ppsgenBgImagePicker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ppsgenBgImagePickerRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ppsgenBgImagePicker .ppsgenBgImageInput {
+  min-width: 250px;
+}
+
+.ppsgenBgMediaBtn,
+.ppsgenBgAssetsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 30px;
+  background: #3f51b5;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+.ppsgenBgMediaBtn:hover,
+.ppsgenBgAssetsBtn:hover {
+  color: #fff;
+  filter: brightness(1.05);
+}
+
+.ppsgenBgMediaBtn .dashicons,
+.ppsgenBgAssetsBtn .dashicons {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.ppsgenBgImagePreviewWrap {
+  display: none;
+  width: 54px;
+  height: 38px;
+  border: 1px solid #ccd0d4;
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ppsgenBgImagePickerHasPreview .ppsgenBgImagePreviewWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ppsgenBgImagePreview {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ppsgenBgAssetOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+}
+
+.ppsgenBgAssetOverlayBg {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.ppsgenBgAssetBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(920px, calc(100vw - 40px));
+  max-height: calc(100vh - 70px);
+  margin: 35px auto;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.24);
+  overflow: hidden;
+}
+
+.ppsgenBgAssetHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid #dcdcde;
+}
+
+.ppsgenBgAssetSearch {
+  flex: 1;
+  min-height: 34px;
+}
+
+.ppsgenBgAssetClose {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: #1d2327;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ppsgenBgAssetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 10px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.ppsgenBgAssetItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid #dcdcde;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ppsgenBgAssetItem:hover {
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 1px #3f51b5;
+}
+
+.ppsgenBgAssetThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 82px;
+  background: #f6f7f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ppsgenBgAssetThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ppsgenBgAssetName,
+.ppsgenBgAssetSource {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ppsgenBgAssetName {
+  color: #1d2327;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenBgAssetSource {
+  color: #646970;
+  font-size: 11px;
+}
+
+.ppsgenBgAssetEmpty {
+  grid-column: 1 / -1;
+  padding: 24px;
+  color: #646970;
+  text-align: center;
+}
+
+.ppsgenEcaImageSrcPicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ppsgenEcaImageSrcPicker .ppsgenEcaImageSrcInput {
+  min-width: 260px;
+}
+
+.ppsgenEcaImageSrcMediaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  min-width: 31px;
+  padding: 0;
+  background: #3f51b5;
+  color: #fff;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ppsgenEcaImageSrcMediaBtn:hover {
+  color: #fff;
+  filter: brightness(1.05);
+}
+
+.ppsgenEcaImageSrcMediaBtn .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.ppsgenEcaImageSrcPreviewWrap {
+  display: none;
+  width: 54px;
+  height: 38px;
+  border: 1px solid #ccd0d4;
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ppsgenEcaImageSrcPickerHasPreview .ppsgenEcaImageSrcPreviewWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ppsgenEcaImageSrcPreview {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ppsgenFontFamilyPicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  width: 100%;
+  margin-bottom: 4px;
+  vertical-align: middle;
+}
+
+.ppsgenComponentOptionInline:has(.ppsgenFontFamilyPicker) {
+  flex-wrap: wrap;
+}
+
+.ppsgenFontFamilySelect {
+  min-width: 160px;
+  max-width: 260px;
+}
+
+.ppsgenFontFamilyPreview {
+  min-width: 145px;
+  padding: 4px 8px;
+  border: 1px solid #ccd0d4;
+  border-radius: 4px;
+  background: #fff;
+  color: #1d2327;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+/* PRO license: grace period / expired (frozen) notice */
+.ppsgenProLicenseStateNotice {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #f0c36d;
+  border-left-width: 6px;
+  background: #fff8e5;
+  color: #3c2f12;
+}
+
+.ppsgenProLicenseStateNotice-expired {
+  border-color: #e0a3a3;
+  background: #fdf0f0;
+  color: #4a1d1d;
+}
+
+.ppsgenProLicenseStateNoticeIcon.dashicons {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  color: #d98c00;
+}
+
+.ppsgenProLicenseStateNotice-expired .ppsgenProLicenseStateNoticeIcon.dashicons {
+  color: #c62828;
+}
+
+.ppsgenProLicenseStateNoticeText {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ppsgenProLicenseStateNoticeText strong {
+  font-size: 14px;
+}
+
+.ppsgenProLicenseStateNoticeActions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenProLicenseStateNoticeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid currentColor;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ppsgenProLicenseStateNoticeBtn:hover,
+.ppsgenProLicenseStateNoticeBtn:focus {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.ppsgenProLicenseStateNoticeBtnPrimary {
+  border-color: #2e7d32;
+  background: #2e7d32;
+  color: #fff;
+}
+
+.ppsgenProLicenseStateNoticeBtnPrimary:hover,
+.ppsgenProLicenseStateNoticeBtnPrimary:focus {
+  color: #fff;
+}
+
+@media (max-width: 782px) {
+  .ppsgenProLicenseStateNotice {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

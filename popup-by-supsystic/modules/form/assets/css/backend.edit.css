@@ -1,0 +1,655 @@
+.ppsgenFormFields {
+  display: flex;
+  position: relative;
+}
+
+.ppsgenFormFieldsLeft {
+  display: inline-flex;
+  position: relative;
+  min-width: 500px;
+  width: 500px;
+  padding: 10px;
+}
+
+.ppsgenFormFieldsRight {
+  display: inline-flex;
+  position: relative;
+  width: calc(100% - 500px);
+  padding: 10px;
+  min-width: 620px;
+}
+
+.ppsgenFormFieldsRight .ppsgenComponentsList {
+  width: 100%;
+}
+
+.ppsgenCfbContainer {
+  width: 100%;
+}
+
+.ppsgenCfbAddFieldWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.ppsgenCfbAddFieldLabel {
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.ppsgenCfbAddFieldList {
+  margin-right: 10px;
+  max-width: 210px !important;
+  font-size: 12px !important;
+  border: 1px solid #7e90ed !important;
+}
+
+.ppsgenCfbAddFieldBtn {
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ppsgenCfbAddFieldLabel {
+  color: #253695;
+}
+
+.ppsgen-cf-ghost {
+  opacity: 0.3;
+}
+
+.ppsgen-cf-chosen {
+  background: #d0ebff;
+}
+
+.ppsgen-cf-drag {
+  opacity: 0.6;
+}
+
+.ppsgenCfbFieldsWrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  position: relative;
+  background: #e1e5ff;
+}
+
+.ppsgen-cf-col {
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: #3f51b5;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+  padding-right: 15px;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ppsgen-cf-col.click-animate {
+  animation: ppsgenBoxShadowFade 0.3s ease-out;
+}
+
+.ppsgen-cf-col-active {
+  border: 2px solid #7f90ef;
+  background: #5569da;
+}
+
+.ppsgenCfbFieldsWrapperSizeChanger {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.ppsgenCfbSizeChangerToggle,
+.ppsgenCfbSizeChangerBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 10px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.ppsgenCfbSizeChangerBtn {
+  margin-left: 5px;
+}
+
+.ppsgenCfbSizeChangerToggle:hover,
+.ppsgenCfbSizeChangerBtn:hover {
+  opacity: 1;
+}
+
+.ppsgenCfbSizeChangerToggleActive,
+.ppsgenCfbSizeChangerBtnActive {
+  opacity: 1;
+}
+
+@keyframes ppsgenBoxShadowFade {
+  0% {
+    box-shadow: 0 0 0px 0px rgba(100, 100, 100, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 10px 4px rgba(100, 100, 100, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0px 0px rgba(100, 100, 100, 0.8);
+  }
+}
+
+.ppsgenCffOptionContainerTitle {
+  display: block;
+  position: relative;
+  font-size: 1.3em;
+  color: #253695;
+}
+
+.ppsgenCffOptionContainerSubtitle {
+  display: block;
+  position: relative;
+  font-size: 1em;
+  margin: 10px 0px;
+  color: #253695;
+}
+
+.ppsgenCffDeleteBtn {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: #3f51b5;
+  color: white;
+  padding: 5px;
+  margin: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ppsgenCffDuplicateBtn {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: #3f51b5;
+  color: white;
+  padding: 5px;
+  margin: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ppsgenCffActionBtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ppsgenFormSubmitsWrapperWarning {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 15px;
+  border-left: 3px solid orange;
+}
+
+.ppsgenFormSubmitsRowTitle {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 4px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 10px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ppsgenFormSubmitsRow {
+  margin-bottom: 15px;
+}
+
+.ppsgenFormSubmitsRowData {
+  display: none;
+  position: relative;
+  margin-top: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+}
+
+.ppsgenFormSubmitsRowDataFieldKey {
+  font-weight: bold;
+}
+
+.ppsgenFormSubmitsRowDataField {
+  background: #f5f6ff;
+  padding: 2px;
+  padding-left: 10px;
+  margin-bottom: 3px;
+}
+
+.ppsgenFormSubmitsRowTitleVerifyBtn,
+.ppsgenFormSubmitsRowTitleDeleteBtn {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px;
+}
+
+.ppsgenFormSubmitsRowTitleVerifyBtn:hover,
+.ppsgenFormSubmitsRowTitleDeleteBtn:hover {
+  color: white;
+}
+
+.ppsgenFormSubmitsRowTitleEl {
+  padding: 2px;
+}
+
+.ppsgenFormSubmitsRowTitleBtns {
+  min-width: 230px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.ppsgenFormStatsWrapper {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ppsgenFormStatsActions {
+  margin-bottom: 12px;
+  text-align:right;
+}
+
+.ppsgenFormStatsRow {
+  min-width: 200px;
+}
+
+.ppsgenFormStatsRow .dashicons {
+  color: #7487ff;
+}
+
+.ppsgenVerifiedIcon {
+  color: #7487ff;
+}
+
+.ppsgen-cf-type-empty {
+  padding-right: 5px;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList {
+  background: #e1e5ff;
+}
+
+.ppsgenSubmitDwlBtn {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  text-decoration: none;
+  margin: 5px 0px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.ppsgenSubmitDwlBtn:hover,
+.ppsgenSubmitDwlBtn:active,
+.ppsgenSubmitDwlBtn:focus {
+  color: white;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList .ppsgenComponentRowMB0:nth-child(3) .ppsgenComponentOption {
+  width: 100%;
+  min-width: 300px;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList .ppsgenComponentOption input {
+  font-size: 12px;
+}
+
+.ppsgenComponentOptionsList input {
+  max-width: 150px;
+}
+
+.ppsgen-col-hide {
+  display: none;
+}
+
+.ppsgen-col-mob-1 {
+  grid-column: span 1;
+}
+
+.ppsgen-col-mob-2 {
+  grid-column: span 2;
+}
+
+.ppsgen-col-mob-3 {
+  grid-column: span 3;
+}
+
+.ppsgen-col-mob-4 {
+  grid-column: span 4;
+}
+
+.ppsgen-col-mob-5 {
+  grid-column: span 5;
+}
+
+.ppsgen-col-mob-6 {
+  grid-column: span 6;
+}
+
+.ppsgen-col-mob-7 {
+  grid-column: span 7;
+}
+
+.ppsgen-col-mob-8 {
+  grid-column: span 8;
+}
+
+.ppsgen-col-mob-9 {
+  grid-column: span 9;
+}
+
+.ppsgen-col-mob-10 {
+  grid-column: span 10;
+}
+
+.ppsgen-col-mob-11 {
+  grid-column: span 11;
+}
+
+.ppsgen-col-mob-12 {
+  grid-column: span 12;
+}
+
+.ppsgen-col-tab-1 {
+  grid-column: span 1;
+}
+
+.ppsgen-col-tab-2 {
+  grid-column: span 2;
+}
+
+.ppsgen-col-tab-3 {
+  grid-column: span 3;
+}
+
+.ppsgen-col-tab-4 {
+  grid-column: span 4;
+}
+
+.ppsgen-col-tab-5 {
+  grid-column: span 5;
+}
+
+.ppsgen-col-tab-6 {
+  grid-column: span 6;
+}
+
+.ppsgen-col-tab-7 {
+  grid-column: span 7;
+}
+
+.ppsgen-col-tab-8 {
+  grid-column: span 8;
+}
+
+.ppsgen-col-tab-9 {
+  grid-column: span 9;
+}
+
+.ppsgen-col-tab-10 {
+  grid-column: span 10;
+}
+
+.ppsgen-col-tab-11 {
+  grid-column: span 11;
+}
+
+.ppsgen-col-tab-12 {
+  grid-column: span 12;
+}
+
+.ppsgen-col-pc-1 {
+  grid-column: span 1;
+}
+
+.ppsgen-col-pc-2 {
+  grid-column: span 2;
+}
+
+.ppsgen-col-pc-3 {
+  grid-column: span 3;
+}
+
+.ppsgen-col-pc-4 {
+  grid-column: span 4;
+}
+
+.ppsgen-col-pc-5 {
+  grid-column: span 5;
+}
+
+.ppsgen-col-pc-6 {
+  grid-column: span 6;
+}
+
+.ppsgen-col-pc-7 {
+  grid-column: span 7;
+}
+
+.ppsgen-col-pc-8 {
+  grid-column: span 8;
+}
+
+.ppsgen-col-pc-9 {
+  grid-column: span 9;
+}
+
+.ppsgen-col-pc-10 {
+  grid-column: span 10;
+}
+
+.ppsgen-col-pc-11 {
+  grid-column: span 11;
+}
+
+.ppsgen-col-pc-12 {
+  grid-column: span 12;
+}
+
+.ppsgenStatsTrendPanel {
+  margin-top: 24px;
+  padding: 18px 20px 20px;
+  background: #fff;
+  border: 1px solid #e3e6ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(31, 41, 55, 0.05);
+}
+
+.ppsgenStatsTrendToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.ppsgenStatsTrendGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenStatsTrendBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #d4d9e6;
+  border-radius: 999px;
+  background: #f8f9fc;
+  color: #384152;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ppsgenStatsTrendBtn:hover {
+  border-color: #aeb8d3;
+  background: #eef2fb;
+  color: #1f2937;
+}
+
+.ppsgenStatsTrendBtnActive {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.ppsgenStatsTrendLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.ppsgenStatsTrendLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenStatsTrendColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.ppsgenStatsTrendColorPrimary {
+  background: #2563eb;
+}
+
+.ppsgenStatsTrendColorSecondary {
+  background: #10b981;
+}
+
+.ppsgenStatsTrendColorTertiary {
+  background: #8b5cf6;
+}
+
+.ppsgenStatsTrendColorDanger {
+  background: #ef4444;
+}
+
+.ppsgenStatsTrendChart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+  gap: 10px;
+  align-items: end;
+  min-height: 200px;
+  padding-top: 8px;
+}
+
+.ppsgenStatsTrendCol {
+  min-width: 0;
+}
+
+.ppsgenStatsTrendBars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 150px;
+}
+
+.ppsgenStatsTrendBar {
+  width: 100%;
+  max-width: 14px;
+  min-height: 2px;
+  border-radius: 8px 8px 3px 3px;
+}
+
+.ppsgenStatsTrendBarPrimary {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+}
+
+.ppsgenStatsTrendBarSecondary {
+  background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
+}
+
+.ppsgenStatsTrendBarTertiary {
+  background: linear-gradient(180deg, #c4b5fd 0%, #8b5cf6 100%);
+}
+
+.ppsgenStatsTrendBarDanger {
+  background: linear-gradient(180deg, #fca5a5 0%, #ef4444 100%);
+}
+
+.ppsgenStatsTrendLabel {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ppsgenStatsTrendEmpty {
+  padding: 16px 0 4px;
+  color: #6b7280;
+  font-size: 13px;
+}

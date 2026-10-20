@@ -1,0 +1,217 @@
+.ppsgenTourOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  background: rgba(6, 13, 30, 0.42);
+  pointer-events: none;
+}
+
+.ppsgenTourOverlay.ppsgenTourOverlayActive {
+  display: block;
+}
+
+.ppsgenTourFocus {
+  position: fixed;
+  z-index: 100001;
+  display: none;
+  border: 2px solid #31c7d4;
+  border-radius: 8px;
+  box-shadow: 0 0 0 9999px rgba(6, 13, 30, 0.48), 0 12px 34px rgba(20, 38, 90, 0.25);
+  pointer-events: none;
+}
+
+.ppsgenTourFocus.ppsgenTourFocusActive {
+  display: block;
+}
+
+.ppsgenTourPopover {
+  position: fixed;
+  z-index: 100002;
+  display: none;
+  width: min(360px, calc(100vw - 32px));
+  padding: 18px;
+  border: 1px solid rgba(31, 94, 255, 0.18);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172554;
+  box-shadow: 0 22px 54px rgba(6, 13, 30, 0.28);
+}
+
+.ppsgenTourPopover.ppsgenTourPopoverActive {
+  display: block;
+}
+
+.ppsgenTourPopover::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(31, 94, 255, 0.18);
+  transform: rotate(45deg);
+}
+
+.ppsgenTourPlacementBottom::before {
+  top: -8px;
+  left: 28px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.ppsgenTourPlacementTop::before {
+  bottom: -8px;
+  left: 28px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.ppsgenTourPlacementRight::before {
+  left: -8px;
+  top: 28px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.ppsgenTourPlacementLeft::before {
+  right: -8px;
+  top: 28px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.ppsgenTourCounter {
+  margin-bottom: 8px;
+  color: #1f5eff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ppsgenTourTitle {
+  margin: 0 28px 8px 0;
+  color: #10214d;
+  font-size: 16px;
+  line-height: 1.28;
+}
+
+.ppsgenTourText {
+  margin: 0;
+  color: #52607a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.ppsgenTourClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid rgba(31, 94, 255, 0.12);
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+}
+
+.ppsgenTourClose:hover {
+  background: #eef4ff;
+  color: #1f5eff;
+}
+
+.ppsgenTourActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ppsgenTourBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(31, 94, 255, 0.22);
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f3f98;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.ppsgenTourBtnPrimary {
+  border-color: #1f5eff;
+  background: #1f5eff;
+  color: #ffffff;
+}
+
+.ppsgenTourBtn:hover {
+  background: #eef4ff;
+  color: #17337e;
+}
+
+.ppsgenTourBtnPrimary:hover {
+  background: #174bd0;
+  color: #ffffff;
+}
+
+.ppsgenTourBtn[disabled] {
+  opacity: .45;
+  cursor: default;
+}
+
+.ppsgenTourOverviewActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 18px;
+}
+
+.ppsgenTourInlineStartBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #1f5eff;
+  border-radius: 6px;
+  background: #1f5eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ppsgenTourInlineStartBtn:hover,
+.ppsgenTourInlineStartBtn:focus {
+  border-color: #174bd0;
+  background: #174bd0;
+  color: #fff;
+}
+
+.ppsgenTourInlineStartBtn .dashicons {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+@media (max-width: 782px) {
+  .ppsgenTourPopover {
+    left: 16px !important;
+    right: 16px !important;
+    width: auto;
+  }
+}

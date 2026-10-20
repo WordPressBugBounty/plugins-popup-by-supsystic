@@ -1,0 +1,129 @@
+.ppsgenClContainer {
+  display: block;
+  position: relative;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.ppsgenClAddLogicBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.ppsgenClLogic {
+  display: block;
+  position: relative;
+  background: #d0d6ff;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  border: 5px dashed #a5b1ff;
+}
+
+.ppsgenClAddConditionBtn,
+.ppsgenClAddActionBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.ppsgenClDeleteLogic,
+.ppsgenClDeleteRow {
+  display: inline-flex;
+  position: relative;
+  box-sizing: content-box;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 21px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px;
+  padding-left: 7px;
+}
+
+.ppsgenClOperatorBetween {
+  margin-bottom: 6px;
+  font-size: 10px !important;
+  padding: 5px !important;
+  padding-right: 20px !important;
+}
+
+.ppsgenClDeleteLogic {
+  margin-left: 0px;
+}
+
+.ppsgenClLogic {
+  width: 100%;
+  max-width: 760px;
+}
+
+.ppsgenClConditions,
+.ppsgenClActions {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background: #dadfff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 3px solid #a5b1ff;
+}
+
+.ppsgenClAfterSubmitWrapper {
+  margin-left: 10px;
+}
+
+.ppsgenClConditionRow,
+.ppsgenClActionRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.ppsgenClOperator {
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.ppsgenClLogic input,
+.ppsgenClLogic select {
+  border: 1px solid #d0d6ff;
+  padding: 5px;
+}
+
+.ppsgenClLogic select {
+  padding-right: 25px;
+}

@@ -1,0 +1,2774 @@
+/* CES shell: one top bar instead of the left sidebar, sub-tabs per section, Settings side menu, Home cards */
+
+.ppsgenDashLayoutWrapper.ppsgenDashLayoutTopBar {
+  flex-direction: column;
+  --ppsgen-shell-surface: #ffffff;
+  --ppsgen-shell-border: #d9dce8;
+  --ppsgen-shell-text: #1c1f2e;
+  --ppsgen-shell-muted: #5e6378;
+  --ppsgen-shell-accent: #3f51b5;
+  --ppsgen-shell-accent-soft: #e8ecfb;
+  --ppsgen-shell-ok: #1f8a4c;
+  --ppsgen-shell-warn: #b26a00;
+}
+
+.ppsgenDashLayoutTopBar .ppsgenDashContentWrapper {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Top bar */
+.ppsgenDashNavigationWrapper.ppsgenTopBarWrapper {
+  width: 100%;
+  padding: 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+  background: var(--ppsgen-shell-surface);
+  position: sticky;
+  top: 32px;
+  z-index: 30;
+}
+
+.ppsgenTopBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  min-height: 52px;
+  padding: 0 16px;
+}
+
+.ppsgenTopBarLogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 14px;
+  color: var(--ppsgen-shell-text);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ppsgenTopBarLogo:hover,
+.ppsgenTopBarLogo:focus {
+  color: var(--ppsgen-shell-accent);
+  box-shadow: none;
+}
+
+/* Supsystic logo, then "Customer Engagement" with a small "by Supsystic" under it on the right */
+.ppsgenTopBarLogoMark {
+  display: block;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.ppsgenTopBarLogoText {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.ppsgenTopBarLogoBy {
+  align-self: flex-end;
+  margin-top: 1px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.ppsgenTopBarLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 11px;
+  border-radius: 6px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ppsgenTopBarLink:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenTopBarLink:focus {
+  box-shadow: 0 0 0 2px var(--ppsgen-shell-accent);
+  outline: 0;
+}
+
+.ppsgenTopBarLinkOn,
+.ppsgenTopBarLinkOn:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  font-weight: 600;
+}
+
+.ppsgenTopBarSep {
+  width: 1px;
+  height: 22px;
+  margin: 0 8px;
+  background: var(--ppsgen-shell-border);
+}
+
+.ppsgenTopBarGrow {
+  flex: 1 1 auto;
+}
+
+.ppsgenTopBarPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 999px;
+  color: var(--ppsgen-shell-text);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ppsgenTopBarPill:hover {
+  color: var(--ppsgen-shell-accent);
+  border-color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenTopBarPillDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-ok);
+}
+
+.ppsgenTopBarPill-warn .ppsgenTopBarPillDot {
+  background: var(--ppsgen-shell-warn);
+}
+
+.ppsgenTopBar .ppsgenThemeToggleBtn {
+  margin: 0 0 0 6px;
+  min-height: 30px;
+  box-shadow: none;
+}
+
+/* Section sub-tabs (Contacts › All contacts · Tags · Import, Campaigns › Automations · Email templates …) */
+.ppsgenSubTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 16px;
+  border-top: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgenSubTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px 9px;
+  border-bottom: 2px solid transparent;
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ppsgenSubTab:hover {
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenSubTab:focus {
+  box-shadow: none;
+  outline: 2px solid var(--ppsgen-shell-accent);
+  outline-offset: -2px;
+}
+
+.ppsgenSubTabOn,
+.ppsgenSubTabOn:hover {
+  border-bottom-color: var(--ppsgen-shell-accent);
+  color: var(--ppsgen-shell-accent);
+  font-weight: 600;
+}
+
+.ppsgenProChip {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--ppsgen-shell-accent);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Settings: section menu on the left, content on the right */
+.ppsgenSettingsLayout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+}
+
+.ppsgenSettingsNav {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 100px;
+  padding: 20px 12px 20px 16px;
+}
+
+.ppsgenSettingsNavGroup {
+  margin: 18px 0 6px;
+  padding: 0 10px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ppsgenSettingsNavItem {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: var(--ppsgen-shell-text);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.ppsgenSettingsNavItem:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenSettingsNavItem:focus {
+  box-shadow: 0 0 0 2px var(--ppsgen-shell-accent);
+  outline: 0;
+}
+
+.ppsgenSettingsNavItemOn,
+.ppsgenSettingsNavItemOn:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  font-weight: 600;
+}
+
+.ppsgenSettingsLayout .ppsgenDashContentWrapper {
+  flex: 1 1 auto;
+  width: auto;
+}
+
+.ppsgenSettingsCard {
+  max-width: 760px;
+  padding: 18px 20px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenSettingsCard p {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.ppsgenSettingsCard .ppsgenLegacySwitchBannerActions {
+  justify-content: flex-start;
+}
+
+.ppsgenSettingsProAlready {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 13px;
+}
+
+/* Classic PopUp banner sits in the flow on Home instead of floating over the sidebar layout */
+.ppsgenDashLayoutTopBar .ppsgenLegacySwitchBanner.ppsgenLegacySwitchBannerPermanent {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  margin: 16px 20px 0;
+}
+
+.ppsgenDashLayoutTopBar .ppsgenLegacySwitchBanner ~ .ppsgenDashContentWrapper {
+  padding-top: 20px;
+}
+
+/* The tour is paused until it is rebuilt for the top bar */
+.ppsgenTourOverviewActions,
+.ppsgenTourStartBtn {
+  display: none !important;
+}
+
+/* Home */
+.ppsgenHome {
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenPageHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ppsgenPageTitle {
+  margin: 0;
+  padding: 0;
+  color: var(--ppsgen-shell-text);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.ppsgenPageSub {
+  margin: 4px 0 0;
+  color: var(--ppsgen-shell-muted);
+  font-size: 14px;
+}
+
+.ppsgenPageActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenBtnPrimary,
+.ppsgenBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--ppsgen-shell-accent);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ppsgenBtnPrimary {
+  background: var(--ppsgen-shell-accent);
+  color: #ffffff;
+}
+
+.ppsgenBtnPrimary:hover {
+  filter: brightness(1.08);
+  color: #ffffff;
+}
+
+.ppsgenBtnSecondary {
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenBtnSecondary:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenCard {
+  padding: 16px 18px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+}
+
+.ppsgenCard h2 {
+  margin: 0 0 12px;
+  padding: 0;
+  color: var(--ppsgen-shell-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ppsgenCardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ppsgenStatCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.ppsgenStatLabel {
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+}
+
+.ppsgenStatValue {
+  margin: 4px 0 2px;
+  color: var(--ppsgen-shell-text);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.ppsgenStatSub,
+.ppsgenMuted {
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+}
+
+.ppsgenHomeGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.ppsgenHomeSide {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ppsgenHomeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.ppsgenHomeTable th {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+  color: var(--ppsgen-shell-muted);
+  font-weight: 500;
+  text-align: left;
+}
+
+.ppsgenHomeTable td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenHomeTable tr:last-child td {
+  border-bottom: 0;
+}
+
+.ppsgenChip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-text);
+  font-size: 12px;
+}
+
+.ppsgenEmpty {
+  margin: 0;
+  color: var(--ppsgen-shell-muted);
+  font-size: 14px;
+}
+
+.ppsgenAttention {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgenAttention:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ppsgenAttentionDot {
+  flex: 0 0 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-warn);
+}
+
+.ppsgenAttentionTitle,
+.ppsgenStartItemTitle {
+  color: var(--ppsgen-shell-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ppsgenAttention a {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.ppsgenStartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  margin: 0 -10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.ppsgenStartItem:hover {
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgenMeterRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 6px;
+  font-size: 13px;
+}
+
+.ppsgenMeter {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ppsgen-shell-accent-soft);
+  overflow: hidden;
+}
+
+.ppsgenMeter > div {
+  height: 100%;
+  background: var(--ppsgen-shell-accent);
+}
+
+@media screen and (max-width: 1100px) {
+  .ppsgenHomeGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 782px) {
+  .ppsgenDashNavigationWrapper.ppsgenTopBarWrapper {
+    top: 0;
+    position: relative;
+  }
+
+  .ppsgenTopBar {
+    padding: 8px 12px;
+  }
+
+  .ppsgenTopBarGrow,
+  .ppsgenTopBarSep {
+    display: none;
+  }
+
+  .ppsgenSettingsLayout {
+    flex-direction: column;
+  }
+
+  .ppsgenSettingsNav {
+    position: relative;
+    top: auto;
+    flex-basis: auto;
+    width: 100%;
+  }
+}
+
+/* Dark theme */
+.ppsgen-theme-dark .ppsgenDashLayoutWrapper.ppsgenDashLayoutTopBar {
+  --ppsgen-shell-surface: var(--ppsgen-dark-panel, #101a2f);
+  --ppsgen-shell-border: var(--ppsgen-dark-border, rgba(148, 163, 184, 0.16));
+  --ppsgen-shell-text: var(--ppsgen-dark-text-strong, #eef4ff);
+  --ppsgen-shell-muted: var(--ppsgen-dark-text-muted, #9aa8c8);
+  --ppsgen-shell-accent: var(--ppsgen-dark-accent-soft, #8cb1ff);
+  --ppsgen-shell-accent-soft: rgba(59, 130, 246, 0.16);
+  --ppsgen-shell-ok: #34d399;
+  --ppsgen-shell-warn: #fbbf24;
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationWrapper.ppsgenTopBarWrapper {
+  background: rgba(7, 14, 26, 0.94);
+  border-right: 0;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationWrapper.ppsgenTopBarWrapper a {
+  border-left: 0;
+}
+
+.ppsgen-theme-dark .ppsgenBtnPrimary,
+.ppsgen-theme-dark .ppsgenProChip {
+  background: var(--ppsgen-dark-accent, #3b82f6);
+  border-color: var(--ppsgen-dark-accent, #3b82f6);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenHome a:not(.ppsgenBtnPrimary):not(.ppsgenBtnSecondary),
+.ppsgen-theme-dark .ppsgenSettingsCard a:not(.ppsgenLegacySwitchBannerLink) {
+  color: var(--ppsgen-dark-accent-link, #8dc1ff);
+}
+
+.ppsgenChainsListHeaderLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.ppsgen-theme-dark .ppsgenHome .ppsgenStartItem .ppsgenStartItemTitle {
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgen-theme-dark .ppsgenHome .ppsgenStartItem .ppsgenMuted {
+  color: var(--ppsgen-shell-muted);
+}
+
+/* Reports */
+.ppsgenStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ppsgen-shell-muted);
+}
+
+.ppsgenStatus::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-border);
+}
+
+.ppsgenStatus-on {
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenStatus-on::before {
+  background: var(--ppsgen-shell-ok);
+}
+
+.ppsgenReport .ppsgenHomeTable td,
+.ppsgenReport .ppsgenHomeTable th {
+  font-variant-numeric: tabular-nums;
+}
+
+.ppsgenReportLink {
+  text-align: right;
+  white-space: nowrap;
+}
+
+a.ppsgenStatCard {
+  display: block;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+a.ppsgenStatCard:hover {
+  border-color: var(--ppsgen-shell-accent);
+}
+
+/* Standard editor header: name on the left; Live switch, Preview and Save on the right */
+.ppsgenEditorHeaderActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenEditorLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 6px;
+  color: var(--ppsgen-shell-muted, #5e6378);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ppsgenEditorLiveInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ppsgenEditorLiveTrack {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--ppsgen-shell-border, #d9dce8);
+  transition: background-color 0.15s ease;
+}
+
+.ppsgenEditorLiveTrack::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.ppsgenEditorLiveOn {
+  color: var(--ppsgen-shell-ok, #1f8a4c);
+}
+
+.ppsgenEditorLiveOn .ppsgenEditorLiveTrack {
+  background: var(--ppsgen-shell-ok, #1f8a4c);
+}
+
+.ppsgenEditorLiveOn .ppsgenEditorLiveTrack::after {
+  transform: translateX(16px);
+}
+
+.ppsgenEditorLiveInput:focus-visible + .ppsgenEditorLiveTrack {
+  box-shadow: 0 0 0 2px var(--ppsgen-shell-accent, #3f51b5);
+}
+
+.ppsgenEditorLiveDirty .ppsgenEditorLiveText::after {
+  content: " *";
+}
+
+/* Settings › Email sending status */
+.ppsgenEmailStatusCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+}
+
+.ppsgenEmailStatusMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ppsgenEmailStatusDot {
+  flex: 0 0 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-ok);
+}
+
+.ppsgenEmailStatusCard-warn .ppsgenEmailStatusDot {
+  background: var(--ppsgen-shell-warn);
+}
+
+.ppsgenEmailStatusTitle {
+  color: var(--ppsgen-shell-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ppsgenEmailStatusHint {
+  margin-top: 2px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+}
+
+.ppsgenEmailTestFailed .ppsgenEmailTestResult {
+  color: #b32d2e;
+}
+
+.ppsgenEmailStatusActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenEmailStatusActions button[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Contacts: details panel */
+.ppsgenContactRow {
+  cursor: pointer;
+}
+
+.ppsgenDashLayoutTopBar tr.ppsgenContactRowSelected > td {
+  background: var(--ppsgen-shell-accent-soft) !important;
+}
+
+.ppsgenContactDrawer {
+  position: fixed;
+  top: 32px;
+  right: 0;
+  bottom: 0;
+  z-index: 99990;
+  width: 380px;
+  max-width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 1px solid var(--ppsgen-shell-border);
+  background: var(--ppsgen-shell-surface);
+  box-shadow: -12px 0 32px rgba(15, 23, 42, 0.14);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenContactDrawer[hidden] {
+  display: none;
+}
+
+.ppsgenContactPreviewHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ppsgenContactPreviewHead h2 {
+  margin: 0;
+  padding: 0;
+  color: var(--ppsgen-shell-text);
+  font-size: 18px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.ppsgenContactPreviewClose {
+  flex: 0 0 auto;
+  padding: 2px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ppsgen-shell-muted);
+  cursor: pointer;
+}
+
+.ppsgenContactPreviewClose:hover {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenContactPreviewMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.ppsgenContactPreviewTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.ppsgenContactPreviewActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ppsgenContactPreviewActions .ppsgenBtnSecondary {
+  min-height: 30px;
+  font-size: 13px;
+}
+
+.ppsgenContactPreviewLabel {
+  margin: 20px 0 8px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ppsgenContactPreviewTimeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ppsgenContactPreviewTimeline li {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0 0 12px;
+  font-size: 13px;
+}
+
+.ppsgenContactPreviewEventDot {
+  flex: 0 0 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-border);
+}
+
+.ppsgenContactPreviewEventDot-user {
+  background: var(--ppsgen-shell-accent);
+}
+
+.ppsgenContactPreviewEventTitle {
+  font-weight: 600;
+}
+
+.ppsgenContactPreviewEventText {
+  overflow-wrap: anywhere;
+}
+
+.ppsgenContactPreviewFull {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 782px) {
+  .ppsgenContactDrawer {
+    top: 46px;
+    width: 100%;
+  }
+}
+
+/* Campaigns › Automations: plain summary instead of the raw counters */
+.ppsgenEcaChainListSummary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  margin-top: 4px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+}
+
+.ppsgenEcaChainListMore {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.ppsgenEcaChainListMore > summary {
+  color: var(--ppsgen-shell-muted);
+  cursor: pointer;
+}
+
+.ppsgenEcaChainListMore[open] > summary {
+  margin-bottom: 4px;
+}
+
+/* Campaigns › Newsletters */
+.ppsgenStatus-scheduled,
+.ppsgenStatus-preparing,
+.ppsgenStatus-sending {
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenStatus-scheduled::before,
+.ppsgenStatus-preparing::before,
+.ppsgenStatus-sending::before {
+  background: var(--ppsgen-shell-accent);
+}
+
+.ppsgenStatus-sent {
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenStatus-sent::before {
+  background: var(--ppsgen-shell-ok);
+}
+
+/* Newsletter panel: status, audience and sending on one line, settings in one compact row (they save themselves) */
+.ppsgenNewsletterPanel {
+  margin: 10px 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+  font-size: 13px;
+}
+
+.ppsgenNlTop {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.ppsgenNlStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ppsgenNlStatus::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ppsgenNlStatus-scheduled,
+.ppsgenNlStatus-preparing,
+.ppsgenNlStatus-sending {
+  color: var(--ppsgen-shell-warn);
+}
+
+.ppsgenNlStatus-sent {
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenNlSendTo {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ppsgenNlSendTo select {
+  max-width: 260px;
+  min-height: 28px;
+}
+
+.ppsgenNlLabel {
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ppsgenNlCount {
+  color: var(--ppsgen-shell-muted);
+  white-space: nowrap;
+}
+
+.ppsgenNlWarn {
+  color: var(--ppsgen-shell-warn);
+  font-size: 12px;
+}
+
+.ppsgenNewsletterPanel .ppsgenNewsletterPanelActions {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 0 auto;
+}
+
+.ppsgenNewsletterPanelActions .ppsgenNewsletterScheduleInput {
+  min-height: 28px;
+}
+
+.ppsgenNlFields {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgenNlField {
+  display: flex;
+  flex: 1 1 170px;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  max-width: 260px;
+}
+
+.ppsgenNlField.ppsgenNlFieldWide {
+  flex: 2 1 260px;
+  max-width: 420px;
+}
+
+.ppsgenNewsletterPanel .ppsgenNlField input {
+  width: 100%;
+  min-height: 30px;
+  margin: 0;
+}
+
+.ppsgenNlValue {
+  min-height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ppsgenNlCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ppsgenNlSaved {
+  min-height: 30px;
+  line-height: 30px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+}
+
+.ppsgenNlSaved[data-state='ok'] {
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenNlSaved[data-state='ok']::before {
+  content: "¹3  ";
+}
+
+.ppsgenNlSaved[data-state='error'] {
+  color: #d63638;
+}
+
+.ppsgenNewsletterPanelHint {
+  margin: 8px 0 0;
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+}
+
+/* The only email of a newsletter opens straight away, so the list of steps is not needed */
+.ppsgenNewsletterSingleEmail .ppsgenChainStepsWrapper {
+  display: none !important;
+}
+
+/* A newsletter is one email sent once: no extra steps and no manual "apply" */
+.ppsgenNewsletterEditor .ppsgenChainStepsBtnAdd,
+.ppsgenNewsletterEditor .ppsgenChainOptionsBtnApplyChain {
+  display: none !important;
+}
+
+.ppsgenChainsListExtFeature.ppsgenChainsListFreeNote {
+  background: #3f51b5;
+  border-left-color: #3f51b5;
+}
+
+/* Automations held by the Free limit (1 running at a time) */
+.ppsgenStatus-held {
+  color: var(--ppsgen-shell-warn);
+  cursor: help;
+}
+
+.ppsgenStatus-held::before {
+  background: var(--ppsgen-shell-warn);
+}
+
+/* Contacts › Lists (saved filters) */
+.ppsgenContactListsBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.ppsgenContactListsLabel {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.ppsgenContactListPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid #c5cae9;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #253695;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.ppsgenContactListPill a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ppsgenContactListPillOn,
+.ppsgenContactListPillOn a {
+  border-color: #3f51b5;
+  background: #3f51b5;
+  color: #ffffff;
+}
+
+a.ppsgenContactListPillOn:hover,
+.ppsgenContactListPillOn a:hover {
+  color: #ffffff;
+}
+
+.ppsgenContactListDelete {
+  font-size: 15px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.ppsgenContactListDelete:hover {
+  opacity: 1;
+}
+
+.ppsgenContactListsHint {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.ppsgen-theme-dark .ppsgenContactListPill {
+  border-color: var(--ppsgen-dark-border, rgba(148, 163, 184, 0.16));
+  background: var(--ppsgen-dark-panel, #101a2f);
+  color: var(--ppsgen-dark-text-soft, #c2d1f5);
+}
+
+.ppsgen-theme-dark .ppsgenContactListPillOn,
+.ppsgen-theme-dark .ppsgenContactListPillOn a {
+  border-color: var(--ppsgen-dark-accent, #3b82f6);
+  background: var(--ppsgen-dark-accent, #3b82f6);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenContactListsLabel,
+.ppsgen-theme-dark .ppsgenContactListsHint {
+  color: var(--ppsgen-dark-text-muted, #9aa8c8);
+}
+
+/* Newsletters choose their list in the send panel */
+.ppsgenNewsletterEditor .ppsgenEntryListRow {
+  display: none;
+}
+
+/* Plays */
+.ppsgenPlayGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.ppsgenPlayCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ppsgen-shell-text);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+a.ppsgenPlayCard:hover {
+  border-color: var(--ppsgen-shell-accent);
+  box-shadow: 0 4px 14px rgba(63, 81, 181, 0.12);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenPlayCardOff {
+  opacity: 0.6;
+}
+
+.ppsgenPlayEyebrow {
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ppsgenPlayTitle {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ppsgenPlayChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ppsgenPlayGo {
+  margin-top: auto;
+  color: var(--ppsgen-shell-accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ppsgenPlayManual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.ppsgenPlayManual h2 {
+  margin-bottom: 4px;
+}
+
+.ppsgenPlayManual p {
+  margin: 0;
+}
+
+.ppsgenBackLink {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.ppsgenPlaySteps {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ppsgenPlaySteps li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--ppsgen-shell-muted);
+  font-size: 13px;
+}
+
+.ppsgenPlaySteps li span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.ppsgenPlaySteps .ppsgenPlayStepOn {
+  color: var(--ppsgen-shell-accent);
+  font-weight: 600;
+}
+
+.ppsgenPlaySteps .ppsgenPlayStepOn span {
+  border-color: var(--ppsgen-shell-accent);
+  background: var(--ppsgen-shell-accent);
+  color: #ffffff;
+}
+
+.ppsgenPlaySteps .ppsgenPlayStepDone span {
+  border-color: var(--ppsgen-shell-ok);
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenPlayLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.ppsgenPlaySide {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ppsgenPlayQuestion {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgenPlayQuestion:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ppsgenPlayQuestion > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ppsgenPlayQn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenPlayQt {
+  display: block;
+  color: var(--ppsgen-shell-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ppsgenPlayQuestion input[type="text"],
+.ppsgenPlayQuestion input[type="email"],
+.ppsgenPlayQuestion textarea {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 8px;
+}
+
+.ppsgenPlayChecks,
+.ppsgenPlayInline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+
+.ppsgenPlayInline input[type="number"] {
+  width: 64px;
+}
+
+.ppsgenSegmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ppsgenSegmented label {
+  margin: 0;
+}
+
+.ppsgenSegmented input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ppsgenSegmented span {
+  display: inline-block;
+  padding: 7px 12px;
+  border-right: 1px solid var(--ppsgen-shell-border);
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ppsgenSegmented label:last-child span {
+  border-right: 0;
+}
+
+.ppsgenSegmented input:checked + span {
+  background: var(--ppsgen-shell-accent);
+  color: #ffffff;
+}
+
+.ppsgenSegmented input:focus-visible + span {
+  outline: 2px solid var(--ppsgen-shell-accent);
+  outline-offset: -2px;
+}
+
+.ppsgenPlayPreview {
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ppsgenPlayPreviewSite {
+  position: relative;
+  min-height: 300px;
+  padding: 14px;
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgenPlayPreviewSite > span {
+  display: block;
+  height: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: rgba(63, 81, 181, 0.12);
+}
+
+.ppsgenPlayPreviewPopup {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 78%;
+  max-width: 300px;
+  padding: 16px;
+  transform: translateX(-50%);
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  color: #0c0c0c;
+  text-align: center;
+}
+
+.ppsgenPlayPreviewTitle {
+  margin-bottom: 4px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ppsgenPlayPreviewField {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  color: #6b7280;
+  font-size: 12px;
+  text-align: left;
+}
+
+.ppsgenPlayPreviewButton {
+  margin-top: 10px;
+  padding: 7px;
+  border-radius: 999px;
+  background: #4d4d4d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ppsgenPlayPreviewNote {
+  margin: 8px 0 0;
+}
+
+.ppsgenPlayJourney {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.ppsgenPlayJourney li {
+  margin-bottom: 8px;
+}
+
+.ppsgenPlayWarn {
+  border-color: var(--ppsgen-shell-warn);
+}
+
+.ppsgenPlayWarn p {
+  margin: 4px 0 6px;
+}
+
+.ppsgenPlayFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.ppsgenPlayFooter button[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.ppsgenPlayPart {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--ppsgen-shell-border);
+}
+
+.ppsgenPlayPart:first-of-type {
+  border-top: 0;
+}
+
+.ppsgenPlayPartType {
+  flex: 0 0 86px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ppsgenPlayPartBody {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ppsgenPlayPartName {
+  color: var(--ppsgen-shell-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.ppsgenPlayPartGateway .ppsgenPlayPartName {
+  color: var(--ppsgen-shell-warn);
+}
+
+.ppsgenPlayPartLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--ppsgen-shell-border);
+  text-decoration: none;
+}
+
+.ppsgenPlayPartLink .ppsgenPlayPartName {
+  flex: 1 1 auto;
+  font-weight: 500;
+}
+
+.ppsgenAttentionDotOk {
+  background: var(--ppsgen-shell-ok);
+}
+
+.ppsgenPlayLiveBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--ppsgen-shell-ok);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+}
+
+.ppsgenPlayLiveBanner > div {
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 1100px) {
+  .ppsgenPlayLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* "Part of: [play]" on items a play built */
+.ppsgenPartOfChip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #e8ecfb;
+  color: #3f51b5;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.ppsgenPartOfChip:hover {
+  background: #3f51b5;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenPartOfChip {
+  background: rgba(59, 130, 246, 0.16);
+  color: var(--ppsgen-dark-accent-soft, #8cb1ff);
+}
+
+.ppsgenHomeMain {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ppsgenHomePlay {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 10px;
+  margin: 0 -10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.ppsgenHomePlay:hover {
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgenHomePlayBody {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ppsgenHomePlayNum {
+  color: var(--ppsgen-shell-accent);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.ppsgenHomePlayNum strong {
+  color: var(--ppsgen-shell-text);
+  font-size: 16px;
+}
+
+.ppsgenPlayMail {
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ppsgenPlayMailHead {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgenPlayMailBody {
+  padding: 14px;
+  color: var(--ppsgen-shell-text);
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.ppsgenPlayNote {
+  margin: 0 0 6px;
+}
+
+/* Free contact limit */
+.ppsgenContactLimit {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.ppsgenContactLimit .ppsgenMeter {
+  display: inline-block;
+  width: 140px;
+}
+
+.ppsgenContactLimit .ppsgenMeter > span {
+  display: block;
+  height: 100%;
+  background: #3f51b5;
+}
+
+.ppsgenContactLimitWarn .ppsgenMeter > span {
+  background: #b26a00;
+}
+
+.ppsgenContactLimitHint {
+  flex-basis: 100%;
+  color: #b26a00;
+}
+
+.ppsgen-theme-dark .ppsgenContactLimit {
+  color: var(--ppsgen-dark-text-muted, #9aa8c8);
+}
+
+/* Optional anonymous usage data */
+.ppsgenUsageAsk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+}
+
+.ppsgenUsageAskBody p {
+  margin: 4px 0 0;
+  max-width: 720px;
+}
+
+.ppsgenUsageAskActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ppsgenUsageSettings .ppsgenUsageSwitch {
+  margin: 8px 0;
+}
+
+.ppsgenUsageDetails pre {
+  max-height: 420px;
+  overflow: auto;
+  padding: 12px;
+  background: var(--ppsgen-shell-surface);
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+/* Contacts details panel: add to automation */
+.ppsgenContactAddAutomation {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 12px;
+}
+
+.ppsgenContactAddAutomation select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Home: This month */
+.ppsgenThisMonth .ppsgenHomeTable td,
+.ppsgenThisMonth .ppsgenHomeTable th {
+  font-variant-numeric: tabular-nums;
+}
+
+.ppsgenThisMonthChange {
+  color: var(--ppsgen-shell-muted);
+  text-align: right;
+}
+
+.ppsgenThisMonthUp {
+  color: var(--ppsgen-shell-ok);
+}
+
+.ppsgenThisMonthDown {
+  color: var(--ppsgen-shell-warn);
+}
+
+/* Newsletter: preview text, reply-to, UTM */
+
+
+/* Settings › Email sending: domain check */
+.ppsgenDomainCheck {
+  margin-bottom: 16px;
+}
+
+.ppsgenAttentionDotInfo {
+  background: var(--ppsgen-shell-border);
+}
+
+.ppsgenDomainCheckText {
+  word-break: break-word;
+}
+
+.ppsgenThisMonthEmail {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  color: var(--ppsgen-shell-muted);
+}
+
+/* Live preview in the drag-and-drop editors (public/assets/js/ppsgen.backend.livepreview.js) */
+.ppsgenLiveGrid {
+  display: grid !important;
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+}
+
+.ppsgenLiveGrid > .ppsgenLiveLeft {
+  grid-column: 1;
+  grid-row: 1;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+.ppsgenLiveGrid > .ppsgenLivePreview {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.ppsgenLiveGrid > .ppsgenLiveRight {
+  grid-column: 3;
+  grid-row: 1;
+  width: clamp(340px, 26vw, 460px) !important;
+  min-width: 0 !important;
+}
+
+/* Medium screens: options go under the builder, the preview keeps the right side */
+.ppsgenLiveGrid.ppsgenLiveGridNarrow {
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+}
+
+.ppsgenLiveGrid.ppsgenLiveGridNarrow > .ppsgenLiveRight {
+  grid-column: 1;
+  grid-row: 2;
+  width: auto !important;
+}
+
+.ppsgenLiveGrid.ppsgenLiveGridNarrow > .ppsgenLivePreview {
+  grid-row: 1 / span 2;
+}
+
+.ppsgenLiveGrid.ppsgenLiveGridStack {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ppsgenLiveGrid.ppsgenLiveGridStack > .ppsgenLiveLeft,
+.ppsgenLiveGrid.ppsgenLiveGridStack > .ppsgenLivePreview,
+.ppsgenLiveGrid.ppsgenLiveGridStack > .ppsgenLiveRight {
+  grid-column: 1;
+  grid-row: auto;
+  width: auto !important;
+}
+
+.ppsgenLiveOverflowFix {
+  overflow: visible !important;
+}
+
+/* Other editor tabs (Design, Options…): settings on the left, preview on the right */
+.ppsgenObjEditWrapper.ppsgenLiveSide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 42%);
+  align-items: start;
+  column-gap: 12px;
+}
+
+.ppsgenObjEditWrapper.ppsgenLiveSide > .ppsgenObjEditTabsButtons {
+  grid-column: 1 / -1;
+}
+
+.ppsgenObjEditWrapper.ppsgenLiveSide > .ppsgenObjEditTabs {
+  grid-column: 1;
+  min-width: 0;
+}
+
+.ppsgenObjEditWrapper.ppsgenLiveSide > .ppsgenLivePreview {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.ppsgenLivePreview {
+  position: sticky;
+  top: var(--ppsgen-live-top, 96px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: calc(100vh - var(--ppsgen-live-top, 96px) - 16px);
+  min-height: 420px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface);
+  overflow: hidden;
+}
+
+.ppsgenLivePreviewOff {
+  display: none !important;
+}
+
+.ppsgenLiveGridStack > .ppsgenLivePreview {
+  position: relative;
+  top: 0;
+  height: 70vh;
+}
+
+.ppsgenLivePreviewBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 12px;
+  border-bottom: 1px solid var(--ppsgen-shell-border);
+  color: var(--ppsgen-shell-text);
+  font-size: 12px;
+}
+
+.ppsgenLivePreviewTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  margin-right: auto;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ppsgenLivePreviewDot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ppsgen-shell-ok);
+}
+
+.ppsgenLivePreview[data-status='busy'] .ppsgenLivePreviewDot {
+  background: var(--ppsgen-shell-warn);
+  animation: ppsgenLivePulse 0.9s ease-in-out infinite alternate;
+}
+
+.ppsgenLivePreview[data-status='error'] .ppsgenLivePreviewDot {
+  background: #d63638;
+}
+
+@keyframes ppsgenLivePulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.ppsgenLivePreviewDevices,
+.ppsgenLivePreviewActions {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.ppsgenLivePreviewBar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ppsgen-shell-muted);
+  cursor: pointer;
+}
+
+.ppsgenLivePreviewBar button:hover,
+.ppsgenLivePreviewBar button:focus-visible {
+  border-color: var(--ppsgen-shell-border);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenLivePreviewBar button.ppsgenLivePreviewDeviceOn {
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenLivePreviewBar .dashicons {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+.ppsgenLivePreviewScale {
+  min-width: 34px;
+  color: var(--ppsgen-shell-muted);
+  text-align: right;
+}
+
+.ppsgenLivePreviewStage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: repeating-conic-gradient(rgba(127, 127, 127, 0.07) 0% 25%, transparent 0% 50%) 0 0 / 16px 16px;
+}
+
+.ppsgenLivePreviewViewport {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--ppsgen-shell-border);
+}
+
+.ppsgenLivePreviewFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  background-color: #fff;
+  background-size: 100% auto !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  transform-origin: 0 0;
+  visibility: hidden;
+}
+
+.ppsgenLivePreviewFrame.ppsgenLivePreviewFrameOn {
+  visibility: visible;
+}
+
+.ppsgenLivePreviewRail {
+  display: none;
+}
+
+/* Hidden preview: a slim rail that brings it back */
+.ppsgenLivePreview.ppsgenLivePreviewCollapsed {
+  width: 40px;
+  min-height: 0;
+  height: auto;
+  justify-self: start;
+}
+
+.ppsgenLivePreviewCollapsed .ppsgenLivePreviewBar,
+.ppsgenLivePreviewCollapsed .ppsgenLivePreviewStage {
+  display: none;
+}
+
+.ppsgenLivePreviewCollapsed .ppsgenLivePreviewRail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ppsgen-shell-accent);
+  cursor: pointer;
+}
+
+.ppsgenLivePreviewCollapsed .ppsgenLivePreviewRail span:last-child {
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenObjEditWrapper.ppsgenLiveSide:has(> .ppsgenLivePreviewCollapsed) {
+  grid-template-columns: minmax(0, 1fr) 40px;
+}
+
+/* Element builder as an outline ("ladder"): one line per element, children indented under rows and columns */
+.ppsgenLiveGrid {
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr) auto;
+}
+
+.ppsgenLiveGrid.ppsgenLiveGridNarrow {
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+}
+
+.ppsgenLiveLeft {
+  padding: 4px 0 !important;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldWrapper {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldWrapper select {
+  flex: 1 1 140px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ppsgenCfbFieldsWrapper.ppsgenOutline {
+  display: block !important;
+  min-height: 60px;
+  padding: 6px !important;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface) !important;
+}
+
+.ppsgenOutline [data-field-key] {
+  display: block !important;
+  grid-column: auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 1px 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--ppsgen-shell-text) !important;
+  text-align: left !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  cursor: grab !important;
+  animation: none !important;
+}
+
+/* The form builder writes the field name straight into the element; the outline line replaces it */
+.ppsgenOutline .ppsgen-cf-col {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.ppsgenOutline .ppsgen-popup-label,
+.ppsgenOutline .ppsgen-chain-label,
+.ppsgenOutline .ppsgen-template-label {
+  display: none !important;
+}
+
+/* Hidden on the current screen size: still listed, just faded */
+.ppsgenOutline .ppsgen-col-hide {
+  display: block !important;
+  opacity: 0.45;
+}
+
+.ppsgenOutline [class*='-col-inner'] {
+  display: block !important;
+  grid-column: auto !important;
+  width: auto !important;
+  min-height: 22px !important;
+  margin: 0 0 2px 13px !important;
+  padding: 1px 0 1px 8px !important;
+  border: 0 !important;
+  border-left: 1px dashed var(--ppsgen-shell-border) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.ppsgenOutline .ppsgenOutlineCollapsed > [class*='-col-inner'] {
+  display: none !important;
+}
+
+.ppsgenOutlineRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 0 8px 0 2px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.ppsgenOutlineRow:hover {
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgen-popup-col-active > .ppsgenOutlineRow,
+.ppsgen-chain-col-active > .ppsgenOutlineRow,
+.ppsgen-template-col-active > .ppsgenOutlineRow,
+.ppsgen-cf-col-active > .ppsgenOutlineRow,
+.ppsgenOutline [class*='-col-active'] > .ppsgenOutlineRow {
+  border-color: var(--ppsgen-shell-accent);
+  background: var(--ppsgen-shell-accent-soft);
+  box-shadow: inset 3px 0 0 var(--ppsgen-shell-accent);
+}
+
+.ppsgenOutlineCaret,
+.ppsgenOutlineCaretSpace {
+  display: inline-flex;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ppsgen-shell-muted);
+  cursor: pointer;
+}
+
+.ppsgenOutlineCaret .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  transition: transform 0.15s ease;
+}
+
+.ppsgenOutlineCollapsed > .ppsgenOutlineRow .ppsgenOutlineCaret .dashicons {
+  transform: rotate(-90deg);
+}
+
+.ppsgenOutlineIcon.dashicons {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenOutlineContainer > .ppsgenOutlineRow .ppsgenOutlineIcon {
+  color: var(--ppsgen-shell-muted);
+}
+
+.ppsgenOutlineType {
+  flex: 0 0 auto;
+  font-weight: 600;
+}
+
+.ppsgenOutlineContainer > .ppsgenOutlineRow .ppsgenOutlineType {
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ppsgenOutlineSummary {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ppsgen-shell-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ppsgenOutlineEmpty {
+  margin-left: auto;
+  color: var(--ppsgen-shell-muted);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Drag and drop */
+.ppsgenOutline [class*='-ghost'] > .ppsgenOutlineRow {
+  border: 1px dashed var(--ppsgen-shell-accent);
+  background: var(--ppsgen-shell-accent-soft);
+  opacity: 0.7;
+}
+
+.ppsgenOutline [class*='-chosen'] > .ppsgenOutlineRow {
+  cursor: grabbing;
+}
+
+/* Option hints are 400px wide; keep them inside the narrower options column */
+.ppsgenLiveRight .ppsgenComponentLabelContent {
+  width: 300px !important;
+  max-width: 300px !important;
+}
+
+/* Email template and automation / newsletter email builders: keep the columns off the borders */
+.ppsgenChainFieldsWrapper.ppsgenLiveGrid,
+.ppsgenTemplateFields.ppsgenLiveGrid {
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* "Add element" rows next to the outline: thin label above, the list, then a square + button */
+.ppsgenLiveLeft .ppsgenCfbAddFieldWrapper {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 3px 6px;
+  margin: 0 0 8px;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldLabel {
+  grid-column: 1 / -1;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--ppsgen-shell-muted) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldList {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  min-height: 32px;
+  margin: 0 !important;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 6px;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  box-sizing: border-box;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldBtn::before {
+  content: "+";
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.ppsgenLiveLeft .ppsgenCfbAddFieldBtn:focus-visible {
+  outline: 2px solid var(--ppsgen-shell-accent);
+  outline-offset: 2px;
+}
+
+/* Unsaved changes: a dot on the Save button (see PpsgenUnsavedGuard) */
+.ppsgenHasUnsaved {
+  position: relative;
+}
+
+.ppsgenHasUnsaved::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--ppsgen-shell-surface);
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+/* Colour styles (public/assets/js/ppsgen.backend.palettes.js) at the top of the Design tab */
+.ppsgenPalettes {
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+}
+
+.ppsgenPalettesHead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.ppsgenPalettes h3 {
+  margin: 0;
+  color: var(--ppsgen-shell-text);
+  font-size: 15px;
+}
+
+.ppsgenPalettesHint {
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+}
+
+/* Two rows of palettes that scroll sideways */
+.ppsgenPalettesGrid {
+  display: grid;
+  grid-auto-columns: 112px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  padding: 2px 2px 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--ppsgen-shell-border) transparent;
+  scrollbar-width: thin;
+}
+
+.ppsgenPalettesGrid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.ppsgenPalettesGrid::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: var(--ppsgen-shell-accent-soft);
+}
+
+.ppsgenPalettesGrid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--ppsgen-shell-border);
+}
+
+.ppsgenPalettesGrid::-webkit-scrollbar-thumb:hover {
+  background: var(--ppsgen-shell-accent);
+}
+
+.ppsgenPalettesGrid .ppsgenPalette {
+  scroll-snap-align: start;
+}
+
+.ppsgenPalettesProHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 8px;
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenPalette {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 10px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.ppsgenPalette:hover,
+.ppsgenPalette:focus-visible {
+  border-color: var(--ppsgen-shell-accent);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.ppsgenPalette.ppsgenPaletteOn {
+  border-color: var(--ppsgen-shell-accent);
+  box-shadow: 0 0 0 2px var(--ppsgen-shell-accent);
+}
+
+.ppsgenPaletteMock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  border-radius: 6px;
+}
+
+.ppsgenPaletteCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 68%;
+  padding: 7px 8px;
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.ppsgenPaletteCard i {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.ppsgenPaletteCard b {
+  display: block;
+  width: 45%;
+  height: 8px;
+  margin-top: 2px;
+  border-radius: 3px;
+}
+
+.ppsgenPaletteDots {
+  display: flex;
+  gap: 3px;
+}
+
+.ppsgenPaletteDots em {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.ppsgenPaletteName {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ppsgenPaletteLocked .ppsgenPaletteMock {
+  opacity: 0.75;
+}
+
+.ppsgenPaletteLock.dashicons {
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  color: var(--ppsgen-shell-muted);
+  font-size: 14px;
+}
+
+.ppsgenPaletteBadge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--ppsgen-shell-accent);
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.ppsgenPalettesFoot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.ppsgenPalettesFoot:empty {
+  display: none;
+}
+
+.ppsgenPalettesKeep {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.ppsgenPalettesStatus {
+  color: var(--ppsgen-shell-muted);
+}
+
+/* Settings menu: Classic PopUp on its own, as a button at the bottom */
+.ppsgenSettingsNavButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 22px 0 0;
+  padding: 8px 10px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ppsgenSettingsNavButton .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  color: var(--ppsgen-shell-muted);
+}
+
+.ppsgenSettingsNavButton:hover,
+.ppsgenSettingsNavButtonOn {
+  border-color: var(--ppsgen-shell-accent);
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenSettingsNavButton:hover .dashicons,
+.ppsgenSettingsNavButtonOn .dashicons {
+  color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenSettingsNavButton:focus {
+  box-shadow: 0 0 0 2px var(--ppsgen-shell-accent);
+  outline: 0;
+}
+
+/* Step bar above the builder's screen-size buttons (popups with PRO "Go to step" buttons): flips the live
+   preview between the steps */
+.ppsgenStepSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  padding: 4px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-text);
+  font-size: 12px;
+}
+
+.ppsgenStepSwitcher button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 6px;
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  cursor: pointer;
+}
+
+.ppsgenStepSwitcher button:hover:not(:disabled) {
+  border-color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenStepSwitcher button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.ppsgenStepSwitcher .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.ppsgenStepSwitcherLabel {
+  flex: 1;
+  overflow: hidden;
+  color: var(--ppsgen-shell-muted);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Start over bar under "Choose element" (live preview of templates that remember the visitor's game) */
+.ppsgenPreviewReset {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 4px 4px 4px 10px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 8px;
+  background: var(--ppsgen-shell-surface);
+  color: var(--ppsgen-shell-muted);
+  font-size: 12px;
+}
+
+.ppsgenPreviewResetText {
+  flex: 1;
+  min-width: 0;
+}
+
+.ppsgenPreviewResetBtn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px 0 8px;
+  border: 1px solid var(--ppsgen-shell-border);
+  border-radius: 6px;
+  background: var(--ppsgen-shell-accent-soft);
+  color: var(--ppsgen-shell-accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ppsgenPreviewResetBtn:hover {
+  border-color: var(--ppsgen-shell-accent);
+}
+
+.ppsgenPreviewResetBtn .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.ppsgenStepSwitcherLabel b {
+  color: var(--ppsgen-shell-text);
+}

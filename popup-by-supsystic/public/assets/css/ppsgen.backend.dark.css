@@ -1,0 +1,2382 @@
+.ppsgen-theme-dark {
+  --ppsgen-dark-app: #0b1220;
+  --ppsgen-dark-shell-start: #08111f;
+  --ppsgen-dark-shell-mid: #0d1729;
+  --ppsgen-dark-shell-end: #101c31;
+  --ppsgen-dark-panel: #101a2f;
+  --ppsgen-dark-panel-2: #141f35;
+  --ppsgen-dark-panel-3: #16233d;
+  --ppsgen-dark-field: #0d1528;
+  --ppsgen-dark-field-hover: #16233d;
+  --ppsgen-dark-text: #d8e0f5;
+  --ppsgen-dark-text-strong: #eef4ff;
+  --ppsgen-dark-text-soft: #c2d1f5;
+  --ppsgen-dark-text-muted: #9aa8c8;
+  --ppsgen-dark-accent: #3b82f6;
+  --ppsgen-dark-accent-2: #2563eb;
+  --ppsgen-dark-accent-soft: #8cb1ff;
+  --ppsgen-dark-accent-link: #8dc1ff;
+  --ppsgen-dark-border: rgba(148, 163, 184, 0.16);
+  --ppsgen-dark-border-soft: rgba(148, 163, 184, 0.12);
+  --ppsgen-dark-border-accent: rgba(96, 165, 250, 0.28);
+  --ppsgen-dark-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+  --ppsgen-dark-shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.18);
+  --ppsgen-dark-radius: 12px;
+  --ppsgen-dark-radius-sm: 10px;
+  --ppsgen-dark-btn-bg: linear-gradient(180deg, #2d58bf 0%, #2347a5 100%);
+  --ppsgen-dark-btn-bg-hover: linear-gradient(180deg, #3b6fe3 0%, #2b58c5 100%);
+  --ppsgen-dark-btn-border: rgba(143, 181, 255, 0.28);
+  --ppsgen-dark-success-bg: rgba(16, 185, 129, 0.16);
+  --ppsgen-dark-success-text: #8af0c6;
+  --ppsgen-dark-warning-bg: rgba(245, 158, 11, 0.16);
+  --ppsgen-dark-warning-text: #ffd27a;
+  --ppsgen-dark-danger-bg: rgba(220, 38, 38, 0.14);
+  --ppsgen-dark-danger-bg-hover: rgba(220, 38, 38, 0.22);
+  --ppsgen-dark-danger-text: #ffb4b4;
+  --ppsgen-dark-danger-text-hover: #ffd1d1;
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark #wpcontent,
+.ppsgen-theme-dark #wpbody,
+.ppsgen-theme-dark #wpbody-content {
+  background: var(--ppsgen-dark-app);
+}
+
+.ppsgen-theme-dark .ppsgenDashLayoutWrapper {
+  background:
+    radial-gradient(circle at top left, rgba(52, 211, 153, 0.08), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.08), transparent 24%),
+    linear-gradient(180deg, var(--ppsgen-dark-shell-start) 0%, var(--ppsgen-dark-shell-mid) 52%, var(--ppsgen-dark-shell-end) 100%);
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationWrapper {
+  background: rgba(7, 14, 26, 0.82);
+  border-right: 1px solid rgba(148, 163, 184, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationWrapper li a {
+  color: #c2d1f5;
+}
+
+.ppsgen-theme-dark li.ppsgenDashNavigationLiParentSelectedWithChild > a {
+  border-radius: 0px;
+  border-left: 0px !important;
+  padding-left: 10px !important;
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationChildUl > li > a {
+  border-radius: 0px;
+  border-left: 0px !important;
+  padding-left: 10px !important;
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationChildUl {
+  background: rgb(20 32 53 / 92%);
+}
+
+.ppsgen-theme-dark .ppsgenDashNavigationWrapper li a:hover {
+  background: #1c3563;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenDashPluginVersion {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenProductBrand {
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenProductBrandByline {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenThemeToggleBtn {
+  background: rgba(15, 23, 42, 0.92);
+  color: var(--ppsgen-dark-text-strong);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  border-radius: var(--ppsgen-dark-radius-sm);
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenThemeToggleBtn:hover {
+  background: rgba(30, 41, 59, 0.96);
+  color: #ffffff;
+  border-color: var(--ppsgen-dark-border-accent);
+  transform: translateY(-1px);
+}
+
+.ppsgen-theme-dark .ppsgenThemeToggleBtn .dashicons,
+.ppsgen-theme-dark .ppsgenThemeToggleBtn:hover .dashicons {
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBanner {
+  background: rgba(15, 23, 42, 0.94);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow-md);
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerTitle {
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerDesc {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerBtn {
+  border-color: var(--ppsgen-dark-accent);
+  background: var(--ppsgen-dark-accent);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerBtn:hover {
+  background: #4f7fff;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerLink {
+  border-color: var(--ppsgen-dark-border);
+  background: rgba(30, 41, 59, 0.96);
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerLink:hover {
+  border-color: var(--ppsgen-dark-border-accent);
+  background: rgba(42, 55, 78, 0.98);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerClose {
+  background: rgba(15, 23, 42, 0.92);
+  color: var(--ppsgen-dark-text-strong);
+  border-color: var(--ppsgen-dark-border);
+}
+
+.ppsgen-theme-dark .ppsgenLegacySwitchBannerClose:hover {
+  background: rgba(30, 41, 59, 0.96);
+  color: #ffffff;
+  border-color: var(--ppsgen-dark-border-accent);
+}
+
+.ppsgen-theme-dark .ppsgenComponentLabelContent {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgen-help-text-title,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] {
+  background: var(--ppsgen-dark-panel-2);
+  color: var(--ppsgen-dark-text);
+  border-left-color: var(--ppsgen-dark-accent);
+}
+
+.ppsgen-theme-dark .ppsgen-help-text-title .dashicons,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] .dashicons,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] strong,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] span,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] p,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] li,
+.ppsgen-theme-dark .ppsgen-help-text[data-show='create_contact_logic_overview'] div {
+  color: inherit;
+}
+
+.ppsgen-theme-dark .ppsgenComponentOptionNoticeUnder {
+  color: var(--ppsgen-dark-accent-soft);
+}
+
+.ppsgen-theme-dark .ppsgenDashContentWrapper,
+.ppsgen-theme-dark .ppsgenObjEditTabs,
+.ppsgen-theme-dark .ppsgenComponentOptionsList,
+.ppsgen-theme-dark .postbox,
+.ppsgen-theme-dark .ppsgenTableWrapper,
+.ppsgen-theme-dark .ppsgenPro-page-content-license,
+.ppsgen-theme-dark #ppsgenProLicenseEditForm {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenObjEditTabs,
+.ppsgen-theme-dark .ppsgenComponentOptionsList,
+.ppsgen-theme-dark .postbox,
+.ppsgen-theme-dark .ppsgenTableList,
+.ppsgen-theme-dark table.widefat,
+.ppsgen-theme-dark .ppsgenselect-results,
+.ppsgen-theme-dark .ppsgenselect-single,
+.ppsgen-theme-dark .ppsgenselect-multiple,
+.ppsgen-theme-dark .ppsgenStatsTrendPanel,
+.ppsgen-theme-dark .ppsgenContactStatsHeroScore,
+.ppsgen-theme-dark .ppsgenContactStatsMiniCard,
+.ppsgen-theme-dark .ppsgenContactStatsBox,
+.ppsgen-theme-dark .ppsgenModuleBlockWrapper,
+.ppsgen-theme-dark .ppsgenTemplatePreview img,
+.ppsgen-theme-dark #ppsgenProLicenseEditForm {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+}
+
+.ppsgen-theme-dark select.ppsgenTableListFilterInput {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 35px;
+  color: #fff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5L8 12l6.5-6.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.ppsgen-theme-dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.ppsgen-theme-dark .ppsgenTableListTopButtonsRight select {
+  color: white !important;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockWrapper {
+  background:
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(16, 26, 47, 0.98) 0%, rgba(20, 31, 53, 0.98) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockWrapper::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockWrapper:hover {
+  border-color: rgba(96, 165, 250, 0.34);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.4);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockWrapperPro {
+  background:
+    radial-gradient(circle at top right, rgba(129, 140, 248, 0.18), transparent 36%),
+    linear-gradient(180deg, rgba(17, 27, 49, 0.98) 0%, rgba(26, 36, 63, 0.98) 100%);
+  border-color: rgba(129, 140, 248, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockDefault {
+  background: rgba(59, 130, 246, 0.16);
+  color: #a8c8ff;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockInfoBadge {
+  background: rgba(59, 130, 246, 0.16);
+  color: #a8c8ff;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockComingSoon {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffd27a;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockIconWrap {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16) 0%, rgba(96, 165, 250, 0.12) 100%);
+  color: #dbe9ff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockTitle {
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockShortDescription {
+  color: #aebee3;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockDescription {
+  color: var(--ppsgen-dark-text-soft);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockFeatureList li {
+  color: #c3d0ee;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockFeatureList li::before {
+  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockFooter {
+  border-top-color: rgba(148, 163, 184, 0.12);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockStatusChipAvailable {
+  background: rgba(59, 130, 246, 0.15);
+  color: #a8c8ff;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockStatusChipActive {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockStatusChipMuted {
+  background: rgba(148, 163, 184, 0.12);
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnActivate,
+.ppsgen-theme-dark .ppsgenModuleBtnActivatePro {
+  background: linear-gradient(135deg, #2957bf 0%, #4f46e5 100%);
+  color: #ffffff;
+  box-shadow: 0 16px 26px rgba(37, 99, 235, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnActivate:hover,
+.ppsgen-theme-dark .ppsgenModuleBtnActivatePro:hover {
+  background: linear-gradient(135deg, #3567d8 0%, #635bff 100%);
+  box-shadow: 0 20px 30px rgba(59, 130, 246, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnDeactivate {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--ppsgen-dark-text);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnDeactivate:hover {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: rgba(96, 165, 250, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenComponentRow,
+.ppsgen-theme-dark .ppsgenClContainer,
+.ppsgen-theme-dark .ppsgenPopupSubmitsWrapperWarning,
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowTitle,
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowData,
+.ppsgen-theme-dark .ppsgenFormSubmitsWrapperWarning,
+.ppsgen-theme-dark .ppsgenProLicenseNotice {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.ppsgen-theme-dark .ppsgenTableList thead,
+.ppsgen-theme-dark table.widefat thead th,
+.ppsgen-theme-dark table.widefat tfoot th {
+  background: var(--ppsgen-dark-panel-3);
+  color: var(--ppsgen-dark-text-strong);
+  border-color: var(--ppsgen-dark-border-soft);
+}
+
+.ppsgen-theme-dark .ppsgenTableList td,
+.ppsgen-theme-dark .ppsgenTableList th,
+.ppsgen-theme-dark table.widefat td,
+.ppsgen-theme-dark table.widefat th {
+  border-color: var(--ppsgen-dark-border-soft);
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .striped > tbody > :nth-child(odd),
+.ppsgen-theme-dark ul.striped > :nth-child(odd),
+.ppsgen-theme-dark .alternate,
+.ppsgen-theme-dark .ppsgenTableList tbody tr:nth-child(odd),
+.ppsgen-theme-dark .ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneA td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.ppsgen-theme-dark .ppsgenTableList tbody tr:nth-child(even),
+.ppsgen-theme-dark .ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneB td {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ppsgen-theme-dark .ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneA:hover td,
+.ppsgen-theme-dark .ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneB:hover td {
+  background: rgba(59, 130, 246, 0.11);
+}
+
+.ppsgen-theme-dark .ppsgenComponentRow input[type='text'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='tel'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='date'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='datetime-local'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='month'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='week'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='time'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='url'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='password'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='range'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='number'],
+.ppsgen-theme-dark .ppsgenComponentRow input[type='email'],
+.ppsgen-theme-dark .ppsgenComponentRow textarea,
+.ppsgen-theme-dark .ppsgenComponentRow select,
+.ppsgen-theme-dark .ppsgenTableListFilterInput,
+.ppsgen-theme-dark input[type='search'],
+.ppsgen-theme-dark input[type='text'],
+.ppsgen-theme-dark input[type='number'],
+.ppsgen-theme-dark input[type='email'],
+.ppsgen-theme-dark textarea,
+.ppsgen-theme-dark select,
+.ppsgen-theme-dark input.ppsgenPro-page-content-license-input,
+.ppsgen-theme-dark .ppsgenTemplateEnterNameWrapper input[type='text'] {
+  background: var(--ppsgen-dark-field);
+  color: #edf3ff;
+  border-color: rgba(96, 165, 250, 0.34);
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenComponentOption textarea:focus,
+.ppsgen-theme-dark .ppsgenComponentOption select:focus,
+.ppsgen-theme-dark input[type='search']:focus,
+.ppsgen-theme-dark input[type='text']:focus,
+.ppsgen-theme-dark input[type='number']:focus,
+.ppsgen-theme-dark input[type='email']:focus,
+.ppsgen-theme-dark textarea:focus,
+.ppsgen-theme-dark select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenComponentOption select,
+.ppsgen-theme-dark .ppsgenComponentRow select,
+.ppsgen-theme-dark select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: right 8px center;
+  color: #edf3ff;
+}
+
+.ppsgen-theme-dark input[type='text']::placeholder,
+.ppsgen-theme-dark input[type='tel']::placeholder,
+.ppsgen-theme-dark input[type='url']::placeholder,
+.ppsgen-theme-dark input[type='password']::placeholder,
+.ppsgen-theme-dark input[type='number']::placeholder,
+.ppsgen-theme-dark input[type='email']::placeholder,
+.ppsgen-theme-dark input[type='search']::placeholder,
+.ppsgen-theme-dark input[type='date']::placeholder,
+.ppsgen-theme-dark input[type='datetime-local']::placeholder,
+.ppsgen-theme-dark input[type='month']::placeholder,
+.ppsgen-theme-dark input[type='week']::placeholder,
+.ppsgen-theme-dark input[type='time']::placeholder,
+.ppsgen-theme-dark textarea::placeholder,
+.ppsgen-theme-dark .ppsgenTableListFilterInput::placeholder,
+.ppsgen-theme-dark .ppsgenselect-search input[type='text'].ppsgenselect-search-input::placeholder {
+  color: #8cb1ff;
+  opacity: 1;
+}
+
+.ppsgen-theme-dark .ppsgenIconBox {
+  background: #0f1a30;
+  color: #e7efff;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenIconSvgBox {
+  background: #0f1a30;
+  color: #e7efff;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenIconBox .dashicons,
+.ppsgen-theme-dark .ppsgenIconSvgBox .dashicons,
+.ppsgen-theme-dark .ppsgenIconBox i,
+.ppsgen-theme-dark .ppsgenIconSvgBox i,
+.ppsgen-theme-dark .ppsgenIconBox span,
+.ppsgen-theme-dark .ppsgenIconSvgBox span {
+  color: #8cb1ff;
+}
+
+.ppsgen-theme-dark .ppsgenAnimOverlayContent {
+  background: #101a2f;
+  color: #d8e0f5;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenAnimOverlayContent h3,
+.ppsgen-theme-dark .ppsgenAnimOverlayContent p,
+.ppsgen-theme-dark .ppsgenAnimOverlayContent span,
+.ppsgen-theme-dark .ppsgenAnimOverlayContent label {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenselect-drop {
+  background: #101a2f;
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenselect-single,
+.ppsgen-theme-dark .ppsgenselect-multiple {
+  background: #0d1528;
+  color: #edf3ff;
+  border-color: rgba(96, 165, 250, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.ppsgen-theme-dark .ppsgenselect-single {
+  padding-right: 30px;
+}
+
+.ppsgen-theme-dark .ppsgenselect-single::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #dbe9ff;
+  transform: translateY(-35%);
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.ppsgen-theme-dark .ppsgenselect-single span,
+.ppsgen-theme-dark .ppsgenselect-multiple span {
+  color: #edf3ff;
+}
+
+.ppsgen-theme-dark .ppsgenselect-single-thumb,
+.ppsgen-theme-dark .ppsgenselect-thumb {
+  background: #16233d;
+}
+
+.ppsgen-theme-dark .ppsgenselect-search {
+  background: #101a2f;
+}
+
+.ppsgen-theme-dark .ppsgenselect-search input[type='text'].ppsgenselect-search-input {
+  background: #0d1528;
+  color: #edf3ff;
+  border-color: rgba(96, 165, 250, 0.34);
+}
+
+.ppsgen-theme-dark .ppsgenselect-search .fappsgen-search {
+  color: #8cb1ff;
+}
+
+.ppsgen-theme-dark .ppsgenselect-results {
+  background: #101a2f;
+}
+
+.ppsgen-theme-dark .ppsgenselect-results li {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenselect-results li.highlighted {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenselect-results li.highlighted .ppsgenselect-price,
+.ppsgen-theme-dark .ppsgenselect-results li.highlighted .ppsgenselect-single-price,
+.ppsgen-theme-dark .ppsgenselect-results li.highlighted del,
+.ppsgen-theme-dark .ppsgenselect-results li.highlighted ins {
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenselect-price,
+.ppsgen-theme-dark .ppsgenselect-single-price,
+.ppsgen-theme-dark .ppsgenselect-price ins,
+.ppsgen-theme-dark .ppsgenselect-single-price ins {
+  color: #cfe0ff;
+}
+
+.ppsgen-theme-dark .ppsgenselect-price del,
+.ppsgen-theme-dark .ppsgenselect-single-price del {
+  color: #90a4c8;
+}
+
+.ppsgen-theme-dark .ppsgenselect-disabled,
+.ppsgen-theme-dark .ppsgenselect-disabled * {
+  color: #7182a5 !important;
+}
+
+.ppsgen-theme-dark .ppsgenObjEditTabButton,
+.ppsgen-theme-dark .ppsgenTableListBtn,
+.ppsgen-theme-dark .button,
+.ppsgen-theme-dark .button-primary,
+.ppsgen-theme-dark .ppsgenModuleBtnActivate,
+.ppsgen-theme-dark .ppsgenModuleBtnActivatePro,
+.ppsgen-theme-dark .ppsgenModuleBtnDeactivate,
+.ppsgen-theme-dark .ppsgenCfbAddFieldBtn,
+.ppsgen-theme-dark .ppsgenCffDeleteBtn,
+.ppsgen-theme-dark .ppsgenCffDuplicateBtn,
+.ppsgen-theme-dark .ppsgenCfbSizeChangerToggle,
+.ppsgen-theme-dark .ppsgenCfbSizeChangerBtn,
+.ppsgen-theme-dark .ppsgenClAddLogicBtn,
+.ppsgen-theme-dark .ppsgenClAddConditionBtn,
+.ppsgen-theme-dark .ppsgenClAddActionBtn,
+.ppsgen-theme-dark .ppsgenClDeleteLogic,
+.ppsgen-theme-dark .ppsgenClDeleteRow,
+.ppsgen-theme-dark .licenseEditSaveBtn,
+.ppsgen-theme-dark .licenseSaveBtn,
+.ppsgen-theme-dark .ppsgenFilterBtn.active,
+.ppsgen-theme-dark .ppsgenTemplateEnterNameWrapper input[type='submit'] {
+  background: var(--ppsgen-dark-btn-bg);
+  border-color: var(--ppsgen-dark-btn-border);
+  color: #ffffff;
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenObjEditTabButton:hover,
+.ppsgen-theme-dark .ppsgenTableListBtn:hover,
+.ppsgen-theme-dark .button:hover,
+.ppsgen-theme-dark .button-primary:hover,
+.ppsgen-theme-dark .ppsgenModuleBtnActivate:hover,
+.ppsgen-theme-dark .ppsgenModuleBtnActivatePro:hover,
+.ppsgen-theme-dark .ppsgenModuleBtnDeactivate:hover,
+.ppsgen-theme-dark .ppsgenCfbAddFieldBtn:hover,
+.ppsgen-theme-dark .ppsgenCffDeleteBtn:hover,
+.ppsgen-theme-dark .ppsgenCffDuplicateBtn:hover,
+.ppsgen-theme-dark .licenseEditSaveBtn:hover,
+.ppsgen-theme-dark .licenseSaveBtn:hover,
+.ppsgen-theme-dark .ppsgenTemplateEnterNameWrapper input[type='submit']:hover {
+  background: var(--ppsgen-dark-btn-bg-hover);
+  color: #ffffff;
+  border-color: rgba(173, 204, 255, 0.34);
+  box-shadow: 0 14px 30px rgba(21, 52, 122, 0.38);
+  transform: translateY(-1px);
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn.button,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn.button-primary,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn.button,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn.button-primary {
+  color: #f8fbff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn:hover,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn.button:hover,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtn.button-primary:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn.button:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtn.button-primary:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.30);
+  box-shadow: none;
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary.button,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary.button-primary {
+  color: #10214f;
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 10px 24px rgba(4, 10, 28, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary:hover,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary.button:hover,
+.ppsgen-theme-dark .ppsgenFeedbackNoticeBtnPrimary.button-primary:hover {
+  color: #10214f;
+  background: #eef4ff;
+  border-color: #eef4ff;
+  box-shadow: 0 14px 28px rgba(4, 10, 28, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary.button,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary.button-primary {
+  color: #0f172a;
+  background: #fcd34d;
+  border-color: #fcd34d;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary.button:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeBtnPrimary.button-primary:hover {
+  color: #0f172a;
+  background: #fde68a;
+  border-color: #fde68a;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.32);
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeClose,
+.ppsgen-theme-dark .ppsgenProOfferNoticeClose {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.ppsgen-theme-dark .ppsgenFeedbackNoticeClose:hover,
+.ppsgen-theme-dark .ppsgenProOfferNoticeClose:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.20);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenDashboardMailConfigProNoticeBtn,
+.ppsgen-theme-dark .ppsgenDashboardMailConfigProNoticeBtn:visited {
+  color: #10214f;
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 10px 24px rgba(4, 10, 28, 0.24);
+  text-decoration: none;
+}
+
+.ppsgen-theme-dark .ppsgenDashboardMailConfigProNoticeBtn:hover,
+.ppsgen-theme-dark .ppsgenDashboardMailConfigProNoticeBtn:focus {
+  color: #10214f;
+  background: #eef4ff;
+  border-color: #eef4ff;
+  box-shadow: 0 14px 28px rgba(4, 10, 28, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenDashboardMailConfigProNoticeBtn .dashicons {
+  color: inherit;
+}
+
+.ppsgen-theme-dark .ppsgenObjEditTabButtonActive,
+.ppsgen-theme-dark li.ppsgenDashNavigationLiSelected > a,
+.ppsgen-theme-dark .ppsgenDashNavigationChildUl > li.ppsgenDashNavigationLiSelectedChild > a,
+.ppsgen-theme-dark li.ppsgenDashNavigationLiParentSelectedWithChild > a {
+  background: linear-gradient(180deg, var(--ppsgen-dark-accent) 0%, var(--ppsgen-dark-accent-2) 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.28);
+}
+
+.ppsgen-theme-dark .notice,
+.ppsgen-theme-dark .notice.notice-info,
+.ppsgen-theme-dark .notice.notice-warning,
+.ppsgen-theme-dark .notice.notice-success,
+.ppsgen-theme-dark .notice.notice-error,
+.ppsgen-theme-dark .licenseRedNotice {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border-color: rgba(148, 163, 184, 0.18);
+  border-radius: var(--ppsgen-dark-radius);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+}
+
+.ppsgen-theme-dark .dashicons,
+.ppsgen-theme-dark h1,
+.ppsgen-theme-dark h2,
+.ppsgen-theme-dark h3,
+.ppsgen-theme-dark h4,
+.ppsgen-theme-dark label,
+.ppsgen-theme-dark p,
+.ppsgen-theme-dark span,
+.ppsgen-theme-dark td,
+.ppsgen-theme-dark th {
+  color: inherit;
+}
+
+.ppsgen-theme-dark a {
+  color: var(--ppsgen-dark-accent-link);
+}
+
+.ppsgen-theme-dark a:hover {
+  color: #bfdcff;
+}
+
+/* Dashboard modules */
+.ppsgen-theme-dark .ppsgenModuleBlockWrapper {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockWrapperPro {
+  background: linear-gradient(180deg, #101a2f 0%, #13203c 100%);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockTitle,
+.ppsgen-theme-dark .ppsgenModuleBlockAvailable,
+.ppsgen-theme-dark .ppsgenDashOverviewTitle,
+.ppsgen-theme-dark .ppsgenDashOverviewSubTitle,
+.ppsgen-theme-dark .ppsgenContactStatsHeroValue,
+.ppsgen-theme-dark .ppsgenContactStatsMiniCard strong,
+.ppsgen-theme-dark .ppsgenContactStatsRow strong,
+.ppsgen-theme-dark .ppsgenEcaChainListStat strong,
+.ppsgen-theme-dark .ppsgenTemplateTitle,
+.ppsgen-theme-dark .ppsgenCffOptionContainerTitle,
+.ppsgen-theme-dark .ppsgenCffOptionContainerSubtitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenModuleBlockShortDescription,
+.ppsgen-theme-dark .ppsgenModuleBlockDescription,
+.ppsgen-theme-dark .ppsgenModuleBlockDefault,
+.ppsgen-theme-dark .overviewContentStyle h2,
+.ppsgen-theme-dark .overviewContentStyle h3,
+.ppsgen-theme-dark .overviewContentStyle h4,
+.ppsgen-theme-dark .overviewContentStyle h5,
+.ppsgen-theme-dark .ppsgenContactStatsHeroLabel,
+.ppsgen-theme-dark .ppsgenContactStatsHeroMeta,
+.ppsgen-theme-dark .ppsgenContactStatsMiniCard span,
+.ppsgen-theme-dark .ppsgenContactStatsRow span,
+.ppsgen-theme-dark .ppsgenEcaChainListStat,
+.ppsgen-theme-dark .ppsgenStatsTrendLegendItem {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .overviewContentStyle {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border: 1px solid var(--ppsgen-dark-border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: var(--ppsgen-dark-shadow);
+}
+
+.ppsgen-theme-dark .overviewContentStyle p,
+.ppsgen-theme-dark .overviewContentStyle li,
+.ppsgen-theme-dark .overviewContentStyle strong,
+.ppsgen-theme-dark .overviewContentStyle span,
+.ppsgen-theme-dark .overviewContentStyle ul {
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .overviewContentStyle hr {
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .overviewContentStyle code,
+.ppsgen-theme-dark .overviewContentStyle pre,
+.ppsgen-theme-dark .overviewContentStyle pre code {
+  background: #0d1528;
+  color: #dbe8ff;
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+/* Dashboard overview */
+.ppsgen-theme-dark .ppsgenOverviewHero {
+  background:
+    radial-gradient(circle at top left, rgba(49, 199, 212, 0.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(16, 26, 47, 0.98) 0%, rgba(20, 31, 53, 0.98) 58%, rgba(15, 35, 55, 0.98) 100%);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewEyebrow {
+  color: #8dc1ff;
+}
+
+.ppsgen-theme-dark .ppsgenOverviewHero h2,
+.ppsgen-theme-dark .ppsgenOverviewFlowCard strong,
+.ppsgen-theme-dark .ppsgenOverviewLegacyNotice h3,
+.ppsgen-theme-dark .ppsgenOverviewCompare h3,
+.ppsgen-theme-dark .ppsgenOverviewFeature h3,
+.ppsgen-theme-dark .ppsgenTourTitle {
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewHero p,
+.ppsgen-theme-dark .ppsgenOverviewFlowCard small,
+.ppsgen-theme-dark .ppsgenOverviewLegacyNotice p,
+.ppsgen-theme-dark .ppsgenOverviewCompare p,
+.ppsgen-theme-dark .ppsgenOverviewFeature p,
+.ppsgen-theme-dark .ppsgenOverviewCompare li,
+.ppsgen-theme-dark .ppsgenTourText {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewFlowCard,
+.ppsgen-theme-dark .ppsgenOverviewLegacyNotice,
+.ppsgen-theme-dark .ppsgenOverviewCompare,
+.ppsgen-theme-dark .ppsgenOverviewFeature {
+  background: rgba(16, 26, 47, 0.96);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewFlowCardActive {
+  background: rgba(20, 34, 61, 0.98);
+  border-color: var(--ppsgen-dark-border-accent);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewFlowCard .dashicons,
+.ppsgen-theme-dark .ppsgenOverviewFeature .dashicons {
+  background: rgba(59, 130, 246, 0.16);
+  color: #8dc1ff;
+}
+
+.ppsgen-theme-dark .ppsgenOverviewFlowLine {
+  background: rgba(96, 165, 250, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewPrimaryBtn {
+  border-color: var(--ppsgen-dark-accent);
+  background: var(--ppsgen-dark-btn-bg);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenOverviewPrimaryBtn:hover {
+  background: var(--ppsgen-dark-btn-bg-hover);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenOverviewSecondaryBtn {
+  background: rgba(30, 41, 59, 0.96);
+  border-color: var(--ppsgen-dark-border);
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenOverviewSecondaryBtn:hover {
+  background: rgba(42, 55, 78, 0.98);
+  border-color: var(--ppsgen-dark-border-accent);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenOverviewCompare li::before {
+  color: #8af0c6;
+}
+
+/* Dashboard tour */
+.ppsgen-theme-dark .ppsgenTourOverlay {
+  background: rgba(3, 8, 18, 0.58);
+}
+
+.ppsgen-theme-dark .ppsgenTourFocus {
+  border-color: #31c7d4;
+  box-shadow: 0 0 0 9999px rgba(3, 8, 18, 0.58), 0 16px 40px rgba(0, 0, 0, 0.36);
+}
+
+.ppsgen-theme-dark .ppsgenTourPopover,
+.ppsgen-theme-dark .ppsgenTourPopover::before {
+  background: var(--ppsgen-dark-panel);
+  border-color: var(--ppsgen-dark-border-accent);
+}
+
+.ppsgen-theme-dark .ppsgenTourPopover {
+  color: var(--ppsgen-dark-text);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.42);
+}
+
+.ppsgen-theme-dark .ppsgenTourCounter {
+  color: #8dc1ff;
+}
+
+.ppsgen-theme-dark .ppsgenTourClose,
+.ppsgen-theme-dark .ppsgenTourBtn {
+  background: rgba(15, 23, 42, 0.92);
+  color: var(--ppsgen-dark-text-strong);
+  border-color: var(--ppsgen-dark-border);
+}
+
+.ppsgen-theme-dark .ppsgenTourClose:hover,
+.ppsgen-theme-dark .ppsgenTourBtn:hover {
+  background: rgba(42, 55, 78, 0.98);
+  color: #ffffff;
+  border-color: var(--ppsgen-dark-border-accent);
+}
+
+.ppsgen-theme-dark .ppsgenTourBtnPrimary {
+  border-color: var(--ppsgen-dark-accent);
+  background: var(--ppsgen-dark-accent);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenTourBtnPrimary:hover {
+  background: #4f7fff;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenTourInlineStartBtn {
+  border-color: var(--ppsgen-dark-accent);
+  background: var(--ppsgen-dark-accent);
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenTourInlineStartBtn:hover,
+.ppsgen-theme-dark .ppsgenTourInlineStartBtn:focus {
+  border-color: #4f7fff;
+  background: #4f7fff;
+  color: #ffffff;
+}
+
+/* Builders: form, popup, template, chain */
+.ppsgen-theme-dark .ppsgenFormFields,
+.ppsgen-theme-dark .ppsgenPopupFields,
+.ppsgen-theme-dark .ppsgenTemplateFields,
+.ppsgen-theme-dark .ppsgenChainFields,
+.ppsgen-theme-dark .ppsgenPopupFieldsLeft,
+.ppsgen-theme-dark .ppsgenPopupFieldsRight,
+.ppsgen-theme-dark .ppsgenTemplateFieldsLeft,
+.ppsgen-theme-dark .ppsgenTemplateFieldsRight,
+.ppsgen-theme-dark .ppsgenChainFieldsLeft,
+.ppsgen-theme-dark .ppsgenChainFieldsRight,
+.ppsgen-theme-dark .ppsgenFormFieldsLeft,
+.ppsgen-theme-dark .ppsgenFormFieldsRight {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenCfbAddFieldLabel,
+.ppsgen-theme-dark .ppsgenCffOptionContainerTitle,
+.ppsgen-theme-dark .ppsgenCffOptionContainerSubtitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenCfbAddFieldList,
+.ppsgen-theme-dark .ppsgenClLogic input,
+.ppsgen-theme-dark .ppsgenClLogic select {
+  background: #0d1528 !important;
+  color: #edf3ff !important;
+  border-color: rgba(96, 165, 250, 0.34) !important;
+}
+
+.ppsgen-theme-dark .ppsgenComponentFieldCodeMirror {
+  background: #121d34;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 14px;
+  padding: 16px;
+  color: #d8e0f5;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenComponentFieldCodeMirror p {
+  color: #c5d2ec;
+}
+
+.ppsgen-theme-dark .ppsgenComponentFieldCodeMirror code {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #0d1528;
+  color: #d8e0f5;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenComponentFieldCodeMirror textarea.ppsgen-custom-code-editor {
+  background: #0d1528;
+  color: #edf3ff;
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenCfbFieldsWrapper,
+.ppsgen-theme-dark .ppsgenChainFieldsWrapper,
+.ppsgen-theme-dark .ppsgenClLogic,
+.ppsgen-theme-dark .ppsgenClConditions,
+.ppsgen-theme-dark .ppsgenClActions,
+.ppsgen-theme-dark .ppsgenStatsTrendBtn {
+  background: #121d34;
+  border-color: rgba(96, 165, 250, 0.22);
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenComponentListTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenClContainer {
+  background: #101a2f;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenClLogic {
+  border-color: rgba(96, 165, 250, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenClConditions,
+.ppsgen-theme-dark .ppsgenClActions {
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgen-cf-col,
+.ppsgen-theme-dark .ppsgen-template-col,
+.ppsgen-theme-dark .ppsgen-chain-col {
+  background: #1f3f8a;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgen-cf-col-active,
+.ppsgen-theme-dark .ppsgen-template-col-active,
+.ppsgen-theme-dark .ppsgen-chain-col-active {
+  background: #2954ba;
+  border-color: #7fb0ff;
+}
+
+.ppsgen-theme-dark .ppsgen-cf-chosen,
+.ppsgen-theme-dark .ppsgen-template-chosen,
+.ppsgen-theme-dark .ppsgen-chain-chosen {
+  background: rgba(96, 165, 250, 0.18);
+}
+
+/* Stats and submits */
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowDataField,
+.ppsgen-theme-dark .ppsgenPopupStatsWrapper,
+.ppsgen-theme-dark .ppsgenPopupStatsRow,
+.ppsgen-theme-dark .ppsgenFormSubmitsRowDataField,
+.ppsgen-theme-dark .ppsgenFormSubmitsRowTitle,
+.ppsgen-theme-dark .ppsgenFormSubmitsRowData,
+.ppsgen-theme-dark .ppsgenFormStatsWrapper,
+.ppsgen-theme-dark .ppsgenTemplateStatsWrapper,
+.ppsgen-theme-dark .ppsgenChainStatsWrapper,
+.ppsgen-theme-dark .ppsgenEcaStatsWrapper,
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowTitle,
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowData,
+.ppsgen-theme-dark .ppsgenTemplateSubmitsWrapperWarning,
+.ppsgen-theme-dark .ppsgenTemplateSubmitsRowTitle,
+.ppsgen-theme-dark .ppsgenTemplateSubmitsRowData,
+.ppsgen-theme-dark .ppsgenChainSubmitsWrapperWarning,
+.ppsgen-theme-dark .ppsgenChainSubmitsRowTitle,
+.ppsgen-theme-dark .ppsgenChainSubmitsRowData {
+  background: #141f35;
+  color: #d8e0f5;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+}
+
+.ppsgen-theme-dark .ppsgenPopupStatsRow .dashicons,
+.ppsgen-theme-dark .ppsgenFormStatsRow .dashicons,
+.ppsgen-theme-dark .ppsgenVerifiedIcon,
+.ppsgen-theme-dark .ppsgenStatsTrendColorPrimary {
+  color: #7fb0ff;
+}
+
+.ppsgen-theme-dark .ppsgenStatsTrendBtn {
+  background: #0d1528;
+  color: #d8e0f5;
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenStatsTrendBtn:hover {
+  background: #182742;
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenStatsTrendBtnActive {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* Contact page */
+.ppsgen-theme-dark .ppsgenContactEngagementPill,
+.ppsgen-theme-dark .ppsgenContactEditHeaderMeta {
+  background: #131e34;
+  color: #d8e0f5;
+  border-color: rgba(96, 165, 250, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementGroup {
+  background: var(--ppsgen-dark-panel);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementGroupActivity {
+  background: linear-gradient(180deg, rgba(16, 26, 47, 0.98) 0%, rgba(20, 31, 53, 0.98) 100%);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementGroupLabel {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementMetricTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementMetricValue {
+  background: rgba(148, 163, 184, 0.1);
+  color: #d8e0f5;
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementMetricValue.is-total {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  border-color: rgba(96, 165, 250, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementMetricValue.is-suspicious {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementMetricValue.is-live {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailIncomingPill.is-alert {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailIncomingPill.is-clear {
+  background: #16233d;
+  color: #cfe0ff;
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailIncomingPill.is-disabled,
+.ppsgen-theme-dark .ppsgenContactEmailIncomingPill.is-secondary {
+  background: var(--ppsgen-dark-panel-3);
+  color: var(--ppsgen-dark-text-muted);
+  border-color: var(--ppsgen-dark-border);
+}
+
+.ppsgen-theme-dark .ppsgenContactIncomingIndicatorBadge {
+  background: rgba(16, 185, 129, 0.18);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.26);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalDialog {
+  background: #111827;
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.55);
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalTitle {
+  color: #f8fafc;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalDesc,
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalMetaLabel,
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalClose {
+  color: #94a3b8;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalClose:hover {
+  color: #f8fafc;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsModalMeta {
+  background: rgba(15, 23, 42, 0.72);
+  color: #e2e8f0;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsFieldLabel {
+  color: #e2e8f0;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsEmpty {
+  background: rgba(146, 64, 14, 0.22);
+  color: #fdba74;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsSubmit.is-delete-mode {
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
+.ppsgen-theme-dark .ppsgenBulkAssignTagsSubmit.is-delete-mode:hover {
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #fecaca;
+}
+
+.ppsgen-theme-dark .ppsgenContactEditHeaderTag {
+  background: var(--ppsgen-dark-field);
+  color: var(--ppsgen-dark-accent-soft);
+  border-color: rgba(96, 165, 250, 0.22);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactEditHeaderEmail {
+  color: #a8b4ce;
+}
+
+.ppsgen-theme-dark .ppsgenContactEditHeaderActivity {
+  background: #16233d;
+  color: #cfe0ff;
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard {
+  background: linear-gradient(180deg, #101a2f 0%, #13203c 100%);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCardTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricLabel {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCardIcon {
+  background: rgba(96, 165, 250, 0.12);
+  color: #9dc5ff;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-summary .ppsgenContactStatsCardIcon {
+  background: rgba(6, 182, 212, 0.14);
+  color: #7dd3fc;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-open .ppsgenContactStatsCardIcon {
+  background: rgba(139, 92, 246, 0.16);
+  color: #c4b5fd;
+  box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-click .ppsgenContactStatsCardIcon {
+  background: rgba(16, 185, 129, 0.14);
+  color: #86efac;
+  box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-log .ppsgenContactStatsCardIcon {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffd27a;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-form .ppsgenContactStatsCardIcon {
+  background: rgba(249, 115, 22, 0.16);
+  color: #fdba74;
+  box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-mailbox .ppsgenContactStatsCardIcon {
+  background: rgba(20, 184, 166, 0.14);
+  color: #99f6e4;
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsCard.is-woo .ppsgenContactStatsCardIcon {
+  background: rgba(34, 197, 94, 0.16);
+  color: #86efac;
+  box-shadow: inset 0 0 0 1px rgba(74, 222, 128, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue {
+  background: rgba(148, 163, 184, 0.1);
+  color: #d8e0f5;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-primary {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-success {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-warning {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffd27a;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-danger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-muted,
+.ppsgen-theme-dark .ppsgenContactStatsMetricValue.is-neutral {
+  background: rgba(148, 163, 184, 0.14);
+  color: #d8e0f5;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenContactStatsRow {
+  border-bottom-color: rgba(148, 163, 184, 0.12);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignsEmpty,
+.ppsgen-theme-dark .ppsgenContactCampaignCard,
+.ppsgen-theme-dark .ppsgenContactCampaignPanel,
+.ppsgen-theme-dark .ppsgenContactEmailThreadWrap,
+.ppsgen-theme-dark .ppsgenContactEmailComposer,
+.ppsgen-theme-dark .ppsgenContactLogsEmpty,
+.ppsgen-theme-dark .ppsgenContactLogsBubble,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryPanel,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem,
+.ppsgen-theme-dark .ppsgenContactEmailModalDialog {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow);
+}
+
+.ppsgen-theme-dark .ppsgenContactLogsRowSystem .ppsgenContactLogsBubble {
+  background: linear-gradient(180deg, #101a2f 0%, #13203c 100%);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactLogsRowUser .ppsgenContactLogsBubble,
+.ppsgen-theme-dark .ppsgenContactEmailThreadRowIncoming .ppsgenContactEmailThreadCard {
+  background: linear-gradient(180deg, #11223d 0%, #163055 100%);
+  border-color: rgba(96, 165, 250, 0.26);
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadCard {
+  background: linear-gradient(180deg, #101a2f 0%, #13203c 100%);
+  color: #d8e0f5;
+  border-color: rgba(148, 163, 184, 0.16);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignCardStats,
+.ppsgen-theme-dark .ppsgenContactEmailModalTop {
+  border-top-color: rgba(148, 163, 184, 0.12);
+  border-bottom-color: rgba(148, 163, 184, 0.12);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPill,
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue,
+.ppsgen-theme-dark .ppsgenContactCampaignSignalPill,
+.ppsgen-theme-dark .ppsgenContactEmailThreadDirection,
+.ppsgen-theme-dark .ppsgenContactLogsBadge,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryBadge {
+  background: var(--ppsgen-dark-panel-3);
+  color: #cfe0ff;
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignCard {
+  background:
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(16, 26, 47, 0.98) 0%, rgba(20, 31, 53, 0.98) 100%);
+  border-color: rgba(148, 163, 184, 0.16);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanel {
+  background: linear-gradient(180deg, rgba(17, 27, 49, 0.98) 0%, rgba(21, 33, 57, 0.98) 100%);
+  border-color: rgba(148, 163, 184, 0.14);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignCardEyebrow {
+  background: rgba(79, 70, 229, 0.18);
+  color: #cbd5ff;
+  box-shadow: inset 0 0 0 1px rgba(129, 140, 248, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPill.is-id {
+  background: rgba(79, 70, 229, 0.16);
+  color: #cbd5ff;
+  border-color: rgba(129, 140, 248, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPill.is-status {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanelIcon {
+  background: rgba(79, 70, 229, 0.16);
+  color: #dbe4ff;
+  box-shadow: inset 0 0 0 1px rgba(129, 140, 248, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanel.is-flow .ppsgenContactCampaignPanelIcon {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanel.is-open .ppsgenContactCampaignPanelIcon {
+  background: rgba(139, 92, 246, 0.18);
+  color: #ddd6fe;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanel.is-click .ppsgenContactCampaignPanelIcon {
+  background: rgba(16, 185, 129, 0.18);
+  color: #a7f3d0;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanel.is-log .ppsgenContactCampaignPanelIcon {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fde68a;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignPanelTitle,
+.ppsgen-theme-dark .ppsgenContactCampaignCardTitle a,
+.ppsgen-theme-dark .ppsgenContactCampaignCardTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricLabel {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-primary {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  border-color: rgba(96, 165, 250, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-success {
+  background: rgba(16, 185, 129, 0.18);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-warning {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fde68a;
+  border-color: rgba(245, 158, 11, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-danger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fecaca;
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-neutral {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignMetricValue.is-text {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignSignalPill.is-total {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  border-color: rgba(96, 165, 250, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignSignalPill.is-suspicious {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fecaca;
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignSignalPill.is-live {
+  background: rgba(16, 185, 129, 0.18);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem * {
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem .dashicons,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem svg,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryItem i {
+  color: var(--ppsgen-dark-accent-soft);
+  fill: currentColor;
+}
+
+.ppsgen-theme-dark .ppsgenContactFieldHistoryTime {
+  color: var(--ppsgen-dark-text-muted);
+}
+
+.ppsgen-theme-dark .ppsgenContactFieldHistoryText {
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .ppsgenContactFieldHistoryText strong,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryTop strong {
+  color: var(--ppsgen-dark-text-strong);
+}
+
+.ppsgen-theme-dark .ppsgenContactLogsRowUser .ppsgenContactLogsBadge {
+  background: #1b3158;
+  color: #d9e8ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadState {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadCard.is-unseen .ppsgenContactEmailThreadState {
+  background: rgba(245, 158, 11, 0.16);
+  color: #ffd27a;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadSubject,
+.ppsgen-theme-dark .ppsgenContactLogsTitle,
+.ppsgen-theme-dark .ppsgenContactEmailModalTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadMeta,
+.ppsgen-theme-dark .ppsgenContactLogsText,
+.ppsgen-theme-dark .ppsgenContactLogsTime,
+.ppsgen-theme-dark .ppsgenContactEmailComposerField label,
+.ppsgen-theme-dark .ppsgenContactEmailComposerHint {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailThreadLoader {
+  color: #c2d1f5;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailComposerField input,
+.ppsgen-theme-dark .ppsgenContactEmailComposerField select,
+.ppsgen-theme-dark .ppsgenContactEmailModalClose,
+.ppsgen-theme-dark .ppsgenContactCampaignAction,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryBtn {
+  background: var(--ppsgen-dark-field);
+  color: #edf3ff;
+  border-color: var(--ppsgen-dark-border-accent);
+  border-radius: var(--ppsgen-dark-radius-sm);
+  box-shadow: none;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignAction:hover,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryBtn:hover,
+.ppsgen-theme-dark .ppsgenContactFieldHistoryBtnActive,
+.ppsgen-theme-dark .ppsgenContactEmailModalClose:hover {
+  background: var(--ppsgen-dark-field-hover);
+  color: #ffffff;
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignActionDanger {
+  background: rgba(220, 38, 38, 0.14);
+  color: #ffb4b4;
+  border-color: rgba(239, 68, 68, 0.24);
+}
+
+.ppsgen-theme-dark .ppsgenContactCampaignActionDanger:hover {
+  background: rgba(220, 38, 38, 0.22);
+  color: #ffd1d1;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailComposerEditor .wp-editor-wrap {
+  border-color: rgba(148, 163, 184, 0.16);
+  background: #0d1528;
+}
+
+.ppsgen-theme-dark .ppsgenContactEmailModalFrame {
+  background: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenContactLogsTimelineInner::before {
+  background: linear-gradient(180deg, #1d365e 0%, #2d4d85 100%);
+}
+
+.ppsgen-theme-dark .ppsgenContactLogsRow::before {
+  background: #7b90ff;
+  border-color: #101a2f;
+  box-shadow: 0 0 0 1px #35528a;
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementScore {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementScore.ppsgenLeadWarm {
+  background: rgba(245, 158, 11, 0.16);
+  color: #ffd27a;
+}
+
+.ppsgen-theme-dark .ppsgenContactEngagementScore.ppsgenLeadCold,
+.ppsgen-theme-dark .ppsgenContactEngagementScore.ppsgenLeadInactive,
+.ppsgen-theme-dark .ppsgenContactEngagementScore.ppsgenLeadUnsubscribed {
+  background: rgba(148, 163, 184, 0.14);
+  color: #c7d2e8;
+}
+
+/* Chain list and list cards */
+.ppsgen-theme-dark .ppsgenEcaChainListStat,
+.ppsgen-theme-dark .ppsgenFormListStat,
+.ppsgen-theme-dark .ppsgenPopupListStat {
+  background: var(--ppsgen-dark-panel-3);
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .ppsgenEcaStatsWrapper,
+.ppsgen-theme-dark .ppsgenChainStepStatsGroup,
+.ppsgen-theme-dark .ppsgenChainEditHeaderMeta,
+.ppsgen-theme-dark .ppsgenChainContactsStat {
+  background: var(--ppsgen-dark-panel);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+}
+
+.ppsgen-theme-dark .ppsgenChainStepStatsGroup {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCard {
+  background: linear-gradient(180deg, #101a2f 0%, #13203c 100%);
+  color: var(--ppsgen-dark-text);
+  border-color: var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCardTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricLabel {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCardIcon {
+  background: rgba(96, 165, 250, 0.12);
+  color: #9dc5ff;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCard.is-delivery .ppsgenChainStatsCardIcon {
+  background: rgba(6, 182, 212, 0.14);
+  color: #7dd3fc;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCard.is-open .ppsgenChainStatsCardIcon {
+  background: rgba(139, 92, 246, 0.16);
+  color: #c4b5fd;
+  box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCard.is-click .ppsgenChainStatsCardIcon {
+  background: rgba(16, 185, 129, 0.14);
+  color: #86efac;
+  box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsCard.is-danger .ppsgenChainStatsCardIcon {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue {
+  background: rgba(96, 165, 250, 0.14);
+  color: #d9e8ff;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.16);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-primary {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-success {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-warning {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffd27a;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-danger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  box-shadow: inset 0 0 0 1px rgba(248, 113, 113, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-muted,
+.ppsgen-theme-dark .ppsgenChainStatsMetricValue.is-neutral {
+  background: rgba(148, 163, 184, 0.14);
+  color: #d8e0f5;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenChainStepStatsGroupTitle,
+.ppsgen-theme-dark .ppsgenChainStepStatValue,
+.ppsgen-theme-dark .ppsgenEcaStatsRow,
+.ppsgen-theme-dark .ppsgenChainEditHeaderMetaValue {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenChainEditHeaderMetaKey {
+  color: #9aa8c8;
+}
+
+.ppsgen-theme-dark .ppsgenChainEditHeaderMetaToggle {
+  background: var(--ppsgen-dark-field);
+  color: var(--ppsgen-dark-text-strong);
+  border-color: var(--ppsgen-dark-border-accent);
+}
+
+.ppsgen-theme-dark .ppsgenChainEditHeaderMetaToggle .dashicons {
+  color: #ffffff;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStat {
+  color: #d8e0f5;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatTitle {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatValue {
+  background: rgba(148, 163, 184, 0.1);
+  color: #d8e0f5;
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatValue.is-total {
+  background: rgba(37, 99, 235, 0.18);
+  color: #bfdbfe;
+  border-color: rgba(96, 165, 250, 0.22);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatValue.is-suspicious {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatValue.is-live {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenChainStepStatCard {
+  background: var(--ppsgen-dark-panel);
+  color: #e7efff;
+  border: 1px solid var(--ppsgen-dark-border);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  border-radius: var(--ppsgen-dark-radius-sm);
+}
+
+.ppsgen-theme-dark .ppsgenChainStepStatCard strong,
+.ppsgen-theme-dark .ppsgenChainStepStatCard span,
+.ppsgen-theme-dark .ppsgenChainStepStatCard div {
+  color: inherit;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsIntro {
+  color: #8cb1ff;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsAction {
+  background: var(--ppsgen-dark-field);
+  color: var(--ppsgen-dark-text);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 999px;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsAction:hover {
+  background: var(--ppsgen-dark-field-hover);
+  color: #ffffff;
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsActionDanger {
+  background: var(--ppsgen-dark-danger-bg);
+  color: var(--ppsgen-dark-danger-text);
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsActionDanger:hover {
+  background: var(--ppsgen-dark-danger-bg-hover);
+  color: var(--ppsgen-dark-danger-text-hover);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.ppsgen-theme-dark .ppsgenChainContactsStatScore {
+  background: rgba(16, 185, 129, 0.16);
+  color: #8af0c6;
+}
+
+.ppsgen-theme-dark .ppsgenFormListNameLink,
+.ppsgen-theme-dark .ppsgenPopupListNameLink,
+.ppsgen-theme-dark .ppsgenEcaChainListNameLink {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenFormListStat strong,
+.ppsgen-theme-dark .ppsgenPopupListStat strong {
+  color: #eef4ff;
+}
+
+/* Templates */
+.ppsgen-theme-dark .ppsgenTemplatePreview img {
+  background: #0d1528;
+}
+
+.ppsgen-theme-dark .ppsgenFilterBtn {
+  border-color: rgba(148, 163, 184, 0.22);
+  color: var(--ppsgen-dark-text);
+  background: var(--ppsgen-dark-field);
+  border-radius: 999px;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ppsgen-theme-dark .ppsgenFilterBtn:hover {
+  background: var(--ppsgen-dark-field-hover);
+  color: #ffffff;
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: var(--ppsgen-dark-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.ppsgen-theme-dark .ppsgenTableList .ppsgenTableListBtnCenter:hover,
+.ppsgen-theme-dark table.widefat .ppsgenTableListBtnCenter:hover {
+  transform: translate(-50%, 0);
+}
+
+.ppsgen-theme-dark .ppsgenTemplateCard:hover img,
+.ppsgen-theme-dark .ppsgenTemplateCard.templateActive img {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+}
+
+/* PRO: conditional logic + license */
+.ppsgen-theme-dark .edit-global-license-row {
+  background: #141f35;
+}
+
+.ppsgen-theme-dark .ppsgenPro-page-content-license-title,
+.ppsgen-theme-dark .ppsgenPro-page-content-license-edit-title-row-text,
+.ppsgen-theme-dark .ppsgenPro-page-content-license-label,
+.ppsgen-theme-dark .edit-global-license-label {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenPro-page-content-license,
+.ppsgen-theme-dark .ppsgenPro-page-content-license-edit-title-row {
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.ppsgen-theme-dark .ppsgenProLicenseNotice a {
+  color: #8dc1ff;
+}
+
+.ppsgen-theme-dark .ppsgenClOperator,
+.ppsgen-theme-dark .ppsgenClOperatorBetween,
+.ppsgen-theme-dark .ppsgenPopupSubmitsRowDataFieldKey,
+.ppsgen-theme-dark .ppsgenFormSubmitsRowDataFieldKey {
+  color: #eef4ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactLookupDropdown {
+  background: #1f252f;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.ppsgen-theme-dark .ppsgenContactLookupResult,
+.ppsgen-theme-dark .ppsgenContactLookupMessage {
+  color: #f5f7fa;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.ppsgen-theme-dark .ppsgenContactLookupResult:hover,
+.ppsgen-theme-dark .ppsgenContactLookupResult:focus {
+  background: rgba(77, 163, 255, 0.16);
+  color: #8ec5ff;
+}
+
+.ppsgen-theme-dark .ppsgenContactLookupMessage.is-loading,
+.ppsgen-theme-dark .ppsgenContactLookupMessage.is-empty {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.ppsgen-theme-dark .ppsgenContactLookupMessage.is-error {
+  color: #ff8f8f;
+}
+
+.ppsgen-theme-dark .ppsgenProLicenseStateNotice {
+  border-color: #8a6a1f;
+  background: #2a2312;
+  color: #f3e3bd;
+}
+
+.ppsgen-theme-dark .ppsgenProLicenseStateNotice-expired {
+  border-color: #7a3434;
+  background: #2b1517;
+  color: #f4cfcf;
+}
+
+.ppsgen-theme-dark .ppsgenTemplateEmpty {
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+/* ---- PRO banners (.ppsgenProOfferNotice), premium look ----
+   Same look as the PRO template offer (modules/template backend.list.css): deep ink card with soft aurora light,
+   a faint grid, a gradient hairline, gold price and one bright call to action. Placed last so it wins over the
+   older banner rules above and in ppsgen.backend.css. */
+.ppsgenProOfferNotice {
+  /* width: 100% plus the padding must not overflow its box (the Explore PRO dialog on the modules screen) */
+  box-sizing: border-box;
+  gap: 36px;
+  align-items: center;
+  padding: 40px 44px;
+  border: 0;
+  border-radius: 28px;
+  background:
+    radial-gradient(620px 360px at 0% 0%, rgba(124, 58, 237, 0.34), transparent 62%),
+    radial-gradient(560px 340px at 100% 100%, rgba(14, 165, 233, 0.24), transparent 62%),
+    radial-gradient(380px 240px at 92% 0%, rgba(236, 72, 153, 0.14), transparent 62%),
+    linear-gradient(180deg, #0c1126 0%, #070a17 100%);
+  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #e6e9f5;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* a faint grid fading out from the top left, and a gradient hairline around the card */
+.ppsgenProOfferNotice::before,
+.ppsgenProOfferNotice::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ppsgenProOfferNotice::before {
+  background: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse at 20% 0%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 20% 0%, #000 0%, transparent 70%);
+}
+
+.ppsgenProOfferNotice::after {
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.75), rgba(255, 255, 255, 0.06) 42%, rgba(56, 189, 248, 0.55));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeHero,
+.ppsgenProOfferNotice .ppsgenProOfferNoticeFeatures {
+  min-width: 0;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeHero {
+  align-items: flex-start;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid rgba(167, 139, 250, 0.38);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.2), rgba(56, 189, 248, 0.12));
+  color: #d6ccff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeEyebrow::before {
+  content: '\2605';
+  color: #fbbf24;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBadges {
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBadge {
+  min-height: 26px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3c8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeTitle {
+  margin: 16px 0 12px;
+  background: linear-gradient(180deg, #ffffff 35%, #c7d2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeText {
+  margin-bottom: 22px;
+  color: #aab3cf;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* label, price and the renewal line read as one glass price card */
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCouponLabel,
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCoupon,
+.ppsgenProOfferNotice .ppsgenProOfferNoticeSubtext {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 440px;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: none;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCouponLabel {
+  padding: 16px 20px 2px;
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  color: #94a3c8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCoupon {
+  display: block;
+  min-height: 0;
+  padding: 0 20px;
+  border-top: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  color: #94a3c8;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCoupon strong {
+  background: linear-gradient(90deg, #fde68a, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeSubtext {
+  padding: 2px 20px 16px;
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  color: #8b95b5;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeActions {
+  width: 100%;
+  max-width: 440px;
+  margin-top: 16px;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtn {
+  justify-content: center;
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+  color: #dfe4f5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtn:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtnPrimary {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 100%;
+  min-height: 54px;
+  border: 0;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 45%, #0ea5e9 100%);
+  box-shadow: 0 14px 34px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 15px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* a slow sheen across the button */
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtnPrimary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: ppsgenProNoticeSheen 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ppsgenProNoticeSheen {
+  0%,
+  55% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtnPrimary:hover {
+  border: 0;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 45%, #0ea5e9 100%);
+  box-shadow: 0 18px 44px rgba(99, 102, 241, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeBtn .dashicons {
+  color: inherit;
+}
+
+/* what PRO adds: a glass panel with gradient checks */
+.ppsgenProOfferNotice .ppsgenProOfferNoticeFeatures {
+  padding: 26px 26px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35), 0 0 70px rgba(124, 58, 237, 0.18);
+  backdrop-filter: none;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeFeaturesTitle {
+  margin-bottom: 16px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeFeatureList li {
+  margin-bottom: 12px;
+  padding-left: 34px;
+  color: #dfe4f5;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeFeatureList li::before {
+  content: '\2713';
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #0ea5e9);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 22px;
+  text-align: center;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCode {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeCode code {
+  background: none;
+  color: #c7d2fe;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 12px;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeClose {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #aab3cf;
+}
+
+.ppsgenProOfferNotice .ppsgenProOfferNoticeClose:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.ppsgenProOfferNotice .ppsgenSettingsProAlready {
+  max-width: 440px;
+  color: #94a3c8;
+}
+
+.ppsgenProOfferNotice .ppsgenSettingsProAlready strong {
+  color: #dfe4f5;
+}
+
+@media screen and (max-width: 782px) {
+  .ppsgenProOfferNotice {
+    gap: 22px;
+    padding: 28px 20px 22px;
+    border-radius: 22px;
+  }
+
+  .ppsgenProOfferNotice .ppsgenProOfferNoticeTitle {
+    font-size: 27px;
+  }
+
+  .ppsgenProOfferNotice .ppsgenProOfferNoticeFeatures {
+    padding: 20px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ppsgenProOfferNotice .ppsgenProOfferNoticeBtnPrimary::after {
+    animation: none;
+  }
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnOverview {
+  border-color: rgba(148, 163, 184, 0.22);
+  background: transparent;
+  color: var(--ppsgen-dark-text);
+}
+
+.ppsgen-theme-dark .ppsgenModuleBtnOverview:hover,
+.ppsgen-theme-dark .ppsgenModuleBtnOverview:focus {
+  border-color: rgba(96, 165, 250, 0.4);
+  background: rgba(148, 163, 184, 0.1);
+  color: #ffffff;
+}

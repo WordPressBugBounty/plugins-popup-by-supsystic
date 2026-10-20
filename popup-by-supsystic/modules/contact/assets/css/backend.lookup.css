@@ -1,0 +1,68 @@
+.ppsgenContactLookup {
+  position: relative;
+  min-width: 180px;
+  z-index: 20;
+}
+
+.ppsgenContactLookupSearch {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ppsgenContactLookupDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #dcdcde;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.ppsgenContactLookupResults {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.ppsgenContactLookupResult,
+.ppsgenContactLookupMessage {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #f0f0f1;
+  color: #1d2327;
+  box-sizing: border-box;
+}
+
+.ppsgenContactLookupResult:last-child,
+.ppsgenContactLookupMessage:last-child {
+  border-bottom: 0;
+}
+
+.ppsgenContactLookupResult {
+  cursor: pointer;
+}
+
+.ppsgenContactLookupResult:hover,
+.ppsgenContactLookupResult:focus {
+  background: #f0f6fc;
+  color: #0a4b78;
+  outline: none;
+}
+
+.ppsgenContactLookupMessage.is-loading,
+.ppsgenContactLookupMessage.is-empty {
+  color: #50575e;
+}
+
+.ppsgenContactLookupMessage.is-error {
+  color: #b32d2e;
+}

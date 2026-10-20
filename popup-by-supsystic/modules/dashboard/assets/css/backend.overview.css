@@ -1,0 +1,281 @@
+.ppsgenOverviewPage {
+  display: grid;
+  gap: 24px;
+}
+
+.ppsgenOverviewHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 28px;
+  align-items: stretch;
+  min-height: 330px;
+  padding: 30px;
+  border: 1px solid rgba(39, 73, 143, 0.12);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 52%, #e8fbff 100%);
+  box-shadow: 0 14px 34px rgba(21, 44, 105, 0.10);
+}
+
+.ppsgenOverviewHeroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+}
+
+.ppsgenOverviewEyebrow {
+  margin-bottom: 12px;
+  color: #1f5eff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ppsgenOverviewHero h2 {
+  margin: 0 0 14px;
+  color: #10214d;
+  font-size: 34px;
+  line-height: 1.12;
+}
+
+.ppsgenOverviewHero p {
+  max-width: 680px;
+  margin: 0;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.ppsgenOverviewActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ppsgenOverviewPrimaryBtn,
+.ppsgenOverviewSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(31, 94, 255, 0.26);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.ppsgenOverviewPrimaryBtn {
+  background: #1f5eff;
+  color: #ffffff;
+}
+
+.ppsgenOverviewSecondaryBtn {
+  background: #ffffff;
+  color: #1f3f98;
+}
+
+.ppsgenOverviewPrimaryBtn:hover {
+  background: #174bd0;
+  color: #ffffff;
+}
+
+.ppsgenOverviewSecondaryBtn:hover {
+  background: #eef4ff;
+  color: #17337e;
+}
+
+.ppsgenOverviewPrimaryBtn .dashicons,
+.ppsgenOverviewSecondaryBtn .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.ppsgenOverviewHeroPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ppsgenOverviewFlowCard {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 3px 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(39, 73, 143, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 22px rgba(21, 44, 105, 0.08);
+}
+
+.ppsgenOverviewFlowCardActive {
+  border-color: rgba(31, 94, 255, 0.26);
+  background: #ffffff;
+}
+
+.ppsgenOverviewFlowCard .dashicons {
+  grid-row: span 2;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #eef4ff;
+  color: #1f5eff;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.ppsgenOverviewFlowCard strong {
+  color: #172554;
+  font-size: 14px;
+}
+
+.ppsgenOverviewFlowCard small {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.ppsgenOverviewFlowLine {
+  width: 2px;
+  height: 14px;
+  margin-left: 32px;
+  background: rgba(31, 94, 255, 0.20);
+}
+
+.ppsgenOverviewLegacyNotice,
+.ppsgenOverviewCompare {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 22px;
+  border: 1px solid rgba(31, 94, 255, 0.16);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(21, 44, 105, 0.08);
+}
+
+.ppsgenOverviewLegacyNotice h3,
+.ppsgenOverviewCompare h3,
+.ppsgenOverviewFeature h3 {
+  margin: 0 0 8px;
+  color: #172554;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.ppsgenOverviewLegacyNotice p,
+.ppsgenOverviewCompare p,
+.ppsgenOverviewFeature p {
+  margin: 0;
+  color: #52607a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.ppsgenOverviewFeatureGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ppsgenOverviewFeature {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid rgba(39, 73, 143, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(21, 44, 105, 0.07);
+}
+
+.ppsgenOverviewFeature .dashicons {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background: #eef4ff;
+  color: #1f5eff;
+  font-size: 22px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.ppsgenOverviewCompare {
+  align-items: flex-start;
+}
+
+.ppsgenOverviewCompare > div {
+  max-width: 520px;
+}
+
+.ppsgenOverviewCompare ul {
+  display: grid;
+  gap: 8px;
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ppsgenOverviewCompare li {
+  position: relative;
+  margin: 0;
+  padding-left: 22px;
+  color: #26344f;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.ppsgenOverviewCompare li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #1f8f64;
+  font-weight: 900;
+}
+
+@media (max-width: 1280px) {
+  .ppsgenOverviewFeatureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .ppsgenOverviewHero,
+  .ppsgenOverviewCompare,
+  .ppsgenOverviewLegacyNotice {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ppsgenOverviewHero {
+    display: grid;
+  }
+}
+
+@media (max-width: 640px) {
+  .ppsgenOverviewHero {
+    padding: 22px;
+  }
+
+  .ppsgenOverviewHero h2 {
+    font-size: 26px;
+  }
+
+  .ppsgenOverviewFeatureGrid {
+    grid-template-columns: 1fr;
+  }
+}

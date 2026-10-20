@@ -1,400 +1,217 @@
 <?php
 
-class popupControllerPps extends controllerPps
-{
-  private $_prevPopupId = 0;
-  public function createFromTpl()
-  {
-    $res = new responsePps();
-    if (($id = $this->getModel()->createFromTpl(reqPps::get('post'))) != false) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
-      $res->addData('edit_link', $this->getModule()->getEditLink($id));
-    } else {
-      $res->pushError($this->getModel()->getErrors());
-    }
-    return $res->ajaxExec();
-  }
-  protected function _prepareListForTbl($data)
-  {
-    if (!empty($data)) {
-      foreach ($data as $i => $v) {
-        $data[$i]['label'] = '<a class="" href="' . $this->getModule()->getEditLink($data[$i]['id']) . '">' . $data[$i]['label'] . '&nbsp;<i class="fa fa-fw fa-pencil" style="margin-top: 2px;"></i></a>';
-        $conversion = 0;
-        if (!empty($data[$i]['unique_views']) && !empty($data[$i]['actions'])) {
-          $conversion = number_format((int) $data[$i]['actions'] / (int) $data[$i]['unique_views'], 3);
-        }
-        $data[$i]['conversion'] = $conversion;
-        $data[$i]['active'] = $data[$i]['active'] ? '<span class="alert alert-success">' . __('Yes', PPS_LANG_CODE) . '</span>' : '<span class="alert alert-danger">' . __('No', PPS_LANG_CODE) . '</span>';
+if (!defined('ABSPATH')) {
+  exit();
+}
 
-        //$data[ $i ]['action'] = '<a class="button" style="margin-right: 10px;" href="'. $this->getModule()->getEditLink($data[ $i ]['id']). '"><i class="fa fa-fw fa-2x fa-pencil" style="margin-top: 2px;"></i></a>';
-        //$data[ $i ]['action'] .= '<button href="#" onclick="ppsPopupRemoveRow('. $data[ $i ]['id']. ', this); return false;" title="'. __('Remove', PPS_LANG_CODE). '" class="button"><i class="fa fa-fw fa-2x fa-trash-o" style="margin-top: 5px;"></i></button>';
+class PopupControllerPpsgen extends BaseControllerPpsgen
+{
+  public function editPopup()
+  {
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $data = $this->getFrame()->core('helper')->prepareRequestPayloadData();
+
+    $obj_id = $this->getFrame()->core('request')->getVar('obj_id', 'post');
+    ppsgen_save_locked_pro_item_status('popup', $obj_id, $data['popup']['active'] ?? null);
+    $model = $this->getModel();
+    $res = $model->editPopup($data, $obj_id);
+    $resModel = $model->getStatus();
+    $resModelMsg = $model->getMessage();
+    if ($resModel == 'error') {
+      wp_send_json_error(['message' => $resModelMsg]);
+    }
+    if ($resModel == 'success') {
+      if (!empty($obj_id)) {
+        wp_send_json_success(['message' => $resModelMsg]);
+      } else {
+        wp_send_json_success(['message' => $resModelMsg, 'obj_id' => $res]);
       }
     }
-    return $data;
+    wp_send_json_error();
+    wp_die();
   }
-  protected function _prepareTextLikeSearch($val)
+
+  public function duplicatePopup()
   {
-    global $wpdb;
-    $escaped = esc_sql($wpdb->esc_like($val));
-    $query = '(label LIKE "%' . $escaped . '%"';
-    if (is_numeric($val)) {
-      $query .= ' OR id LIKE "%' . (int) $val . '%"';
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
     }
-    $query .= ')';
-    return $query;
-  }
-  protected function _prepareModelBeforeListSelect($model)
-  {
-    $this->getModel()->recalculateStatsForPopups(); // This was done for old users - from version 1.0.9, can be removed in future
-    $where = 'original_id != 0';
-    if ($this->getModel()->abDeactivated()) {
-      $where .= ' AND ab_id = 0';
+    $obj_id = $this->getFrame()->core('request')->getVar('obj', 'post');
+    ppsgen_reject_locked_pro_item('popup', $obj_id);
+    $model = $this->getModel();
+    $res = $model->duplicatePopup($obj_id);
+    $resModel = $model->getStatus();
+    $resModelMsg = $model->getMessage();
+    if ($resModel == 'error') {
+      wp_send_json_error(['message' => $resModelMsg]);
     }
-    $model->addWhere($where);
-    dispatcherPps::doAction('popupModelBeforeGetList', $model);
-    return $model;
-  }
-  protected function _prepareSortOrder($sortOrder)
-  {
-    if ($sortOrder === 'conversion') {
-      return '(actions / unique_views)'; // Conversion in real-time calculation
+    if ($resModel == 'success' && !empty($res)) {
+      wp_send_json_success(['message' => $resModelMsg, 'obj_id' => $res]);
     }
-    // sidx goes straight into ORDER BY - only the list's sortable columns are allowed
-    $sortable = ['id', 'label', 'views', 'unique_views', 'actions', 'active', 'date_created'];
-    return in_array($sortOrder, $sortable, true) ? $sortOrder : 'id';
+    wp_send_json_error();
+    wp_die();
   }
-  public function remove()
+
+  public function editPopupOptions()
   {
-    $res = new responsePps();
-    if ($this->getModel()->remove(reqPps::getVar('id', 'post'))) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $data = $this->getFrame()->core('request')->getVar('data', 'post');
+    if (empty($data)) {
+      wp_send_json_error();
+      wp_die();
+    }
+    $res = $this->getModel()->updateOptions($data, 'options');
+    if (!empty($res)) {
+      wp_send_json_success(['message' => __('Data is updated!', 'ppsgen')]);
     } else {
-      $res->pushError($this->getModel()->getErrors());
+      wp_send_json_error();
     }
-    $res->ajaxExec();
+    wp_die();
   }
-  public function save()
+
+  public function deletePopup()
   {
-    $res = new responsePps();
-    if ($this->getModel()->save(reqPps::get('post'))) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $obj = $this->getFrame()->core('request')->getVar('obj', 'post');
+    if (!empty($obj)) {
+      $res = $this->getModel()->deletePopup($obj);
+      if (!empty($res)) {
+        wp_send_json_success(['message' => __('Popup is Deleted', 'ppsgen')]);
+      }
+    }
+    wp_send_json_error();
+    wp_die();
+  }
+
+  public function deletePopupSubmit()
+  {
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $obj = $this->getFrame()->core('request')->getVar('obj', 'post');
+    if (!empty($obj)) {
+      $res = $this->getModel()->deletePopupSubmit($obj);
+      if (!empty($res)) {
+        wp_send_json_success(['message' => __('Popup Submit is Deleted', 'ppsgen')]);
+      }
+    }
+    wp_send_json_error();
+    wp_die();
+  }
+
+  public function resetPopupStats()
+  {
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $obj = (int) $this->getFrame()->core('request')->getVar('obj', 'post');
+    if (!empty($obj) && $this->getModel()->resetPopupStats($obj)) {
+      wp_send_json_success(['message' => __('Popup statistics were reset.', 'ppsgen')]);
+    }
+    wp_send_json_error();
+    wp_die();
+  }
+
+  public function deletePopupList()
+  {
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
+    }
+    $objs = $this->getFrame()->core('request')->getVar('objs', 'post');
+    if (!empty($objs) && is_array($objs)) {
+      foreach ($objs as $obj) {
+        $res = $this->getModel()->deletePopup((int) $obj);
+      }
+      if (!empty($res)) {
+        wp_send_json_success(['message' => __('Popup List is Deleted', 'ppsgen')]);
+      }
+    }
+    wp_send_json_error();
+    wp_die();
+  }
+
+  public function frontendPopupStatsSubmit()
+  {
+    $request = $this->getFrame()->core('request');
+    $popup_id = absint($request->getVar('popup_id', 'post'));
+    $nonce = sanitize_text_field($request->getVar('nonce_code', 'post'));
+    if (!$popup_id || !wp_verify_nonce($nonce, 'ppsgenPopupSubmit' . $popup_id)) {
+      wp_send_json_error(['message' => esc_html__('Access restricted', 'ppsgen')]);
+    }
+    if (!$this->getModel()->popupIsEnabled((int) $popup_id)) {
+      wp_send_json_error(['message' => esc_html__('Access for Popup is restricted', 'ppsgen')]);
+    }
+    $action_type_raw = $request->getVar('action_type', 'post');
+    $action_meta_raw = $request->getVar('action_meta', 'post');
+    $action_type = is_string($action_type_raw) ? substr(sanitize_text_field($action_type_raw), 0, 255) : '';
+    $action_meta = is_string($action_meta_raw) ? substr(sanitize_text_field($action_meta_raw), 0, 255) : '';
+    if (empty($action_type)) {
+      wp_send_json_error(['message' => esc_html__('Missing action type', 'ppsgen')]);
+    }
+    $is_bounce = absint($request->getVar('is_bounce', 'post'));
+    $is_unique = absint($request->getVar('is_unique', 'post'));
+    $time_on_screen = absint($request->getVar('time_on_screen', 'post'));
+    $user_agent_raw = $request->getVar('user_agent', 'post');
+    $user_agent = is_string($user_agent_raw) ? substr(sanitize_text_field($user_agent_raw), 0, 30) : '';
+    $extra_raw = $request->getVar('extra', 'post');
+    $extra = null;
+    if (is_array($extra_raw)) {
+      $allowed_extra = [];
+      if (!empty($extra_raw['utm']) && is_array($extra_raw['utm'])) {
+        $allowed_extra['utm'] = [];
+        foreach ($extra_raw['utm'] as $key => $val) {
+          $allowed_extra['utm'][$key] = substr(sanitize_text_field($val), 0, 100);
+        }
+      }
+      if (!empty($extra_raw['url']) && is_string($extra_raw['url'])) {
+        $allowed_extra['url'] = substr(esc_url_raw($extra_raw['url']), 0, 300);
+      }
+      if (!empty($extra_raw['referer']) && is_string($extra_raw['referer'])) {
+        $allowed_extra['referer'] = substr(esc_url_raw($extra_raw['referer']), 0, 300);
+      }
+      $extra = $allowed_extra;
+    }
+    $wp_user_id = get_current_user_id();
+    $model = $this->getModel();
+    $result = $model->savePopupAction($popup_id, $action_type, $action_meta, $wp_user_id, [
+      'is_bounce' => $is_bounce,
+      'is_unique' => $is_unique,
+      'time_on_screen' => $time_on_screen,
+      'user_agent' => $user_agent,
+      'extra' => $extra,
+    ]);
+    if ($result) {
+      wp_send_json_success(['message' => esc_html__('Saved', 'ppsgen')]);
     } else {
-      $res->pushError($this->getModel()->getErrors());
-    }
-    $res->ajaxExec();
-  }
-  public function getPreviewHtml()
-  {
-    $this->_prevPopupId = (int) reqPps::getVar('id', 'get');
-    $this->outPreviewHtml();
-    //add_action('init', array($this, 'outPreviewHtml'));
-  }
-  public function outPreviewHtml()
-  {
-    if ($this->_prevPopupId) {
-      $this->_prepareGoogleMapAssetsForPreview($this->_prevPopupId);
-      $popup = $this->getModel()->getById($this->_prevPopupId);
-      $assetsStr = '<link rel="stylesheet" href="' . PPS_CSS_PATH . 'font-awesome.min.css" type="text/css" media="all" />';
-      $assetsStr .= '<link rel="stylesheet" href="' . $this->getModule()->getModPath() . 'css/frontend.popup.css" type="text/css" media="all" />';
-      if (isset($popup['params']['tpl']['enb_contact_form']) && !empty($popup['params']['tpl']['enb_contact_form']) && $this->getModule()->contactFormsSupported()) {
-        global $wpdb;
-        $form = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}cfs_forms WHERE id= %d ", $popup['params']['tpl']['contact_form']), ARRAY_A);
-        $assetsStr .= frameCfs::_()->getModule('forms')->getAssetsforPrevStr($form);
-      }
-      $popupContent = $this->getView()->generateHtml($popup);
-      $content =
-        '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-			<html dir="' .
-        (function_exists('is_rtl') && is_rtl() ? 'rtl' : 'ltr') .
-        '"><head>' .
-        '<meta content="' .
-        get_option('html_type') .
-        '; charset=' .
-        get_option('blog_charset') .
-        '" http-equiv="Content-Type">' .
-        '<script type="text/javascript" src="' .
-        includes_url('js/jquery/jquery.js') .
-        '"></script>' .
-        $this->_generateSocSharingAssetsForPreview($this->_prevPopupId) .
-        $this->_generateGoogleMapAssetsForPreview($this->_prevPopupId) .
-        $assetsStr .
-        '<style type="text/css">
-				html { overflow: visible !important; }
-				.ppsPopupPreloadImg {
-					width: 1px !important;
-					height: 1px !important;
-					position: absolute !important;
-					top: -9999px !important;
-					left: -9999px !important;
-					opacity: 0 !important;
-				}
-				.ppsPopupShell {
-					display: block;
-					visibility: visible;
-					position: static;
-				}
-				</style>' .
-        '</head>';
-      //wp_head();
-      $content .= '<body>';
-      $content .= $popupContent;
-      $content .= '<body></html>';
-      echo viewPps::ksesString($content);
-    }
-    exit();
-  }
-  private function _generateSocSharingAssetsForPreview($popupId)
-  {
-    $res = '';
-    if (class_exists('SupsysticSocialSharing')) {
-      global $supsysticSocialSharing;
-      if (isset($supsysticSocialSharing) && !empty($supsysticSocialSharing) && method_exists($supsysticSocialSharing, 'getEnvironment') && ($uiMod = $supsysticSocialSharing->getEnvironment()->getModule('Ui'))) {
-        $assetsForSocSharePlug = $uiMod->getAssets();
-        if (!empty($assetsForSocSharePlug)) {
-          $frontedHookNames = ['wp_enqueue_scripts', $supsysticSocialSharing->getEnvironment()->getConfig()->get('hooks_prefix') . 'before_html_build'];
-          foreach ($assetsForSocSharePlug as $asset) {
-            if (in_array($asset->getHookName(), $frontedHookNames)) {
-              $source = $asset->getSource();
-              if (empty($source)) {
-                continue;
-              }
-              switch (get_class($asset)) {
-                case 'SocialSharing_Ui_Script':
-                  $res .= '<script type="text/javascript" src="' . $asset->getSource() . '"></script>';
-                  break;
-                case 'SocialSharing_Ui_Style':
-                  $res .= '<link rel="stylesheet" type="text/css" href="' . $asset->getSource() . '" />';
-                  break;
-              }
-            }
-          }
-          if (!empty($res)) {
-            $res =
-              $this->_connectMainJsLibsForPrev() .
-              // . '<script type="text/javascript"> var sssIgnoreSaveStatistics = true; </script>'
-              $res;
-          }
-        }
-      }
-    }
-    return $res;
-  }
-  private function _generateGoogleMapAssetsForPreview($popupId)
-  {
-    $res = '';
-    if (class_exists('frameGmp') && defined('GMP_VERSION_PLUGIN')) {
-      $scripts = frameGmp::_()->getScripts();
-      if (!empty($scripts)) {
-        frameGmp::_()->getModule('gmap')->getView()->addMapDataToJs();
-        $setAssets = [];
-        $res .= $this->_connectMainJsLibsForPrev();
-        $scVars = frameGmp::_()->getJSVars();
-        foreach ($scripts as $s) {
-          if (isset($s['src']) && !empty($s['src']) && !in_array($s['handle'], $setAssets)) {
-            if ($scVars && isset($scVars[$s['handle']]) && !empty($scVars[$s['handle']])) {
-              $res .= "<script type='text/javascript'>"; // CDATA and type='text/javascript' is not needed for HTML 5
-              $res .= '/* <![CDATA[ */';
-              foreach ($scVars[$s['handle']] as $name => $value) {
-                if ($name == 'dataNoJson' && !is_array($value)) {
-                  $res .= $value;
-                } else {
-                  $res .= "var $name = " . utilsGmp::jsonEncode($value) . ';';
-                }
-              }
-              $res .= '/* ]]> */';
-              $res .= '</script>';
-            }
-            $res .= '<script type="text/javascript" src="' . $s['src'] . '"></script>';
-            $setAssets[] = $s['handle'];
-          }
-        }
-      }
-      $styles = frameGmp::_()->getStyles();
-      if (!empty($styles)) {
-        $setAssets = [];
-        foreach ($styles as $s) {
-          if (isset($s['src']) && !empty($s['src']) && !in_array($s['handle'], $setAssets)) {
-            $res .= '<link rel="stylesheet" type="text/css" href="' . $s['src'] . '" />';
-            $setAssets[] = $s['handle'];
-          }
-        }
-      }
-    }
-    return $res;
-  }
-  private function _prepareGoogleMapAssetsForPreview($popupId)
-  {
-    if (class_exists('frameGmp') && defined('GMP_VERSION_PLUGIN')) {
-      frameGmp::_()->setScriptsInitialized(false);
-      frameGmp::_()->setStylesInitialized(false);
+      wp_send_json_error(['message' => esc_html__('Save failed', 'ppsgen')]);
     }
   }
-  private function _connectMainJsLibsForPrev()
+
+  public function renderPreview()
   {
-    static $connected = false;
-    if (!$connected) {
-      return '<script type="text/javascript" src="' . includes_url('js/jquery/jquery.js') . '"></script>';
-      $connected = true;
+    check_ajax_referer('ppsgenAjaxNonce', 'nonce_code');
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error();
     }
-    return '';
-  }
-  public function changeTpl()
-  {
-    $res = new responsePps();
-    if ($this->getModel()->changeTpl(reqPps::get('post'))) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
-      $id = (int) reqPps::getVar('id', 'post');
-      // Redirect after change template - to Design tab, as change tpl btn is located there - so, user was at this tab before changing tpl
-      $res->addData('edit_link', $this->getModule()->getEditLink($id, 'ppsPopupTpl'));
-    } else {
-      $res->pushError($this->getModel()->getErrors());
+    $data = $this->getFrame()->core('helper')->prepareRequestPayloadData();
+    $res = $this->getView()->renderPreview($data['popup']);
+    if (!empty($res)) {
+      wp_send_json_success(['preview' => $res['html'], 'css' => $res['css'], 'styles' => $res['styles'], 'scripts' => $res['scripts'], 'inline_scripts' => $res['inline_scripts']]);
     }
-    return $res->ajaxExec();
-  }
-  public function exportForDb()
-  {
-    global $wpdb;
-    $eol = "\r\n";
-    $forPro = (int) reqPps::getVar('for_pro');
-    $forPromo = (int) reqPps::getVar('for_promo');
-    $forWix = (int) reqPps::getVar('for_wix');
-    $selectColumns = ['id', 'label', 'active', 'original_id', 'params', 'html', 'css', 'img_preview', 'show_on', 'show_to', 'show_pages', 'type_id', 'date_created', 'sort_order'];
-    $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-    if ($forWix) {
-      $contentKeys = ['popup_id', 'html', 'css'];
-      /*foreach($contentKeys as $k) {
-          if(isset($selectColumns[array_search($k, $selectColumns)]))
-              unset($selectColumns[array_search($k, $selectColumns)]);
-      }*/
-    }
-    $popupList = dbPps::get('SELECT ' . implode(',', $selectColumns) . ' FROM @__popup WHERE original_id = 0 AND ' . ($forPro ? 'id >= 50' : 'id < 50'));
-    $valuesArr = [];
-    if ($forPromo) {
-      $str = "\$promoList = array(";
-      $keys = ['label', 'img_preview', 'sort_order', 'type_id'];
-      foreach ($popupList as $popup) {
-        $addArr = [];
-        foreach ($keys as $k) {
-          if (in_array($k, ['sort_order', 'type_id'])) {
-            // Numeric values
-            $addArr[] = "'$k' => " . $popup[$k] . '';
-          } else {
-            $addArr[] = "'$k' => '" . $popup[$k] . "'";
-          }
-        }
-        $str .= $eol . 'array(' . implode(', ', $addArr) . '),';
-      }
-      $str .= $eol . ');';
-      echo viewPps::ksesString($str);
-      exit();
-    }
-    $allKeys = [];
-    foreach ($popupList as $popup) {
-      $arr = [];
-      $addToKeys = empty($allKeys);
-      foreach ($popup as $k => $v) {
-        if (!in_array($k, $selectColumns)) {
-          continue;
-        }
-        if ($addToKeys && (!$forWix || ($forWix && !in_array($k, $contentKeys)))) {
-          $allKeys[] = $k;
-        }
-        //$arr[] = '"'. $wpdb->_real_escape($v). '"';
-        $arr[] = '"' . mysqli_real_escape_string($link, $v) . '"';
-      }
-      $valuesArr[] = '(' . implode(',', $arr) . ')';
-    }
-    $query = 'INSERT INTO @__popup (' . implode(',', $allKeys) . ') VALUES ' . $eol . implode(',' . $eol, $valuesArr);
-    echo viewPps::ksesString($query);
-    if ($forWix) {
-      $allKeys = [];
-      $valuesArr = [];
-      foreach ($popupList as $popup) {
-        $arr = [];
-        $addToKeys = empty($allKeys);
-        foreach ($contentKeys as $k) {
-          $v = $k == 'popup_id' ? $popup['id'] : $popup[$k];
-          $arr[] = '"' . $wpdb->_real_escape($v) . '"';
-        }
-        /*foreach($popup as $k => $v) {
-            if(!in_array($k, $selectColumns)) continue;
-            if($addToKeys && (!$forWix || ($forWix && !in_array($k, $contentKeys)))) {
-                $allKeys[] = $k;
-            }
-            $arr[] = '"'. $wpdb->_real_escape($v). '"';
-        }*/
-        $valuesArr[] = '(' . implode(',', $arr) . ')';
-      }
-      $query = 'INSERT INTO @__popup_content (' . implode(',', $contentKeys) . ') VALUES ' . $eol . implode(',' . $eol, $valuesArr);
-      $str = $eol . $query;
-      echo viewPps::ksesString($str);
-    }
-    exit();
-  }
-  public function saveAsCopy()
-  {
-    $res = new responsePps();
-    if (($id = $this->getModel()->saveAsCopy(reqPps::get('post'))) != false) {
-      $res->addMessage(__('Done, redirecting to new PopUp...', PPS_LANG_CODE));
-      $res->addData('edit_link', $this->getModule()->getEditLink($id));
-    } else {
-      $res->pushError($this->getModel()->getErrors());
-    }
-    return $res->ajaxExec();
-  }
-  public function switchActive()
-  {
-    $res = new responsePps();
-    if ($this->getModel()->switchActive(reqPps::get('post'))) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
-    } else {
-      $res->pushError($this->getModel()->getErrors());
-    }
-    return $res->ajaxExec();
-  }
-  public function updateLabel()
-  {
-    $res = new responsePps();
-    if ($this->getModel()->updateLabel(reqPps::get('post'))) {
-      $res->addMessage(__('Done', PPS_LANG_CODE));
-    } else {
-      $res->pushError($this->getModel()->getErrors());
-    }
-    return $res->ajaxExec();
-  }
-  public function updateNonce()
-  {
-    $res = new responsePps();
-    $getFor = reqPps::getVar('get_for', 'post');
-    $id = (int) reqPps::getVar('id', 'post');
-    $updateFor = [];
-    if (!empty($getFor) && !empty($id)) {
-      $generateKeys = [
-        'ppsSubscribeForm' => 'subscribe-' . $id,
-        'ppsLoginForm' => 'login-' . $id,
-        'ppsRegForm' => 'register-' . $id,
-      ];
-      foreach ($getFor as $gf) {
-        if (isset($generateKeys[$gf])) {
-          $updateFor[$gf] = wp_create_nonce($generateKeys[$gf]);
-        }
-      }
-    }
-    if (!empty($updateFor)) {
-      $res->addData('update_for', $updateFor);
-    }
-    return $res->ajaxExec();
-  }
-  public function getPermissions()
-  {
-    return [
-      PPS_USERLEVELS => [
-        PPS_ADMIN => ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear', 'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive', 'outPreviewHtml', 'updateLabel'],
-      ],
-    ];
-  }
-  public function getNoncedMethods()
-  {
-    return ['createFromTpl', 'getListForTbl', 'remove', 'removeGroup', 'clear', 'save', 'getPreviewHtml', 'exportForDb', 'changeTpl', 'saveAsCopy', 'switchActive', 'outPreviewHtml', 'updateLabel'];
+    wp_send_json_error();
+    wp_die();
   }
 }

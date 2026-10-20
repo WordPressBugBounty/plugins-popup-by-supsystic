@@ -1,0 +1,50 @@
+.ppsgenModuleFormTableList [data-key='name'] {
+  min-width: 380px;
+}
+
+.ppsgenFormListNameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ppsgenFormListNameLink {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ppsgenFormListStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.ppsgenFormListStat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f3f5f7;
+  color: #4b5563;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.ppsgenFormListStat strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .ppsgenModuleFormTableList [data-key='name'] {
+    min-width: 320px;
+  }
+
+  .ppsgenFormListStat {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+}

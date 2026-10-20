@@ -1,0 +1,274 @@
+.ppsgenTemplateGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.ppsgenTemplateCard {
+  flex: 1 1 220px;
+  max-width: 240px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    opacity 0.3s;
+}
+
+.ppsgenTemplateCard:hover {
+  transform: translateY(-5px);
+}
+
+.ppsgenTemplateCard:hover img {
+  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ppsgenTemplateCard.templateActive {
+  transform: translateY(-5px);
+}
+
+.ppsgenTemplateCard.templateActive img {
+  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ppsgenTemplatePreview img {
+  width: 100%;
+  display: block;
+  background: white;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.ppsgenTemplateTitle {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #253695;
+  font-weight: bold;
+}
+
+.ppsgenProBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff4a4a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.ppsgenProInactive {
+  opacity: 0.4;
+}
+
+.ppsgenProInactive:hover {
+  opacity: 1;
+}
+
+.ppsgenTemplatePreview {
+  position: relative;
+  overflow: hidden;
+}
+
+.ppsgenTemplatePreview::after {
+  content: "";
+  position: absolute;
+  right: 19px;
+  bottom: 19px;
+  z-index: 4;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.85);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+}
+
+.ppsgenTemplatePreview::before {
+  content: "";
+  position: absolute;
+  right: 11px;
+  bottom: 14px;
+  z-index: 4;
+  width: 9px;
+  height: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.85);
+  opacity: 0;
+  transform: rotate(45deg) translateX(-4px);
+  transform-origin: left center;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+}
+
+.ppsgenTemplatePreview:hover::after,
+.ppsgenTemplatePreview:hover::before {
+  opacity: 1;
+}
+
+.ppsgenTemplatePreview:hover::after {
+  transform: translateY(0);
+}
+
+.ppsgenTemplatePreview:hover::before {
+  transform: rotate(45deg) translateX(0);
+}
+
+.ppsgenTemplateMagnifier {
+  position: fixed;
+  z-index: 1000001;
+  display: none;
+  width: 260px;
+  height: 260px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  box-shadow: 0 22px 58px rgba(15, 23, 42, 0.34), 0 0 0 1px rgba(31, 94, 255, 0.12);
+  pointer-events: none;
+}
+
+.ppsgenTemplateMagnifier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08), inset 0 0 28px rgba(15, 23, 42, 0.10);
+  pointer-events: none;
+}
+
+.ppsgenTemplateMagnifier::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(31, 94, 255, 0.36);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.ppsgenTemplateMagnifierActive {
+  display: block;
+}
+
+.ppsgenTemplateFilter {
+  margin-bottom: 15px;
+}
+
+.ppsgenFilterBtn {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.ppsgenFilterBtn:hover {
+  background: #253695;
+  color: white;
+}
+
+.ppsgenFilterBtn.active {
+  background: #253695;
+  color: #fff;
+  border-color: #253695;
+}
+
+.ppsgenTemplateEnterNameWrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.ppsgenTemplateEnterNameWrapper input[type='text'] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.ppsgenTemplateEnterNameWrapper input[type='submit'] {
+  background: #253695;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.ppsgenTemplateEnterNameWrapper input[type='submit']:hover {
+  background: #253695;
+  transform: translateY(-2px);
+}
+
+/* Feature icon on the thumbnail: the popup comes with a form */
+.ppsgenTplFeatures {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  display: flex;
+  gap: 4px;
+}
+
+.ppsgenTplFeature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.3);
+}
+
+.ppsgenTplFeature svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ppsgenTplFeature .ppsgenTplFeatureFill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ppsgenTplFeatureForm {
+  color: #0f766e;
+}
+
+.ppsgenTemplateEmpty {
+  margin: 10px 0 20px;
+  padding: 28px 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}

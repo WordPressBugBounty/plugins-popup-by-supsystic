@@ -1,0 +1,254 @@
+.ppsgenForm {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.ppsgenFormSubmitWrapper {
+  display: none;
+  position: relative;
+  width: 100%;
+}
+
+.ppsgenFormSubmitWrapper {
+  grid-column: span 12;
+}
+
+.ppsgenCaptchaField {
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.ppsgenHnp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.ppsgen-form-inputFieldWrap {
+  position: relative;
+}
+
+.ppsgen-form-inputFieldWrap .ppsgen-form-input-field-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 99;
+}
+
+.ppsgen-form-inputsubmitWrap button {
+  width: 100%;
+}
+
+.ppsgen-has-icon-left .ppsgen-form-input-field-icon {
+  left: 10px;
+}
+
+.ppsgen-has-icon-right .ppsgen-form-input-field-icon {
+  right: 10px;
+}
+
+@media (max-width: 767.98px) {
+  [class*='ppsgen-form-field-mob-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-mob-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-form-field-mob-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-form-field-mob-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-form-field-mob-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-form-field-mob-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-form-field-mob-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-form-field-mob-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-form-field-mob-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-form-field-mob-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-form-field-mob-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-form-field-mob-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-form-field-mob-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-mob-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  [class*='ppsgen-form-field-tab-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-tab-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-form-field-tab-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-form-field-tab-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-form-field-tab-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-form-field-tab-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-form-field-tab-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-form-field-tab-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-form-field-tab-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-form-field-tab-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-form-field-tab-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-form-field-tab-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-form-field-tab-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-tab-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  [class*='ppsgen-form-field-pc-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-pc-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-form-field-pc-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-form-field-pc-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-form-field-pc-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-form-field-pc-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-form-field-pc-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-form-field-pc-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-form-field-pc-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-form-field-pc-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-form-field-pc-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-form-field-pc-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-form-field-pc-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-form-field-pc-hide {
+    display: none !important;
+  }
+}
+
+/* Rating and range fields (Free); PRO's design settings override these defaults */
+.ppsgen-form-input-rating-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.ppsgen-form-input-rating-wrapper label {
+  margin: 0;
+  cursor: pointer;
+}
+
+.ppsgen-form-input-rating-wrapper i {
+  font-size: 20px;
+  color: #c9c9c9;
+}
+
+.ppsgen-form-input-rating-wrapper i.ppsgen-form-input-rating-icon-active {
+  color: #f5a623;
+}
+
+.ppsgen-form-inputrangeWrap input[type='range'] {
+  width: 100%;
+}

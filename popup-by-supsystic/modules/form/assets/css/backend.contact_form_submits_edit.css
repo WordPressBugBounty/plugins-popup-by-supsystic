@@ -1,0 +1,102 @@
+.ppsgenFormSubmitsWrapperWarning {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 15px;
+  border-left: 3px solid orange;
+}
+
+.ppsgenFormSubmitsRowTitle {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 4px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 10px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ppsgenFormSubmitsRow {
+  margin-bottom: 15px;
+}
+
+.ppsgenFormSubmitsRowData {
+  display: none;
+  position: relative;
+  margin-top: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+}
+
+.ppsgenFormSubmitsRowDataFieldKey {
+  font-weight: bold;
+}
+
+.ppsgenFormSubmitsRowDataField {
+  background: #f5f6ff;
+  padding: 2px;
+  padding-left: 10px;
+  margin-bottom: 3px;
+}
+
+.ppsgenFormSubmitsRowTitleVerifyBtn,
+.ppsgenFormSubmitsRowTitleDeleteBtn {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px;
+}
+
+.ppsgenFormSubmitsRowTitleVerifyBtn:hover,
+.ppsgenFormSubmitsRowTitleDeleteBtn:hover {
+  color: white;
+}
+
+.ppsgenFormSubmitsRowTitleEl {
+  padding: 2px;
+}
+
+.ppsgenFormSubmitsRowTitleBtns {
+  min-width: 230px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.ppsgenFormStatsWrapper {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ppsgenFormStatsActions {
+  margin-bottom: 12px;
+  text-align:right;
+}
+
+.ppsgenFormStatsRow {
+  min-width: 200px;
+}
+
+.ppsgenFormStatsRow .dashicons {
+  color: #7487ff;
+}
+
+.ppsgenVerifiedIcon {
+  color: #7487ff;
+}

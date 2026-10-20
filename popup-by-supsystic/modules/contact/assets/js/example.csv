@@ -1,0 +1,11 @@
+ contact_id;wp_user_id;field_email;field_first_name;field_last_name;field_phone;tag_ids;verified
+0;0;elon.test@example.com;Elon;Musk;10000000001;2;0
+0;0;bill.test@example.com;Bill;Gates;10000000002;1,3;1
+0;0;oprah.test@example.com;Oprah;Winfrey;10000000003;3;1
+0;0;taylor.test@example.com;Taylor;Swift;10000000004;3;1
+0;0;lebron.test@example.com;LeBron;James;10000000005;2;1
+0;0;angelina.test@example.com;Angelina;Jolie;10000000006;3;0
+0;0;jeff.test@example.com;Jeff;Bezos;10000000007;2,3;1
+0;0;serena.test@example.com;Serena;Williams;10000000008;3;1
+0;0;brad.test@example.com;Brad;Pitt;10000000009;2;0
+0;0;rihanna.test@example.com;Rihanna;Fenty;10000000010;3;1

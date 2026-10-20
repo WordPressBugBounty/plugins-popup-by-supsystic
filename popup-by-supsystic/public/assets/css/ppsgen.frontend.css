@@ -1,0 +1,238 @@
+@font-face {
+  font-family: 'FAPPSGEN';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/fa-regular-400-ppsgen.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FAPPSGEN9';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/fa-solid-900-ppsgen.woff2') format('woff2');
+}
+
+.fappsgen {
+  font-family: 'FAPPSGEN';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.fappsgen9 {
+  font-family: 'FAPPSGEN9';
+  font-style: normal;
+  font-weight: 900;
+}
+
+.fappsgen-plus:before {
+  content: '\f0fe';
+}
+
+.fappsgen-minus:before {
+  content: '\f146';
+}
+
+.fappsgen-circle:before {
+  content: '\f111';
+}
+
+.fappsgen-circle-check:before {
+  content: '\f058';
+}
+
+.fappsgen-square:before {
+  content: '\f0c8';
+}
+
+.fappsgen-square-check:before {
+  content: '\f14a';
+}
+
+.fappsgen-search:before {
+  content: '\f002';
+}
+
+.fappsgen-info:before {
+  content: '\f129';
+}
+
+.fappsgen-info-circle:before {
+  content: '\f05a';
+}
+
+.fappsgen-question-circle:before {
+  content: '\f059';
+}
+
+.fappsgen-question:before {
+  content: '\3f';
+}
+
+.fappsgen-trash:before {
+  content: '\f2ed';
+}
+
+.fappsgen-minus-single:before {
+  content: '\f068';
+}
+
+.fappsgen-angle-left:before {
+  content: '\f104';
+}
+
+.fappsgen-icon-close {
+  font-family: 'FAPPSGEN9';
+  font-style: normal;
+  font-weight: 900;
+}
+
+.fappsgen-icon-close:before {
+  content: '\f00d';
+}
+
+.ppsgen-form-inputTooltip:hover .ppsgen-form-inputTooltipText {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+.ppsgen-form-inputTooltip {
+  padding-right: 5px;
+}
+
+.ppsgen-form-inputTooltipText {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  transition: 0.4s;
+  opacity: 0;
+  left: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  margin-left: 20px;
+  width: max-content;
+  max-width: none;
+  padding: 5px;
+  background: white;
+  color: black;
+  font-weight: 400;
+  border: 1px solid #7e90ed;
+  border-radius: 10px;
+  z-index: 99;
+}
+
+.ppsgenCfCboxHorizStyle {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ppsgenCfCboxHorizStyle label {
+  margin-right: 5px;
+}
+
+.ppsgenCfCboxVertStyle {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.ppsgen-form-inputError {
+  display: block;
+  position: relative;
+  color: #f44336;
+  font-size: 11px;
+}
+
+.ppsgen-form-inputRequired {
+  color: red;
+  padding-left: 2px;
+}
+
+.ppsgen-form-inputLabelWrap {
+  display: flex;
+  position: relative;
+  padding-bottom: 5px;
+  align-items: center;
+}
+
+.ppsgen-form-input-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ppsgen-form-inputFieldWrap {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.ppsgen-form-inputdescriptionWrap .ppsgen-form-inputFieldWrap {
+  display: block;
+}
+
+.ppsgen-form-inputtitleWrap .ppsgen-form-inputFieldWrap {
+  display: block;
+}
+
+.ppsgen-form-inputdescriptionWrap,
+.ppsgen-form-inputtitleWrap {
+  width: 100%;
+}
+
+.ppsgen-form-inputFieldWrap select,
+.ppsgen-form-inputFieldWrap input:not([type='checkbox']):not([type='radio']) {
+  width: 100%;
+}
+
+.ppsgen-form-inputsubmitWrap button[type='submit']:disabled {
+  cursor: wait;
+}
+
+.ppsgen-form-inputTooltip {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+.ppsgen-form-inputTooltipIcon {
+  display: flex;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background: #253695;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ppsgen-form-inputradioWrap label,
+.ppsgen-form-inputcheckboxWrap label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ppsgen-form-inputradioWrap label span,
+.ppsgen-form-inputcheckboxWrap label span {
+  margin-left: 5px;
+}
+
+.ppsgen-form-inputcheckboxWrap label input,
+.ppsgen-form-inputradioWrap label input {
+  outline: 0 !important;
+}

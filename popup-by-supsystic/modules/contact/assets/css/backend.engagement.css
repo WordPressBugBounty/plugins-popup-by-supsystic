@@ -1,0 +1,1770 @@
+.ppsgenContactEngagementMini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+  align-items: center;
+}
+
+.ppsgenContactEngagementGroup {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #dde4f2;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.ppsgenContactEngagementGroupLabel {
+  display: inline-flex;
+  align-items: center;
+  color: #5b6472;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-right: 2px;
+}
+
+.ppsgenContactEngagementGroupActivity {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.ppsgenContactActivityPill,
+.ppsgenContactEditHeaderActivity,
+.ppsgenContactStatsActivityValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ppsgenContactIncomingIndicator {
+  display: none;
+  width: 8px;
+  min-width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ppsgenContactIncomingIndicator.is-active {
+  display: inline-block;
+  background: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.14);
+  animation: ppsgenContactIncomingPulse 1.6s ease-in-out infinite;
+}
+
+.ppsgenContactIncomingIndicatorBadge {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.16);
+}
+
+.ppsgenContactIncomingIndicatorBadge.is-active {
+  display: inline-flex;
+}
+
+.ppsgenContactIncomingIndicatorBadge .dashicons {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.ppsgenContactEditTabButtonInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ppsgenContactEditTabIncomingBadge {
+  margin-left: 1px;
+  vertical-align: middle;
+}
+
+@keyframes ppsgenContactIncomingPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.18);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.ppsgenContactEngagementRow td {
+  padding-top: 0;
+  padding-bottom: 12px;
+  border-top: 0;
+}
+
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneA td {
+  background: #ffffff;
+}
+
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneB td {
+  background: #f8faff;
+}
+
+.ppsgenModuleContactTableList tbody tr.ppsgenContactEngagementRow td {
+  border-top: 0;
+}
+
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneA td,
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneB td {
+  transition: background-color 0.15s ease;
+}
+
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneA:hover td,
+.ppsgenModuleContactTableList tbody tr.ppsgenContactRowToneB:hover td {
+  background: #eef3ff;
+}
+
+.ppsgenContactEngagementPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #2f3a66;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ppsgenContactEngagementMetric {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-right: 2px;
+}
+
+.ppsgenContactEngagementMetricTitle {
+  font-weight: 700;
+  color: #23314d;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ppsgenContactEngagementMetricValue {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: #f8fbff;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.ppsgenContactEngagementMetricValue.is-total {
+  background: #edf6ff;
+  color: #0f4fa8;
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.ppsgenContactEngagementMetricValue.is-suspicious {
+  background: #fff1f2;
+  color: #b42318;
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+.ppsgenContactEngagementMetricValue.is-live {
+  background: #edfdf5;
+  color: #0f7a45;
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+.ppsgenContactConversionPill {
+  gap: 5px;
+  background: #ecfdf5;
+  color: #047857;
+  font-weight: 700;
+}
+
+.ppsgenContactConversionPill .dashicons {
+  width: 13px;
+  height: 13px;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.ppsgenContactEngagementScore {
+  background: #eafaf0;
+  color: #136c3e;
+  font-weight: 700;
+}
+
+.ppsgenContactEngagementScore.ppsgenLeadWarm {
+  background: #fff6e8;
+  color: #9a5a00;
+}
+
+.ppsgenContactEngagementScore.ppsgenLeadCold {
+  background: #eef2ff;
+  color: #3747a6;
+}
+
+.ppsgenContactEngagementScore.ppsgenLeadInactive,
+.ppsgenContactEngagementScore.ppsgenLeadUnsubscribed {
+  background: #f3f4f6;
+  color: #5b6472;
+}
+
+.ppsgenContactStatsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ppsgenContactStatsHero {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 16px;
+}
+
+.ppsgenContactStatsHeroScore,
+.ppsgenContactStatsMiniCard,
+.ppsgenContactStatsBox {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ppsgenContactStatsHeroLabel {
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.ppsgenContactStatsHeroValue {
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 700;
+  color: #182a88;
+  margin-bottom: 8px;
+}
+
+.ppsgenContactStatsHeroMeta {
+  color: #4b5563;
+}
+
+.ppsgenContactStatsHeroInfo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.ppsgenContactStatsMiniCard span {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.ppsgenContactStatsMiniCard strong {
+  font-size: 18px;
+  color: #111827;
+}
+
+.ppsgenContactStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.ppsgenContactStatsCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.ppsgenContactStatsCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #dbe4ff;
+  box-shadow: 0 10px 24px rgba(63, 81, 181, 0.08);
+  overflow: hidden;
+}
+
+.ppsgenContactStatsCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  background: #7c8cff;
+}
+
+.ppsgenContactStatsCard.is-health::before {
+  background: linear-gradient(90deg, #4f46e5 0%, #7c8cff 100%);
+}
+
+.ppsgenContactStatsCard.is-summary::before {
+  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
+}
+
+.ppsgenContactStatsCard.is-open::before {
+  background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
+.ppsgenContactStatsCard.is-click::before {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+}
+
+.ppsgenContactStatsCard.is-conversion::before {
+  background: linear-gradient(90deg, #14b8a6 0%, #2dd4bf 100%);
+}
+
+.ppsgenContactStatsCard.is-flow::before {
+  background: linear-gradient(90deg, #5b6cff 0%, #7c8cff 100%);
+}
+
+.ppsgenContactStatsCard.is-log::before {
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.ppsgenContactStatsCard.is-form::before {
+  background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+}
+
+.ppsgenContactStatsCard.is-mailbox::before {
+  background: linear-gradient(90deg, #14b8a6 0%, #2dd4bf 100%);
+}
+
+.ppsgenContactStatsCard.is-woo::before {
+  background: linear-gradient(90deg, #16a34a 0%, #4ade80 100%);
+}
+
+.ppsgenContactStatsCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ppsgenContactStatsCardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ppsgenContactStatsCardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4f46e5;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.12);
+}
+
+.ppsgenContactStatsCard.is-summary .ppsgenContactStatsCardIcon {
+  background: #ecfeff;
+  color: #0891b2;
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.14);
+}
+
+.ppsgenContactStatsCard.is-open .ppsgenContactStatsCardIcon {
+  background: #f5f3ff;
+  color: #7c3aed;
+  box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.14);
+}
+
+.ppsgenContactStatsCard.is-click .ppsgenContactStatsCardIcon {
+  background: #ecfdf5;
+  color: #059669;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.14);
+}
+
+.ppsgenContactStatsCard.is-conversion .ppsgenContactStatsCardIcon {
+  background: #f0fdfa;
+  color: #0f766e;
+  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.16);
+}
+
+.ppsgenContactStatsCard.is-flow .ppsgenContactStatsCardIcon {
+  background: #eef2ff;
+  color: #4253d4;
+  box-shadow: inset 0 0 0 1px rgba(91, 108, 255, 0.14);
+}
+
+.ppsgenContactStatsCard.is-log .ppsgenContactStatsCardIcon {
+  background: #fff7e7;
+  color: #b45309;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16);
+}
+
+.ppsgenContactStatsCard.is-form .ppsgenContactStatsCardIcon {
+  background: #fff7ed;
+  color: #c2410c;
+  box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.16);
+}
+
+.ppsgenContactStatsCard.is-mailbox .ppsgenContactStatsCardIcon {
+  background: #f0fdfa;
+  color: #0f766e;
+  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.16);
+}
+
+.ppsgenContactStatsCard.is-woo .ppsgenContactStatsCardIcon {
+  background: #f0fdf4;
+  color: #15803d;
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.16);
+}
+
+.ppsgenContactStatsCardTitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #24314f;
+}
+
+.ppsgenContactStatsCardBody {
+  display: grid;
+  gap: 8px;
+}
+
+.ppsgenContactStatsMetric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ppsgenContactStatsMetricLabel {
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #5d6b8a;
+}
+
+.ppsgenContactStatsMetricValue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  max-width: 70%;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: #eef2ff;
+  color: #3341a3;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.12);
+}
+
+.ppsgenContactStatsMetricValue.is-primary {
+  background: #e8f0ff;
+  color: #1d4ed8;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.14);
+}
+
+.ppsgenContactStatsMetricValue.is-success {
+  background: #eafbf2;
+  color: #047857;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.16);
+}
+
+.ppsgenContactStatsMetricValue.is-warning {
+  background: #fff7e7;
+  color: #b45309;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16);
+}
+
+.ppsgenContactStatsMetricValue.is-danger {
+  background: #fff0f0;
+  color: #c2410c;
+  box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.16);
+}
+
+.ppsgenContactStatsMetricValue.is-muted,
+.ppsgenContactStatsMetricValue.is-neutral {
+  background: #f1f5f9;
+  color: #475569;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.16);
+}
+
+.ppsgenContactStatsMetricValue.is-text {
+  max-width: 74%;
+  justify-content: flex-end;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  white-space: normal;
+  text-align: right;
+}
+
+.ppsgenContactStatsMetricInline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ppsgenContactStatsBox h3 {
+  margin: 0 0 12px;
+}
+
+.ppsgenContactStatsRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ppsgenContactStatsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.ppsgenContactStatsRow:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.ppsgenContactStatsRow span {
+  color: #4b5563;
+}
+
+.ppsgenContactStatsRow strong {
+  color: #111827;
+}
+
+.ppsgenContactEditHeaderMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.ppsgenContactEditHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ppsgenContactEditHeaderMeta {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #dbe3ff;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%);
+  box-shadow: 0 4px 16px rgba(37, 54, 149, 0.06);
+  margin-bottom: 10px;
+  align-items: center;
+  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.ppsgenContactEditHeaderEmail {
+  color: #5b6472;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.ppsgenContactEditHeaderEmailWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ppsgenContactEditHeaderTags {
+  max-width:400px;
+  width:100%;
+}
+
+.ppsgenContactEditHeaderTags,
+.ppsgenContactEditHeaderStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ppsgenContactEditHeaderTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #eef4ff 0%, #e0eaff 100%);
+  color: #27408b;
+  border: 1px solid #cfdbff;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(39, 64, 139, 0.08);
+}
+
+.ppsgenContactEditHeaderActivity {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f9fafb 0%, #f1f5f9 100%);
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.ppsgenContactEditHeaderVerified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 999px;
+  cursor: default;
+}
+
+.ppsgenContactEditHeaderVerified .dashicons {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.ppsgenContactEditHeaderVerified.is-verified {
+  background: linear-gradient(180deg, #eafaf0 0%, #dcf7e7 100%);
+  color: #136c3e;
+  border: 1px solid #b7e7c8;
+  box-shadow: 0 1px 4px rgba(19, 108, 62, 0.08);
+}
+
+.ppsgenContactEditHeaderVerified.is-unverified {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  color: #6b7280;
+  border: 1px solid #d7dde6;
+  box-shadow: 0 1px 4px rgba(91, 100, 114, 0.08);
+}
+
+.ppsgenContactEditHeaderStats .ppsgenContactEngagementScore {
+  padding: 5px 12px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 4px rgba(19, 108, 62, 0.08);
+}
+
+.ppsgenContactEditHeaderStats .ppsgenContactEngagementScore.ppsgenLeadWarm {
+  box-shadow: 0 1px 4px rgba(154, 90, 0, 0.08);
+}
+
+.ppsgenContactEditHeaderStats .ppsgenContactEngagementScore.ppsgenLeadCold {
+  box-shadow: 0 1px 4px rgba(55, 71, 166, 0.08);
+}
+
+.ppsgenContactEditHeaderStats .ppsgenContactEngagementScore.ppsgenLeadInactive,
+.ppsgenContactEditHeaderStats .ppsgenContactEngagementScore.ppsgenLeadUnsubscribed {
+  box-shadow: 0 1px 4px rgba(91, 100, 114, 0.08);
+}
+
+.ppsgenContactCampaignsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ppsgenContactCampaignsEmpty {
+  padding: 18px 20px;
+  border: 1px solid #dbe4ff;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  color: #4b5563;
+  box-shadow: 0 10px 22px rgba(63, 81, 181, 0.05);
+}
+
+.ppsgenContactCampaignCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 20px 20px;
+  border-radius: 18px;
+  border: 1px solid #dbe4ff;
+  background:
+    radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  box-shadow: 0 18px 34px rgba(63, 81, 181, 0.08);
+  overflow: hidden;
+}
+
+.ppsgenContactCampaignCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #4f46e5 0%, #3b82f6 48%, #10b981 100%);
+}
+
+.ppsgenContactCampaignCardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.ppsgenContactCampaignCardHeaderMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.ppsgenContactCampaignCardEyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4f46e5;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.14);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ppsgenContactCampaignCardTitle {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #16213b;
+}
+
+.ppsgenContactCampaignCardTitle a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ppsgenContactCampaignCardMeta,
+.ppsgenContactCampaignCardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenContactCampaignCardActions {
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  min-width: 260px;
+  max-width: 340px;
+}
+
+.ppsgenContactCampaignPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+  white-space: nowrap;
+  background: #f8fbff;
+  color: #334155;
+  border: 1px solid #dbe4ff;
+  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.05);
+}
+
+.ppsgenContactCampaignPill.is-id {
+  background: #eef2ff;
+  color: #4253d4;
+  border-color: rgba(91, 108, 255, 0.18);
+}
+
+.ppsgenContactCampaignPill.is-status {
+  background: #edfdf5;
+  color: #0f7a45;
+  border-color: rgba(16, 185, 129, 0.18);
+}
+
+.ppsgenContactCampaignPanels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.ppsgenContactCampaignPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 15px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #dbe4ff;
+  box-shadow: 0 10px 24px rgba(63, 81, 181, 0.06);
+  overflow: hidden;
+}
+
+.ppsgenContactCampaignPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: #7c8cff;
+}
+
+.ppsgenContactCampaignPanel.is-health::before {
+  background: linear-gradient(90deg, #4f46e5 0%, #7c8cff 100%);
+}
+
+.ppsgenContactCampaignPanel.is-flow::before {
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+}
+
+.ppsgenContactCampaignPanel.is-open::before {
+  background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
+.ppsgenContactCampaignPanel.is-click::before {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+}
+
+.ppsgenContactCampaignPanel.is-log::before {
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.ppsgenContactCampaignPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ppsgenContactCampaignPanelTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ppsgenContactCampaignPanelIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4f46e5;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.12);
+}
+
+.ppsgenContactCampaignPanel.is-flow .ppsgenContactCampaignPanelIcon {
+  background: #ecf4ff;
+  color: #2563eb;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+}
+
+.ppsgenContactCampaignPanel.is-open .ppsgenContactCampaignPanelIcon {
+  background: #f5f3ff;
+  color: #7c3aed;
+  box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.14);
+}
+
+.ppsgenContactCampaignPanel.is-click .ppsgenContactCampaignPanelIcon {
+  background: #ecfdf5;
+  color: #059669;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.14);
+}
+
+.ppsgenContactCampaignPanel.is-log .ppsgenContactCampaignPanelIcon {
+  background: #fff7e7;
+  color: #b45309;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16);
+}
+
+.ppsgenContactCampaignPanelTitle {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #24314f;
+}
+
+.ppsgenContactCampaignPanelBody {
+  display: grid;
+  gap: 8px;
+}
+
+.ppsgenContactCampaignMetric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ppsgenContactCampaignMetricLabel {
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #5d6b8a;
+}
+
+.ppsgenContactCampaignMetricValue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  max-width: 72%;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: #eef2ff;
+  color: #3341a3;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.12);
+}
+
+.ppsgenContactCampaignMetricValue.is-primary {
+  background: #e8f0ff;
+  color: #1d4ed8;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.14);
+}
+
+.ppsgenContactCampaignMetricValue.is-success {
+  background: #eafbf2;
+  color: #047857;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.16);
+}
+
+.ppsgenContactCampaignMetricValue.is-warning {
+  background: #fff7e7;
+  color: #b45309;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16);
+}
+
+.ppsgenContactCampaignMetricValue.is-danger {
+  background: #fff0f0;
+  color: #c2410c;
+  box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.16);
+}
+
+.ppsgenContactCampaignMetricValue.is-neutral {
+  background: #f1f5f9;
+  color: #475569;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.16);
+}
+
+.ppsgenContactCampaignMetricValue.is-text {
+  max-width: 74%;
+  justify-content: flex-end;
+  white-space: normal;
+  text-align: right;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.ppsgenContactCampaignSignalPills {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.ppsgenContactCampaignSignalPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 28px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: #f8fbff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.ppsgenContactCampaignSignalPill.is-total {
+  background: #edf6ff;
+  color: #0f4fa8;
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.ppsgenContactCampaignSignalPill.is-suspicious {
+  background: #fff1f2;
+  color: #b42318;
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+.ppsgenContactCampaignSignalPill.is-live {
+  background: #edfdf5;
+  color: #0f7a45;
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+.ppsgenContactCampaignAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1e3a8a;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(63, 81, 181, 0.06);
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.ppsgenContactCampaignAction:hover {
+  color: #1e3a8a;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(63, 81, 181, 0.1);
+}
+
+.ppsgenContactCampaignActionDanger {
+  color: #b42318;
+  border-color: rgba(239, 68, 68, 0.26);
+  background: #fff7f7;
+}
+
+.ppsgenContactCampaignActionDanger:hover {
+  color: #991b1b;
+  background: #fff1f2;
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.ppsgenContactCampaignActionBtn[disabled] {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.ppsgenContactEmailChatPage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ppsgenContactEmailChatTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ppsgenContactEmailChatTopActions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ppsgenContactEmailChatSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ppsgenContactEmailIncomingSummaryWrap {
+  margin-top: 12px;
+}
+
+.ppsgenContactEmailIncomingSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ppsgenContactEmailIncomingPill.is-alert {
+  background: #eafaf0;
+  color: #136c3e;
+  border: 1px solid #b7e7c8;
+}
+
+.ppsgenContactEmailIncomingPill.is-clear {
+  background: #eef2ff;
+  color: #3046a6;
+  border: 1px solid #cfdbff;
+}
+
+.ppsgenContactEmailIncomingPill.is-disabled,
+.ppsgenContactEmailIncomingPill.is-secondary {
+  background: #f8fafc;
+  color: #4b5563;
+  border: 1px solid #e2e8f0;
+}
+
+.ppsgenContactEmailThreadWrap,
+.ppsgenContactEmailComposer {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.ppsgenContactEmailThread {
+  min-height: 140px;
+  padding: 18px;
+}
+
+.ppsgenContactEmailThreadLoader {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.ppsgenContactEmailThreadTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
+}
+
+.ppsgenContactEmailThreadRow {
+  display: flex;
+  width: 100%;
+}
+
+.ppsgenContactEmailThreadRowOutgoing {
+  justify-content: flex-start;
+  padding-right: calc(50% + 18px);
+}
+
+.ppsgenContactEmailThreadRowIncoming {
+  justify-content: flex-end;
+  padding-left: calc(50% + 18px);
+}
+
+.ppsgenContactEmailThreadCard {
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #dbe7ff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+.ppsgenContactEmailThreadRowIncoming .ppsgenContactEmailThreadCard {
+  border-color: #cfe2ff;
+  background: linear-gradient(180deg, #f3f9ff 0%, #eaf4ff 100%);
+}
+
+.ppsgenContactEmailThreadCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+.ppsgenContactEmailThreadCard.is-unseen {
+  border-color: #89a8ff;
+  box-shadow: 0 10px 28px rgba(76, 114, 228, 0.14);
+}
+
+.ppsgenContactEmailThreadCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ppsgenContactEmailThreadDirection,
+.ppsgenContactEmailThreadState {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.ppsgenContactEmailThreadDirection {
+  background: #eef2ff;
+  color: #3046a6;
+}
+
+.ppsgenContactEmailThreadState {
+  background: #eafaf0;
+  color: #136c3e;
+}
+
+.ppsgenContactEmailThreadCard.is-unseen .ppsgenContactEmailThreadState {
+  background: #fff4e5;
+  color: #b45309;
+}
+
+.ppsgenContactEmailThreadSubject {
+  color: #0f172a;
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 700;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.ppsgenContactEmailThreadMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ppsgenContactEmailComposer {
+  padding: 18px;
+}
+
+.ppsgenContactEmailComposerTop {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(220px, 300px);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.ppsgenContactEmailComposerField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ppsgenContactEmailComposerField label {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ppsgenContactEmailComposerField input,
+.ppsgenContactEmailComposerField select {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.ppsgenContactEmailComposerEditor .wp-editor-wrap {
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ppsgenContactEmailComposerActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.ppsgenContactEmailComposerHint {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ppsgenContactEmailSendBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ppsgenContactEmailModal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+}
+
+.ppsgenContactEmailModal.is-active {
+  display: block;
+}
+
+.ppsgenContactEmailModalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.ppsgenContactEmailModalDialog {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, calc(100vw - 48px));
+  height: min(86vh, 920px);
+  margin: 5vh auto 0;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ppsgenContactEmailModalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ppsgenContactEmailModalTitle {
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ppsgenContactEmailModalClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid #d6dce7;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.ppsgenContactEmailModalFrameWrap {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ppsgenContactEmailModalFrameTarget {
+  width: 100%;
+  height: 100%;
+}
+
+.ppsgenContactEmailModalFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.ppsgenContactLogsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ppsgenContactLogsActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ppsgenContactLogsActions .ppsgenTableListBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ppsgenContactLogsEmpty {
+  padding: 18px 20px;
+  border-radius: 12px;
+}
+
+.ppsgenContactLogsTimeline {
+  padding: 8px 0;
+  max-height: 72vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.ppsgenContactLogsTimelineInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100%;
+}
+
+.ppsgenContactLogsTimelineInner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg, #d9e3ff 0%, #eef3ff 100%);
+  border-radius: 999px;
+}
+
+.ppsgenContactLogsRow {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.ppsgenContactLogsRow::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -8px;
+  border-radius: 999px;
+  background: #7b90ff;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 1px #d9e3ff;
+  z-index: 2;
+}
+
+.ppsgenContactLogsRowSystem {
+  justify-content: flex-start;
+  padding-right: calc(50% + 22px);
+}
+
+.ppsgenContactLogsRowUser {
+  justify-content: flex-end;
+  padding-left: calc(50% + 22px);
+}
+
+.ppsgenContactLogsBubble {
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.05);
+}
+
+.ppsgenContactLogsRowSystem .ppsgenContactLogsBubble {
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  border-color: #dce6ff;
+}
+
+.ppsgenContactLogsRowUser .ppsgenContactLogsBubble {
+  background: linear-gradient(180deg, #f3f9ff 0%, #eaf4ff 100%);
+  border-color: #cfe2ff;
+}
+
+.ppsgenContactLogsBubbleTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ppsgenContactLogsBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #2f3a66;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ppsgenContactLogsRowUser .ppsgenContactLogsBadge {
+  background: #dceeff;
+  color: #1d4d8f;
+}
+
+.ppsgenContactLogsTime {
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ppsgenContactLogsTitle {
+  color: #111827;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.ppsgenContactLogsText {
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.ppsgenContactFieldEditWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ppsgenContactFieldHistoryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1e3a8a;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom:3px;
+}
+
+.ppsgenContactFieldHistoryBtn:hover,
+.ppsgenContactFieldHistoryBtnActive {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.ppsgenContactFieldHistoryPanel {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid #dbe7ff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  max-height: 360px;
+  overflow: hidden;
+}
+
+.ppsgenContactFieldHistoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 332px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
+}
+
+.ppsgenContactFieldHistoryItem {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5ecff;
+}
+
+.ppsgenContactFieldHistoryTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ppsgenContactFieldHistoryBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #2f3a66;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ppsgenContactFieldHistoryTime {
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ppsgenContactFieldHistoryText {
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.ppsgenContactFieldHistoryText strong {
+  color: #111827;
+}
+
+@media (max-width: 900px) {
+  .ppsgenContactStatsHero,
+  .ppsgenContactStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ppsgenContactStatsCards {
+    grid-template-columns: 1fr;
+  }
+
+  .ppsgenContactStatsHeroInfo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ppsgenContactEditHeaderTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ppsgenContactEditHeaderMeta {
+    max-width: 100%;
+  }
+
+  .ppsgenContactCampaignCardHeader {
+    flex-direction: column;
+  }
+
+  .ppsgenContactCampaignCardActions {
+    justify-content: flex-start;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .ppsgenContactCampaignPanels {
+    grid-template-columns: 1fr;
+  }
+
+  .ppsgenContactEmailChatTop,
+  .ppsgenContactEmailComposerActions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ppsgenContactEmailComposerTop {
+    grid-template-columns: 1fr;
+  }
+
+  .ppsgenContactEmailThreadRowOutgoing,
+  .ppsgenContactEmailThreadRowIncoming {
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+
+  .ppsgenContactEmailThreadCard {
+    max-width: none;
+  }
+
+  .ppsgenContactEmailModalDialog {
+    width: calc(100vw - 20px);
+    height: 92vh;
+    margin-top: 2vh;
+  }
+
+  .ppsgenContactLogsTimelineInner::before {
+    left: 18px;
+    margin-left: 0;
+  }
+
+  .ppsgenContactLogsRow::before {
+    left: 18px;
+    margin-left: 0;
+  }
+
+  .ppsgenContactLogsRowSystem,
+  .ppsgenContactLogsRowUser {
+    justify-content: flex-start;
+    padding-left: 42px;
+    padding-right: 0;
+  }
+
+  .ppsgenContactLogsBubble {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ppsgenContactStatsHeroInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .ppsgenContactStatsCard {
+    padding: 13px 14px;
+  }
+
+  .ppsgenContactStatsMetric {
+    align-items: flex-start;
+  }
+
+  .ppsgenContactStatsMetricValue {
+    max-width: 78%;
+  }
+}

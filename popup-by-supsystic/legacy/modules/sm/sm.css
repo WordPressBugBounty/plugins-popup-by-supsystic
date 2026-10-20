@@ -1,0 +1,96 @@
+/* Social share icons - ported 1:1 from gallery-by-supsystic's working implementation
+   (GridGallery_Galleries views/shortcode/gallery.twig + assets/css/grid-gallery.galleries.frontend.css),
+   just prefixed pps* to stay isolated from gallery/gallery-pro if both plugins run on the same site. */
+.ppsSmLinksShell {
+  display: flex;
+  position: relative;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.ppsSmLink {
+  display: flex;
+  position: relative;
+  margin: 4px;
+  width: 30px;
+  height: 30px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Font Awesome 6 Brands';
+}
+a.ppsSmLink:hover {
+  opacity: 1 !important;
+}
+.ppsSmLinkWhite {
+  background: white;
+  color: black;
+}
+.ppsSmLinkBlack {
+  background: black;
+  color: white;
+}
+.ppsSmLinkSquare {
+  border-radius: 0;
+}
+.ppsSmLinkRound {
+  border-radius: 50%;
+}
+.ppsSmLinkRounded {
+  border-radius: 10%;
+}
+.ppsSmLinkfacebook::before {
+  content: '\f39e';
+}
+.ppsSmLinktwitter::before {
+  content: '\e61b';
+}
+.ppsSmLinkvkontakte::before {
+  content: '\f189';
+}
+.ppsSmLinkreddit::before {
+  content: '\f281';
+}
+.ppsSmLinkpinterest::before {
+  content: '\f231';
+}
+.ppsSmLinktelegram::before {
+  content: '\f3fe';
+}
+.ppsSmLinkviber::before {
+  content: '\f409';
+}
+.ppsSmLinklivejournal::before {
+  content: ' ';
+  background: url('[PPS_MOD_PATH]img/livejournal.png');
+  background-size: contain;
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+.ppsSmLinkBlack.ppsSmLinklivejournal::before {
+  filter: invert(1);
+}
+.ppsSmLinkWhite.ppsSmLinklivejournal::before {
+  filter: invert(0);
+}
+.ppsSmLinkBrand.ppsSmLinklivejournal::before {
+  filter: invert(1);
+}
+.ppsSmLinklinkedin::before {
+  content: '\f0e1';
+}
+.ppsSmLinktumblr::before {
+  content: '\f173';
+}
+.ppsSmLinkwhatsapp::before {
+  content: '\f232';
+}

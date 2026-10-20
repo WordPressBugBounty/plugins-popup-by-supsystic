@@ -1,0 +1,140 @@
+.ppsgenBulkAssignTagsModal {
+  display: none;
+}
+
+.ppsgenBulkAssignTagsModal.is-active {
+  display: block;
+}
+
+.ppsgenBulkAssignTagsModalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+}
+
+.ppsgenBulkAssignTagsModalDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(560px, calc(100vw - 32px));
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+  z-index: 9999;
+  padding: 20px;
+}
+
+.ppsgenBulkAssignTagsModalTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ppsgenBulkAssignTagsModalTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.ppsgenBulkAssignTagsModalDesc {
+  color: #5f6b7a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ppsgenBulkAssignTagsModalClose {
+  color: #5f6b7a;
+  text-decoration: none;
+}
+
+.ppsgenBulkAssignTagsModalClose:hover {
+  color: #1d2327;
+}
+
+.ppsgenBulkAssignTagsModalBody {
+  display: grid;
+  gap: 14px;
+}
+
+.ppsgenBulkAssignTagsModalMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f6f7f7;
+  color: #1d2327;
+}
+
+.ppsgenBulkAssignTagsModalMetaLabel {
+  color: #5f6b7a;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ppsgenBulkAssignTagsFieldLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.ppsgenBulkAssignTagsField .ppsgenselect {
+  width: 100%;
+}
+
+.ppsgenBulkAssignTagsEmpty {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff8e5;
+  color: #8a5a00;
+}
+
+.ppsgenBulkAssignTagsModalActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.ppsgenBulkAssignTagsSubmit.is-loading,
+.ppsgenBulkAssignTagsSubmit.is-disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.ppsgenBulkAssignTagsTrigger {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ppsgenBulkAssignTagsSubmit {
+  display: flex;
+  padding: 4px;
+  margin-left: 10px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.ppsgenBulkAssignTagsSubmit.is-delete-mode {
+  border-color: #f1b8b8;
+  color: #a12622;
+}
+
+.ppsgenBulkAssignTagsSubmit.is-delete-mode:hover {
+  border-color: #dc7373;
+  color: #8a1c1c;
+}
+
+.ppsgenBulkAssignTagsCancel {
+  text-decoration: none;
+}

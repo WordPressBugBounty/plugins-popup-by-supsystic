@@ -1,0 +1,407 @@
+.ppsgenPopupOverlay {
+  display: none;
+  position: fixed;
+  z-index: 99999998;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ppsgenPopup {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  z-index: 99999999;
+  max-height: 90vh;
+  box-sizing: content-box;
+  pointer-events: all;
+}
+
+.ppsgenPopupContent {
+  position: relative;
+  width: 100%;
+  grid-column: span 12;
+}
+
+.ppsgenPopupScrollable {
+  width: 100%;
+  box-sizing: border-box;
+  grid-column: span 12;
+  /* never sideways: a hover effect that grows a button by a few pixels must not bring a horizontal scrollbar */
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 90vh;
+  overscroll-behavior: contain;
+  /* Tall popups still scroll (wheel, touch, keyboard) but without a scrollbar track eating the right edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ppsgenPopupScrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Phones: the card sits a few pixels from the screen edge, so a close button placed outside it (negative
+   offsets, a desktop look) would be cut off. Keep it inside the card instead. */
+@media (max-width: 767px) {
+  /* The popup is content-box, so its padding came on top of a percentage width: 92% + 2 × 34px is wider
+     than a phone. On phones the padding is counted inside the width. */
+  .ppsgenPopup {
+    box-sizing: border-box;
+  }
+  .ppsgenPopup .ppsgenPopupClose {
+    top: max(var(--ppsgen-close-top, 6px), 6px) !important;
+    right: max(var(--ppsgen-close-right, 6px), 6px) !important;
+  }
+}
+
+/* Set by ppsgen.frontend.popups.js when the content is not taller than the box: nothing to scroll, so
+   nothing is clipped either — shadows and hover effects at the edges show in full */
+.ppsgenPopupScrollable.ppsgenPopupFits {
+  overflow: visible;
+}
+
+.ppsgenPopupWrapper {
+  display: none;
+  position: fixed;
+  z-index: 99999998;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.ppsgenPopupWrapper.ppsgenAnimated,
+.ppsgenPopupOverlay.ppsgenAnimated {
+  animation-duration: 1s !important;
+}
+
+.ppsgenPopupWrapper.ppsgenAnimated {
+  animation-fill-mode: both;
+}
+
+.ppsgen-popup-field {
+  display: block;
+  position: relative;
+  width: auto;
+}
+
+.ppsgen-popup-field[data-ftype='row'],
+.ppsgen-popup-field[data-ftype='column'] {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.ppsgen-popup-field-content {
+  grid-column: span 12;
+}
+
+.ppsgen-popup-field[data-ftype='textarea'] iframe {
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  border: 0px;
+}
+
+.ppsgen-popup-field[data-ftype='textarea'] p {
+  margin: 0px;
+  padding: 0px;
+}
+
+@media (max-width: 767.98px) {
+  [class*='ppsgen-popup-field-mob-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field-mob-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-popup-field-mob-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-popup-field-mob-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-popup-field-mob-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-popup-field-mob-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-popup-field-mob-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-popup-field-mob-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-popup-field-mob-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-popup-field-mob-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-popup-field-mob-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-popup-field-mob-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-popup-field-mob-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field.ppsgen-popup-field-mob-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  [class*='ppsgen-popup-field-tab-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field-tab-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-popup-field-tab-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-popup-field-tab-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-popup-field-tab-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-popup-field-tab-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-popup-field-tab-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-popup-field-tab-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-popup-field-tab-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-popup-field-tab-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-popup-field-tab-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-popup-field-tab-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-popup-field-tab-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field.ppsgen-popup-field-tab-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  [class*='ppsgen-popup-field-pc-'] {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field-pc-1 {
+    grid-column: span 1;
+  }
+
+  .ppsgen-popup-field-pc-2 {
+    grid-column: span 2;
+  }
+
+  .ppsgen-popup-field-pc-3 {
+    grid-column: span 3;
+  }
+
+  .ppsgen-popup-field-pc-4 {
+    grid-column: span 4;
+  }
+
+  .ppsgen-popup-field-pc-5 {
+    grid-column: span 5;
+  }
+
+  .ppsgen-popup-field-pc-6 {
+    grid-column: span 6;
+  }
+
+  .ppsgen-popup-field-pc-7 {
+    grid-column: span 7;
+  }
+
+  .ppsgen-popup-field-pc-8 {
+    grid-column: span 8;
+  }
+
+  .ppsgen-popup-field-pc-9 {
+    grid-column: span 9;
+  }
+
+  .ppsgen-popup-field-pc-10 {
+    grid-column: span 10;
+  }
+
+  .ppsgen-popup-field-pc-11 {
+    grid-column: span 11;
+  }
+
+  .ppsgen-popup-field-pc-12 {
+    grid-column: span 12;
+  }
+
+  .ppsgen-popup-field.ppsgen-popup-field-pc-hide {
+    display: none !important;
+  }
+}
+
+.ppsgenPopupTopLeft {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+
+.ppsgenPopupTopCenter {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ppsgenPopupTopRight {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: none;
+}
+
+.ppsgenPopupCenterLeft {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.ppsgenPopupCenter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ppsgenPopupCenterRight {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.ppsgenPopupBottomLeft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: none;
+}
+
+.ppsgenPopupBottomCenter {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ppsgenPopupBottomRight {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: none;
+}
+
+.ppsgenPopupWrapper.ppsgenPopupEmbed {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99 !important;
+}
+
+.ppsgenPopup.ppsgenPopupEmbed {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  transform: none !important;
+  z-index: 99 !important;
+}
+
+.ppsgenPopupFbWrapper {
+  width: 100% !important;
+}
+
+.ppsgenPopupFbWrapper .fb-page,
+.ppsgenPopupFbWrapper .fb-page span,
+.ppsgenPopupFbWrapper .fb-page iframe[style] {
+  width: 100% !important;
+}
+
+.ppsgen-popup-fb-frame-field {
+  width: 100% !important;
+  padding-bottom: inherit !important;
+}
+
+.ppsgen-popup-field-svg_icon {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ppsgen-popup-field-svg_icon a {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ppsgen-popup-field svg {
+  display: block;
+  height: stretch !important;
+  width: stretch !important;
+}
+
+body div.ppsgen-step-hidden {
+  display: none !important;
+}

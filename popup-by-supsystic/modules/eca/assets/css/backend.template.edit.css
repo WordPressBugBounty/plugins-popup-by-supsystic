@@ -1,0 +1,484 @@
+.ppsgenTemplateFields {
+  display: flex;
+  position: relative;
+}
+
+.ppsgenTemplateFieldsLeft {
+  display: inline-flex;
+  position: relative;
+  min-width: 500px;
+  width: 500px;
+  padding: 10px;
+}
+
+.ppsgenTemplateFieldsRight {
+  display: inline-flex;
+  position: relative;
+  width: calc(100% - 500px);
+  padding: 10px;
+  min-width: 620px;
+}
+
+.ppsgenTemplateFieldsRight .ppsgenComponentsList {
+  width: 100%;
+}
+
+.ppsgenCfbContainer {
+  width: 100%;
+}
+
+.ppsgenCfbAddFieldWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.ppsgenCfbAddFieldLabel {
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.ppsgenCfbAddFieldList {
+  margin-right: 10px;
+  max-width: 210px !important;
+  font-size: 12px !important;
+  border: 1px solid #7e90ed !important;
+}
+
+.ppsgenCfbAddFieldBtn {
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ppsgenCfbAddFieldLabel {
+  color: #253695;
+}
+
+.ppsgen-template-ghost {
+  opacity: 0.3;
+}
+
+.ppsgen-template-chosen {
+  background: #d0ebff;
+}
+
+.ppsgen-template-drag {
+  opacity: 0.6;
+}
+
+.ppsgenCfbFieldsWrapper {
+  display: table;
+  position: relative;
+  width: 100%;
+  background: #e1e5ff;
+  padding: 20px 10px;
+}
+
+.ppsgenComponentListTitle {
+  display: block;
+  position: relative;
+  font-size: 1em;
+  /* margin: 10px 0px; */
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #253695;
+}
+
+.ppsgenCfbFieldsWrapperSizeChanger {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.ppsgenCfbSizeChangerToggle,
+.ppsgenCfbSizeChangerBtn {
+  display: inline-block;
+  position: relative;
+  background: #3f51b5;
+  color: white;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-left: 2px solid #5679d3;
+  border-right: 2px solid #051d87;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 5px 10px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.ppsgenCfbSizeChangerBtn {
+  margin-left: 5px;
+}
+
+.ppsgenCfbSizeChangerToggle:hover,
+.ppsgenCfbSizeChangerBtn:hover {
+  opacity: 1;
+}
+
+.ppsgenCfbSizeChangerToggleActive,
+.ppsgenCfbSizeChangerBtnActive {
+  opacity: 1;
+}
+
+@keyframes ppsgenBoxShadowFade {
+  0% {
+    box-shadow: 0 0 0px 0px rgba(100, 100, 100, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 10px 4px rgba(100, 100, 100, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 0px 0px rgba(100, 100, 100, 0.8);
+  }
+}
+
+.ppsgenCffOptionContainerTitle {
+  display: block;
+  position: relative;
+  font-size: 1.3em;
+  color: #253695;
+}
+
+.ppsgenCffOptionContainerSubtitle {
+  display: block;
+  position: relative;
+  font-size: 1em;
+  margin: 10px 0px;
+  color: #253695;
+}
+
+.ppsgenCffDeleteBtn,
+.ppsgenCffDuplicateBtn {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: #3f51b5;
+  color: white;
+  padding: 5px;
+  margin: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ppsgenCffActionBtns {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.ppsgenTemplateSubmitsWrapperWarning {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 15px;
+  border-left: 3px solid orange;
+}
+
+.ppsgenTemplateSubmitsRowTitle {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 4px;
+  border-radius: 2px;
+  font-size: 14px;
+  padding-left: 10px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ppsgenTemplateSubmitsRow {
+  margin-bottom: 15px;
+}
+
+.ppsgenTemplateSubmitsRowData {
+  display: none;
+  position: relative;
+  margin-top: 10px;
+  background: #e1e5ff;
+  padding: 10px;
+}
+
+.ppsgenTemplateSubmitsRowDataFieldKey {
+  font-weight: bold;
+}
+
+.ppsgenTemplateSubmitsRowDataField {
+  background: #f5f6ff;
+  padding: 2px;
+  padding-left: 10px;
+  margin-bottom: 3px;
+}
+
+.ppsgenTemplateSubmitsRowTitleVerifyBtn,
+.ppsgenTemplateSubmitsRowTitleDeleteBtn {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px;
+}
+
+.ppsgenTemplateSubmitsRowTitleVerifyBtn:hover,
+.ppsgenTemplateSubmitsRowTitleDeleteBtn:hover {
+  color: white;
+}
+
+.ppsgenTemplateSubmitsRowTitleEl {
+  padding: 2px;
+}
+
+.ppsgenTemplateSubmitsRowTitleBtns {
+  min-width: 100px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.ppsgenTemplateStatsWrapper {
+  display: flex;
+  position: relative;
+  background: #e1e5ff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ppsgenTemplateStatsRow {
+  min-width: 200px;
+}
+
+.ppsgenTemplateStatsRow .dashicons {
+  color: #7487ff;
+}
+
+.ppsgenVerifiedIcon {
+  color: #7487ff;
+}
+
+.ppsgen-template-type-empty {
+  padding-right: 5px;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList {
+  background: #e1e5ff;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList .ppsgenComponentRowMB0:nth-child(3) .ppsgenComponentOption {
+  width: 100%;
+  min-width: 300px;
+}
+
+.ppsgenCffOptionContainer .ppsgenComponentOptionsList .ppsgenComponentOption input {
+  font-size: 12px;
+}
+
+.ppsgenComponentOptionsList input {
+  max-width: 150px;
+}
+
+.ppsgen-template-col {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: move;
+  padding: 10px;
+  background: #3f51b5;
+  color: #ffffff;
+  border-left: 0;
+  border-top: 2px solid #5679d3;
+  border-bottom: 2px solid #051d87;
+  border-right: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+}
+
+.ppsgen-template-col.click-animate {
+  animation: ppsgenBoxShadowFade 0.3s ease-out;
+}
+
+.ppsgen-template-col-active {
+  border: 2px solid #7f90ef;
+  background: #5569da;
+}
+
+.ppsgen-template-col-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  padding: 10px;
+  background: #e1e5ff;
+  border: 1px dashed #c5cae9;
+  border-radius: 3px;
+  color: #3f51b5;
+  align-items: start;
+}
+
+.ppsgen-template-col[data-field-type='row'] {
+  display: block;
+  width: 100%;
+}
+
+.ppsgen-template-col[data-field-type='row'] > .ppsgen-template-col-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.ppsgen-template-col[data-field-type='column'] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  /* flex: 1 1 auto; */
+}
+
+/* 
+.ppsgen-template-col[data-field-type="column"][style*="width"] {
+  flex: 0 0 auto;
+} */
+
+.ppsgen-template-col[data-field-type='column'] > .ppsgen-template-col-inner {
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.ppsgen-template-col-active {
+  border-color: #009688;
+  background: #009688;
+}
+
+.ppsgen-template-label {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3f51b5;
+  padding: 0 5px;
+  z-index: 999;
+  font-size: 12px;
+  border-radius: 0px 0px 5px 5px;
+  color: #ffffff;
+  transition: background 0.2s ease;
+}
+
+.ppsgen-template-col-active > .ppsgen-template-label {
+  background: #009688;
+}
+
+#ppsgenAnimOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ppsgenAnimOverlayBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ppsgenAnimOverlayContent {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+}
+
+.ppsgenAnimClose {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ppsgenAnimGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.ppsgenAnimSquare {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ppsgenAnimSquare.ppsgenAnimated {
+  animation-duration: 1s !important;
+}
