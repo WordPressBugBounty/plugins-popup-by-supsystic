@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 
-define('PPSGEN_VERSION', '2.0.0');
+define('PPSGEN_VERSION', '2.0.2');
 define('PPSGEN_DS', DIRECTORY_SEPARATOR);
 define('PPSGEN_PLUGIN_NAME', 'ppsgen');
 define('PPSGEN_PLUGIN_SHORTNAME', 'ppsgen');

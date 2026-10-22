@@ -232,12 +232,12 @@ class subscribeControllerPps extends controllerPps
   {
     return [
       PPS_USERLEVELS => [
-        PPS_ADMIN => ['getMailchimpLists', 'getWpCsvList'],
+        PPS_ADMIN => ['getMailchimpLists', 'getMailchimpGroups', 'getWpCsvList'],
       ],
     ];
   }
   public function getNoncedMethods()
   {
-    return ['getMailchimpLists', 'getWpCsvList'];
+    return ['getMailchimpLists', 'getMailchimpGroups', 'getWpCsvList'];
   }
 }

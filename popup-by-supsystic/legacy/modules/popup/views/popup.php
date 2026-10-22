@@ -623,7 +623,7 @@ class popupViewPps extends viewPps
     $steps = max(-255, min(255, $steps));
 
     // Normalize into a six character long hex string
-    $hex = str_replace('#', '', $hex);
+    $hex = str_replace('#', '', (string) $hex);
     if (strlen($hex) == 3) {
       $hex = str_repeat(substr($hex, 0, 1), 2) . str_repeat(substr($hex, 1, 1), 2) . str_repeat(substr($hex, 2, 1), 2);
     }
@@ -850,7 +850,13 @@ class popupViewPps extends viewPps
     // $replaceStyleTag can be used for compability with other plugins minify functionality:
     // it will not recognize css in js data as style whye rendering on server side,
     // but will be replaced back to normal <style> tag in JS, @see js/frontend.popup.js
-    return $this->_twig->render(($replaceStyleTag ? '<span style="display: none;" id="ppsPopupStylesHidden_' . $popup['view_id'] . '">' : '<style type="text/css">') . $popup['css'] . ($replaceStyleTag ? '</span>' : '</style>') . $popup['html'], ['popup' => $popup]);
+    $tpl = ($replaceStyleTag ? '<span style="display: none;" id="ppsPopupStylesHidden_' . $popup['view_id'] . '">' : '<style type="text/css">') . $popup['css'] . ($replaceStyleTag ? '</span>' : '</style>') . $popup['html'];
+    try {
+      return $this->_twig->render($tpl, ['popup' => $popup]);
+    } catch (Twig_Error $e) {
+      // Not allowed by the sandbox, or broken template code: show the popup without its Twig parts, never an error
+      return preg_replace('/\{\{.*?\}\}|\{%.*?%\}|\{#.*?#\}/s', '', $tpl);
+    }
   }
   private function _generateImgsPreload($popup)
   {
@@ -907,8 +913,11 @@ class popupViewPps extends viewPps
   }
   private function _replaceTagsWithTwig($string, &$popup)
   {
-    $string = preg_replace('/\[if (.+)\]/iU', '{% if popup.params.tpl.$1 %}', $string);
-    $string = preg_replace('/\[elseif (.+)\]/iU', '{% elseif popup.params.tpl.$1 %}', $string);
+    // [if name] / [if name == 'value'] (also != and double quotes) - the forms the templates use. Anything else
+    // is a false condition, so template code can not be written into the Twig expression
+    $string = preg_replace_callback('/\[(if|elseif) (.+)\]/iU', function ($m) {
+      return '{% ' . strtolower($m[1]) . ' ' . $this->_twigCondition($m[2]) . ' %}';
+    }, $string);
 
     $replaceFrom = ['ID', 'endif', 'else', 'wp_logout_url'];
     $replaceTo = [$popup['view_id'], '{% endif %}', '{% else %}', wp_logout_url()];
@@ -944,11 +953,34 @@ class popupViewPps extends viewPps
       }
       $popup['params_replaced'] = true;
     }
+    // Values are text, not template code: Twig must never read a popup value as {{ }} / {% %} / {# #}
+    foreach ($replaceTo as $i => $v) {
+      if ($i >= 4 && is_string($v)) {
+        $replaceTo[$i] = $this->_escapeTwigDelimiters($v);
+      }
+    }
     remove_shortcode('embed', [$this, 'processEmbedCode']);
     foreach ($replaceFrom as $i => $v) {
       $replaceFrom[$i] = '[' . $v . ']';
     }
     return str_replace($replaceFrom, $replaceTo, $string);
+  }
+  private function _twigCondition($expr)
+  {
+    $expr = trim(str_replace(['\\\'', '\\"'], ["'", '"'], $expr));
+    if (preg_match('/^([A-Za-z0-9_]+)(?:\s*(==|!=)\s*(?:\'([A-Za-z0-9 _#.\-]*)\'|"([A-Za-z0-9 _#.\-]*)"))?$/', $expr, $m)) {
+      $cond = 'popup.params.tpl.' . $m[1];
+      if (!empty($m[2])) {
+        $value = isset($m[4]) && $m[4] !== '' ? $m[4] : (isset($m[3]) ? $m[3] : '');
+        $cond .= ' ' . $m[2] . " '" . $value . "'";
+      }
+      return $cond;
+    }
+    return 'false';
+  }
+  private function _escapeTwigDelimiters($str)
+  {
+    return str_replace(['{{', '{%', '{#', '}}', '%}', '#}'], ['&#123;&#123;', '&#123;%', '&#123;#', '&#125;&#125;', '%&#125;', '#&#125;'], $str);
   }
   public function processEmbedCode($attrs, $url = '')
   {
@@ -1021,6 +1053,9 @@ class popupViewPps extends viewPps
       $this->_twig = new Twig_Environment(new Twig_Loader_String(), ['debug' => 0]);
       $this->_twig->addFunction(new Twig_SimpleFunction('adjust_brightness', [$this, 'adjustBrightness']));
       $this->_twig->addFunction(new Twig_SimpleFunction('hex_to_rgba_str', 'utilsPps::hexToRgbaStr'));
+      // Templates use only {% if %} and these two functions: everything else (constant(), include, source,
+      // filters, ...) is refused, so popup content can never run code on the server
+      $this->_twig->addExtension(new Twig_Extension_Sandbox(new Twig_Sandbox_SecurityPolicy(['if'], ['escape', 'e', 'raw'], [], [], ['adjust_brightness', 'hex_to_rgba_str']), true));
     }
   }
 }

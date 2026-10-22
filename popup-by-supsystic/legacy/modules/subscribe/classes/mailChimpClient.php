@@ -25,6 +25,10 @@ class mailChimpClientPps
     if (strpos($this->api_key, '-') !== false) {
       [, $datacentre] = explode('-', $this->api_key);
     }
+    // The datacenter goes into the API host: only a plain label (us1, us21)
+    if (!preg_match('/^[a-z0-9]+$/i', (string) $datacentre)) {
+      $datacentre = 'invalid';
+    }
     $this->api_endpoint = str_replace('<dc>', $datacentre, $this->api_endpoint);
   }
 

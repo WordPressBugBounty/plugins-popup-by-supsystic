@@ -41,6 +41,11 @@ class MailChimpPps
         throw new Exception("Invalid MailChimp API key `{$api_key}` supplied.");
       }
       [, $data_center] = explode('-', $this->api_key);
+      // The datacenter goes into the API host: only a plain label (us1, us21) - anything else would let the key
+      // point the request at another host
+      if (!preg_match('/^[a-z0-9]+$/i', (string) $data_center)) {
+        $data_center = 'invalid';
+      }
       $this->api_endpoint = str_replace('<dc>', $data_center, $this->api_endpoint);
     } else {
       $this->api_endpoint = $api_endpoint;

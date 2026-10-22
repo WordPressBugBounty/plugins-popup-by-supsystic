@@ -279,7 +279,8 @@ class popupModelPps extends modelPps
       for ($i = 0; $i < (int) $d['params']['opts_attrs']['txt_block_number']; $i++) {
         $sendValKey = 'params_tpl_txt_val_' . $i;
         if (isset($d[$sendValKey])) {
-          $d['params']['tpl']['txt_' . $i] = urldecode($d[$sendValKey]);
+          // Decode first, then strip Twig delimiters: filtering before the decode let encoded {{ }} through
+          $d['params']['tpl']['txt_' . $i] = reqPps::clearTwig(urldecode($d[$sendValKey]));
         }
       }
     }
@@ -375,6 +376,17 @@ class popupModelPps extends modelPps
     }
     return true;
   }
+  // Positive integer ids from a list in the save request (anything else is dropped)
+  private function _bindIds($d, $key)
+  {
+    if (empty($d[$key])) {
+      return [];
+    }
+    $ids = array_map('intval', (array) $d[$key]);
+    return array_values(array_unique(array_filter($ids, function ($v) {
+      return $v > 0;
+    })));
+  }
   private function _bindShowToPages($d)
   {
     $id = (int) $d['id'];
@@ -383,16 +395,13 @@ class popupModelPps extends modelPps
       framePps::_()
         ->getTable('popup_show_pages')
         ->delete(['popup_id' => $id]);
+      // Ids from the request: integers only, so nothing from the save request reaches the query as SQL text
       $insertArr = [];
-      if (isset($d['show_pages_list']) && !empty($d['show_pages_list'])) {
-        foreach ($d['show_pages_list'] as $postId) {
-          $insertArr[] = "($id, $postId, 0)";
-        }
+      foreach ($this->_bindIds($d, 'show_pages_list') as $postId) {
+        $insertArr[] = "($id, $postId, 0)";
       }
-      if (isset($d['not_show_pages_list']) && !empty($d['not_show_pages_list'])) {
-        foreach ($d['not_show_pages_list'] as $postId) {
-          $insertArr[] = "($id, $postId, 1)";
-        }
+      foreach ($this->_bindIds($d, 'not_show_pages_list') as $postId) {
+        $insertArr[] = "($id, $postId, 1)";
       }
       if (!empty($insertArr)) {
         dbPps::query('INSERT INTO @__popup_show_pages (popup_id, post_id, not_show) VALUES ' . implode(',', $insertArr));
@@ -402,15 +411,11 @@ class popupModelPps extends modelPps
         ->getTable('popup_show_categories')
         ->delete(['popup_id' => $id]);
       $insertArr = [];
-      if (isset($d['show_categories_list']) && !empty($d['show_categories_list'])) {
-        foreach ($d['show_categories_list'] as $termId) {
-          $insertArr[] = "($id, $termId, 0)";
-        }
+      foreach ($this->_bindIds($d, 'show_categories_list') as $termId) {
+        $insertArr[] = "($id, $termId, 0)";
       }
-      if (isset($d['not_show_categories_list']) && !empty($d['not_show_categories_list'])) {
-        foreach ($d['not_show_categories_list'] as $termId) {
-          $insertArr[] = "($id, $termId, 1)";
-        }
+      foreach ($this->_bindIds($d, 'not_show_categories_list') as $termId) {
+        $insertArr[] = "($id, $termId, 1)";
       }
       if (!empty($insertArr)) {
         dbPps::query('INSERT INTO @__popup_show_categories (popup_id, term_id, not_show) VALUES ' . implode(',', $insertArr));

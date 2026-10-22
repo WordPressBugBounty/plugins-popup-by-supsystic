@@ -39,12 +39,12 @@ class supsystic_promoControllerPps extends controllerPps
   {
     return [
       PPS_USERLEVELS => [
-        PPS_ADMIN => ['addStep', 'closeTour', 'addTourFinish'],
+        PPS_ADMIN => ['addTourStep', 'closeTour', 'addTourFinish'],
       ],
     ];
   }
   public function getNoncedMethods()
   {
-    return ['addStep', 'closeTour', 'addTourFinish'];
+    return ['addTourStep', 'closeTour', 'addTourFinish'];
   }
 }

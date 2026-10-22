@@ -4,7 +4,7 @@ Tags: popup, crm, email marketing, marketing automation, lead generation
 Requires at least: 5.9
 Tested up to: 7.1
 Requires PHP: 7.3
-Stable tag: 2.0.0
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -229,6 +229,14 @@ Customer Engagement System connects to the services below only for the features 
 == Changelog ==
 
 = 2026 =
+
+= 2.0.2 — October 22, 2026 =
+
+* CES release with the latest Popup updates.
+
+= 2.0.1 — October 22, 2026 =
+
+* General code improvements and security hardening for Classic Popup by Supsystic. Thanks to Karthik Ramakrishnan (via WPScan) for Security Research.
 
 = 2.0.0 — October 20, 2026 =
 

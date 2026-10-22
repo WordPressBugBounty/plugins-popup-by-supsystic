@@ -248,7 +248,8 @@ class Twig_Node_Module extends Twig_Node
       }
 
       foreach ($nodes as $node) {
-        if (!count($node)) {
+        // null nodes (the sandbox adds them): count(null) warns since PHP 7.2, it used to be 0
+        if (null === $node || !count($node)) {
           continue;
         }
 
