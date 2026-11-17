@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 abstract class BaseModelPpsgen
 {
-  protected FramePpsgen $_frame;
+  protected $_frame;
   protected $_module;
   protected $_slug;
   protected $_wpdb;

@@ -9,7 +9,7 @@ require_once __DIR__ . '/package.php';
 class TemplateModelPpsgen extends BaseModelPpsgen
 {
   private $redirectUrl = null;
-  private bool $showProPopup = false;
+  private $showProPopup = false;
 
   public function installTables()
   {

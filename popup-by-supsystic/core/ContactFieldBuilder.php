@@ -8,7 +8,7 @@ class ContactFieldBuilderPpsgen
 {
   // date, range and rating are Free (basic extra fields in the Free-to-PRO review)
   protected $supportedFields = ['text', 'password', 'textarea', 'number', 'email', 'phone', 'checkbox', 'radio', 'select', 'hidden', 'submit', 'title', 'empty', 'divider', 'description', 'captcha', 'date', 'range', 'rating'];
-  protected FramePpsgen $_frame;
+  protected $_frame;
 
   public function __construct(FramePpsgen $frame, string $token)
   {

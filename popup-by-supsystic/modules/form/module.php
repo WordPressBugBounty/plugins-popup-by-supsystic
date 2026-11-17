@@ -14,6 +14,10 @@ class FormModulePpsgen extends BaseModulePpsgen
       $this->getSubmod('conditional_logic')->init($context);
     }
     if ($context == 'backend') {
+      // Forms › Move from Contact Form (Contact Form by Supsystic → CES)
+      if ($this->registerSubmodule('cf_import')) {
+        $this->getSubmod('cf_import')->init($context);
+      }
       add_action('admin_init', [$this, 'redirectEmptyList']);
       $this->getModel()->maybeMigrate();
       add_action('admin_enqueue_scripts', [$this, 'registerModuleBackendAssets']);
@@ -53,6 +57,12 @@ class FormModulePpsgen extends BaseModulePpsgen
     global $wpdb;
     if ((int) $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ppsgen_forms") > 0) {
       return;
+    }
+    // Someone coming from Contact Form by Supsystic gets their own forms first
+    $cfImport = $this->getSubmod('cf_import');
+    if ($cfImport && $cfImport->getModel()->countNotMoved() > 0) {
+      wp_safe_redirect(CfImportSubmodulePpsgen::getPageUrl());
+      exit();
     }
     wp_safe_redirect(admin_url('admin.php?page=ppsgen&tab=template_add&template_type=form'));
     exit();

@@ -13,8 +13,8 @@ require_once __DIR__ . '/definitions.php';
  */
 class PlaysPpsgen
 {
-  protected FramePpsgen $frame;
-  protected ?array $definitions = null;
+  protected $frame;
+  protected $definitions = null;
 
   public function __construct(FramePpsgen $frame)
   {

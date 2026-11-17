@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 class ContactModelPpsgen extends BaseModelPpsgen
 {
-  protected array $autoImportedWooOrderIds = [];
+  protected $autoImportedWooOrderIds = [];
 
   public function installTables()
   {

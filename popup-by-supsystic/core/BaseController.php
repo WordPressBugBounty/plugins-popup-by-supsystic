@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 abstract class BaseControllerPpsgen
 {
-  protected FramePpsgen $_frame;
+  protected $_frame;
   protected $_module;
 
   public function __construct(FramePpsgen $frame, string $token, $module)

@@ -4,7 +4,9 @@
 Plugin Name: Customer Engagement System – Popups, Forms, CRM & Automation
 Plugin URI: https://supsystic.com/plugins/popup-plugin/
 Description: Popups, forms, a WordPress CRM and email marketing automation in one plugin. Capture leads, tag every contact and follow up automatically.
-Version: 2.0.3
+Version: 2.1.0
+Requires at least: 5.9
+Requires PHP: 7.3
 Author: supsystic.com
 Author URI: https://supsystic.com/
 Text Domain: popup-by-supsystic

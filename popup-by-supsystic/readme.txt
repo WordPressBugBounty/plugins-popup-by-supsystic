@@ -1,14 +1,14 @@
-=== Customer Engagement System – Popup Builder, Forms, CRM & Email Marketing Automation ===
+=== CES – Popup Builder, Optin Forms, Lead Generation, CRM & Email Marketing Automation ===
 Contributors: supsysticcom
-Tags: popup, crm, email marketing, marketing automation, lead generation
+Tags: lead generation, optin, crm, popup, email marketing
 Requires at least: 5.9
 Tested up to: 7.1
 Requires PHP: 7.3
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Popups, forms, a WordPress CRM and email marketing automation in one plugin. Capture leads, tag every contact and follow up automatically.
+Popups, opt-in forms, notification bars, a WordPress CRM and email marketing automation in one plugin. Lead generation that follows up by itself.
 
 == Description ==
 
@@ -30,7 +30,7 @@ Each step writes to the same contact, so your sales funnel builds itself and you
 
 = Four modules, one contact base =
 
-* **Popup** – modals, slide-ins, bars and full-screen welcome mats with 10+ triggers and 10+ targeting rules.
+* **Popup** – modals, slide-ins, notification bars and full-screen welcome mats with 10+ triggers and 10+ targeting rules.
 * **Forms** – contact, lead, newsletter, quote, login and signup forms with conditional logic and spam protection.
 * **CRM** – contacts, tags, custom fields and a timeline of everything each contact did on your site.
 * **Email Campaigns & Automations** – newsletters, welcome series and follow-ups started by tags, with open, click and revenue tracking.
@@ -55,7 +55,7 @@ Pick a template, change the words and colours, and go live. Popup templates arri
 
 * Black Friday, Cyber Monday, Christmas, New Year, Halloween, Valentine's Day and other seasonal sales
 * Spin-to-win wheels, scratch cards, mystery boxes and advent calendars
-* Exit-intent offers, cart recovery, free shipping bars and countdown timers
+* Exit-intent pop-ups, cart recovery, free shipping bars and countdown timers
 * Newsletter sign-ups, lead magnets, webinars and ebooks
 * Contact, quote, booking and callback forms
 * Restaurants, hotels, travel, real estate, beauty, fitness and luxury brands
@@ -65,7 +65,7 @@ One-click colour palettes restyle the background, text, form and buttons togethe
 
 = Popup builder =
 
-* Centre modals, corner and side slide-ins, top and bottom bars and full-screen welcome mats
+* Centre modals, corner and side slide-ins, full-screen welcome mats and notification bars – announcement bars fixed to the top or bottom of the screen
 * Triggers: page load with delay, click on any button or element, scroll, exit intent, bottom of page, inactivity, after WooCommerce checkout, AdBlock detected and number of pages visited
 * Targeting: pages, posts, categories, post types, devices, languages, schedule, frequency, logged-in state, user roles, referrers, URL rules and countries
 * Audience rules from the CRM: show a popup only to new visitors, known contacts, contacts with a tag or contacts in a list
@@ -75,7 +75,7 @@ One-click colour palettes restyle the background, text, form and buttons togethe
 
 = Form builder =
 
-* Contact, lead, newsletter, quote, booking, feedback and survey forms
+* Contact, lead, newsletter opt-in, quote, booking, feedback and survey forms
 * WordPress login, signup and password reset forms styled like the rest of your site
 * 30+ field types, from text, email, phone and dropdowns to dates, ratings, ranges, file uploads, address search and WooCommerce products
 * Conditional logic to show, hide or require fields based on earlier answers
@@ -101,7 +101,7 @@ One-click colour palettes restyle the background, text, form and buttons togethe
 * Newsletters and one-off campaigns to tags, lists or field segments, sent now or scheduled
 * Visual email editor with live preview, reusable branded templates and placeholders such as the contact's first name
 * Open, click, unsubscribe and bounce tracking per email and per contact
-* Revenue attribution that credits each sale to the email, popup, form or UTM source behind it
+* Conversion and revenue tracking that credits each sale to the email, popup, form or UTM source behind it
 * Send through PHP mail or your SMTP server with IMAP bounce handling, or connect Microsoft 365, Google Workspace, Zoho, Fastmail, SendGrid, Mailgun, Brevo, Postmark, SMTP2GO, Resend or Amazon SES
 * Sending-domain check for SPF and DMARC
 
@@ -151,7 +151,7 @@ PRO switches on the advanced options in all four modules at once:
 
 == Installation ==
 
-1. In your dashboard go to Plugins → Add New Plugin and search for "Customer Engagement System".
+1. In your dashboard go to Plugins → Add New Plugin and search for "CES Supsystic".
 2. Click Install Now, then Activate.
 3. Open **Customer Engagement** in the admin menu.
 4. Pick a play on the Plays screen, or create a popup or form from a template.
@@ -188,6 +188,10 @@ Yes. Customers and orders, including guest orders, are imported into the CRM wit
 = Does it have exit-intent popups and spin-to-win wheels? =
 
 Yes. Exit intent is one of the built-in triggers, and the template library includes spin-to-win wheels, scratch cards, mystery boxes and other gamified popups.
+
+= Can I show a notification bar or announcement bar? =
+
+Yes. Start from the Announcement Top Bar template, or set any popup to the top-centre or bottom-centre position with full width and no overlay. The bar stays fixed at the edge of the screen and uses the same triggers, targeting, schedule and show-again rules as any other popup.
 
 = Can I use the forms without a popup? =
 
@@ -229,6 +233,11 @@ Customer Engagement System connects to the services below only for the features 
 == Changelog ==
 
 = 2026 =
+
+= 2.1.0 — November 16, 2026 =
+
+* Import support: move your forms from Contact Form by Supsystic in one click.
+* Your existing popups, forms, contacts and settings stay exactly as they were, so updating is safe.
 
 = 2.0.3 — October 30, 2026 =
 

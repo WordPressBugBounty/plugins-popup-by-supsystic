@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 class EcaModelPpsgen extends BaseModelPpsgen
 {
   private $redirectUrl = null;
-  private string $ecaFlowCronLockValue = '';
+  private $ecaFlowCronLockValue = '';
 
   public function updateOptions($data, $group = '')
   {
@@ -5206,7 +5206,7 @@ class EcaModelPpsgen extends BaseModelPpsgen
   // It is stored as a normal chain plus a flag in the plugin options table (chain settings are rewritten on every save).
   // Newsletters never pick up contacts automatically and do not count toward the Free automation limit.
 
-  protected ?array $newsletterIds = null;
+  protected $newsletterIds = null;
 
   public function getNewsletterIds(): array
   {

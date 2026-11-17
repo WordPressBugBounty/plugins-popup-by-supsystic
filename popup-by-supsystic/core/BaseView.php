@@ -10,7 +10,7 @@ abstract class BaseViewPpsgen
   protected $_module;
   protected $_helper;
   protected $_component;
-  protected FramePpsgen $_frame;
+  protected $_frame;
 
   public function __construct(FramePpsgen $frame, string $token, $module)
   {

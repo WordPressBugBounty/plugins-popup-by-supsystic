@@ -10,6 +10,7 @@ class DashboardModulePpsgen extends BaseModulePpsgen
   {
     parent::init();
     if ($context == 'backend') {
+      $this->registerDeactivationDialog();
       $this->getModel()->maybeMigrate();
       $this->getModel()->ensureMailConfigStorage();
       add_action('admin_menu', [$this, 'registerPluginPages']);
@@ -277,7 +278,7 @@ class DashboardModulePpsgen extends BaseModulePpsgen
     <?php
   }
 
-  protected ?PlaysPpsgen $plays = null;
+  protected $plays = null;
 
   public function getPlays(): PlaysPpsgen
   {
@@ -977,5 +978,35 @@ class DashboardModulePpsgen extends BaseModulePpsgen
       return __('Edit Mail Config', 'ppsgen');
     }
     return __('Create Mail Config', 'ppsgen');
+  }
+
+  /**
+   * Why the plugin is deactivated: the short dialog shared by the Supsystic plugins (deactivation-v1/deactivation.php
+   * in this folder says what is sent and when). Nothing is sent unless the user sends the answer.
+   */
+  public function registerDeactivationDialog()
+  {
+    if (!is_admin()) {
+      return;
+    }
+    require_once __DIR__ . '/deactivation-v1/deactivation.php';
+    Supsystic_Deactivation_V1::register([
+      'slug' => 'popup-by-supsystic',
+      'name' => 'Customer Engagement System',
+      'file' => dirname(__DIR__, 2) . '/pps.php',
+      'tables' => ['ppsgen_modules', 'ppsgen_options', 'pps_modules'],
+      'pro' => [
+        'slug' => 'popup-by-supsystic-pro',
+        'name' => 'Customer Engagement System PRO',
+        'email' => function () {
+          $data = get_option('ppsgen_pro_data');
+          if (is_array($data) && !empty($data['license_email'])) {
+            return (string) $data['license_email'];
+          }
+          $license = class_exists('framePps') ? framePps::_()->getModule('license') : null;
+          return $license ? (string) $license->getModel()->getEmail() : '';
+        },
+      ],
+    ]);
   }
 }

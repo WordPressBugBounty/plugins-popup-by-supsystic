@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 class InstallerPpsgen
 {
-  protected FramePpsgen $_frame;
+  protected $_frame;
 
   public function __construct(FramePpsgen $frame, string $token)
   {

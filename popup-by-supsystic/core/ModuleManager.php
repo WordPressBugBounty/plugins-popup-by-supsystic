@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 class ModuleManagerPpsgen
 {
-  protected FramePpsgen $_frame;
+  protected $_frame;
   protected $_token;
 
   public function __construct(FramePpsgen $frame, string $token)

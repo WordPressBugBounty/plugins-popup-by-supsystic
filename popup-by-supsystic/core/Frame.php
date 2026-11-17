@@ -6,18 +6,18 @@ if (!defined('ABSPATH')) {
 
 final class FramePpsgen
 {
-  private static ?self $instance = null;
-  private string $_internalToken;
-  private string $_mod = '';
-  private ?object $_submod = null;
-  private string $_action = '';
-  private string $_cronAction = '';
-  private bool $_modulesInited = false;
-  private array $_modules = [];
-  private array $_modulesMap = [];
-  private array $_coreInstances = [];
-  private ?object $_fieldBuilder = null;
-  private ?object $_fieldValidator = null;
+  private static $instance = null;
+  private $_internalToken;
+  private $_mod = '';
+  private $_submod = null;
+  private $_action = '';
+  private $_cronAction = '';
+  private $_modulesInited = false;
+  private $_modules = [];
+  private $_modulesMap = [];
+  private $_coreInstances = [];
+  private $_fieldBuilder = null;
+  private $_fieldValidator = null;
 
   // Map of Default Plugin Core Classes
   private $coreMap = [

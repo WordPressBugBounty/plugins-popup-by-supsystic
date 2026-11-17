@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 class DashboardModelPpsgen extends BaseModelPpsgen
 {
-  protected bool $mailConfigStorageChecked = false;
+  protected $mailConfigStorageChecked = false;
 
   public function installTables()
   {
@@ -1367,10 +1367,14 @@ class DashboardModelPpsgen extends BaseModelPpsgen
         if ($records === false) {
           return null;
         }
-        return array_map(static fn($r) => (string) ($r['txt'] ?? implode('', (array) ($r['entries'] ?? []))), (array) $records);
+        return array_map(static function ($r) {
+          return (string) ($r['txt'] ?? implode('', (array) ($r['entries'] ?? [])));
+        }, (array) $records);
       };
       $root = $txt($domain);
-      $spf = $root === null ? null : array_values(array_filter($root, static fn($t) => stripos(trim($t), 'v=spf1') === 0));
+      $spf = $root === null ? null : array_values(array_filter($root, static function ($t) {
+        return stripos(trim($t), 'v=spf1') === 0;
+      }));
       if ($spf === null) {
         $items[] = ['ok' => null, 'key' => 'spf', 'title' => __('SPF record could not be checked', 'ppsgen'), 'text' => __('The DNS lookup failed. Try again later.', 'ppsgen')];
       } elseif (count($spf) === 0) {
@@ -1381,7 +1385,9 @@ class DashboardModelPpsgen extends BaseModelPpsgen
         $items[] = ['ok' => true, 'key' => 'spf', 'title' => __('SPF record found', 'ppsgen'), 'text' => $spf[0]];
       }
       $dmarcTxt = $txt('_dmarc.' . $domain);
-      $dmarc = $dmarcTxt === null ? [] : array_values(array_filter($dmarcTxt, static fn($t) => stripos(trim($t), 'v=DMARC1') === 0));
+      $dmarc = $dmarcTxt === null ? [] : array_values(array_filter($dmarcTxt, static function ($t) {
+        return stripos(trim($t), 'v=DMARC1') === 0;
+      }));
       $items[] = !empty($dmarc)
         ? ['ok' => true, 'key' => 'dmarc', 'title' => __('DMARC record found', 'ppsgen'), 'text' => $dmarc[0]]
         : ['ok' => false, 'key' => 'dmarc', 'title' => sprintf(__('No DMARC record for %s', 'ppsgen'), $domain), 'text' => __('Gmail and Yahoo expect a DMARC record from senders. A basic one is enough: a TXT record named _dmarc with the value v=DMARC1; p=none;', 'ppsgen')];
@@ -1393,7 +1399,9 @@ class DashboardModelPpsgen extends BaseModelPpsgen
       'domain' => $domain,
       'method' => $method,
       'items' => $items,
-      'problems' => count(array_filter($items, static fn($i) => $i['ok'] === false)),
+      'problems' => count(array_filter($items, static function ($i) {
+        return $i['ok'] === false;
+      })),
       'checked_at' => current_time('timestamp'),
     ];
     set_transient('ppsgen_email_domain_check', $result, 12 * HOUR_IN_SECONDS);
@@ -1547,7 +1555,9 @@ class DashboardModelPpsgen extends BaseModelPpsgen
     }
     if ($data['modules']['form'] || $data['modules']['eca']) {
       $domainCheck = $this->getEmailDomainCheck();
-      $firstProblem = current(array_filter($domainCheck['items'], static fn($i) => $i['ok'] === false));
+      $firstProblem = current(array_filter($domainCheck['items'], static function ($i) {
+        return $i['ok'] === false;
+      }));
       if ($firstProblem) {
         $data['attention'][] = [
           'title' => $firstProblem['title'],

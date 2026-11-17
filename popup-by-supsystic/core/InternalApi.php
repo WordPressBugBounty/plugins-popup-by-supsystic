@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 final class InternalApiPpsgen
 {
-  private static ?self $instance = null;
+  private static $instance = null;
 
   private function __construct() {}
   private function __clone() {}

@@ -109,7 +109,9 @@ class FormViewPpsgen extends BaseViewPpsgen
       return (int) ($row['id'] ?? 0);
     }, $data['rows']);
     $statsByForm = $model->getFormStatsSummaryByIds($formIds);
+    $cfImport = $this->getModule()->getSubmod('cf_import');
     $this->assign([
+      'cfImportBanner' => $cfImport ? $cfImport->getBannerHtml() : '',
       'rows' => $data['rows'],
       'statsByForm' => $statsByForm,
       'total' => $data['total'],
@@ -375,6 +377,8 @@ class FormViewPpsgen extends BaseViewPpsgen
     $helper = $this->getFrame()->core('helper');
     $css = $helper->minifyCss($helper->mergeCssRulesBySelector($this->buildFormCss($options)));
     $css .= $helper->minifyCss($helper->mergeCssRulesBySelector($helper->prepareFrontendCustomCss($options['settings']['custom_css'] ?? '', $objId)));
+    // An @import of the Custom CSS (a web font) only works at the top of the stylesheet, as in the editor preview
+    $css = $helper->moveCssImportsToTop($css);
     $this->loadFrontendFormScripts();
     $this->getModel()->statsAddView($objId);
     $formStyleTitle = 'ppsgen-frontend-forms-' . $objId;

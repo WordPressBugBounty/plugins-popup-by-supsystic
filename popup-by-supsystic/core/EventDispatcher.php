@@ -9,7 +9,7 @@ class EventDispatcherPpsgen
   protected $actions = [];
   protected $filters = [];
   private static $_instance = null;
-  protected FramePpsgen $_frame;
+  protected $_frame;
 
   public function __construct(FramePpsgen $frame, string $token)
   {

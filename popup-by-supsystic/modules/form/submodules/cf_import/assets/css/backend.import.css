@@ -1,0 +1,1080 @@
+/* Forms › Move from Contact Form. The look of Data Tables and Photo Gallery: cards, switches, one teal accent,
+   dark blue only for the main button of the screen. */
+.ppsgen-cfi,
+.ppsgen-cfi-banner {
+  --cfi-accent: #0e8a93;
+  --cfi-accent-dark: #0b7178;
+  --cfi-accent-soft: #e6f4f5;
+  --cfi-navy: linear-gradient(145deg, #26384c 0%, #1d2b3c 100%);
+  --cfi-ink: #0f172a;
+  --cfi-text: #334155;
+  --cfi-muted: #64748b;
+  --cfi-line: #e2e8f0;
+  --cfi-line-soft: #f1f5f9;
+  --cfi-surface: #ffffff;
+  --cfi-surface-2: #f8fafc;
+  --cfi-ok: #15803d;
+  --cfi-ok-soft: #e8f6ee;
+  --cfi-warn: #b45309;
+  --cfi-warn-soft: #fff6e6;
+  --cfi-radius: 12px;
+}
+.ppsgen-theme-dark .ppsgen-cfi,
+.ppsgen-theme-dark .ppsgen-cfi-banner {
+  --cfi-accent: #2bb3bc;
+  --cfi-accent-dark: #22a0a8;
+  --cfi-accent-soft: rgba(43, 179, 188, 0.14);
+  --cfi-ink: #eef4ff;
+  --cfi-text: #c9d4ea;
+  --cfi-muted: #9aa8c8;
+  --cfi-line: rgba(148, 163, 184, 0.18);
+  --cfi-line-soft: rgba(148, 163, 184, 0.1);
+  --cfi-surface: #101a2f;
+  --cfi-surface-2: #0c1527;
+  --cfi-ok: #34d399;
+  --cfi-ok-soft: rgba(52, 211, 153, 0.12);
+  --cfi-warn: #fbbf24;
+  --cfi-warn-soft: rgba(251, 191, 36, 0.12);
+}
+.ppsgen-cfi {
+  max-width: 1440px;
+  margin: 8px 0 32px;
+  color: var(--cfi-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.ppsgen-cfi *,
+.ppsgen-cfi *::before,
+.ppsgen-cfi *::after {
+  box-sizing: border-box;
+}
+.ppsgen-cfi [hidden] {
+  display: none !important;
+}
+.ppsgen-cfi h1,
+.ppsgen-cfi h2,
+.ppsgen-cfi h3 {
+  margin: 0;
+  padding: 0;
+  color: var(--cfi-ink);
+  line-height: 1.3;
+}
+.ppsgen-cfi code {
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--cfi-line-soft);
+  color: var(--cfi-ink);
+  font-size: 12.5px;
+}
+.ppsgen-cfi a {
+  color: var(--cfi-accent);
+}
+.ppsgen-cfi a:hover,
+.ppsgen-cfi a:focus {
+  color: var(--cfi-accent-dark);
+}
+
+/* The dark theme of CES colours every p and small of the page: the page keeps its own text colours */
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-eyebrow {
+  color: #7fd6dc;
+}
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-lead {
+  color: #c8d5e3;
+}
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-card-head p,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-safe p,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-switch-text small,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-sub,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-sc-waiting,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-col p,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-empty,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-row-meta span,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-row-id,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-sc-type,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-badge:not(.is-ok):not(.is-ready):not(.is-warn),
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-selectall span,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-status {
+  color: var(--cfi-muted);
+}
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-sc-arrow {
+  color: var(--cfi-accent);
+}
+/* Dark blue would vanish on the dark cards: the main button takes the accent there */
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-btn-primary,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-btn-primary:hover,
+.ppsgen-theme-dark .ppsgen-cfi .ppsgen-cfi-btn-primary:focus {
+  background: var(--cfi-accent);
+  color: #06272a;
+  box-shadow: none;
+}
+
+/* Hero */
+.ppsgen-cfi-hero {
+  position: relative;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 30px 32px;
+  border-radius: 16px;
+  background: var(--cfi-navy);
+  color: #c8d5e3;
+}
+.ppsgen-cfi-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(420px 220px at 88% -10%, rgba(14, 138, 147, 0.45), transparent 70%),
+    radial-gradient(360px 200px at 0% 110%, rgba(99, 102, 241, 0.25), transparent 70%);
+  pointer-events: none;
+}
+.ppsgen-cfi-hero > * {
+  position: relative;
+}
+.ppsgen-cfi-hero-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.ppsgen-cfi .ppsgen-cfi-hero h1 {
+  margin: 6px 0 10px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+}
+.ppsgen-cfi-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  color: #7fd6dc;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ppsgen-cfi-eyebrow-arrow {
+  color: #fff;
+}
+.ppsgen-cfi-lead {
+  max-width: 640px;
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+.ppsgen-cfi-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ppsgen-cfi-chips li {
+  margin: 0;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #dbe5ef;
+  font-size: 13px;
+}
+.ppsgen-cfi-chips b {
+  color: #fff;
+}
+.ppsgen-cfi-chips .ppsgen-cfi-chip-state {
+  border-color: rgba(127, 214, 220, 0.4);
+  color: #7fd6dc;
+}
+.ppsgen-cfi-hero-art {
+  display: flex;
+  flex: none;
+  gap: 12px;
+  align-items: center;
+}
+.ppsgen-cfi-art-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 112px;
+  padding: 14px 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
+}
+.ppsgen-cfi-art-card i {
+  display: block;
+  height: 9px;
+  border-radius: 3px;
+  background: #e2e8f0;
+}
+.ppsgen-cfi-art-card i.short {
+  width: 60%;
+}
+.ppsgen-cfi-art-card b {
+  display: block;
+  height: 14px;
+  margin-top: 3px;
+  border-radius: 4px;
+  background: #58b54c;
+}
+.ppsgen-cfi-art-old {
+  transform: rotate(-4deg);
+  opacity: 0.85;
+}
+.ppsgen-cfi-art-new {
+  animation: ppsgen-cfi-float 4s ease-in-out infinite;
+}
+.ppsgen-cfi-art-new b {
+  background: var(--cfi-accent);
+}
+.ppsgen-cfi-art-tag {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 700;
+}
+.ppsgen-cfi-art-arrow {
+  position: relative;
+  width: 44px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.ppsgen-cfi-art-arrow span {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7fd6dc;
+  animation: ppsgen-cfi-flow 1.8s ease-in-out infinite;
+}
+@keyframes ppsgen-cfi-flow {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 36px;
+    opacity: 0;
+  }
+}
+@keyframes ppsgen-cfi-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ppsgen-cfi-art-new,
+  .ppsgen-cfi-art-arrow span {
+    animation: none;
+  }
+}
+
+/* Layout */
+.ppsgen-cfi-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+}
+.ppsgen-cfi-main,
+.ppsgen-cfi-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.ppsgen-cfi-card {
+  padding: 20px 22px;
+  border: 1px solid var(--cfi-line);
+  border-radius: var(--cfi-radius);
+  background: var(--cfi-surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.ppsgen-cfi-card > h2 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.ppsgen-cfi-card-head {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.ppsgen-cfi-card-head h2 {
+  font-size: 17px;
+  font-weight: 700;
+}
+.ppsgen-cfi-card-head p {
+  margin: 4px 0 0;
+  color: var(--cfi-muted);
+}
+
+/* Checkboxes */
+.ppsgen-cfi-check {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.ppsgen-cfi .ppsgen-cfi-check input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1.5px solid #94a3b8;
+  border-radius: 5px;
+  background: var(--cfi-surface);
+  box-shadow: none;
+}
+.ppsgen-cfi .ppsgen-cfi-check input[type='checkbox']:checked {
+  border-color: var(--cfi-accent);
+  background: var(--cfi-accent);
+}
+.ppsgen-cfi .ppsgen-cfi-check input[type='checkbox']:checked::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 9px;
+  margin: 1px 0 0 5px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.ppsgen-cfi .ppsgen-cfi-check input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--cfi-accent);
+  outline-offset: 2px;
+}
+.ppsgen-cfi-selectall {
+  flex: none;
+  padding-top: 4px;
+  color: var(--cfi-muted);
+  font-size: 13px;
+}
+
+/* Forms list */
+.ppsgen-cfi-list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--cfi-line);
+  border-radius: 10px;
+}
+.ppsgen-cfi-loading,
+.ppsgen-cfi-empty {
+  margin: 0;
+  padding: 22px;
+  color: var(--cfi-muted);
+  text-align: center;
+}
+.ppsgen-cfi-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 16px;
+  border-top: 1px solid var(--cfi-line);
+  background: var(--cfi-surface);
+  transition: background-color 0.15s;
+}
+.ppsgen-cfi-row:first-child {
+  border-top: 0;
+}
+.ppsgen-cfi-row:hover {
+  background: var(--cfi-surface-2);
+}
+.ppsgen-cfi-row.is-moved {
+  background: linear-gradient(90deg, var(--cfi-ok-soft), transparent 60%);
+}
+.ppsgen-cfi-row-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.ppsgen-cfi-row-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--cfi-ink);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.ppsgen-cfi-row-id {
+  color: var(--cfi-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+.ppsgen-cfi-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin-top: 3px;
+  color: var(--cfi-muted);
+  font-size: 12.5px;
+}
+/* Dots between the details; on phones the details wrap, so they get space only */
+@media (min-width: 783px) {
+  .ppsgen-cfi-row-meta > span + span::before {
+    content: '·';
+    margin-right: 8px;
+    color: #cbd5e1;
+  }
+}
+.ppsgen-cfi-row-meta a {
+  text-decoration: none;
+}
+.ppsgen-cfi-row-side {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  align-items: center;
+}
+.ppsgen-cfi-badge {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--cfi-line-soft);
+  color: var(--cfi-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ppsgen-cfi-badge.is-ok {
+  background: var(--cfi-ok-soft);
+  color: var(--cfi-ok);
+}
+.ppsgen-cfi-badge.is-ready {
+  background: var(--cfi-accent-soft);
+  color: var(--cfi-accent);
+}
+.ppsgen-cfi-badge.is-warn {
+  background: var(--cfi-warn-soft);
+  color: var(--cfi-warn);
+}
+.ppsgen-cfi-badge .dashicons {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+
+/* Buttons */
+.ppsgen-cfi-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+}
+.ppsgen-cfi .ppsgen-cfi-btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--cfi-line);
+  border-radius: 8px;
+  background: var(--cfi-surface);
+  color: var(--cfi-ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.ppsgen-cfi .ppsgen-cfi-btn:hover {
+  border-color: var(--cfi-accent);
+  color: var(--cfi-accent);
+}
+.ppsgen-cfi .ppsgen-cfi-btn:focus-visible {
+  outline: 2px solid var(--cfi-accent);
+  outline-offset: 2px;
+}
+.ppsgen-cfi .ppsgen-cfi-btn-primary {
+  padding: 0 22px;
+  border: 0;
+  background: var(--cfi-navy);
+  color: #fff;
+  box-shadow: 0 10px 22px -12px rgba(29, 43, 60, 0.9);
+}
+.ppsgen-cfi .ppsgen-cfi-btn-primary:hover,
+.ppsgen-cfi .ppsgen-cfi-btn-primary:focus {
+  border: 0;
+  background: linear-gradient(145deg, #2e445c 0%, #22344a 100%);
+  color: #fff;
+}
+.ppsgen-cfi .ppsgen-cfi-btn-accent {
+  border-color: var(--cfi-accent);
+  background: var(--cfi-accent);
+  color: #fff;
+}
+.ppsgen-cfi .ppsgen-cfi-btn-accent:hover,
+.ppsgen-cfi .ppsgen-cfi-btn-accent:focus {
+  background: var(--cfi-accent-dark);
+  color: #fff;
+}
+.ppsgen-cfi .ppsgen-cfi-btn-sm {
+  gap: 6px;
+  height: 30px;
+  padding: 0 11px;
+  font-size: 12.5px;
+}
+.ppsgen-cfi .ppsgen-cfi-btn .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  line-height: 1;
+}
+.ppsgen-cfi .ppsgen-cfi-btn[disabled] {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
+.ppsgen-cfi-spinner {
+  display: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: ppsgen-cfi-spin 0.8s linear infinite;
+}
+.ppsgen-cfi-btn.is-busy .ppsgen-cfi-spinner {
+  display: inline-block;
+}
+.ppsgen-cfi-btn-accent .ppsgen-cfi-spinner {
+  border-color: rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+}
+@keyframes ppsgen-cfi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ppsgen-cfi-status {
+  color: var(--cfi-muted);
+  font-size: 13px;
+}
+.ppsgen-cfi-status.is-error {
+  color: #b91c1c;
+}
+.ppsgen-cfi-status.is-ok {
+  color: var(--cfi-ok);
+}
+
+/* Notes under the list */
+.ppsgen-cfi-notes:empty {
+  display: none;
+}
+.ppsgen-cfi-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+.ppsgen-cfi-note {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--cfi-warn-soft);
+  color: var(--cfi-text);
+  font-size: 13px;
+}
+.ppsgen-cfi-note .dashicons {
+  flex: none;
+  color: var(--cfi-warn);
+}
+
+/* Options */
+.ppsgen-cfi-switch {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-top: 1px solid var(--cfi-line-soft);
+  cursor: pointer;
+}
+.ppsgen-cfi-options h2 + .ppsgen-cfi-switch {
+  padding-top: 2px;
+  border-top: 0;
+}
+.ppsgen-cfi .ppsgen-cfi-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+.ppsgen-cfi-switch-ui {
+  position: relative;
+  flex: none;
+  width: 38px;
+  height: 22px;
+  margin-top: -1px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  transition: background-color 0.18s;
+}
+.ppsgen-cfi-switch-ui::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+  transition: transform 0.18s;
+}
+.ppsgen-cfi-switch input:checked + .ppsgen-cfi-switch-ui {
+  background: var(--cfi-accent);
+}
+.ppsgen-cfi-switch input:checked + .ppsgen-cfi-switch-ui::after {
+  transform: translateX(16px);
+}
+.ppsgen-cfi-switch input:focus-visible + .ppsgen-cfi-switch-ui {
+  outline: 2px solid var(--cfi-accent);
+  outline-offset: 2px;
+}
+.ppsgen-cfi-switch input:disabled + .ppsgen-cfi-switch-ui {
+  opacity: 0.45;
+}
+.ppsgen-cfi-switch.is-off {
+  opacity: 0.55;
+  cursor: default;
+}
+.ppsgen-cfi-switch-text b {
+  display: block;
+  line-height: 20px;
+  color: var(--cfi-ink);
+  font-size: 13.5px;
+}
+.ppsgen-cfi-switch-text small {
+  display: block;
+  margin-top: 2px;
+  color: var(--cfi-muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.ppsgen-cfi-hint {
+  margin: 8px 0 0;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: var(--cfi-accent-soft);
+  font-size: 12.5px;
+}
+.ppsgen-cfi-why ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ppsgen-cfi-why li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 10px;
+}
+.ppsgen-cfi-why .dashicons {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--cfi-accent-soft);
+  color: var(--cfi-accent);
+  font-size: 17px;
+  line-height: 30px;
+  text-align: center;
+}
+.ppsgen-cfi-safe p {
+  margin: 0 0 8px;
+  color: var(--cfi-muted);
+}
+
+/* Results */
+.ppsgen-cfi-results {
+  border-color: rgba(14, 138, 147, 0.35);
+}
+.ppsgen-cfi-result {
+  padding: 14px 0;
+  border-top: 1px solid var(--cfi-line);
+}
+.ppsgen-cfi-result:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.ppsgen-cfi-result-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.ppsgen-cfi-result-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.ppsgen-cfi-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+.ppsgen-cfi .ppsgen-cfi-code,
+.ppsgen-cfi .ppsgen-cfi-coupon-code {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 6px;
+}
+.ppsgen-cfi-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.ppsgen-cfi-col {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--cfi-surface-2);
+}
+.ppsgen-cfi-col h4 {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0 0 6px;
+  color: var(--cfi-ink);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ppsgen-cfi-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ppsgen-cfi-col li {
+  position: relative;
+  margin: 0 0 5px;
+  padding-left: 16px;
+  font-size: 13px;
+}
+.ppsgen-cfi-col li::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cfi-ok);
+}
+.ppsgen-cfi-col.is-skipped li::before {
+  background: var(--cfi-warn);
+}
+.ppsgen-cfi-col p {
+  margin: 0;
+  color: var(--cfi-muted);
+  font-size: 13px;
+}
+.ppsgen-cfi-sub {
+  margin: 8px 0 0;
+  color: var(--cfi-muted);
+  font-size: 13px;
+}
+.ppsgen-cfi-shortcode {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* The offer in the result: CFPRO30 or CFFREE15, only without an active CES PRO licence */
+.ppsgen-cfi-coupon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--cfi-navy);
+  color: #c8d5e3;
+}
+.ppsgen-cfi .ppsgen-cfi-coupon-icon.dashicons {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--cfi-accent);
+  color: #fff;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+}
+.ppsgen-cfi-coupon-text {
+  flex: 1 1 200px;
+  min-width: 0;
+  font-size: 13px;
+}
+.ppsgen-cfi-coupon-text b {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+.ppsgen-cfi-coupon-actions {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.ppsgen-cfi .ppsgen-cfi-coupon-code {
+  border: 1px dashed rgba(127, 214, 220, 0.7);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Shortcodes */
+.ppsgen-cfi-sc-list {
+  overflow: hidden;
+  border: 1px solid var(--cfi-line);
+  border-radius: 10px;
+}
+.ppsgen-cfi-sc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 6px 20px;
+  align-items: start;
+  padding: 12px 16px;
+  border-top: 1px solid var(--cfi-line);
+}
+.ppsgen-cfi-sc-row:first-child {
+  border-top: 0;
+}
+.ppsgen-cfi-sc-head {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  background: var(--cfi-surface-2);
+  color: var(--cfi-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.ppsgen-cfi-sc-row.is-done {
+  background: linear-gradient(90deg, var(--cfi-ok-soft), transparent 60%);
+}
+.ppsgen-cfi-sc-place {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.ppsgen-cfi-sc-place a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.ppsgen-cfi-sc-place a:hover {
+  text-decoration: underline;
+}
+.ppsgen-cfi-sc-type {
+  display: block;
+  margin-top: 2px;
+  color: var(--cfi-muted);
+  font-size: 12px;
+}
+.ppsgen-cfi-sc-changes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* The old shortcode, then "→ the new one" under it: the same shape at any width */
+.ppsgen-cfi-sc-change {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  gap: 4px 6px;
+  align-items: center;
+  justify-items: start;
+  margin: 0;
+}
+.ppsgen-cfi-sc-change > code:first-child {
+  grid-column: 1 / -1;
+}
+.ppsgen-cfi .ppsgen-cfi-sc-change code {
+  font-size: 12px;
+}
+.ppsgen-cfi .ppsgen-cfi-sc-change code.is-new {
+  background: var(--cfi-accent-soft);
+  color: var(--cfi-accent-dark);
+}
+.ppsgen-cfi-sc-arrow {
+  color: var(--cfi-accent);
+  font-weight: 700;
+}
+.ppsgen-cfi-sc-waiting {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 6px 0 0;
+  color: var(--cfi-muted);
+  font-size: 12.5px;
+}
+.ppsgen-cfi-sc-changes > .ppsgen-cfi-sc-waiting:first-child {
+  margin-top: 0;
+}
+.ppsgen-cfi-sc-waiting .dashicons {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+/* One column: the options come before the list they apply to, the other side cards after it */
+@media (max-width: 1100px) {
+  .ppsgen-cfi-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .ppsgen-cfi-side {
+    display: contents;
+  }
+  .ppsgen-cfi-options {
+    order: -1;
+  }
+}
+@media (max-width: 782px) {
+  .ppsgen-cfi-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+  .ppsgen-cfi-hero-art {
+    display: none;
+  }
+  .ppsgen-cfi-cols {
+    grid-template-columns: 1fr;
+  }
+  .ppsgen-cfi-row {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 8px 14px;
+    align-items: start;
+  }
+  .ppsgen-cfi-row > .ppsgen-cfi-check {
+    padding-top: 1px;
+  }
+  .ppsgen-cfi-row-side {
+    flex-wrap: wrap;
+    grid-column: 2;
+  }
+  .ppsgen-cfi-row-meta {
+    gap: 2px 12px;
+  }
+  .ppsgen-cfi-result-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+  .ppsgen-cfi-sc-row {
+    grid-template-columns: 1fr;
+  }
+  .ppsgen-cfi .ppsgen-cfi-coupon-icon.dashicons {
+    align-self: flex-start;
+  }
+  .ppsgen-cfi-sc-head span + span {
+    display: none;
+  }
+  .ppsgen-cfi-card {
+    padding: 18px 16px;
+  }
+  .ppsgen-cfi-card-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ppsgen-cfi-selectall {
+    padding-top: 0;
+  }
+}
+
+/* The banner on the CES Forms list */
+.ppsgen-cfi-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #26384c 0%, #1d2b3c 100%);
+  color: #c8d5e3;
+}
+.ppsgen-cfi-banner-icon.dashicons {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: #0e8a93;
+  color: #fff;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+}
+.ppsgen-cfi-banner-text {
+  flex: 1 1 200px;
+  min-width: 0;
+  font-size: 13px;
+}
+.ppsgen-cfi-banner-text b {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+a.ppsgen-cfi-banner-btn,
+a.ppsgen-cfi-banner-btn:visited {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #0e8a93;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+a.ppsgen-cfi-banner-btn:hover,
+a.ppsgen-cfi-banner-btn:focus {
+  background: #0b7178;
+  color: #fff;
+}

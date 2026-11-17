@@ -7,9 +7,9 @@ if (!defined('ABSPATH')) {
 class HelperPpsgen
 {
   public $allowed_html = null;
-  protected FramePpsgen $_frame;
-  protected array $ipGeoCache = [];
-  protected string $lastMailProviderError = '';
+  protected $_frame;
+  protected $ipGeoCache = [];
+  protected $lastMailProviderError = '';
 
   public function __construct(FramePpsgen $frame, string $token)
   {

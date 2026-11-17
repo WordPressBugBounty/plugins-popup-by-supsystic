@@ -22,6 +22,11 @@ $end = min($start + $per_page - 1, $total);
   </h2>
 </div>
 
+<?php if (!empty($this->cfImportBanner)) {
+  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in tpl/banner.php of form/submodules/cf_import
+  echo $this->cfImportBanner;
+} ?>
+
 <form method="POST">
 
   <div class="ppsgenTableListTopButtons">

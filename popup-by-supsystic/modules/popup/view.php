@@ -9,7 +9,7 @@ class PopupViewPpsgen extends BaseViewPpsgen
   /** Default step of the popup being rendered: other steps start hidden (the PRO script switches them) */
   public $defaultStepSlug = '';
 
-  protected bool $renderPreview = false;
+  protected $renderPreview = false;
   public $previewInlineCss = '';
 
   protected function getPopupCustomCodePromoHtml(string $type): string
@@ -271,7 +271,9 @@ class PopupViewPpsgen extends BaseViewPpsgen
     $css .= $this->previewInlineCss;
 
     // Versioned by file time so the preview never shows a stale cached stylesheet
-    $ver = static fn(string $rel): string => PPSGEN_PLUGIN_URL . $rel . '?ver=' . (int) @filemtime(PPSGEN_PLUGIN_DIR . $rel);
+    $ver = static function (string $rel): string {
+      return PPSGEN_PLUGIN_URL . $rel . '?ver=' . (int) @filemtime(PPSGEN_PLUGIN_DIR . $rel);
+    };
     $styles = [$ver('public/assets/libs/ppsgenfa/ppsgen-fa-all.min.css'), $ver('public/assets/css/ppsgen.frontend.css'), $ver('public/assets/libs/ppsgenselect/ppsgenselect.css'), $ver('public/assets/css/ppsgen.frontend.popups.css')];
     $scripts = [includes_url('js/jquery/jquery.min.js'), PPSGEN_PLUGIN_URL . 'public/assets/libs/ppsgenselect/ppsgenselect.js', PPSGEN_PLUGIN_URL . 'public/assets/js/ppsgen.frontend.js', $ver('public/assets/js/ppsgen.frontend.popups.js')];
     $additionalScripts = $this->getFrame()->core('eventDispatcher')->applyFiltersOnce('popup.preview.load.scripts', []) ?? [];

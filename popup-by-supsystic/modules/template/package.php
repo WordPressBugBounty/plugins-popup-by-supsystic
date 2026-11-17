@@ -103,7 +103,9 @@ class TemplatePackagePpsgen
   /** Strict schema check: returns only the known parts and columns, or WP_Error */
   public static function validate(array $template)
   {
-    $bad = static fn(string $why) => new WP_Error('ppsgen_template_invalid', sprintf(__('This template is not valid (%s).', 'ppsgen'), $why));
+    $bad = static function (string $why) {
+      return new WP_Error('ppsgen_template_invalid', sprintf(__('This template is not valid (%s).', 'ppsgen'), $why));
+    };
     $unknown = array_diff(array_keys($template), array_keys(self::COLUMNS));
     if ($unknown) {
       return $bad('unknown part');

@@ -8,8 +8,8 @@ class ComponentPpsgen
 {
   public $namePrefix = '';
   public $css = '';
-  protected FramePpsgen $_frame;
-  protected array $requestedGoogleFonts = [];
+  protected $_frame;
+  protected $requestedGoogleFonts = [];
 
   public function __construct(FramePpsgen $frame, string $token)
   {

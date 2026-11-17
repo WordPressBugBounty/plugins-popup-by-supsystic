@@ -6,8 +6,8 @@ if (!defined('ABSPATH')) {
 
 class ContactFieldValidatorPpsgen
 {
-  protected array $errors = [];
-  protected FramePpsgen $_frame;
+  protected $errors = [];
+  protected $_frame;
 
   public function __construct(FramePpsgen $frame, string $token)
   {
@@ -275,7 +275,9 @@ class ContactFieldValidatorPpsgen
   protected function isEmptyValue($value): bool
   {
     if (is_array($value)) {
-      return count($value) === 0 || !array_filter($value, fn($v) => $v !== '0');
+      return count($value) === 0 || !array_filter($value, function ($v) {
+        return $v !== '0';
+      });
     }
     return $value === null || $value === '';
   }

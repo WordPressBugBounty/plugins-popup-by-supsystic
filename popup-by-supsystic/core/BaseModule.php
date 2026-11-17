@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 abstract class BaseModulePpsgen
 {
-  protected FramePpsgen $_frame;
+  protected $_frame;
   protected $submodules = [];
   protected $slug;
   protected $parent = null;
